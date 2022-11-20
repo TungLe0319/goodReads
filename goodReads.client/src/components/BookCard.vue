@@ -1,11 +1,14 @@
 <template>
-  <div class="card">
+  <router-link :to="{name: 'Details', params:{bookId: book.bookId }}"> 
+   <div class="card">
     <img :src="book.img" alt=""  />
     <div class="card-body">
       <h6>{{ book.title}}</h6>
       <p v-for="a in book.authors"> {{a}}  </p>
     </div>
   </div>
+  </router-link>
+ 
 </template>
 
 <script>

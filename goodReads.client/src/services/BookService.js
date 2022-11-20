@@ -14,5 +14,10 @@ class BookService {
     console.log(res);
     AppState.books = res.data.items.map(b => new Book(b))
   }
+
+  async getBookInformation(id){
+    const res = await googleBookApi.get(`/volumes/${id}`)
+    console.log(res.data);
+  }
 }
 export const bookService = new BookService();
