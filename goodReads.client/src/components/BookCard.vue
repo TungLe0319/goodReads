@@ -1,14 +1,31 @@
 <template>
-  <router-link :to="{name: 'Details', params:{bookId: book.bookId }}"> 
-   <div class="card">
+  <router-link :to="{ name: 'Details', params: { bookId: book.bookId } }">
+    <!-- <div class="card">
     <img :src="book.img" alt=""  />
     <div class="card-body">
       <h6>{{ book.title}}</h6>
-      <p v-for="a in book.authors"> {{a}}  </p>
+      <p class="card-text" v-for="a in book.authors"> {{a}}  </p>
     </div>
-  </div>
+  </div> -->
+
+
+    <div class="card text-bg-dark">
+      <img :src="book.img" class="card-img" :alt="book.title">
+      <div class="card-img-overlay">
+        <h5 class="card-title">{{ book.title }}</h5>
+        <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+      This content is a little bit longer.</p> -->
+        <p class="card-text" v-for="a in book.authors"> {{ a }} </p>
+      </div>
+    </div>
+
+
   </router-link>
- 
+
+
+
+
+
 </template>
 
 <script>
@@ -26,8 +43,8 @@ export default {
   setup(props) {
     const editable = ref({});
 
-    onMounted(() => {});
-    watchEffect(() => {});
+    onMounted(() => { });
+    watchEffect(() => { });
 
     return {
       editable,
@@ -36,4 +53,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
