@@ -7,7 +7,7 @@ class BookService {
   async getBooks(){
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q: "pitbulls",
+        q: "Alan Watts",
         maxResults:10,
       },
     });
