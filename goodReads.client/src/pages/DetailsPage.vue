@@ -2,12 +2,12 @@
  <div class="container" v-if="book">
    <div class="row bookRow">
   <div class="col-md-3">
-   <img :src="book.book.img" alt="" class="img-fluid">
+   <img :src="book.img" alt="" class="img-fluid">
 
   </div>
   <div class="col-md-6">
-<h1>{{book.book.title}}</h1>
-
+<h1>{{book.title}}</h1>
+<p class="authors" v-for="a in book.author">{{a}} </p>
   </div>
   <div class="col-md-3"></div>
    </div>
