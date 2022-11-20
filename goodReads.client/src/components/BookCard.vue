@@ -10,13 +10,13 @@
 
 
     
-<div class="card elevation-5 border-0 my-1">
+<div class="card elevation-5 border-0 my-1 text-shadow">
   <img :src="book.img" class="card-img" :alt="book.title">
-  <div class="card-img-overlay">
-    <h5 class="card-title">{{ book.title }}</h5>
+  <div class="card-img-overlay align-items-end d-flex">
+    <h5 class="card-title d-flex align-items-end">{{ book.title }}</h5>
     <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
       This content is a little bit longer.</p> -->
-    <p class="card-text" v-for="a in book.authors"> {{ a }} </p>
+    <!-- <p class="card-text" v-for="a in book.authors"> {{ a }} </p> -->
   </div>
 </div>
 

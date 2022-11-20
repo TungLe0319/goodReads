@@ -8,6 +8,17 @@ body{
   overscroll-behavior: none;
 }
 
+
+
+
+.text-shadow {
+  color: aliceblue;
+  text-shadow: 1px 1px black, 0px 0px 5px rgba(250, 128, 114, 0.719);
+  font-weight: bold;
+  letter-spacing: 0.08rem;
+}
+
+
 #app {
   display: flex;
   flex-direction: column;
