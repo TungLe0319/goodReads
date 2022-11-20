@@ -31,8 +31,11 @@
         </div>
         <div>
           <b> <i class="mdi mdi-calendar fs-4"></i>  Release Date : {{ new Date(book.publishedDate).toLocaleDateString() }}</b>
-          <p>Publisher : {{ book.publisher }}</p>
+          <p>Publisher: {{ book.publisher }}</p>
           <p v-for="c in book.categories">Categories: {{ c }}</p>
+          <p> Language: {{book.language}}</p>
+          <p>Maturity Rating: {{book.maturityRating}} </p>
+          <p>Page Count: <b>{{book.pageCount}}</b> </p>
         </div>
       </div>
       <div class="col-md-3">
@@ -47,7 +50,7 @@
             <button class="btn btn-outline-dark mt-2">Review</button>
             <div class="mt-3">
               <small>Share with your network :</small>
-              <div class="d-flex gap-2 justify-content-center">
+              <div class="d-flex gap-2 justify-content-center mt-2">
                 <img src="../assets/img/ShareIcons/facebook.png" alt="" width="30">
                 <img src="../assets/img/ShareIcons/pinterest.png" alt="" width="30">
                 <img src="../assets/img/ShareIcons/twitter.png" alt="" width="30">

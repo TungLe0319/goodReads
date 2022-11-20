@@ -25,16 +25,30 @@
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
+      <div>
+        <img src="../assets/img/light-bulb.png" alt="" width="50" class="selectable" @click="toggleTheme()" v-if="theme" >
+        <img src="../assets/img/DarkLight-bulb.png" alt="" width="50" class="selectable" @click="toggleTheme()" v-else >
+      </div>
       <Login />
     </div>
   </nav>
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
+import { AppState } from "../AppState.js";
 import Login from './Login.vue'
 export default {
   setup() {
-    return {}
+    return {
+      theme: computed(() => AppState.theme),
+      toggleTheme(){
+        AppState.theme = !AppState.theme
+        document.body.setAttribute("data-theme",
+        AppState.theme? "dark" : "light")
+       
+      }
+    }
   },
   components: { Login }
 }
