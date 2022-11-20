@@ -27,8 +27,8 @@ class BookService {
 
   async getBookInformation(id){
     const res = await googleBookApi.get(`/volumes/${id}`);
-    console.log("re",res);
-    console.log(AppState.activeBook);
+    console.log("res",res.data);
+   
   }
 }
 export const bookService = new BookService();
