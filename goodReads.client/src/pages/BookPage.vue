@@ -46,13 +46,15 @@
             </button>
             <button class="btn btn-outline-dark mt-2">Review</button>
             <div class="mt-3">
-              <small>Share with your network</small>
-              <div>
-                <i class="mdi mdi-facebook fs-2"></i>
-                <i class="mdi mdi-twitter fs-2"></i>
-                <i class="mdi mdi-pinterest fs-2"></i>
-                <i class="mdi mdi-mail fs-2"></i>
-                <i class="mdi mdi-link fs-2"></i>
+              <small>Share with your network :</small>
+              <div class="d-flex gap-2 justify-content-center">
+                <img src="../assets/img/ShareIcons/facebook.png" alt="" width="30">
+                <img src="../assets/img/ShareIcons/pinterest.png" alt="" width="30">
+                <img src="../assets/img/ShareIcons/twitter.png" alt="" width="30">
+                <img src="../assets/img/ShareIcons/email.png" alt="" width="30">
+                <img src="../assets/img/ShareIcons/link.png" alt="" width="30">
+          
+              
               </div>
             </div>
           </div>
