@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js";
+import { Book } from "../models/Book.js";
 import { googleBookApi } from "./AxiosService.js";
 
 class BookService {
@@ -11,7 +12,7 @@ class BookService {
       },
     });
     console.log(res);
-    AppState.books = res.data.items.map(b => b)
+    AppState.books = res.data.items.map(b => new Book(b))
   }
 }
 export const bookService = new BookService();
