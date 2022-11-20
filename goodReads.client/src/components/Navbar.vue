@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg  px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+        <img alt="logo" src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png" height="45" />
       </div>
     </router-link>
     <button
@@ -43,6 +43,14 @@ export default {
 <style scoped>
 a:hover {
   text-decoration: none;
+}
+
+
+.navbar{
+  background-image: url(https://images.unsplash.com/photo-1525947088131-b701cd0f6dc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);
+  /* background-image: url(https://images.unsplash.com/photo-1506968430777-bf7784a87f23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80); */
+
+  height: 6em;
 }
 
 .nav-link {
