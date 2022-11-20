@@ -17,6 +17,7 @@ CREATE TABLE
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         description varchar(255),
         title varchar(255),
+        type ENUM("favorite", 'wishList', 'read'),
         accountId varchar(255) NOT NULL,
         FOREIGN KEY (accountId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
@@ -44,3 +45,6 @@ CREATE TABLE
     ) default charset utf8 COMMENT '';
 
 DROP Table books;
+DROP Table bookshelves;
+
+INSERT INTO bookshelves()values()
