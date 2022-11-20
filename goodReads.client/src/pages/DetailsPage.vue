@@ -2,7 +2,7 @@
  <div class="container mt-4" v-if="book">
    <div class="row bookRow">
   <div class="col-md-3">
-   <img :src="book.img" alt="" class="img-fluid" width="400" height="600">
+   <img :src="book.img" alt="" class="img-fluid rounded" width="400" height="600">
 
   </div>
   <div class="col-md-6">
@@ -17,7 +17,7 @@
       <div class="card-body d-flex flex-column justify-content-center">
         <button class="btn btn-outline-dark"> Save To WishList</button>
         <button class="btn btn-outline-dark mt-2"> Review</button>
-        <div>
+        <div class="mt-3">
           <small>Share with your network</small>
           <div>
             <i class="mdi mdi-facebook fs-2"></i>
