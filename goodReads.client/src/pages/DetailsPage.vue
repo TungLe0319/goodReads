@@ -1,7 +1,12 @@
 <template>
  <div class="container">
    <div class="row">
-    
+  <div class="col-md-4">
+   <img :src="book.book.img" alt="">
+  
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
    </div>
  </div>
 </template>
@@ -18,11 +23,11 @@ import Pop from "../utils/Pop.js";
 export default {
     setup() {
         onMounted(() => {
-        
+        // getBookInformation()
         });
-        async function getBookInformationById() {
+        async function getBookInformation() {
             try {
-                await bookService.getBookInformationById(route.params.bookId);
+                await bookService.getBookInformation(route.params.bookId);
             }
             catch (error) {
                 Pop.error(error, "[getBooks]");
@@ -31,7 +36,8 @@ export default {
         const route = useRoute()
         return {
           route,
-            books: computed(() => AppState.books),
+       
+            book: computed(() => AppState.activeBook),
         };
     },
     components: { BookCard }

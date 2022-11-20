@@ -9,15 +9,7 @@
   </div> -->
 
 
-    <div class="card text-bg-dark">
-      <img :src="book.img" class="card-img" :alt="book.title">
-      <div class="card-img-overlay">
-        <h5 class="card-title">{{ book.title }}</h5>
-        <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-      This content is a little bit longer.</p> -->
-        <p class="card-text" v-for="a in book.authors"> {{ a }} </p>
-      </div>
-    </div>
+    
 
 
   </router-link>
@@ -48,6 +40,9 @@ export default {
 
     return {
       editable,
+      setActive(){
+        AppState.activeBook = props
+      }
     };
   },
 };
