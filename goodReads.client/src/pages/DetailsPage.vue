@@ -7,7 +7,28 @@
   </div>
   <div class="col-md-6">
 <h1 class="bookTitle">{{book.title}}</h1>
-<p class="authors" v-for="a in book.author">{{a}} </p>
+<div class="d-flex">
+
+  <p class="authors mx-2" v-for="a in book.author">{{a}} </p>
+</div>
+<div>
+  <p>
+    {{book.description}}
+  </p>
+</div>
+<div>
+<p>
+ publishedDate:  {{book.publishedDate}}
+</p>
+<p>
+  Publisher : {{book.publisher}}
+</p>
+<p v-for="c in book.categories">
+ Categories: {{c}}
+</p>
+
+</div>
+
   </div>
   <div class="col-md-3">
     <div class="card p-2">
@@ -46,11 +67,12 @@ import Pop from "../utils/Pop.js";
 export default {
     setup() {
         onMounted(() => {
-        // getBookInformation()
+        getBookInformation()
         });
         async function getBookInformation() {
             try {
-                await bookService.getBookInformation(route.params.bookId);
+                // await bookService.getBookInformation(route.params.bookId);
+                console.log(AppState.activeBook);
             }
             catch (error) {
                 Pop.error(error, "[getBooks]");
@@ -69,7 +91,7 @@ export default {
 
 <style scoped lang="scss">
 .bookRow{
-  height: 100vh;
+
 }
 .bookTitle{
   font-size: 40pt;
