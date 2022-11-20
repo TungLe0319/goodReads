@@ -49,7 +49,7 @@ export default {
     return {
       editable,
       setActive(){
-        AppState.activeBook = props
+        AppState.activeBook = props.book
       }
     };
   },
