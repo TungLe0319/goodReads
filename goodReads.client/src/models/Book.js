@@ -13,5 +13,6 @@ export class Book {
     this.maturityRating = data.volumeInfo.maturityRating;
     this.language = data.volumeInfo.language;
     this.printType = data.volumeInfo.printType;
+    this.previewLink = data.volumeInfo.previewLink
   }
 }

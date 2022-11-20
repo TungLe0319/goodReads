@@ -11,9 +11,12 @@
           height="600"
         />
         <div>
-          <a href="" class="text-danger"> <i class="mdi mdi-book fs-2"></i> Read Preview</a>
+          <router-link :to="book.previewLink"> 
+          
+            <a href="" class="text-danger"> <i class="mdi mdi-book fs-2"></i> Read Preview</a>
+          </router-link>
         </div>
-        <img src="http://books.google.com/books?id=Lk4BEAAAQBAJ&printsec=frontcover&dq=pitbulls&hl=&cd=1&source=gbs_api" alt="">
+   
       </div>
       <div class="col-md-6">
         <h1 class="bookTitle">{{ book.title }}</h1>

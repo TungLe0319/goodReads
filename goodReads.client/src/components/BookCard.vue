@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'Details', params: { bookId: book.bookId } }" @click="setActive()">
+  <router-link :to="{ name: 'Book', params: { bookId: book.bookId } }" @click="setActive()">
     <div class="card elevation-5 border-0 my-1 text-shadow">
       <img :src="book.img" class="card-img" :alt="book.title">
       <div class="card-img-overlay align-items-end d-flex">
