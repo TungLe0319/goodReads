@@ -8,7 +8,7 @@ class BookService {
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: "pitbulls",
-        maxResults:40,
+        maxResults:10,
       },
     });
     console.log(res);
