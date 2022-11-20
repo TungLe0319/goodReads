@@ -11,7 +11,7 @@ class BookService {
         maxResults:10,
       },
     });
-    console.log(res);
+    console.log(res.data.items[0]);
     AppState.books = res.data.items.map(b => new Book(b))
   }
 
