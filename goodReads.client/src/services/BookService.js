@@ -11,13 +11,24 @@ class BookService {
         maxResults:10,
       },
     });
-    console.log(res.data.items[0]);
+    console.log(res.data.items);
     AppState.books = res.data.items.map(b => new Book(b))
+  }
+  async searchByQuery(term){
+       const res = await googleBookApi.get("/volumes", {
+         params: {
+           q: term,
+           maxResults: 40,
+         },
+       });
+       console.log(res.data.items);
+       AppState.books = res.data.items.map((b) => new Book(b));
   }
 
   async getBookInformation(id){
-    const res = await googleBookApi.get(`/volumes/${id}`)
-    console.log(res.data);
+    const res = await googleBookApi.get(`/volumes/${id}`);
+    console.log("re",res);
+    console.log(AppState.activeBook);
   }
 }
 export const bookService = new BookService();

@@ -4,7 +4,9 @@ export class Book {
     this.bookShelfId = data.bookShelfId;
     this.title = data.volumeInfo.title;
     this.author = data.volumeInfo.authors;
-    this.img = data.volumeInfo.imageLinks.thumbnail;
+    this.img = data.volumeInfo.imageLinks.large ||
+      data.volumeInfo.imageLinks.thumbnail 
+     
     this.publishedDate = data.volumeInfo.publishedDate;
     this.publisher = data.volumeInfo.publisher;
     this.pageCount = data.volumeInfo.pageCount;
@@ -13,6 +15,8 @@ export class Book {
     this.maturityRating = data.volumeInfo.maturityRating;
     this.language = data.volumeInfo.language;
     this.printType = data.volumeInfo.printType;
-    this.previewLink = data.volumeInfo.previewLink
+    this.previewLink = data.volumeInfo.previewLink;
+    this.dimensions = data.dimensions;
+    this.largeImg = data.volumeInfo.imageLinks.extraLarge || data.volumeInfo.imageLinks.large;
   }
 }

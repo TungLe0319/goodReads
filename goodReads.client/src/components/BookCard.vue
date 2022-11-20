@@ -1,10 +1,14 @@
 <template>
-  <router-link :to="{ name: 'Book', params: { bookId: book.bookId } }" @click="setActive()">
+  <router-link
+    :to="{ name: 'Book', params: { bookId: book.bookId } }"
+    @click="setActive()"
+  >
     <div class="card elevation-5 border-0 my-1 text-shadow">
-      <img :src="book.img" class="card-img" :alt="book.title">
+      <img :src="book.img" class="card-img" :alt="book.title" />
       <div class="card-img-overlay align-items-end d-flex">
-        <h5 class="card-title d-flex align-items-end">{{ book.title }}</h5>
-        <p class="card-text" v-for="a in book.authors"> {{ a }} </p>
+        <h5 class="card-title d-flex align-items-end bookTitle">
+          {{ book.title }}
+        </h5>
       </div>
     </div>
   </router-link>
@@ -25,21 +29,37 @@ export default {
   setup(props) {
     const editable = ref({});
 
-    onMounted(() => { });
-    watchEffect(() => { });
+    onMounted(() => {});
+    watchEffect(() => {});
 
     return {
       editable,
       setActive() {
-        AppState.activeBook = props.book
-      }
+        AppState.activeBook = props.book;
+      },
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-
-
+.card {
+  transition: all 0.25s ease;
+  .card-title{
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+}
+.card:hover {
+ img{
+   transform: scale(1.09);
+  transition: all 0.25s ease;
+  filter: saturate(120%);
+  filter: brightness(50%);
+ }
+ .card-title{
+opacity: 1;
+transition: all 1s ease;
+ }
+}
 </style>

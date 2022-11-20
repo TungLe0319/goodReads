@@ -6,15 +6,15 @@
         <img
           :src="book.img"
           alt=""
-          class="img-fluid rounded"
+          class="img-fluid rounded elevation-5"
           width="400"
           height="600"
         />
-        <div>
-          <router-link :to="book.previewLink"> 
+        <div class="mt-2">
+      
           
-            <a href="" class="text-danger"> <i class="mdi mdi-book fs-2"></i> Read Preview</a>
-          </router-link>
+            <a :href="book.previewLink" target="_blank" class="text-danger"> <i class="mdi mdi-book fs-5"></i> Read Preview</a>
+          
         </div>
    
       </div>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card p-2">
+        <div class="card p-2 bg-transparent elevation-4">
           <p>2.99</p>
           <p>Available for a limited time</p>
           <button class="btn btn-primary">Get Deal</button>
@@ -78,8 +78,8 @@ export default {
     });
     async function getBookInformation() {
       try {
-        // await bookService.getBookInformation(route.params.bookId);
-        console.log(AppState.activeBook);
+        await bookService.getBookInformation(route.params.bookId);
+        // console.log(AppState.activeBook);
       } catch (error) {
         Pop.error(error, "[getBooks]");
       }
