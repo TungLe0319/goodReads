@@ -1,9 +1,9 @@
 <template>
- <div class="container">
+ <div class="container" v-if="book">
    <div class="row">
   <div class="col-md-4">
    <img :src="book.book.img" alt="">
-  
+  {{book}}
   </div>
   <div class="col-md-4"></div>
   <div class="col-md-4"></div>
