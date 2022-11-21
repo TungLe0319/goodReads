@@ -4,32 +4,29 @@
     <div class="row bookRow">
       <div class="col-md-3 text-center animate__animated animate__fadeInLeft">
         <img
-          :src="extraDetails.volumeInfo.imageLinks.large"
+          :src="book.largeImg"
           alt=""
           class="img-fluid rounded elevation-5"
           width="400"
           height="600"
-          v-if="extraDetails"
+    
         />
-     
-      
+
+        <!--       
         <img
           :src="book.img"
           alt=""
           class="img-fluid rounded elevation-5"
           width="400"
           height="600"
-          v-else
-        />
-     
-      
+          
+        /> -->
+
         <div class="mt-2">
-      
-          
-            <a :href="book.previewLink" target="_blank" class="text-danger"> <i class="mdi mdi-book fs-5"></i> Read Preview</a>
-          
+          <a :href="book.previewLink" target="_blank" class="text-danger">
+            <i class="mdi mdi-book fs-5"></i> Read Preview</a
+          >
         </div>
-   
       </div>
       <div class="col-md-6 animate__animated animate__fadeInUp">
         <h1 class="bookTitle">{{ book.title }}</h1>
@@ -43,12 +40,17 @@
           </p>
         </div>
         <div>
-          <b> <i class="mdi mdi-calendar fs-4"></i>  Release Date : {{ new Date(book.publishedDate).toLocaleDateString() }}</b>
+          <b>
+            <i class="mdi mdi-calendar fs-4"></i> Release Date :
+            {{ new Date(book.publishedDate).toLocaleDateString() }}</b
+          >
           <p>Publisher: {{ book.publisher }}</p>
           <p v-for="c in book.categories">Categories: {{ c }}</p>
-          <p> Language: {{book.language}}</p>
-          <p>Maturity Rating: {{book.maturityRating}} </p>
-          <p>Page Count: <b>{{book.pageCount}}</b> </p>
+          <p>Language: {{ book.language }}</p>
+          <p>Maturity Rating: {{ book.maturityRating }}</p>
+          <p>
+            Page Count: <b>{{ book.pageCount }}</b>
+          </p>
         </div>
       </div>
       <div class="col-md-3 animate__animated animate__fadeInRight">
@@ -64,13 +66,31 @@
             <div class="mt-3">
               <small>Share with your network :</small>
               <div class="d-flex gap-2 justify-content-center mt-2">
-                <img src="../assets/img/ShareIcons/facebook.png" alt="" width="30">
-                <img src="../assets/img/ShareIcons/pinterest.png" alt="" width="30">
-                <img src="../assets/img/ShareIcons/twitter.png" alt="" width="30">
-                <img src="../assets/img/ShareIcons/email.png" alt="" width="30">
-                <img src="../assets/img/ShareIcons/link.png" alt="" width="30">
-          
-              
+                <img
+                  src="../assets/img/ShareIcons/facebook.png"
+                  alt=""
+                  width="30"
+                />
+                <img
+                  src="../assets/img/ShareIcons/pinterest.png"
+                  alt=""
+                  width="30"
+                />
+                <img
+                  src="../assets/img/ShareIcons/twitter.png"
+                  alt=""
+                  width="30"
+                />
+                <img
+                  src="../assets/img/ShareIcons/email.png"
+                  alt=""
+                  width="30"
+                />
+                <img
+                  src="../assets/img/ShareIcons/link.png"
+                  alt=""
+                  width="30"
+                />
               </div>
             </div>
           </div>
@@ -106,14 +126,14 @@ export default {
     return {
       route,
       book: computed(() => AppState.activeBook),
-extraDetails: computed(() => AppState.extraDetails),
-      async addToBookShelf(){
+      extraDetails: computed(() => AppState.extraDetails),
+      async addToBookShelf() {
         try {
-            console.log('hi');
-          } catch (error) {
-            Pop.error(error,'[addToBookShelf]')
-          }
-      }
+          console.log("hi");
+        } catch (error) {
+          Pop.error(error, "[addToBookShelf]");
+        }
+      },
     };
   },
   components: { BookCard },

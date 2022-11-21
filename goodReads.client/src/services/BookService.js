@@ -42,8 +42,10 @@ class BookService {
   async getBookInformation(id){
     const res = await googleBookApi.get(`/volumes/${id}`);
     console.log("res",res.data);
-    AppState.extraDetails= res.data
-    // AppState.activeBook.largeImg = res.data.volumeInfo.imageLinks.large;
+    // AppState.extraDetails= new Book(res.data)
+    // console.log(AppState.extraDetails);
+    AppState.activeBook.largeImg = res.data.volumeInfo.imageLinks.large;
+    console.log(AppState.activeBook.largeImg);
    
   }
 }
