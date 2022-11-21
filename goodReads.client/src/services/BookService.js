@@ -1,5 +1,6 @@
 import { AppState } from "../AppState.js";
 import { Book } from "../models/Book.js";
+import { router } from "../router.js";
 import { googleBookApi } from "./AxiosService.js";
 
 class BookService {
@@ -44,9 +45,21 @@ class BookService {
     console.log("res",res.data);
     // AppState.extraDetails= new Book(res.data)
     // console.log(AppState.extraDetails);
-    AppState.activeBook.largeImg = res.data.volumeInfo.imageLinks.large;
-    console.log(AppState.activeBook.largeImg);
+    AppState.activeBook.largeImg = res.data.volumeInfo?.imageLinks?.large;
+    // console.log(AppState.activeBook.largeImg);
    
+  }
+
+  async searchByCategory(term) {
+    const res = await googleBookApi.get("/volumes", {
+      params: {
+        q: term,
+        maxResults: 40,
+      },
+    });
+    AppState.books = res.data.items.map((b) => new Book(b));
+    
+    router.push({name: 'Home'})
   }
 }
 export const bookService = new BookService();

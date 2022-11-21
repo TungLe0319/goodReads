@@ -45,7 +45,7 @@
             {{ new Date(book.publishedDate).toLocaleDateString() }}</b
           >
           <p>Publisher: {{ book.publisher }}</p>
-          <p v-for="c in book.categories">Categories: {{ c }}</p>
+          <p v-for="c in book.categories" @click="searchByCategory(c)">Categories: {{ c }}</p>
           <p>Language: {{ book.language }}</p>
           <p>Maturity Rating: {{ book.maturityRating }}</p>
           <p>
@@ -137,6 +137,15 @@ export default {
           Pop.error(error, "[addToBookShelf]");
         }
       },
+      async searchByCategory(query) {
+        try {
+          await bookService.searchByCategory(query)
+            console.log(query);
+          } catch (error) {
+            console.error('[searchByCategory]',error)
+            Pop.error(error)
+          }
+      }
     };
   },
   components: { BookCard, CreateReview },
