@@ -43,11 +43,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .card {
+ 
   transition: all 0.25s ease;
   .card-title{
     opacity: 0;
     transition: all 0.5s ease;
+  }
+  .card-img{
+    height: 250px;
   }
 }
 .card:hover {
