@@ -5,10 +5,7 @@
   <main class="">
     <router-view />
   </main>
-  <footer class="bg-dark text-light">
-   <!-- <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer> -->
+
 </template>
 
 <script>

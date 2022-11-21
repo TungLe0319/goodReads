@@ -1,4 +1,4 @@
--- Active: 1668895251805@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(
@@ -55,8 +55,23 @@ CREATE TABLE
         FOREIGN KEY (accountId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
 
-DROP Table books;
 
-DROP Table bookshelves;
+CREATE TABLE IF NOT EXISTS reviews(
+  id INT  NOT NULL primary key AUTO_INCREMENT,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
+  bookId VARCHAR(255) ,
+  creatorId VARCHAR(255),
+  body varchar(1000),
+  FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE,
+  FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+) default charset utf8 COMMENT '';
 
-INSERT INTO bookshelves()values() 
+
+
+
+-- DROP Table books;
+
+-- DROP Table bookshelves;
+
+-- INSERT INTO bookshelves()values() 
