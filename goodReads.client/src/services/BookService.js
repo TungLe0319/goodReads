@@ -21,21 +21,7 @@ class BookService {
            maxResults: 40,
          },
        });
-     
-    //   let book = res.data.items
-
-    //  for (const b of book) {
-    
-    //   if (b.volumeInfo.imageLinks.thumbnail == undefined) {
-    //    b.volumeInfo.imageLinks.thumbnail = b.volumeInfo.imageLinks.smallThumbnail
-    //   } 
-    //   else{
-   
-    //     AppState.books.push(new Book(b))
-     
-    //   }
-    //  }
-
+       
        AppState.books = res.data.items.map((b) => new Book(b));
   }
 
