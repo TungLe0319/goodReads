@@ -5,9 +5,9 @@
   <main>
     <router-view />
   </main>
-   <footer class="bg-dark text-light">
+   <!-- <footer class="bg-dark text-light">
     Made with 💖 by CodeWorks
-  </footer>
+  </footer> -->
 </template>
 
 <script>
@@ -32,13 +32,13 @@ export default {
 }
 
 
-main{
-  background-image: url(https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);
+// main{
+//   background-image: url(https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);
 
-  background-attachment: fixed;
-  background-size: cover;
-  // background-position: center;
-}
+//   background-attachment: fixed;
+//   background-size: cover;
+//   // background-position: center;
+// }
 
 footer {
   display: grid;
