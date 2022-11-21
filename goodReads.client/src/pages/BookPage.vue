@@ -4,7 +4,7 @@
     <div class="row bookRow">
       <div class="col-md-3 text-center animate__animated animate__fadeInLeft">
         <img
-          :src="book.largeImg"
+          :src="book?.largeImg"
           alt=""
           class="img-fluid rounded elevation-5"
           width="400"
@@ -62,7 +62,9 @@
             <button class="btn btn-outline-dark" @click="addToBookShelf()">
               Save To BookShelf
             </button>
-            <button class="btn btn-outline-dark mt-2">Review</button>
+             <button class="btn btn-outline-dark mt-2"  data-bs-toggle="modal" data-bs-target="#createReview">
+    Review
+  </button>
             <div class="mt-3">
               <small>Share with your network :</small>
               <div class="d-flex gap-2 justify-content-center mt-2">
@@ -106,6 +108,7 @@ import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
+import CreateReview from "../components/CreateReview.vue";
 import { bookService } from "../services/BookService.js";
 import Pop from "../utils/Pop.js";
 
@@ -136,7 +139,7 @@ export default {
       },
     };
   },
-  components: { BookCard },
+  components: { BookCard, CreateReview },
 };
 </script>
 
