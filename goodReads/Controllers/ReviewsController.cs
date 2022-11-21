@@ -15,7 +15,8 @@ public class ReviewsController : IController
     try
     {
       var userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-      reviewData.Creator = userInfo;
+      // reviewData.Creator = userInfo;
+      reviewData.CreatorId = userInfo.Id;
       Review review = _reviewService.CreateReview(reviewData,userInfo.Id);
       return Ok(review);
     }

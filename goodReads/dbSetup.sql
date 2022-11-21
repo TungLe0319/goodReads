@@ -55,23 +55,20 @@ CREATE TABLE
         FOREIGN KEY (accountId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
 
-
-CREATE TABLE IF NOT EXISTS reviews(
-  id INT  NOT NULL primary key AUTO_INCREMENT,
-  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
-  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
-  bookId VARCHAR(255) ,
-  creatorId VARCHAR(255),
-  body varchar(1000),
-  FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE,
-  FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
-) default charset utf8 COMMENT '';
-
-
-
+CREATE TABLE
+    IF NOT EXISTS reviews(
+        id INT NOT NULL primary key AUTO_INCREMENT,
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
+        body varchar(1000) NOT NULL,
+        bookId VARCHAR(255) NOT NULL,
+        creatorId VARCHAR(255) NOT NULL,
+        FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE,
+        FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+    ) default charset utf8 COMMENT '';
 
 -- DROP Table books;
 
 -- DROP Table bookshelves;
 
--- INSERT INTO bookshelves()values() 
+-- INSERT INTO bookshelves()values()
