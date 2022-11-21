@@ -6,10 +6,13 @@
     </button>
     <div v-else>
       <div class="dropdown dropstart my-2 my-lg-0">
-        <div type="button" class="bg-dark border-0 selectable no-select" data-bs-toggle="dropdown"
+        <div type="button" class=" border-0 selectable no-select" data-bs-toggle="dropdown"
           aria-expanded="false">
-          <div v-if="account.picture || user.picture">
+          <div v-if="account.picture || user.picture" class="d-flex">
             <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded" />
+          <p>
+              {{account.name.split("@")[0]}}
+          </p>
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-lg-left p-0" aria-labelledby="authDropdown">

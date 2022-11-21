@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-transparent px-3">
+  <nav class="navbar navbar-expand-lg bg-transparent px-5">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img alt="logo" class="logo p-1" src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png" height="60" />
@@ -19,8 +19,13 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
+          <router-link :to="{ name: 'List' }" class="btn text-success lighten-30 selectable text-uppercase">
+            Lists
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'Search' }" class="btn text-success lighten-30 selectable text-uppercase">
+            Search
           </router-link>
         </li>
       </ul>

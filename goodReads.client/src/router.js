@@ -17,6 +17,16 @@ const routes = [
     component: loadPage('BookPage')
   },
   {
+    path: '/account/lists',
+    name: 'List',
+    component: loadPage('ListPage')
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: loadPage('SearchPage')
+  },
+  {
     path: '/about',
     name: 'About',
     component: loadPage('AboutPage')
