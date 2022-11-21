@@ -4,7 +4,8 @@ import { api } from "./AxiosService.js"
 
 class ReviewsService{
 async createReview(data){
-  const res = await api.put('api/reviews/',data)
+  console.log(data);
+  const res = await api.post('api/reviews',data)
   console.log(res.data);
   AppState.reviews.push(new Review(res.data))
   console.log(AppState.reviews);

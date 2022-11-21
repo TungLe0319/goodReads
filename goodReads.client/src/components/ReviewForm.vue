@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-body">
+  <div class="modal-body" v-if="book">
     <div class="row">
       <div class="col-md-6 d-flex justify-content-center">
         <img :src="book.largeImg" alt="" class="img-fluid" />
@@ -12,15 +12,14 @@
             <textarea
               type="email"
               class="form-control"
-              name=""
-              id=""
+             v-model="editable.body"
               columns="7"
               rows="10"
               aria-describedby="emailHelpId"
               placeholder="Please Leave A Review For this Book"
             ></textarea>
           </div>
-          <button class="btn btn-outline-dark">
+          <button class="btn btn-outline-dark" type="submit">
             Leave A Review
           </button>
         </form>
@@ -50,7 +49,7 @@ export default {
       book: computed(() => AppState.activeBook),
       async createReview() {
         try {
-          editable.bookId = AppState.activeBook.bookId;
+          editable.value.bookId = AppState.activeBook?.bookId;
           await reviewsService.createReview(editable.value);
         } catch (error) {
           Pop.error(error, "[createReview]");
