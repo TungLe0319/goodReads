@@ -2,9 +2,10 @@
   <router-link
     :to="{ name: 'Book', params: { bookId: book.bookId } }"
     @click="setActive()"
+    v-if="book"
   >
     <div class="card elevation-5 border-0 my-1 text-shadow">
-      <img :src="book.img" class="card-img" :alt="book.title" />
+      <img :src="book.img" class="card-img" :alt="book.title" v-if="book.img" />
       <div class="card-img-overlay align-items-end d-flex">
         <h5 class="card-title d-flex align-items-end bookTitle">
           {{ book.title }}
@@ -24,7 +25,7 @@ import Pop from "../utils/Pop.js";
 
 export default {
   props: {
-    book: { type: Book },
+    book: { type: Book,required:true },
   },
   setup(props) {
     const editable = ref({});
@@ -43,11 +44,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .card {
+ 
   transition: all 0.25s ease;
   .card-title{
     opacity: 0;
     transition: all 0.5s ease;
+  }
+  .card-img{
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
   }
 }
 .card:hover {

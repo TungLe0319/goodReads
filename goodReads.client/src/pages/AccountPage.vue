@@ -1,20 +1,24 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <AccountDetails :account="account"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from '../AppState'
+import AccountDetails from '../components/AccountPage/AccountDetails.vue';
 export default {
-  setup() {
-    return {
-      account: computed(() => AppState.account)
-    }
-  }
+    setup() {
+        return {
+            account: computed(() => AppState.account)
+        };
+    },
+    components: { AccountDetails }
 }
 </script>
 

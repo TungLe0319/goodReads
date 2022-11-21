@@ -11,6 +11,17 @@ CREATE TABLE
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE
+    IF NOT EXISTS follows(
+        id INT NOT NULL primary key AUTO_INCREMENT COMMENT 'primary key',
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
+        creatorId VARCHAR(255) NOT NULL,
+        followingId VARCHAR(255) NOT NULL,
+        FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
+        FOREIGN KEY (followingId) REFERENCES accounts(id) ON DELETE CASCADE
+    ) default charset utf8 COMMENT '';
+
+CREATE TABLE
     IF NOT EXISTS bookshelves(
         id INT NOT NULL primary key AUTO_INCREMENT COMMENT 'primary key',
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
@@ -45,6 +56,7 @@ CREATE TABLE
     ) default charset utf8 COMMENT '';
 
 DROP Table books;
+
 DROP Table bookshelves;
 
-INSERT INTO bookshelves()values()
+INSERT INTO bookshelves()values() 
