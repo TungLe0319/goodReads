@@ -21,13 +21,29 @@ class BookService {
            maxResults: 40,
          },
        });
-       console.log(res.data.items);
+     
+    //   let book = res.data.items
+
+    //  for (const b of book) {
+    
+    //   if (b.volumeInfo.imageLinks.thumbnail == undefined) {
+    //    b.volumeInfo.imageLinks.thumbnail = b.volumeInfo.imageLinks.smallThumbnail
+    //   } 
+    //   else{
+   
+    //     AppState.books.push(new Book(b))
+     
+    //   }
+    //  }
+
        AppState.books = res.data.items.map((b) => new Book(b));
   }
 
   async getBookInformation(id){
     const res = await googleBookApi.get(`/volumes/${id}`);
     console.log("res",res.data);
+    AppState.extraDetails= res.data
+    // AppState.activeBook.largeImg = res.data.volumeInfo.imageLinks.large;
    
   }
 }

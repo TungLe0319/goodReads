@@ -2,14 +2,27 @@
   <!-- <DetailsBanner/> -->
   <div class="container mt-4" v-if="book">
     <div class="row bookRow">
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 text-center animate__animated animate__fadeInLeft">
+        <img
+          :src="extraDetails.volumeInfo.imageLinks.large"
+          alt=""
+          class="img-fluid rounded elevation-5"
+          width="400"
+          height="600"
+          v-if="extraDetails"
+        />
+     
+      
         <img
           :src="book.img"
           alt=""
           class="img-fluid rounded elevation-5"
           width="400"
           height="600"
+          v-else
         />
+     
+      
         <div class="mt-2">
       
           
@@ -18,7 +31,7 @@
         </div>
    
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 animate__animated animate__fadeInUp">
         <h1 class="bookTitle">{{ book.title }}</h1>
         <div class="d-flex">
           <b class="authors mx-2" v-for="a in book.author">{{ a }}</b>
@@ -38,7 +51,7 @@
           <p>Page Count: <b>{{book.pageCount}}</b> </p>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 animate__animated animate__fadeInRight">
         <div class="card p-2 bg-transparent elevation-4">
           <p>2.99</p>
           <p>Available for a limited time</p>
@@ -93,7 +106,7 @@ export default {
     return {
       route,
       book: computed(() => AppState.activeBook),
-
+extraDetails: computed(() => AppState.extraDetails),
       async addToBookShelf(){
         try {
             console.log('hi');
