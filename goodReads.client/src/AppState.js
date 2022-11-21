@@ -16,5 +16,7 @@ export const AppState = reactive({
   /** @type {import('./models/Book.js').Book | null} */
   extraDetails:null,
 
-  theme:false
+  theme:false,
+
+  reviews:[]
 })

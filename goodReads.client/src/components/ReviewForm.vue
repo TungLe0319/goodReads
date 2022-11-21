@@ -1,0 +1,64 @@
+<template>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-6 d-flex justify-content-center">
+        <img :src="book.largeImg" alt="" class="img-fluid" />
+      </div>
+      <div class="col-md-6">
+        <form @submit.prevent="createReview()">
+
+          <div class="mb-3">
+            <label for="" class="form-label">Review</label>
+            <textarea
+              type="email"
+              class="form-control"
+              name=""
+              id=""
+              columns="7"
+              rows="10"
+              aria-describedby="emailHelpId"
+              placeholder="Please Leave A Review For this Book"
+            ></textarea>
+          </div>
+          <button class="btn btn-outline-dark">
+            Leave A Review
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { computed } from "@vue/reactivity";
+import { onMounted, ref, watchEffect } from "vue";
+import { AppState } from "../AppState.js";
+import { reviewsService } from "../services/ReviewsService.js";
+import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
+
+export default {
+  props: {},
+  setup(props) {
+    const editable = ref({});
+
+    onMounted(() => {});
+    watchEffect(() => {});
+
+    return {
+      editable,
+      book: computed(() => AppState.activeBook),
+      async createReview() {
+        try {
+          editable.bookId = AppState.activeBook.bookId;
+          await reviewsService.createReview(editable.value);
+        } catch (error) {
+          Pop.error(error, "[createReview]");
+        }
+      },
+    };
+  },
+};
+</script>
+
+<style lang="scss" scoped></style>

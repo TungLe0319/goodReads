@@ -4,6 +4,10 @@ namespace goodReads.Controllers;
 [Route("api/[controller]")]
 public class FollowsController : IController
 {
+  public FollowsController(Auth0Provider auth0Provider, ReviewsService reviewService) : base(auth0Provider, reviewService)
+  {
+  }
+
   [HttpPost]
   public async Task<ActionResult<List<Follow>>> Create([FromBody] string value)
   {
@@ -18,7 +22,5 @@ public class FollowsController : IController
       return BadRequest(e.Message);
     }
   }
-  public FollowsController(Auth0Provider auth0Provider) : base(auth0Provider)
-  {
-  }
+
 }

@@ -5,16 +5,17 @@
   <main class="">
     <router-view />
   </main>
-  <!-- <footer class="bg-dark text-light"> -->
-   <!-- <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer> -->
+<ModalComponent id="createReview" >
+  <ReviewForm/>
+</ModalComponent>
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
+import ModalComponent from "./components/ModalComponent.vue"
 import Navbar from './components/Navbar.vue'
+import ReviewForm from "./components/ReviewForm.vue"
 
 export default {
   setup() {
@@ -22,7 +23,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar }
+  components: { Navbar, ModalComponent, ReviewForm }
 }
 </script>
 <style lang="scss">
