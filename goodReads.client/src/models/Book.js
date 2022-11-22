@@ -4,12 +4,9 @@ export class Book {
     this.bookShelfId = data.bookShelfId;
     this.title = data.volumeInfo.title;
     this.author = data.volumeInfo.authors;
-    
-      this.img =
-        data.volumeInfo.imageLinks?.thumbnail ||
-        "https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?k=6&m=1216251206&s=612x612&w=0&h=G8kmMKxZlh7WyeYtlIHJDxP5XRGm9ZXyLprtVJKxd-o=";
-   
-
+    this.img =
+      data.volumeInfo.imageLinks?.thumbnail ||
+      "https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?k=6&m=1216251206&s=612x612&w=0&h=G8kmMKxZlh7WyeYtlIHJDxP5XRGm9ZXyLprtVJKxd-o=";
     this.publishedDate = data.volumeInfo.publishedDate;
     this.publisher = data.volumeInfo.publisher;
     this.pageCount = data.volumeInfo.pageCount;
