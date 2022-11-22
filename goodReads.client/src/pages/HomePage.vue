@@ -28,37 +28,62 @@
     <!-- !SearchBar -->
 
     <div class="row">
-
       <div class="col-md-8">
         <div class="row">
-    <TransitionGroup
-        name=""
-        enterActiveClass="animate__fadeIn animate__animated"
-        leaveActiveClass="animate__fadeOut animate__animated"
-      >
-        <div class="col-md-3 gy-3" v-for="b in books" :key="b.id">
-          <BookCard :book="b" />
-        </div>
-      </TransitionGroup>
+          <TransitionGroup
+            name=""
+            enterActiveClass="animate__fadeIn animate__animated"
+            leaveActiveClass="animate__fadeOut animate__animated"
+          >
+            <div class="col-md-3 gy-3" v-for="b in books" :key="b.id">
+              <BookCard :book="b" />
+            </div>
+          </TransitionGroup>
         </div>
       </div>
-  <div class="col-md-4">
-    <div class="card p-2 bg-transparent border-0 bg-secondary">
-<b> WANT THE MOST?</b>
-<p class="text-muted">Follow these easy steps.</p>
-      <div class="card-body">
-<ul class="list-group bg-transparent border-0">
-  <li class="list-group-item  bg-transparent border-0 d-flex align-items-center"> <span class=" bg-danger rounded  p-2 ">1</span> <p class="mb-0 ms-2 text-decoration-underline">Wishlist at least 2 books</p></li>
-  <li class="list-group-item  bg-transparent border-0 d-flex align-items-center"> <span class=" bg-danger rounded  p-2 ">1</span> <p class="mb-0 ms-2 text-decoration-underline">Follow at least 5 authors</p></li>
-  <li class="list-group-item  bg-transparent border-0 d-flex align-items-center"> <span class=" bg-danger rounded  p-2 ">1</span> <p class="mb-0 ms-2 text-decoration-underline">Write your first review</p></li>
+      <div class="col-md-4">
+        <div class="card p-2 bg-transparent border-0 bg-secondary easySteps">
+          <b> WANT THE MOST?</b>
+          <p class="text-muted">Follow these easy steps.</p>
+          <div class="card-body">
+            <ul class="list-group bg-transparent border-0">
+              <li
+                class="list-group-item bg-transparent border-0 d-flex align-items-center"
+              >
+                <span class="bg-danger rounded p-2">1</span>
+                <p class="mb-0 ms-2 text-decoration-underline">
+                  Wishlist at least 2 books
+                </p>
+              </li>
+              <li
+                class="list-group-item bg-transparent border-0 d-flex align-items-center"
+              >
+                <span class="bg-danger rounded p-2">1</span>
+                <p class="mb-0 ms-2 text-decoration-underline">
+                  Follow at least 5 authors
+                </p>
+              </li>
+              <li
+                class="list-group-item bg-transparent border-0 d-flex align-items-center"
+              >
+                <span class="bg-danger rounded p-2">1</span>
+                <p class="mb-0 ms-2 text-decoration-underline">
+                  Write your first review
+                </p>
+              </li>
 
-  <li class="list-group-item  bg-transparent border-0 d-flex align-items-center"> <span class=" bg-danger rounded  p-2 ">1</span> <p class="mb-0 ms-2 text-decoration-underline">Recommend a book</p></li>
-
-
-</ul>
+              <li
+                class="list-group-item bg-transparent border-0 d-flex align-items-center"
+              >
+                <span class="bg-danger rounded p-2">1</span>
+                <p class="mb-0 ms-2 text-decoration-underline">
+                  Recommend a book
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
     </div>
   </div>
 </template>
@@ -75,8 +100,8 @@ import Pop from "../utils/Pop.js";
 export default {
   setup() {
     onMounted(() => {
-      getBooks();
-      getMySQLBooks()
+      // getBooks();
+      getMySQLBooks();
     });
     async function getBooks() {
       try {
@@ -114,4 +139,11 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.easySteps {
+  background-image: url(https://images.pexels.com/photos/373465/pexels-photo-373465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-position: center;
+  background-size: cover;
+
+}
+</style>

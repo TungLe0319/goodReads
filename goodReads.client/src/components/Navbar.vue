@@ -1,8 +1,15 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-transparent px-5  border-bottom border-secondary ">
+  <nav
+    class="navbar navbar-expand-lg bg-transparent px-5 border-bottom border-secondary"
+  >
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" class="logo p-1" src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png" height="60" />
+        <img
+          alt="logo"
+          class="logo p-1"
+          src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png"
+          height="60"
+        />
       </div>
     </router-link>
     <button
@@ -19,25 +26,49 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'List' }" class="btn text-dark selectable text-uppercase">
+          <router-link
+            :to="{ name: 'List' }"
+            class="btn text-dark selectable text-uppercase"
+          >
             Lists
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Search' }" class="btn text-dark selectable text-uppercase">
+          <router-link
+            :to="{ name: 'Search' }"
+            class="btn text-dark selectable text-uppercase"
+          >
             Search
           </router-link>
         </li>
         <li>
-        <button class="btn  selectable text-uppercase" data-bs-target="#bookShelfForm" data-bs-toggle="modal">
-          CreateBookShelf
-        </button>
+          <button
+            class="btn selectable text-uppercase"
+            data-bs-target="#bookShelfForm"
+            data-bs-toggle="modal"
+          >
+            CreateBookShelf
+          </button>
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div>
-        <img src="../assets/img/light-bulb.png" alt="" width="50" class="selectable" @click="toggleTheme()" v-if="theme" >
-        <img src="../assets/img/DarkLight-bulb.png" alt="" width="50" class="selectable" @click="toggleTheme()" v-else >
+        <img
+          src="../assets/img/light-bulb.png"
+          alt=""
+          width="50"
+          class="selectable"
+          @click="toggleTheme()"
+          v-if="theme"
+        />
+        <img
+          src="../assets/img/DarkLight-bulb.png"
+          alt=""
+          width="50"
+          class="selectable"
+          @click="toggleTheme()"
+          v-else
+        />
       </div>
       <Login />
     </div>
@@ -47,21 +78,22 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState.js";
-import Login from './Login.vue'
+import Login from "./Login.vue";
 export default {
   setup() {
     return {
       theme: computed(() => AppState.theme),
-      toggleTheme(){
-        AppState.theme = !AppState.theme
-        document.body.setAttribute("data-theme",
-        AppState.theme? "dark" : "light")
-       
-      }
-    }
+      toggleTheme() {
+        AppState.theme = !AppState.theme;
+        document.body.setAttribute(
+          "data-theme",
+          AppState.theme ? "dark" : "light"
+        );
+      },
+    };
   },
-  components: { Login }
-}
+  components: { Login },
+};
 </script>
 
 <style scoped>
@@ -69,16 +101,14 @@ a:hover {
   text-decoration: none;
 }
 
-
-.navbar{
- 
+.navbar {
   /* background-image: url(https://images.unsplash.com/photo-1506968430777-bf7784a87f23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80); */
-/* background-color: whitesmoke; */
-  height: 6em;
+  /* background-color: whitesmoke; */
+  height: 5em;
 }
 
-.logo{
-  background-color: rgba(189, 184, 176, 0.805) ;
+.logo {
+  background-color: rgba(189, 184, 176, 0.805);
   border-radius: 50%;
 }
 
@@ -97,5 +127,4 @@ a:hover {
     height: 64px;
   }
 }
-
 </style>

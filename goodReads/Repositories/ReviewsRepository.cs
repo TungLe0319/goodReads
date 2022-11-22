@@ -23,6 +23,19 @@ reviewData.Id = test;
     return reviewData;
   }
 
+  internal void DeleteReview(int reviewId)
+  {
+    var sql = @"
+            DELETE FROM reviews WHERE id = @reviewId
+        
+                ; ";
+  
+     var rows = _db.Execute(sql, new {reviewId});
+  if (rows !=1){throw new Exception("Data is bad or Id is Bad");}
+  return;
+  
+  }
+
   internal List<Review> GetAllReviews()
   {
     var sql = @"

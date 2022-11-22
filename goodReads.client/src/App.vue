@@ -5,13 +5,18 @@
   <main class="">
     <router-view />
   </main>
-  <footer class="bg-dark p-5">
+
+
+  <footer>
+    <!-- <Navbar  class="d-flex d-md-none" /> -->
+  </footer>
+  <!-- <footer class="bg-dark p-5">
  <div>
   <div>
     <h4>Powered By GoogleEngine</h4>
   </div>
  </div>
-  </footer>
+  </footer> -->
 <ModalComponent id="createReview" >
   <ReviewForm/>
 </ModalComponent>

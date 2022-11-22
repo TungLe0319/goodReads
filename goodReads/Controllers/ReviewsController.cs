@@ -43,4 +43,23 @@ public class ReviewsController : IController
     }
   }
 
+
+  
+    [HttpDelete("{reviewId}")]
+    [Authorize]
+    public async Task<ActionResult<string>> DeleteReview(int reviewId)
+    {
+      try
+      {
+        Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+        _reviewService.DeleteReview(reviewId, userInfo.Id);
+        return Ok("Review deleted");
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+  
+
 }

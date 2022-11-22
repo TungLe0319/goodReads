@@ -20,12 +20,13 @@ import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { Book } from "../models/Book.js";
+import { SQLBook } from "../models/SQLBook.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
 export default {
   props: {
-    book: { type: Book,required:true },
+    book: { type: SQLBook,required:true },
   },
   setup(props) {
     const editable = ref({});
@@ -37,6 +38,7 @@ export default {
       editable,
       setActive() {
         AppState.activeBook = props.book;
+        console.log(AppState.activeBook);
       },
     };
   },
