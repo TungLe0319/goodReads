@@ -22,8 +22,8 @@
 
 <div class="px-4">
 
-  <div  >
-    <p class="fs-5"> <b> Recommend </b>  this book</p>
+  <div   v-if="review.recommend">
+    <b class="fs-5"> Recommend </b>  
   </div>
   
   <div >

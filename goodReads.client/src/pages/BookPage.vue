@@ -34,7 +34,11 @@
             {{ new Date(book.publishedDate).toLocaleDateString() }}</b
           >
           <p>Publisher: {{ book.publisher }}</p>
-          <p v-for="c in book.categories" @click="searchByCategory(c)">Categories: {{ c }}</p>
+          <div class="d-flex align-items-center">
+            <p class="mb-0 me-2">Categories: </p>
+            <button class="btn btn-outline-dark p-1 rounded-pill px-2 mx-2" v-for="c in book.categories" @click="searchByCategory(c)"> {{ c }}</button>
+
+          </div>
           <p>Language: {{ book.language }}</p>
           <p>Maturity Rating: {{ book.maturityRating }}</p>
           <p>

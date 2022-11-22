@@ -53,7 +53,7 @@ export default {
     transition: all 0.5s ease;
   }
   .card-img{
-    height: 250px;
+    height: 275px;
     object-fit: cover;
     object-position: center;
   }
