@@ -5,45 +5,48 @@ import { router } from "../router.js";
 import { api, googleBookApi } from "./AxiosService.js";
 
 class BookService {
-
-  async getBooks(){
-
+  async getBooks() {
     // if (AppState.books.length ==10) {
     //   return
     // }
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q: "Alan Watts",
-        maxResults:40,
+        q: "love",
+        maxResults: 40,
       },
     });
     // console.log(res.data.items);
 
-    let books = res.data.items.map((b) => new Book(b)); 
+    // let books = res.data.items.map((b) => new Book(b));
 
-    AppState.books = res.data.items.map(b => new Book(b))
+    // for (const b  of books) {
+    //   b.categories= b.categories.toString()
+    //   const book = await api.post("api/books",b)
+    //   console.log(book.data);
+    // }
+
+    AppState.books = res.data.items.map((b) => new Book(b));
   }
-  async searchByQuery(term){
-       const res = await googleBookApi.get("/volumes", {
-         params: {
-           q: term,
-           maxResults: 40,
-         },
-       });
-       
-       AppState.books = res.data.items.map((b) => new Book(b));
+  async searchByQuery(term) {
+    const res = await googleBookApi.get("/volumes", {
+      params: {
+        q: term,
+        maxResults: 40,
+      },
+    });
+
+    AppState.books = res.data.items.map((b) => new Book(b));
   }
 
-  async getBookInformation(id){
+  async getBookInformation(id) {
     const res = await googleBookApi.get(`/volumes/${id}`);
-    console.log("res",res.data);
+    console.log("res", res.data);
     // AppState.extraDetails= new Book(res.data)
     // console.log(AppState.extraDetails);
-   if (AppState.activeBook) {
-     AppState.activeBook.largeImg = res.data.volumeInfo.imageLinks?.large;
-   }
+    if ( res.data.volumeInfo.imageLinks.large) {
+      AppState.activeBook.largeImg = res.data.volumeInfo.imageLinks?.large;
+    }
     // console.log(AppState.activeBook.largeImg);
-   
   }
 
   async searchByCategory(term) {
@@ -54,21 +57,20 @@ class BookService {
       },
     });
     AppState.books = res.data.items.map((b) => new Book(b));
-    
-    router.push({name: 'Home'})
+
+    router.push({ name: "Home" });
   }
 
-  async getBookReviews(id){
+  async getBookReviews(id) {
     console.log(id);
-    const res = await api.get(`api/reviews/${id}`)
-    AppState.reviews = res.data.map(r=> new Review(r))
+    const res = await api.get(`api/reviews/${id}`);
+    AppState.reviews = res.data.map((r) => new Review(r));
     console.log(AppState.reviews);
   }
 
-
-  async getMySQLBooks(){
-    const res = await api.get(`api/books`)
-    console.log("[MySQL]",res.data);
+  async getMySQLBooks() {
+    const res = await api.get(`api/books`);
+    console.log("[MySQL]", res.data);
   }
 }
 export const bookService = new BookService();

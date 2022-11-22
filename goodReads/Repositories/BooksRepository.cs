@@ -12,6 +12,7 @@ public class BooksRepository : BaseRepository
             books (
               id,
               title,
+              img,
               authors,
               publisher,
               publishedDate,
@@ -26,6 +27,7 @@ public class BooksRepository : BaseRepository
             VALUES (
               @Id,
               @Title,
+              @Img,
               @Authors,
               @Publisher,
               @PublishedDate,

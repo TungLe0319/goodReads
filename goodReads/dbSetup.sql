@@ -39,20 +39,17 @@ CREATE TABLE
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         title varchar(255),
-        authors JSON,
+        authors VARCHAR(1000),
         img varchar(1000),
-        description varchar(255),
+        description varchar(10000),
         publishedDate varchar(255),
         publisher varchar(255),
+        previewLink VARCHAR(255),
         pageCount INT,
-        categories JSON,
+        categories VARCHAR(1000),
         maturityRating varchar(255),
         language varchar(255),
-        printType varchar(255),
-        bookShelfId INT NOT NULL,
-        accountId VARCHAR(255) NOT NULL,
-        FOREIGN KEY (bookShelfId) REFERENCES bookshelves(id) ON DELETE CASCADE,
-        FOREIGN KEY (accountId) REFERENCES accounts(id) ON DELETE CASCADE
+        printType varchar(255)
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE
