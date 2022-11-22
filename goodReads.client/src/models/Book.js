@@ -1,6 +1,6 @@
 export class Book {
   constructor(data) {
-    this.bookId = data.id;
+    this.id = data.id;
     this.bookShelfId = data.bookShelfId;
     this.title = data.volumeInfo.title;
     this.author = data.volumeInfo.authors;

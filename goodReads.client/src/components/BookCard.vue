@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="{ name: 'Book', params: { bookId: book.bookId } }"
+    :to="{ name: 'Book', params: { id: book.id } }"
     @click="setActive()"
     v-if="book"
   >

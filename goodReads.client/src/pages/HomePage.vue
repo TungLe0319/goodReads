@@ -36,7 +36,7 @@
         enterActiveClass="animate__fadeIn animate__animated"
         leaveActiveClass="animate__fadeOut animate__animated"
       >
-        <div class="col-md-3 gy-3" v-for="b in books" :key="b.bookId">
+        <div class="col-md-3 gy-3" v-for="b in books" :key="b.id">
           <BookCard :book="b" />
         </div>
       </TransitionGroup>
@@ -76,10 +76,18 @@ export default {
   setup() {
     onMounted(() => {
       getBooks();
+      getMySQLBooks()
     });
     async function getBooks() {
       try {
         await bookService.getBooks();
+      } catch (error) {
+        Pop.error(error, "[getBooks]");
+      }
+    }
+    async function getMySQLBooks() {
+      try {
+        await bookService.getMySQLBooks();
       } catch (error) {
         Pop.error(error, "[getBooks]");
       }

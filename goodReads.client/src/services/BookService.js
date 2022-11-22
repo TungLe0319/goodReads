@@ -64,5 +64,11 @@ class BookService {
     AppState.reviews = res.data.map(r=> new Review(r))
     console.log(AppState.reviews);
   }
+
+
+  async getMySQLBooks(){
+    const res = await api.get(`api/books`)
+    console.log("[MySQL]",res.data);
+  }
 }
 export const bookService = new BookService();

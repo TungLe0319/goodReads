@@ -39,7 +39,7 @@ CREATE TABLE
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         title varchar(255),
-        author JSON,
+        authors JSON,
         img varchar(1000),
         description varchar(255),
         publishedDate varchar(255),

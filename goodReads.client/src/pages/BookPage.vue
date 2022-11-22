@@ -139,7 +139,7 @@ export default {
     })
     async function getBookInformation() {
       try {
-        await bookService.getBookInformation(route.params.bookId);
+        await bookService.getBookInformation(route.params.id);
         // console.log(AppState.activeBook);
       } catch (error) {
         Pop.error(error, "[getBooks]");
@@ -148,7 +148,7 @@ export default {
     async function getBookReviews(){
       try {
     
-          await bookService.getBookReviews(route.params.bookId)
+          await bookService.getBookReviews(route.params.id)
         } catch (error) {
           Pop.error(error,'[getBookReviews]')
         }
