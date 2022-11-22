@@ -6,9 +6,14 @@
       </div>
       <div class="col-md-6">
         <form @submit.prevent="createReview()">
-
+ <div class="form-check">
+            <input v-model="editable.recommend" class="form-check-input" type="checkbox" value="recommend" id="recommend">
+            <label class="form-check-label" for="recommend">
+              Recommend
+            </label>
+          </div>
           <div class="mb-3">
-            <label for="" class="form-label">Review</label>
+     
             <textarea
               type="email"
               class="form-control"
@@ -19,6 +24,8 @@
               placeholder="Please Leave A Review For this Book"
             ></textarea>
           </div>
+         
+        
           <button class="btn btn-outline-dark" type="submit">
             Leave A Review
           </button>

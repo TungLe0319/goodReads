@@ -29,12 +29,12 @@ public class ReviewsController : IController
   }
 
 
-  [HttpGet]
-  public ActionResult<List<Review>> GetAllReview()
+  [HttpGet("{bookId}")]
+  public ActionResult<List<Review>> GetBookReviews( string bookId)
   {
     try
     {
-      List<Review> review = _reviewService.GetAllReviews();
+      List<Review> review = _reviewService.GetBookReviews(bookId);
       return Ok(review);
     }
     catch (Exception e)

@@ -7,5 +7,6 @@ export class Review {
     this.creator = new Account(data.creator);
     this.createdAt = data.createdAt;
     this.updatedAt = data.updatedAt;
+    this.recommend=data.recommend
   }
 }

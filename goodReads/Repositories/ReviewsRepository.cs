@@ -12,8 +12,8 @@ public class ReviewsRepository
 
   var sql = @"
           INSERT INTO
-          reviews (body,creatorId,bookId)
-          VALUES (@Body,@CreatorId,@BookId);
+          reviews (body,recommend,creatorId,bookId)
+          VALUES (@Body,@Recommend,@CreatorId,@BookId);
           SELECT LAST_INSERT_ID()
               ; ";
 
@@ -41,5 +41,26 @@ reviewData.Id = test;
        return review;
      }).ToList();
 
+  }
+
+  internal List<Review> GetBookReviews(string bookId)
+  {
+    var sql = @"
+           SELECT 
+           r.*,
+           a.*
+           FROM reviews r
+           JOIN accounts a ON a.id = r.creatorId
+           WHERE r.bookId = @bookId
+           GROUP BY r.id
+        
+                ; ";
+     return _db.Query<Review, Profile,Review >(sql, (review, profile) =>
+      {
+        review.Creator = profile;
+        
+        return review;
+      },new {bookId}).ToList();
+  
   }
 }

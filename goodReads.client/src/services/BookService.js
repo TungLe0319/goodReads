@@ -1,7 +1,8 @@
 import { AppState } from "../AppState.js";
 import { Book } from "../models/Book.js";
+import { Review } from "../models/Review.js";
 import { router } from "../router.js";
-import { googleBookApi } from "./AxiosService.js";
+import { api, googleBookApi } from "./AxiosService.js";
 
 class BookService {
 
@@ -55,6 +56,13 @@ class BookService {
     AppState.books = res.data.items.map((b) => new Book(b));
     
     router.push({name: 'Home'})
+  }
+
+  async getBookReviews(id){
+    console.log(id);
+    const res = await api.get(`api/reviews/${id}`)
+    AppState.reviews = res.data.map(r=> new Review(r))
+    console.log(AppState.reviews);
   }
 }
 export const bookService = new BookService();

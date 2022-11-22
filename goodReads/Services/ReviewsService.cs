@@ -18,4 +18,9 @@ private readonly ReviewsRepository _reviewsRepo;
   {
     return _reviewsRepo.GetAllReviews();
   }
+
+  internal List<Review> GetBookReviews(string bookId)
+  {
+   return _reviewsRepo.GetBookReviews(bookId);
+  }
 }
