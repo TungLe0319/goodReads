@@ -8,13 +8,13 @@ class BookService {
 
   async getBooks(){
 
-    if (AppState.books.length ==10) {
-      return
-    }
+    // if (AppState.books.length ==10) {
+    //   return
+    // }
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: "Alan Watts",
-        maxResults:10,
+        maxResults:40,
       },
     });
     // console.log(res.data.items);

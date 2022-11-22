@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-transparent px-5">
+  <nav class="navbar navbar-expand-lg bg-transparent px-5  border-bottom border-secondary ">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img alt="logo" class="logo p-1" src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png" height="60" />
@@ -19,17 +19,17 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'List' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'List' }" class="btn text-dark selectable text-uppercase">
             Lists
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Search' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Search' }" class="btn text-dark selectable text-uppercase">
             Search
           </router-link>
         </li>
         <li>
-        <button class="btn btn-outline-success  selectable text-uppercase" data-bs-target="#bookShelfForm" data-bs-toggle="modal">
+        <button class="btn  selectable text-uppercase" data-bs-target="#bookShelfForm" data-bs-toggle="modal">
           CreateBookShelf
         </button>
         </li>
@@ -71,7 +71,7 @@ a:hover {
 
 
 .navbar{
-  background-image: url(https://images.unsplash.com/photo-1525947088131-b701cd0f6dc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);
+ 
   /* background-image: url(https://images.unsplash.com/photo-1506968430777-bf7784a87f23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80); */
 /* background-color: whitesmoke; */
   height: 6em;

@@ -43,7 +43,7 @@
         </div>
       </div>
   <div class="col-md-4">
-    <div class="card p-2 bg-transparent border-0 bg-grey">
+    <div class="card p-2 bg-transparent border-0 bg-secondary">
 <b> WANT THE MOST?</b>
 <p class="text-muted">Follow these easy steps.</p>
       <div class="card-body">
