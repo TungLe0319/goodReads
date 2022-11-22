@@ -1,6 +1,9 @@
 <template>
 <div class="card">
   <img :src="bookShelf.img" alt="">
+  <div class="card-img-overlay d-flex align-items-end justify-content-end">
+<h4 class="text-light ">    {{bookShelf.title}}</h4>
+  </div>
 </div>
 </template>
 

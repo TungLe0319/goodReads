@@ -70,7 +70,19 @@
             aria-labelledby="nav-wishlist-tab"
             tabindex="0"
           >
-       {{bookShelves}}
+.<div class="container">
+  <div class="row">
+    <div class="col-md-3" v-for="b in bookShelves">
+      <BookShelfCard :bookShelf="b" />
+      
+    </div>
+  </div>
+</div>
+
+
+      
+
+    
           </div>
       
           <div
@@ -110,32 +122,31 @@
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
+import BookShelfCard from "../components/BookShelfCard.vue";
 import { accountService } from "../services/AccountService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
 export default {
-
-  setup() {
-    const editable = ref({});
-
-    onMounted(() => {
-
-    });
-   async function getAccountBookShelves(){
-    try {
-        await accountService.getAccountBookShelves()
-      } catch (error) {
-        Pop.error(error,'[getAccountBookShelves]')
-      }
-   }
-
-    return {
-      editable,
-      account: computed(() => AppState.account),
-      bookShelves: computed(() => AppState.accountBookshelves),
-    };
-  },
+    setup() {
+        const editable = ref({});
+        onMounted(() => {
+        });
+        async function getAccountBookShelves() {
+            try {
+                await accountService.getAccountBookShelves();
+            }
+            catch (error) {
+                Pop.error(error, "[getAccountBookShelves]");
+            }
+        }
+        return {
+            editable,
+            account: computed(() => AppState.account),
+            bookShelves: computed(() => AppState.accountBookshelves),
+        };
+    },
+    components: { BookShelfCard }
 };
 </script>
 

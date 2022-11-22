@@ -62,6 +62,13 @@
             <button class="btn btn-outline-dark" @click="addToBookShelf()">
               Save To BookShelf
             </button>
+            <div class="mb-3">
+              <label for="" class="form-label">AddtoBookShelf</label>
+              <select v-model="editable.bookShelfId" class="form-select form-select-lg" name="" id="">
+                <option value="" v-for="b in bookShelves" >New Delhi</option>
+         
+              </select>
+            </div>
              <button class="btn btn-outline-dark mt-2"  data-bs-toggle="modal" data-bs-target="#createReview">
     Review
   </button>
@@ -103,12 +110,13 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
-import { onMounted } from "vue";
+import { computed,ref } from "@vue/reactivity";
+import { onMounted, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
 import CreateReview from "../components/CreateReview.vue";
+import { router } from "../router.js";
 import { bookService } from "../services/BookService.js";
 import Pop from "../utils/Pop.js";
 
@@ -117,6 +125,11 @@ export default {
     onMounted(() => {
       getBookInformation();
     });
+    watchEffect(()=>{
+      if (!AppState.activeBook) {
+        router.push("/")
+      }
+    })
     async function getBookInformation() {
       try {
         await bookService.getBookInformation(route.params.bookId);
@@ -125,14 +138,17 @@ export default {
         Pop.error(error, "[getBooks]");
       }
     }
+    const editable = ref({})
     const route = useRoute();
     return {
+      editable,
       route,
       book: computed(() => AppState.activeBook),
       extraDetails: computed(() => AppState.extraDetails),
+      bookShelves: computed(() => AppState.accountBookshelves),
       async addToBookShelf() {
         try {
-          console.log("hi");
+         
         } catch (error) {
           Pop.error(error, "[addToBookShelf]");
         }

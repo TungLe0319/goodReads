@@ -21,8 +21,8 @@ class AccountService {
 
  async getAccountBookShelves(){
     const res = await api.get("/account/bookshelves");
-    // console.log(res.data);
-    AppState.accountBookshelves = new BookShelf(res.data)
+    console.log(res.data);
+    AppState.accountBookshelves = res.data.map(a => new BookShelf(a))
  };
 }
 

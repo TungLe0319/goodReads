@@ -31,7 +31,9 @@ class BookService {
     console.log("res",res.data);
     // AppState.extraDetails= new Book(res.data)
     // console.log(AppState.extraDetails);
-    AppState.activeBook.largeImg = res.data.volumeInfo?.imageLinks?.large;
+   if (AppState.activeBook) {
+     AppState.activeBook.largeImg = res.data.volumeInfo.imageLinks?.large;
+   }
     // console.log(AppState.activeBook.largeImg);
    
   }
