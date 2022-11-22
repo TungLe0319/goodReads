@@ -2,7 +2,7 @@
    <div class="card p-2 bg-transparent elevation-4">
           <p>2.99</p>
           <p>Available for a limited time</p>
-          <button class="btn btn-primary">Get Deal</button>
+    
           <div class="card-body d-flex flex-column justify-content-center">
             <button class="btn btn-outline-dark" @click="addToBookShelf()">
               Save To BookShelf

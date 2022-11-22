@@ -1,7 +1,7 @@
 <template>
 
   <div
-    class="modal fade"
+    class="modal fade elevation-5"
     id="createReview"
     tabindex="-1"
     aria-labelledby="createReviewLabel"
@@ -84,13 +84,18 @@ export default {
   transition: all 1s ease;
 }
 
+.modal-backdrop {
+  //hides the default modal shadow
+  display: none;
+}
 .modal {
-  background: rgb(144, 119, 160);
-  background: linear-gradient(
-    90deg,
-    rgba(144, 119, 160, 1) 0%,
-    rgba(250, 252, 226, 0.6695089285714286) 100%
-  );
-  backdrop-filter: blur(4px);
+.modal-backdrop {
+  //hides the default modal shadow
+  display: none;
+}
+
+}
+.modal-backdrop {
+     background-color: rgba(0,0,0,.0001) !important;
 }
 </style>

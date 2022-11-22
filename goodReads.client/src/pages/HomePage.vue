@@ -42,47 +42,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card p-2 bg-transparent border-0 bg-secondary easySteps">
-          <b> WANT THE MOST?</b>
-          <p class="text-muted">Follow these easy steps.</p>
-          <div class="card-body">
-            <ul class="list-group bg-transparent border-0">
-              <li
-                class="list-group-item bg-transparent border-0 d-flex align-items-center"
-              >
-                <span class="bg-danger rounded p-2">1</span>
-                <p class="mb-0 ms-2 text-decoration-underline">
-                  Wishlist at least 2 books
-                </p>
-              </li>
-              <li
-                class="list-group-item bg-transparent border-0 d-flex align-items-center"
-              >
-                <span class="bg-danger rounded p-2">1</span>
-                <p class="mb-0 ms-2 text-decoration-underline">
-                  Follow at least 5 authors
-                </p>
-              </li>
-              <li
-                class="list-group-item bg-transparent border-0 d-flex align-items-center"
-              >
-                <span class="bg-danger rounded p-2">1</span>
-                <p class="mb-0 ms-2 text-decoration-underline">
-                  Write your first review
-                </p>
-              </li>
-
-              <li
-                class="list-group-item bg-transparent border-0 d-flex align-items-center"
-              >
-                <span class="bg-danger rounded p-2">1</span>
-                <p class="mb-0 ms-2 text-decoration-underline">
-                  Recommend a book
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <EasyStepsCard />
       </div>
     </div>
   </div>
@@ -93,6 +53,7 @@ import { computed, ref } from "@vue/reactivity";
 import { onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
+import EasyStepsCard from "../components/EasyStepsCard.vue";
 import { bookService } from "../services/BookService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
@@ -135,15 +96,8 @@ export default {
       },
     };
   },
-  components: { BookCard },
+  components: { BookCard, EasyStepsCard },
 };
 </script>
 
-<style scoped lang="scss">
-.easySteps {
-  background-image: url(https://images.pexels.com/photos/373465/pexels-photo-373465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
-  background-position: center;
-  background-size: cover;
-
-}
-</style>
+<style scoped lang="scss"></style>
