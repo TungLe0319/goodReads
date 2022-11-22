@@ -9,14 +9,16 @@ public class ReviewsRepository
 
   internal Review CreateReview(Review reviewData)
   {
-    var sql = @"
-             INSERT INTO
-             reviews (body,creatorId,bookId)
-             VALUES (@Body,@CreatorId,@BookId);
-             SELECT LAST_INSERT_ID()
-                 ; ";
 
-    reviewData.Id = _db.ExecuteScalar<int>(sql, reviewData);
+  var sql = @"
+          INSERT INTO
+          reviews (body,creatorId,bookId)
+          VALUES (@Body,@CreatorId,@BookId);
+          SELECT LAST_INSERT_ID()
+              ; ";
+
+   int test  = _db.ExecuteScalar<int>(sql, reviewData);
+reviewData.Id = test;
 
     return reviewData;
   }

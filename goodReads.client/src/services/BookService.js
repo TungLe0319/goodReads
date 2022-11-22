@@ -6,13 +6,20 @@ import { googleBookApi } from "./AxiosService.js";
 class BookService {
 
   async getBooks(){
+
+    if (AppState.books.length ==10) {
+      return
+    }
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: "Alan Watts",
         maxResults:10,
       },
     });
-    console.log(res.data.items);
+    // console.log(res.data.items);
+
+    let books = res.data.items.map((b) => new Book(b)); 
+
     AppState.books = res.data.items.map(b => new Book(b))
   }
   async searchByQuery(term){

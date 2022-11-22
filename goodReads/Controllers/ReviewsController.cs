@@ -14,10 +14,12 @@ public class ReviewsController : IController
   {
     try
     {
+
       var userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-      // reviewData.Creator = userInfo;
+
       reviewData.CreatorId = userInfo.Id;
       Review review = _reviewService.CreateReview(reviewData,userInfo.Id);
+      review.Creator = userInfo;
       return Ok(review);
     }
     catch (Exception e)
