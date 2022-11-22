@@ -13,7 +13,7 @@
           />
         </div>
         <div role="name">
-          <p class="ms-3 fs-6 text-decoration-underline">
+          <p class="ms-3 fs-5 text-decoration-underline">
             {{ review.creator.name.split("@")[0] }}
           </p>
         </div>

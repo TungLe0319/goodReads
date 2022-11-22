@@ -11,9 +11,11 @@
           height="600"
         />
         <div class="mt-2">
-          <a 
-        
-          :href="book.previewLink" target="_blank" class="text-danger previewText">
+          <a
+            :href="book.previewLink"
+            target="_blank"
+            class="text-danger previewText"
+          >
             <i class="mdi mdi-book fs-5"></i> Read Preview</a
           >
         </div>
@@ -31,15 +33,15 @@
           </p>
         </div>
         <div>
-          <b>
-            <i class="mdi mdi-calendar fs-4"></i> Release Date :
-            {{ new Date(book.publishedDate).toLocaleDateString() }}</b
-          >
-          <p>Publisher: {{ book.publisher }}</p>
+          <p>
+            <i class="mdi mdi-calendar fs-4"></i> <b> Release Date -</b>
+            {{ new Date(book.publishedDate).toLocaleDateString() }}
+          </p>
+          <b class="">Publisher - {{ book.publisher }}</b>
           <div class="d-flex align-items-center">
-            <p class="mb-0 me-2">Categories:</p>
+            <b class="me-2 mb-3 mt-3">Categories -</b>
             <button
-              class="btn btn-outline-dark p-1 rounded-pill px-2 mx-2"
+              class="btn btn-outline-dark my-3 p-1 rounded-pill px-2 mx-2"
               v-for="c in book.categories"
               @click="searchByCategory(c)"
             >
@@ -47,11 +49,9 @@
             </button>
             <!-- <button class="btn btn-outline-dark p-1 rounded-pill px-2 mx-2">  </button> -->
           </div>
-          <p>Language: {{ book.language }}</p>
-          <p>Maturity Rating: {{ book.maturityRating }}</p>
-          <p>
-            Page Count: <b>{{ book.pageCount }}</b>
-          </p>
+          <p><b>Language -</b> {{ book.language }}</p>
+          <p><b>Maturity Rating -</b> {{ book.maturityRating }}</p>
+          <p><b> Page Count -</b> {{ book.pageCount }}</p>
         </div>
       </div>
       <div class="col-md-3 animate__animated animate__fadeInRight">
@@ -145,7 +145,7 @@
         <div class="col-md-12 d-flex justify-content-between my-3">
           <h3>Community Reviews</h3>
           <button
-            class="btn btn-danger fw-bold d-flex align-items-center justify-content-center"
+            class="btn bg-create fw-bold d-flex align-items-center justify-content-center"
           >
             <i class="mdi mdi-comment fs-4 text-light me-2"></i> Write a Review
           </button>
@@ -240,7 +240,7 @@ export default {
 .authors {
   font-family: Arial, Helvetica, sans-serif;
 }
-.previewText:hover{
+.previewText:hover {
   text-decoration: underline;
 }
 </style>
