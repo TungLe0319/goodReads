@@ -1,10 +1,9 @@
 export class BookShelf {
   constructor(data) {
-    this.bookShelf = data.id;
+    this.bookShelfId = data.id;
     this.title = data.title;
-    this.description = data.description;
     this.img = data.img;
     this.accountId = data.accountId;
-    
+    this.type = data.type
   }
 }

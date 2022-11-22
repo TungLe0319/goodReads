@@ -11,7 +11,7 @@
           <div v-if="account.picture || user.picture" class="d-flex">
             <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded" />
           <p>
-              {{account.name.split("@")[0]}}
+              {{account.name?.split("@")[0]}}
           </p>
           </div>
         </div>

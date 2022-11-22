@@ -52,7 +52,7 @@ import Pop from "../utils/Pop.js";
 export default {
     setup() {
         onMounted(() => {
-            // getBooks();
+            getBooks();
         });
         async function getBooks() {
             try {

@@ -28,6 +28,11 @@
             Search
           </router-link>
         </li>
+        <li>
+        <button class="btn btn-outline-success  selectable text-uppercase" data-bs-target="#bookShelfForm" data-bs-toggle="modal">
+          CreateBookShelf
+        </button>
+        </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div>

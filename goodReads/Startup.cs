@@ -36,6 +36,9 @@ public class Startup
 
     services.AddTransient<ReviewsRepository>();
     services.AddTransient<ReviewsService>();
+
+    services.AddTransient<BookShelvesRepository>();
+    services.AddTransient<BookShelvesService>();
   }
 
   private void ConfigureCors(IServiceCollection services)

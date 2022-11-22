@@ -26,11 +26,11 @@ CREATE TABLE
         id INT NOT NULL primary key AUTO_INCREMENT COMMENT 'primary key',
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
-        description varchar(255),
         title varchar(255),
-        type ENUM("favorite", 'wishList', 'read'),
-        accountId varchar(255) NOT NULL,
-        FOREIGN KEY (accountId) REFERENCES accounts(id) ON DELETE CASCADE
+        img VARCHAR(500),
+        type ENUM("favorite", 'wishList', 'reading','finished'),
+        creatorId varchar(255) NOT NULL,
+        FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE

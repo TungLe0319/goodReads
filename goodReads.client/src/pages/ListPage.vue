@@ -70,7 +70,7 @@
             aria-labelledby="nav-wishlist-tab"
             tabindex="0"
           >
-          Wishlist
+       {{bookShelves}}
           </div>
       
           <div
@@ -110,20 +110,30 @@
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
+import { accountService } from "../services/AccountService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
 export default {
-  props: {},
-  setup(props) {
+
+  setup() {
     const editable = ref({});
 
-    onMounted(() => {});
-    watchEffect(() => {});
+    onMounted(() => {
+
+    });
+   async function getAccountBookShelves(){
+    try {
+        await accountService.getAccountBookShelves()
+      } catch (error) {
+        Pop.error(error,'[getAccountBookShelves]')
+      }
+   }
 
     return {
       editable,
       account: computed(() => AppState.account),
+      bookShelves: computed(() => AppState.accountBookshelves),
     };
   },
 };

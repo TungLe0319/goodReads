@@ -22,7 +22,7 @@ export const AppState = reactive({
   /** @type {import('./models/Follow.js').Follow[]} */
   follows:[],
   /** @type {import('./models/BookShelf.js').BookShelf[]} */
-  bookshelves:[],
+  accountBookshelves:[],
   
   theme: false,
 });
