@@ -31,7 +31,7 @@ import { AppState } from './AppState'
 import BookShelfForm from "./components/BookShelfForm.vue"
 import ModalComponent from "./components/ModalComponent.vue"
 import Navbar from './components/Navbar.vue'
-import ReviewForm from "./components/ReviewForm.vue"
+import ReviewForm from "./components/BookPage/ReviewForm.vue"
 
 export default {
   setup() {
