@@ -7,9 +7,7 @@ public class FollowsRepository : BaseRepository
 
   internal Follow CreateFollow(Follow followData)
   {
-    var sql = @"
-              INSERT INTO
-              follows (creatorId, followingUserId)
+    var sql = @"INSERT INTO follows (creatorId, followingUserId)
               VALUES (@CreatorId, @FollowingUserId);
               SELECT LAST_INSERT_ID()
                   ;";
@@ -18,16 +16,18 @@ public class FollowsRepository : BaseRepository
     return GetById(followId);
   }
 
-  internal Follow GetById(int followId)
+  internal FollowCreator GetById(int followId)
   {
-    string sql = @"SELECT 
-                follow.*,
+    string sql = @"SELECT follow.*,
                 account.*
                 FROM follows follow
-                join accounts on account.Id = follow.FollowingUserId
-                WHERE id = @followId
+                join accounts account on account.id = follow.followingUserId
+                WHERE follow.id = @followId
                     ;";
-    return _db.Query<Follow>(sql, new { followId }).FirstOrDefault();
+    return _db.Query<FollowCreator, Profile, FollowCreator>(sql, (follow, profile) => {
+      follow.Profile = profile;
+      return follow;
+    } , new{ followId }).FirstOrDefault();
   }
 
   internal Follow GetOneFollow(string followingUserId, string creatorId)

@@ -9,14 +9,19 @@ public class FollowsService
     _followsRepo = followsRepo;
   }
 
-  internal Follow CreateFollow(Follow followData, string creatorId)
+  internal Follow CreateFollow(Follow followData)
   {
-    Follow follow = GetOneFollow(followData.FollowingUserId, creatorId);
+      if (followData.creatorId == null)
+          {
+            throw new Exception("not logged in to follow");
+          }
+    
+    
+    Follow follow = GetOneFollow(followData.FollowingUserId, followData.creatorId);
     if (follow != null)
     {
       throw new Exception("already following");
     }
-    followData.creatorId = creatorId;
 
 
     Follow newFollow = _followsRepo.CreateFollow(followData);

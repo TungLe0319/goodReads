@@ -6,7 +6,8 @@ class FollowsService {
   async followByUserId(accountId) {
     console.log(accountId);
     const res = await api.post(`api/follows`, accountId);
-    AppState.follows = res.data.map(f=> new Follow(f))
+    console.log(res.data);
+    // AppState.following = [new Follow(res.data), ...AppState.following]
   }
 
   

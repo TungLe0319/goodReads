@@ -14,7 +14,9 @@ public class FollowsController : IController
     try
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-      Follow follow = _followsService.CreateFollow(followData, userInfo?.Id);
+      followData.creatorId = userInfo.Id;
+      Follow follow = _followsService.CreateFollow(followData);
+     
       return Ok(follow);
     }
     catch (Exception e)
