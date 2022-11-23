@@ -42,7 +42,12 @@
         </div>
       </div>
       <div class="col-md-4">
-        <EasyStepsCard />
+        <div class="row g-3">
+
+          <EasyStepsCard />
+
+          <LeaveFeedBackCard/>
+        </div>
       </div>
     </div>
   </div>
@@ -54,6 +59,7 @@ import { onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
 import EasyStepsCard from "../components/EasyStepsCard.vue";
+import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
 import { bookService } from "../services/BookService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
@@ -96,7 +102,7 @@ export default {
       },
     };
   },
-  components: { BookCard, EasyStepsCard },
+  components: { BookCard, EasyStepsCard, LeaveFeedBackCard },
 };
 </script>
 

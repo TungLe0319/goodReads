@@ -1,6 +1,6 @@
 <template>
      
-        <div class="card p-2 bg-transparent border-0 bg-secondary easySteps">
+        <div class="card p-2 bg-transparent border-0 bg-secondary easySteps elevation-2">
           <b class="ms-3 mt-2"> WANT THE MOST?</b>
           <p class="text-muted ms-3 my-2">Follow these easy steps.</p>
           <div class="card-body">
