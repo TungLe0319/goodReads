@@ -24,7 +24,7 @@
       </div>
 
       <div role="createdAt " class="d-flex align-items-center">
-        <button v-if="user.isAuthenticated" class="btn p-0 me-3">
+        <button v-if="user.isAuthenticated && review.creator.id != account.id" class="btn p-0 me-3">
           <img
             src="src\assets\img\follow.png"
             alt="follow icon"
@@ -56,7 +56,7 @@
       </div>
     </div>
 
-    <div v-if="user.isAuthenticated" class="bg-light darken-10">
+    <div v-if="user.isAuthenticated " class="bg-light darken-10">
       <div class="form-floating m-4">
         <input
           type="text"
@@ -113,6 +113,15 @@ export default {
           Pop.error(error, "[removeReview]");
         }
       },
+
+      async followingUserId(){
+        try {
+          let accountId = props.review.creator.id
+            await followsService
+          } catch (error) {
+            Pop.error(error,'[followingUserId]')
+          }
+      }
     };
   },
 };
