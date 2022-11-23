@@ -43,11 +43,28 @@ public class AccountController : IController
 
   
     [HttpGet("following")]
-    public ActionResult<List<Follow>> GetAllFollowing()
+    public async Task<ActionResult<List<FollowCreator>>> GetAllFollowing()
     {
       try
       {
-        List<Follow> follows = _followsService.GetAllFollowing();
+        Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+        
+        List<FollowCreator> follows = _followsService.GetAllFollowing(userInfo?.Id);
+        return Ok(follows);
+      }
+      catch (Exception e)
+      { 
+        return BadRequest(e.Message);
+      }
+    }
+    [HttpGet("followers")]
+    public async Task<ActionResult<List<FollowCreator>>> GetAllFollowers()
+    {
+      try
+      {
+        Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+        
+        List<FollowCreator> follows = _followsService.GetAllFollowers(userInfo?.Id);
         return Ok(follows);
       }
       catch (Exception e)

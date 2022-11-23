@@ -11,3 +11,8 @@ public class Follow : IDbItem<int>
   public DateTime CreatedAt { get; set; }
   public DateTime UpdatedAt { get; set; }
 }
+
+
+public class FollowCreator : Follow{
+  public Profile Profile { get; set; }
+}
