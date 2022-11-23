@@ -1,4 +1,4 @@
--- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1668895251805@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(
@@ -67,21 +67,6 @@ CREATE TABLE
 
     ) default charset utf8 COMMENT '';
 
-CREATE TABLE
-    IF NOT EXISTS authors(
-        id INT NOT NULL primary key AUTO_INCREMENT,
-        name varchar(255) COMMENT 'User Name',
-        bookId varchar(255) NOT NULL,
-        FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE
-    ) default charset utf8 COMMENT '';
-
-CREATE TABLE
-    IF NOT EXISTS categories(
-        id INT NOT NULL primary key AUTO_INCREMENT,
-        name varchar(255) COMMENT 'User Name',
-        bookId VARCHAR(255) NOT NULL,
-        FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE 
-    ) default charset utf8 COMMENT '';
 
 CREATE TABLE
     IF NOT EXISTS reviews(
