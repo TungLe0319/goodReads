@@ -70,21 +70,16 @@
             aria-labelledby="nav-wishlist-tab"
             tabindex="0"
           >
-.<div class="container">
-  <div class="row">
-    <div class="col-md-3" v-for="b in bookShelves">
-      <BookShelfCard :bookShelf="b" />
-      
-    </div>
-  </div>
-</div>
-
-
-      
-
-    
+            .
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3" v-for="b in bookShelves">
+                  <BookShelfCard :bookShelf="b" />
+                </div>
+              </div>
+            </div>
           </div>
-      
+
           <div
             class="tab-pane fade"
             id="nav-owned"
@@ -92,7 +87,7 @@
             aria-labelledby="nav-owned-tab"
             tabindex="0"
           >
-           owned
+            owned
           </div>
           <div
             class="tab-pane fade"
@@ -128,25 +123,23 @@ import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
 export default {
-    setup() {
-        const editable = ref({});
-        onMounted(() => {
-        });
-        async function getAccountBookShelves() {
-            try {
-                await accountService.getAccountBookShelves();
-            }
-            catch (error) {
-                Pop.error(error, "[getAccountBookShelves]");
-            }
-        }
-        return {
-            editable,
-            account: computed(() => AppState.account),
-            bookShelves: computed(() => AppState.accountBookshelves),
-        };
-    },
-    components: { BookShelfCard }
+  setup() {
+    const editable = ref({});
+    onMounted(() => {});
+    async function getAccountBookShelves() {
+      try {
+        await accountService.getAccountBookShelves();
+      } catch (error) {
+        Pop.error(error, "[getAccountBookShelves]");
+      }
+    }
+    return {
+      editable,
+      account: computed(() => AppState.account),
+      bookShelves: computed(() => AppState.accountBookshelves),
+    };
+  },
+  components: { BookShelfCard },
 };
 </script>
 

@@ -34,8 +34,8 @@ class BookService {
         maxResults: 40,
       },
     });
-
-    AppState.books = res.data.items.map((b) => new Book(b));
+console.log(res.data);
+    // AppState.books = res.data.items.map((b) => new Book(b));
   }
 
   async getBookInformation(id) {
@@ -62,6 +62,7 @@ class BookService {
       },
     });
     AppState.books = res.data.items.map((b) => new Book(b));
+     
 
     router.push({ name: "Home" });
   }

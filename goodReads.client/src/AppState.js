@@ -5,6 +5,8 @@ export const AppState = reactive({
   user: {},
   /** @type {import('./models/Account.js').Account} */
   account: {},
+  /** @type {import('./models/Account.js').Account[]} */
+  profiles: [],
 
   /** @type {import('./models/Book.js').Book[]} */
   books: [],
@@ -14,15 +16,14 @@ export const AppState = reactive({
 
   /** @type {import('./models/Book.js').Book | null} */
   extraDetails: null,
-  
-  
+
   /** @type {import('./models/Review.js').Review[]} */
   reviews: [],
-  
+
   /** @type {import('./models/Follow.js').Follow[]} */
-  follows:[],
+  follows: [],
   /** @type {import('./models/BookShelf.js').BookShelf[]} */
-  accountBookshelves:[],
-  
+  accountBookshelves: [],
+
   theme: false,
 });
