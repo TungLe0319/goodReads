@@ -33,11 +33,13 @@ class BookService {
       },
     });
     console.log(res.data.items);
-let books = res.data.items.map(b=> new Book(b))
-for (const b of books) {
-  const res2 = await api.post('api/books',b)
-  console.log(res2.data);
-}
+// let books = res.data.items.map(b=> new Book(b))
+// for (const b of books) {
+//   b.authors = b.authors.toString() || b.authors
+//   b.categories = b.categories.toString() || b.categories
+//   const res2 = await api.post('api/books',b)
+//   console.log(res2.data);
+// }
     // AppState.sPBooks = res.data.items.map((b) => new Book(b));
     // console.log(AppState.sPBooks);
   }
