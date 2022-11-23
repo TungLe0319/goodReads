@@ -32,7 +32,8 @@ public class BooksRepository : BaseRepository
               buyLink,
               retailPrice,
               averageRating,
-              identifiers
+              isbn13,
+              isbn10
 
             )
             VALUES (
@@ -58,7 +59,8 @@ public class BooksRepository : BaseRepository
               @BuyLink,
               @RetailPrice,
               @AverageRating,
-              @Identifiers
+              @ISBN13,
+              @ISBN10
               )
                 ;";
 

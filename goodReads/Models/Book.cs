@@ -7,14 +7,14 @@ public class Book
 
   public string Img { get; set; }
   public string LargeImg { get; set; }
-  public string Authors { get; set; }
+  public string[] Authors { get; set; }
   public string Publisher { get; set; }
   public string PublishedDate { get; set; }
 
   public int PageCount { get; set; }
 
 
-  public string Categories { get; set; }
+  public string[] Categories { get; set; }
 
   public string Description { get; set; }
   public string MaturityRating { get; set; }
@@ -30,8 +30,11 @@ public class Book
   public string BuyLink { get; set; }
   public int RetailPrice { get; set; }
 
-  public int AverageRating { get; set; }
-  public string Identifiers { get; set; }
+  public decimal AverageRating { get; set; }
+  public string ISBN13 { get; set; }
+
+  public string ISBN10 { get; set; }
+
 
 
 }

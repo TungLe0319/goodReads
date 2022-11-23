@@ -32,10 +32,14 @@ class BookService {
         maxResults: 40,
       },
     });
-    // console.log(res.data);
-
-    AppState.sPBooks = res.data.items.map((b) => new Book(b));
-    console.log(AppState.sPBooks);
+    console.log(res.data.items);
+let books = res.data.items.map(b=> new Book(b))
+for (const b of books) {
+  const res2 = await api.post('api/books',b)
+  console.log(res2.data);
+}
+    // AppState.sPBooks = res.data.items.map((b) => new Book(b));
+    // console.log(AppState.sPBooks);
   }
 
   async getBookInformation(id) {

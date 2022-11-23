@@ -1,4 +1,4 @@
--- Active: 1668895251805@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(
@@ -44,17 +44,29 @@ CREATE TABLE
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         title varchar(255),
-        authors VARCHAR(1000),
-        img varchar(1000),
+        authors JSON,
+        img varchar(500),
+        largeImg VARCHAR(500),
         description varchar(10000),
         publishedDate varchar(255),
         publisher varchar(255),
-        previewLink VARCHAR(255),
         pageCount INT,
-        categories VARCHAR(1000),
+        categories JSON,
         maturityRating varchar(255),
         language varchar(255),
-        printType varchar(255)
+        printType varchar(255),
+        previewLink VARCHAR(255),
+        country VARCHAR(255),
+        isEBook TINYINT DEFAULT 0,
+        saleAbility VARCHAR(255),
+        currency VARCHAR(255),
+        flavorText VARCHAR(255),
+        buyLink VARCHAR(255),
+        retailPrice INT,
+        averageRating DECIMAL,
+        isbn13 VARCHAR(255),
+        isbn10 VARCHAR(255)
+
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE
