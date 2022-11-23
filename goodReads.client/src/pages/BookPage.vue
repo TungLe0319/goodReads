@@ -102,7 +102,7 @@ import ShareCard from "../components/BookPage/ShareCard.vue";
 export default {
   setup() {
     onMounted(() => {
-      getBookInformation();
+      // getBookInformation();
       getBookReviews();
     });
     watchEffect(() => {
@@ -121,6 +121,7 @@ export default {
     async function getBookReviews() {
       try {
         await bookService.getBookReviews(route.params.id);
+        console.log(AppState.activeBook);
       } catch (error) {
         Pop.error(error, "[getBookReviews]");
       }

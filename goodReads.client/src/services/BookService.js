@@ -61,13 +61,14 @@ class BookService {
   async searchByCategory(term) {
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q: term,
-        maxResults: 40,
+        q: term+'subject',
+        maxResults: 24,
       },
     });
-    AppState.books = res.data.items.map((b) => new Book(b));
+    console.log(res.data.items);
+    AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
-    router.push({ name: "Home" });
+    // router.push({ name: "Home" });
   }
 
   async getBookReviews(id) {

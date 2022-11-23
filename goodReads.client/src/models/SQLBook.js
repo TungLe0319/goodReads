@@ -15,5 +15,19 @@ export class SQLBook {
     this.printType = data.printType;
     this.previewLink = data.previewLink;
     this.dimensions = data.dimensions;
+    this.buyLink = data.buyLink
+    this.country = data.country
+    this.isEbook= data.isEbook || false
+    this.saleAbility = data.saleAbility
+    if (data.saleAbility == 'NOT_FOR_SALE') {
+      this.saleAbility = 'Unavailable'
+    }
+    this.retailPrice = data.retailPrice
+    this.averageRating = data.averageRating
+    this.largeImg = data.largeImg
+    this.flavorText=data.flavorText
+    this.currency= data.currency
+    this.isbN10 = data.isbN10
+this.isbN13 = data.isbN13
   }
 }

@@ -13,7 +13,7 @@ export const AppState = reactive({
   /** @type {import('./models/Book.js').Book[]} */
   sPBooks: [],
 
-  /** @type {import('./models/Book.js').Book | null} */
+  /** @type {import('./models/SQLBook.js').SQLBook | null} */
   activeBook: null,
 
   /** @type {import('./models/Book.js').Book | null} */
@@ -32,4 +32,37 @@ export const AppState = reactive({
   accountReviews: [],
 
   theme: false,
+
+  categories:[
+    'Performing Arts',
+    'Psychology',
+    'Religion',
+    'Biomechanics',
+    'Nature',
+    'Social Science',
+    'History',
+    'Cooking',
+    'Astronomy',
+    'Fiction',
+    'Body, Mind & Spirit',
+    'Sports',
+    'Health & Fitness',
+    'Business & Economics',
+    'Self-Help',
+    'Science',
+    'Medical',
+    'Family & Relationships',
+    'Juvenile Fiction',
+    'Political Science',
+    'Law',
+    'Humor',
+    'Sports & Recreation',
+    'Bereavement',
+    'Poetry',
+    'Art',
+    'Education',
+    'Biography & Autobiography',
+    'Young Adult Fiction'
+
+]
 });

@@ -1,6 +1,7 @@
 <template>
    <div class="card p-2 elevation-4 border-0">
-          <p>2.99</p>
+          <h3 v-if="book.saleAbility== 'Unavailable'" class="text-danger text-decoration-underline"> {{book.saleAbility}} </h3>
+          <h3 v-else > {{book.saleAbility}}  </h3>
           <p>Available for a limited time</p>
     
           <div class="card-body d-flex flex-column justify-content-center">
@@ -89,6 +90,7 @@
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
+import { AppState } from "../../AppState.js";
 import Pop from "../../utils/Pop.js";
 
 
@@ -108,6 +110,7 @@ props:{
 const route = useRoute()
     return {
       editable,
+      book: computed(()=> AppState.activeBook),
            copyToClipBoard() {
         navigator.clipboard.writeText(route.fullPath);
         Pop.toast(`Copied To ClipBoard`);

@@ -36,11 +36,14 @@
           <strong>Categories:</strong>
           <p>Showing All</p>
         </div>
-        <strong>All Categories</strong>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+        <strong> Categories</strong>
+        <div class="mb-3 form-check" v-for="c in categories">
+          <input
+          @click="searchByCategory(c)"
+          
+          type="checkbox" class="form-check-input" id="exampleCheck1" />
           <label class="form-check-label" for="exampleCheck1"
-            >Check me out</label
+            >{{c}}</label
           >
         </div>
       </div>
@@ -48,6 +51,15 @@
         <div class="row">
           <div class="col-md-2" v-for="b in books" :key="b.id">
             <SearchPageBookCard :book="b" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 d-flex justify-content-center">
+   <button class="btn btn-outline-dark me-2"><b>Prev</b></button>
+   <button class="btn btn-outline-dark"><b>Next</b></button>
+          </div>
+          <div class="col-md-12 text-center mt-3">
+            1-18 of 100000 results
           </div>
         </div>
       </div>
@@ -73,6 +85,7 @@ export default {
     return {
       editable,
       books: computed(() => AppState.sPBooks),
+      categories : computed(()=> AppState.categories),
       async searchByQuery() {
         try {
           await bookService.searchByQuery(editable.value.term);
@@ -85,6 +98,14 @@ export default {
           logger.error(error);
         }
       },
+        async searchByCategory(c) {
+              try {
+                await bookService.searchByCategory(c)
+              } catch (error) {
+                
+                Pop.error(error, "[searchByCategory]");
+              }
+            },
     };
   },
   components: { BookCard },
