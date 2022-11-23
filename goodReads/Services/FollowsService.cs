@@ -24,7 +24,11 @@ public class FollowsService
 
   }
 
-
+  internal List<FollowCreator> GetAllFollowers(string userId)
+  {
+    List<FollowCreator> follows = _followsRepo.GetAllFollowers(userId);
+    return follows;
+  }
 
   internal List<FollowCreator> GetAllFollowing(string userId)
   {

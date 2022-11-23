@@ -60,5 +60,23 @@ public class FollowsRepository : BaseRepository
 
   }
 
+  internal List<FollowCreator> GetAllFollowers(object userId)
+  {
+    var sql = @"SELECT 
+                follow.*,
+                account.*
+                FROM follows follow
+                JOIN accounts account ON account.id = follow.creatorId
+                WHERE follow.followingUserId = @userId
+                GROUP BY follow.id
+            
+                    ;";
+    return _db.Query<FollowCreator, Profile, FollowCreator>(sql, (follow, profile) =>
+    {
+      follow.Profile = profile;
 
+      return follow;
+    }, new { userId }).ToList();
+
+  }
 }
