@@ -24,11 +24,12 @@ public class FollowsService
 
   }
 
-  
 
-  internal List<Follow> GetAllFollowing()
+
+  internal List<FollowCreator> GetAllFollowing(string userId)
   {
-    throw new NotImplementedException();
+    List<FollowCreator> follows = _followsRepo.GetAllFollowing(userId);
+    return follows;
   }
 
   internal Follow GetById(int followId)
