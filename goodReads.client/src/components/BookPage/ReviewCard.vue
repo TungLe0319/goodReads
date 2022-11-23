@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-transparent my-3 square">
+  <div class="card bg-transparent my-3 square ">
     <div
       class="d-flex align-items-center justify-content-between px-5 pt-3 pb-2"
     >
@@ -8,8 +8,8 @@
           <img
             :src="review.creator.picture"
             alt=""
-            class="img-fluid rounded-circle"
-            width="60"
+            class="img-fluid rounded-circle elevation-5"
+            width="80"
           />
         </div>
         <div role="name">
@@ -20,14 +20,19 @@
       </div>
 
       <div role="createdAt " class="d-flex align-items-center">
-        <button class="btn p-0 me-3">
-          <i class="mdi mdi-plus-box fs-1"></i>
+        <button class="btn p-0 me-3 ">
+          <img
+            src="src\assets\img\follow.png"
+            alt="follow icon"
+            width="40"
+            title="Follow This User"
+          />
         </button>
         <p class="text-dark lighten-60">
           {{ new Date(review.createdAt).toLocaleString() }}
         </p>
-        <button @click="deleteReview()" class="btn ms-3">
-          <i class="mdi mdi-delete fs-4 text-danger"></i>
+        <button @click="deleteReview()" class="btn ms-3" title="Delete Review">
+          <img src="src\assets\img\delete.png" alt="delete Icon" width="40" />
         </button>
       </div>
     </div>
@@ -82,10 +87,9 @@ export default {
       async deleteReview() {
         try {
           if (await Pop.confirm()) {
-     let reviewId = props.review.id;
-          await reviewsService.deleteReview(reviewId);
+            let reviewId = props.review.id;
+            await reviewsService.deleteReview(reviewId);
           }
-     
         } catch (error) {
           Pop.error(error, "[removeReview]");
         }
@@ -95,4 +99,19 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.btn{
+  transition: all 0.25s ease;
+
+}
+.btn:hover {
+  transform: scale(1.1);
+  transition: all 0.25s ease;
+
+
+  box-shadow: -4px 4px  rgb(255, 145, 0);
+
+}
+
+</style>
