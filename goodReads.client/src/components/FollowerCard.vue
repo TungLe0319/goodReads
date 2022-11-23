@@ -1,6 +1,16 @@
 <template>
-<div class="card">
-<img :src="follow.creator.picture" :alt="follow.creator.name" :title="follow.creator.name" class="forcedImg">
+<div class="card square my-3 p-3">
+<div class="d-flex justify-content-between align-items-center">
+
+  <div class="d-flex align-items-center">
+
+    <img :src="follow.profile.picture" :alt="follow.profile.name" :title="follow.profile.name" class="forcedImg">
+  <div>
+    <p> {{follow.profile.name}} </p>
+  </div>
+  </div>
+  <button class="me-5 btn h-25"> <img src="src\assets\img\follow.png" alt="" width="60" height="60"> </button>
+</div>
 </div>
 </template>
 
@@ -28,7 +38,8 @@ follow:{type:Follow,required:true}
       editable,
       profile:computed(() => AppState.profiles),
       account: computed(() => AppState.account),
-      follows:computed(() => AppState.follows),
+      following:computed(() => AppState.following),
+      followers:computed(() => AppState.followers),
       }
     }
   }
@@ -36,8 +47,14 @@ follow:{type:Follow,required:true}
 
 <style lang="scss" scoped>
 .forcedImg{
-  height: 300px;
-  width: 300px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
   object-fit: cover;
+}
+.card{
+  border: 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.527);
+
 }
 </style>

@@ -33,7 +33,14 @@ class AccountService {
 
   async getFollowing(){
     const res = await api.get(`/account/following`)
+    console.log(res.data);
     AppState.following = res.data.map(f => new Follow(f))
+  }
+
+  async getFollowers(){
+    const res = await api.get('/account/followers')
+    console.log(res.data);
+    AppState.followers = res.data.map(f=> new Follow(f))
   }
 }
 

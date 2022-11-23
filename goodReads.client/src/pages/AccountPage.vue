@@ -70,13 +70,6 @@
             tabindex="0"
           >
             About
-            <div class="container">
-              <div class="row">
-                <div class="col-md-3" v-for="b in bookShelves">
-                  <BookShelfCard :bookShelf="b" />
-                </div>
-              </div>
-            </div>
           </div>
 
           <div
@@ -95,7 +88,13 @@
             aria-labelledby="nav-Following-tab"
             tabindex="0"
           >
-            Following
+       <div class="container-fluid">
+         <div class="row">
+           <div class="col-md-12" v-for="f in following" :key="f.id">
+             <FollowerCard :follow="f"/>
+           </div>
+         </div>
+       </div>
           </div>
           <div
             class="tab-pane fade"
@@ -117,13 +116,16 @@ import { computed } from "vue";
 import { AppState } from "../AppState";
 import AccountDetails from "../components/AccountPage/AccountDetails.vue";
 import EditAccountForm from "../components/AccountPage/EditAccountForm.vue";
+import FollowerCard from "../components/FollowerCard.vue";
 export default {
   setup() {
     return {
       account: computed(() => AppState.account),
+      following: computed(() => AppState.following),
+      followers: computed(() => AppState.followers),
     };
   },
-  components: { AccountDetails, EditAccountForm },
+  components: { AccountDetails, EditAccountForm, FollowerCard },
 };
 </script>
 
