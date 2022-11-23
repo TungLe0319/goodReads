@@ -23,4 +23,22 @@ public class FollowsController : IController
     }
   }
 
+  
+    [HttpDelete("{followId}")]
+    [Authorize]
+    public async Task<ActionResult<string>> DeleteFollow(int followId)
+    {
+      try
+      {
+        Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+        _followsService.DeleteFollow(followId, userInfo.Id);
+        return Ok("Follow deleted");
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+  
+
 }
