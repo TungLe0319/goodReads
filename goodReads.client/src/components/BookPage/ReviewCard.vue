@@ -119,8 +119,12 @@ export default {
 
       async followByUserId(){
         try {
-          let accountId = props.review.creator.id
-            await followsService.followByUserId()
+          let id = {
+            followingUserId: props.review.creator.id
+            
+          } 
+
+            await followsService.followByUserId(id)
           } catch (error) {
             Pop.error(error,'[followingUserId]')
           }
