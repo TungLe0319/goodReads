@@ -55,8 +55,6 @@ public class AccountController : ControllerBase
     try
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-      // accountData.Creator = userInfo;
-      // accountData.CreatorId = userInfo.Id;
       accountData.Id = userInfo.Id;
       Account keep = _accountService.Edit(accountData, accountData?.Id);
       return Ok(keep);
