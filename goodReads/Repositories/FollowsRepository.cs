@@ -29,4 +29,14 @@ public class FollowsRepository : BaseRepository
                      ;";
     return _db.Query<Follow>(sql, new { followId }).FirstOrDefault();
   }
+
+  internal Follow GetOneFollow(string followingUserId, string creatorId)
+  {
+      string sql = @"SELECT 
+                follow.*
+                FROM follows follow
+                WHERE follow.followingUserId = @followingUserId AND Follow.creatorId = @creatorId
+                     ;";
+        return _db.Query<Follow>(sql, new { followingUserId, creatorId }).FirstOrDefault();
+  }
 }
