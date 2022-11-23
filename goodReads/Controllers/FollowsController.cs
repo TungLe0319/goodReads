@@ -15,7 +15,8 @@ public class FollowsController : IController
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
 
-      return Ok(value);
+
+      return Ok();
     }
     catch (Exception e)
     {
