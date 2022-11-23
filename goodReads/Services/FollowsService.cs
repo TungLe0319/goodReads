@@ -11,7 +11,7 @@ public class FollowsService
 
   internal Follow CreateFollow(Follow followData, string creatorId)
   {
-    Follow follow = _followsRepo.GetOneFollow(followData.FollowingUserId, creatorId);
+    Follow follow = GetOneFollow(followData.FollowingUserId, creatorId);
     if (follow != null)
     {
       throw new Exception("already following");
@@ -24,9 +24,23 @@ public class FollowsService
 
   }
 
-  internal void DeleteFollow(int followId, string id)
+  internal Follow GetOneFollow(string followingUserId, string creatorId)
   {
-    throw new NotImplementedException();
+    Follow follow = _followsRepo.GetOneFollow(followingUserId, creatorId);
+    return follow;
+  }
+
+  internal void DeleteFollow(int followId, string userId)
+  {
+    Follow follow = GetById(followId);
+      if (follow.creatorId != userId)
+          {
+            throw new Exception("not your follow to delete");
+          }
+
+      _followsRepo.DeleteFollow(followId);
+
+      return;
   }
 
   internal List<FollowCreator> GetAllFollowers(string userId)
