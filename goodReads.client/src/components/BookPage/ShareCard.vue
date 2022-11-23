@@ -35,7 +35,7 @@
                   href="https://www.twitter.com"
                 >
                   <img
-                    src="../assets/img/ShareIcons/twitter.png"
+                    src="src\assets\img\ShareIcons\twitter.png"
                     alt=""
                     width="30"
                   />
@@ -43,13 +43,14 @@
 
                 <a href="mailto:">
                   <img
-                    src="../assets/img/ShareIcons/email.png"
+                    src="src\assets\img\ShareIcons\email.png"
                     alt=""
                     width="30"
                   />
                 </a>
                 <img
-                  src="../assets/img/ShareIcons/link.png"
+                class="link"
+                  src="src\assets\img\ShareIcons\link.png"
                   alt=""
                   width="30"
                   @click="copyToClipBoard()"
@@ -61,7 +62,7 @@
                   href="https://www.facebook.com"
                 >
                   <img
-                    src="../assets/img/ShareIcons/facebook.png"
+                    src="src\assets\img\ShareIcons\facebook.png"
                     alt=""
                     width="30"
                   />
@@ -73,7 +74,7 @@
                   href="http://pinterest.com"
                 >
                   <img
-                    src="../assets/img/ShareIcons/pinterest.png"
+                    src="src\assets\img\ShareIcons\pinterest.png"
                     alt=""
                     width="30"
                   />
@@ -117,4 +118,17 @@ const route = useRoute()
 </script>
 
 <style lang="scss" scoped>
+
+a{
+  transition: all 0.25s ease;
+}
+.link{
+     cursor: pointer;
+}
+a:hover,.link:hover{
+  transform: scale(1.1);
+  transition: all 0.25s ease;
+
+}
+
 </style>

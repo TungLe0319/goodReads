@@ -7,12 +7,13 @@
       class="d-flex align-items-center justify-content-between px-5 pt-3 pb-2"
     >
       <div class="d-flex align-items-center">
-        <div role="accountImg">
+        <div role="accountImg" class="">
           <img
             :src="review.creator.picture"
             alt=""
-            class="img-fluid rounded-circle elevation-5"
-            width="80"
+            class=" profileImg img-fluid rounded-circle elevation-5"
+       
+        
           />
         </div>
         <div role="name ">
@@ -118,6 +119,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.accountImg {
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.accountImg img{
+  transition:  transform 0.5s ease;
+}
+
+.accountImg:hover img {
+  transform: scale(.5);
+  border-radius: 50%;
+ 
+
+}
+.profileImg{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
 .recommended {
   position: absolute;
   top: -10px;
