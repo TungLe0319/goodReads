@@ -2,17 +2,10 @@ namespace goodReads.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AccountController : ControllerBase
+public class AccountController : IController
 {
-  private readonly AccountService _accountService;
-  private readonly Auth0Provider _auth0Provider;
-  private readonly BookShelvesService _bookShelvesService;
-
-  public AccountController(AccountService accountService, Auth0Provider auth0Provider, BookShelvesService bookShelvesService)
+  public AccountController(Auth0Provider auth0Provider, AccountService accountService, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService) : base(auth0Provider, accountService, reviewService, followsService, booksService, bookShelvesService)
   {
-    _accountService = accountService;
-    _auth0Provider = auth0Provider;
-    _bookShelvesService = bookShelvesService;
   }
 
   [HttpGet]
@@ -48,6 +41,22 @@ public class AccountController : ControllerBase
     }
   }
 
+  
+    [HttpGet("following")]
+    public ActionResult<List<Follow>> GetAllFollowing()
+    {
+      try
+      {
+        List<Follow> follows = _followsService.GetAllFollowing();
+        return Ok(follows);
+      }
+      catch (Exception e)
+      { 
+        return BadRequest(e.Message);
+      }
+    }
+  
+
   [HttpPut]
   [Authorize]
   public async Task<ActionResult<Account>> Edit([FromBody] Account accountData)
@@ -66,6 +75,8 @@ public class AccountController : ControllerBase
       return BadRequest(e.Message);
     }
   }
+
+
 
 
 }
