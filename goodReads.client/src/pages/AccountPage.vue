@@ -79,7 +79,13 @@
             aria-labelledby="nav-Reviews-tab"
             tabindex="0"
           >
-            Review
+        <div class="container-fluid">
+         <div class="row">
+           <div class="col-md-12" v-for="r in reviews" :key="r.id">
+            <ReviewCard :review="r" />
+           </div>
+         </div>
+       </div>
           </div>
           <div
             class="tab-pane fade"
@@ -116,6 +122,7 @@ import { computed } from "vue";
 import { AppState } from "../AppState";
 import AccountDetails from "../components/AccountPage/AccountDetails.vue";
 import EditAccountForm from "../components/AccountPage/EditAccountForm.vue";
+import ReviewCard from "../components/BookPage/ReviewCard.vue";
 import FollowerCard from "../components/FollowerCard.vue";
 export default {
   setup() {
@@ -123,9 +130,11 @@ export default {
       account: computed(() => AppState.account),
       following: computed(() => AppState.following),
       followers: computed(() => AppState.followers),
+      reviews:computed(() => AppState.accountReviews),
+
     };
   },
-  components: { AccountDetails, EditAccountForm, FollowerCard },
+  components: { AccountDetails, EditAccountForm, FollowerCard, ReviewCard },
 };
 </script>
 

@@ -10,15 +10,15 @@ public class ReviewsRepository
   internal Review CreateReview(Review reviewData)
   {
 
-  var sql = @"
+    var sql = @"
           INSERT INTO
           reviews (body,recommend,creatorId,bookId)
           VALUES (@Body,@Recommend,@CreatorId,@BookId);
           SELECT LAST_INSERT_ID()
               ; ";
 
-   int test  = _db.ExecuteScalar<int>(sql, reviewData);
-reviewData.Id = test;
+    int test = _db.ExecuteScalar<int>(sql, reviewData);
+    reviewData.Id = test;
 
     return reviewData;
   }
@@ -29,11 +29,32 @@ reviewData.Id = test;
             DELETE FROM reviews WHERE id = @reviewId
         
                 ; ";
-  
-     var rows = _db.Execute(sql, new {reviewId});
-  if (rows !=1){throw new Exception("Data is bad or Id is Bad");}
-  return;
-  
+
+    var rows = _db.Execute(sql, new { reviewId });
+    if (rows != 1) { throw new Exception("Data is bad or Id is Bad"); }
+    return;
+
+  }
+
+  internal List<Review> GetAccountReviews(string userId)
+  {
+    var sql = @"
+          SELECT 
+          r.*,
+          a.*
+          FROM reviews r
+          JOIN accounts a on a.id = r.creatorId
+          WHERE r.creatorId = @userId
+          GROUP BY r.id
+           ORDER BY r.createdAt DESC
+               ; ";
+    return _db.Query<Review, Profile, Review>(sql, (review, profile) =>
+     {
+       review.Creator = profile;
+
+       return review;
+     }, new { userId }).ToList();
+
   }
 
   internal List<Review> GetAllReviews()
@@ -68,12 +89,12 @@ reviewData.Id = test;
            GROUP BY r.id
         
                 ; ";
-     return _db.Query<Review, Profile,Review >(sql, (review, profile) =>
-      {
-        review.Creator = profile;
-        
-        return review;
-      },new {bookId}).ToList();
-  
+    return _db.Query<Review, Profile, Review>(sql, (review, profile) =>
+     {
+       review.Creator = profile;
+
+       return review;
+     }, new { bookId }).ToList();
+
   }
 }

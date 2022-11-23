@@ -26,6 +26,8 @@ export const AppState = reactive({
   following: [],
   /** @type {import('./models/BookShelf.js').BookShelf[]} */
   accountBookshelves: [],
+  /** @type {import('./models/Review.js').Review[]} */
+  accountReviews: [],
 
   theme: false,
 });

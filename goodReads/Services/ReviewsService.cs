@@ -19,6 +19,11 @@ private readonly ReviewsRepository _reviewsRepo;
   _reviewsRepo.DeleteReview(reviewId);
   }
 
+  internal List<Review> GetAccountReviews(string userId)
+  {
+  return _reviewsRepo.GetAccountReviews(userId);
+  }
+
   internal List<Review> GetAllReviews()
   {
     return _reviewsRepo.GetAllReviews();

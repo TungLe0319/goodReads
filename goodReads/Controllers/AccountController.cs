@@ -92,6 +92,21 @@ public class AccountController : IController
   }
 
 
+  [HttpGet("reviews")]
+  public  async Task<ActionResult<List<Review>>> GetAccountReviews()
+  {
+    try
+    {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      List<Review> reviews = _reviewService.GetAccountReviews(userInfo?.Id);
+      return Ok(reviews);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
 
 
 }

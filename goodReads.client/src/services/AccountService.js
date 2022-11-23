@@ -2,6 +2,7 @@ import { AppState } from '../AppState'
 import { Account } from '../models/Account'
 import { BookShelf } from "../models/BookShelf.js"
 import { Follow } from '../models/Follow'
+import { Review } from "../models/Review.js"
 import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
@@ -29,7 +30,11 @@ class AccountService {
     const res = await api.put('/account', formData)
     AppState.account = new Account(res.data)
   }
-
+async getReviews(){
+    const res = await api.get(`/account/reviews`);
+    console.log(res.data);
+    AppState.accountReviews = res.data.map((a) => new Review(a));
+}
 
   async getFollowing(){
     const res = await api.get(`/account/following`)

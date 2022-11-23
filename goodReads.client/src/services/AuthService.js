@@ -30,6 +30,7 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   accountService.getAccountBookShelves()
   accountService.getFollowers()
   accountService.getFollowing()
+  accountService.getReviews()
 })
 
 async function refreshAuthToken(config) {
