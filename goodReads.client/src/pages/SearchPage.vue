@@ -12,6 +12,10 @@
           <p>Showing All</p>
         </div>
         <strong>All Categories</strong>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
       </div>
       <div class="col-md-9">
 
@@ -47,5 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+input[type="checkbox"] {
+  accent-color: #f92f60;
+}
 </style>
