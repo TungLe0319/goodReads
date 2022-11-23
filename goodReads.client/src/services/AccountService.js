@@ -29,6 +29,12 @@ class AccountService {
     const res = await api.put('/account', formData)
     AppState.account = new Account(res.data)
   }
+
+
+  async getFollowing(){
+    const res = await api.get(`/account/following`)
+    AppState.following = res.data.map(f => new Follow(f))
+  }
 }
 
 export const accountService = new AccountService()

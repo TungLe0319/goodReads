@@ -21,7 +21,9 @@ export const AppState = reactive({
   reviews: [],
 
   /** @type {import('./models/Follow.js').Follow[]} */
-  follows: [],
+  followers: [],
+  /** @type {import('./models/Follow.js').Follow[]} */
+  following: [],
   /** @type {import('./models/BookShelf.js').BookShelf[]} */
   accountBookshelves: [],
 

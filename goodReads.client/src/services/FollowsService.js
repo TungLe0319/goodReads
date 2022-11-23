@@ -8,5 +8,7 @@ class FollowsService {
     const res = await api.post(`api/follows`, accountId);
     AppState.follows = res.data.map(f=> new Follow(f))
   }
+
+  
 }
 export const followsService = new FollowsService();
