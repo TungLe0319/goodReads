@@ -24,7 +24,9 @@
       </div>
 
       <div role="createdAt " class="d-flex align-items-center">
-        <button v-if="user.isAuthenticated && review.creator.id != account.id" class="btn p-0 me-3">
+        <button 
+        @click="followByUserId()"
+        v-if="user.isAuthenticated && review.creator.id != account.id" class="btn p-0 me-3">
           <img
             src="src\assets\img\follow.png"
             alt="follow icon"
@@ -85,6 +87,7 @@ import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../../AppState.js";
 import { Review } from "../../models/Review.js";
 import { reviewsService } from "../../services/ReviewsService.js";
+import { followsService } from "../../services/FollowsService.js";
 import { logger } from "../../utils/Logger.js";
 import Pop from "../../utils/Pop.js";
 
@@ -114,10 +117,10 @@ export default {
         }
       },
 
-      async followingUserId(){
+      async followByUserId(){
         try {
           let accountId = props.review.creator.id
-            await followsService
+            await followsService.followByUserId()
           } catch (error) {
             Pop.error(error,'[followingUserId]')
           }
