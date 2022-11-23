@@ -79,4 +79,15 @@ public class FollowsRepository : BaseRepository
     }, new { userId }).ToList();
 
   }
+
+  internal void DeleteFollow(int followId)
+  {
+      var sql = @"DELETE FROM follows WHERE id = @followId
+                  ;";
+    
+       var rows = _db.Execute(sql, new {followId});
+    if (rows !=1){throw new Exception("Data is bad or Id is Bad");}
+    return;
+    
+  }
 }
