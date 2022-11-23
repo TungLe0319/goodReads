@@ -1,5 +1,8 @@
 <template>
-  <div class="card bg-transparent my-3 square ">
+  <div class="card bg-transparent my-3 square position-relative ">
+      <div class="position-absolute ">
+    <img src="src\assets\img\bookMark.png" alt="" width="40">
+  </div>
     <div
       class="d-flex align-items-center justify-content-between px-5 pt-3 pb-2"
     >
@@ -12,8 +15,8 @@
             width="80"
           />
         </div>
-        <div role="name">
-          <p class="ms-3 fs-5 text-decoration-underline">
+        <div role="name ">
+          <p class="ms-3 fs-5 text-decoration-underline text-dark">
             {{ review.creator.name.split("@")[0] }}
           </p>
         </div>
@@ -37,7 +40,7 @@
       </div>
     </div>
 
-    <div class="px-4">
+    <div class="px-4 text-dark">
       <div v-if="review.recommend">
         <b class="fs-5"> Recommend </b>
       </div>
@@ -60,6 +63,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -115,3 +119,4 @@ export default {
 }
 
 </style>
+

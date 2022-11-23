@@ -24,15 +24,15 @@
         <h1 class="bookTitle elevation-5 bg-create p-2 px-3">{{ book.title }}</h1>
         <div class="d-flex">
           <!-- <b class="authors mx-2" v-for="a in book.authors">{{ a }}</b> -->
-          <b class="authors mx-2"> {{ book.authors }} </b>
+          <b class="authors mx-2 text-dark"> {{ book.authors }} </b>
         </div>
         <div class="border-bottom border-1 my-3 border-secondary"></div>
         <div>
-          <p class="lead">
+          <p class="lead text-dark">
             {{ book.description }}
           </p>
         </div>
-        <div>
+        <div class="text-dark">
           <p>
             <i class="mdi mdi-calendar fs-4"></i> <b> Release Date -</b>
             {{ new Date(book.publishedDate).toLocaleDateString() }}
@@ -61,12 +61,12 @@
 
     <section class="">
       <div class="row">
-        <div class="col-md-12 d-flex justify-content-between my-3">
-          <h3>Community Reviews</h3>
+        <div class="col-md-12 d-flex justify-content-between my-3 ">
+          <h3 class="text-dark">Community Reviews</h3>
           <button
-            class="btn bg-create fw-bold d-flex align-items-center justify-content-center"
+            class="btn bg-create text-dark fw-bold d-flex align-items-center justify-content-center"
           >
-            <i class="mdi mdi-comment fs-4 text-light me-2"></i> Write a Review
+            <i class="mdi mdi-comment fs-4 text-dark me-2"></i> Write a Review
           </button>
         </div>
         <div class="col-md-12" v-for="r in reviews" :key="r.id">
