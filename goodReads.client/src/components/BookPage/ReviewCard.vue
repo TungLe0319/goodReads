@@ -1,8 +1,8 @@
 <template>
-  <div class="card bg-transparent my-3 square position-relative ">
-      <div class="position-absolute ">
-    <img src="src\assets\img\bookMark.png" alt="" width="40">
-  </div>
+  <div class="card bg-transparent my-3 square position-relative">
+    <div class="recommended">
+      <img src="src\assets\img\bookMark.png" alt="" width="40" />
+    </div>
     <div
       class="d-flex align-items-center justify-content-between px-5 pt-3 pb-2"
     >
@@ -23,7 +23,7 @@
       </div>
 
       <div role="createdAt " class="d-flex align-items-center">
-        <button class="btn p-0 me-3 ">
+        <button v-if="user.isAuthenticated" class="btn p-0 me-3">
           <img
             src="src\assets\img\follow.png"
             alt="follow icon"
@@ -34,7 +34,12 @@
         <p class="text-dark lighten-60">
           {{ new Date(review.createdAt).toLocaleString() }}
         </p>
-        <button @click="deleteReview()" class="btn ms-3" title="Delete Review">
+        <button
+          v-if="review.creator.id == account.id"
+          @click="deleteReview()"
+          class="btn ms-3"
+          title="Delete Review"
+        >
           <img src="src\assets\img\delete.png" alt="delete Icon" width="40" />
         </button>
       </div>
@@ -50,7 +55,7 @@
       </div>
     </div>
 
-    <div class="bg-light darken-10">
+    <div v-if="user.isAuthenticated" class="bg-light darken-10">
       <div class="form-floating m-4">
         <input
           type="text"
@@ -62,8 +67,15 @@
         <label for="reviewComment">comment</label>
       </div>
     </div>
+    <div v-else class="bg-light darken-10">
+      <button
+        class="btn selectable  text-dark text-uppercase my-2 my-lg-0"
+        @click="login"
+      >
+        Login
+      </button>
+    </div>
   </div>
-
 </template>
 
 <script>
@@ -87,6 +99,8 @@ export default {
 
     return {
       editable,
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
 
       async deleteReview() {
         try {
@@ -104,19 +118,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.recommended {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+}
 
-.btn{
+.btn {
   transition: all 0.25s ease;
-
 }
 .btn:hover {
   transform: scale(1.1);
   transition: all 0.25s ease;
 
-
-  box-shadow: -4px 4px  rgb(255, 145, 0);
-
 }
-
 </style>
-
