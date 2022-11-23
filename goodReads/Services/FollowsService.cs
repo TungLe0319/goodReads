@@ -11,7 +11,7 @@ public class FollowsService
 
   internal Follow CreateFollow(Follow followData, string creatorId)
   {
-    Follow follow = GetById(followData.Id);
+    Follow follow = _followsRepo.GetOneFollow(followData.FollowingUserId, creatorId);
     if (follow != null)
     {
       throw new Exception("already following");
@@ -23,6 +23,8 @@ public class FollowsService
     return follow;
 
   }
+
+  
 
   internal List<Follow> GetAllFollowing()
   {
