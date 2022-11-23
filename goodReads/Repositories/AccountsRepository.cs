@@ -9,11 +9,11 @@ public class AccountsRepository
     _db = db;
   }
 
-  internal Account GetByEmail(string userEmail)
-  {
-    string sql = "SELECT * FROM accounts WHERE email = @userEmail";
-    return _db.QueryFirstOrDefault<Account>(sql, new { userEmail });
-  }
+  // internal Account GetById(string userId)
+  // {
+  //   string sql = "SELECT * FROM accounts WHERE id = @userId";
+  //   return _db.QueryFirstOrDefault<Account>(sql, new { userId });
+  // }
 
   internal Account GetById(string id)
   {
