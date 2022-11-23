@@ -37,6 +37,7 @@ export default {
     return {
       editable,
       setActive() {
+        document.documentElement.scrollTop = 0
         AppState.activeBook = props.book;
         console.log(AppState.activeBook);
       },

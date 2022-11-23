@@ -1,5 +1,5 @@
 <template>
-   <div class="card p-2 bg-transparent elevation-4">
+   <div class="card p-2 bg-create elevation-4 border-0">
           <p>2.99</p>
           <p>Available for a limited time</p>
     
@@ -22,6 +22,7 @@
               class="btn btn-outline-dark mt-2"
               data-bs-toggle="modal"
               data-bs-target="#createReview"
+               data-bs-backdrop="false"
             >
               Review
             </button>

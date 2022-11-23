@@ -1,18 +1,21 @@
 <template>
 
   <div
-    class="modal fade elevation-5"
+    class="modal fade "
     id="createReview"
     tabindex="-1"
     aria-labelledby="createReviewLabel"
     aria-hidden="true"
+
   >
     <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content border-0">
+      <div class="modal-content border-0 elevation-5">
         <slot> </slot>
       </div>
     </div>
   </div>
+
+ 
 </template>
 
 <script>

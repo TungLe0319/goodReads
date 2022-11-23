@@ -2,7 +2,7 @@
   <div class="modal-body" v-if="book">
     <div class="row">
       <div class="col-md-6 d-flex justify-content-center">
-        <img :src="book.img" alt="" class="img-fluid" />
+        <img :src="book.img" alt="" class="img-fluid elevation-3 rounded" />
       </div>
       <div class="col-md-6">
         <form @submit.prevent="createReview()">

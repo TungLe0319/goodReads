@@ -1,7 +1,8 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg bg-transparent px-5 border-bottom border-secondary"
+    class="navbar navbar-expand-lg bg-transparent pe-5 ps-2 border-bottom border-secondary"
   >
+  <di class="ms-2"><h4 class="text-create"> 🆂🅲🆁🅾🅻🅻🅵🆁🅸🅴🅽🅳🆂</h4></di>
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
@@ -12,6 +13,7 @@
         />
       </div>
     </router-link>
+    
     <button
       class="navbar-toggler"
       type="button"

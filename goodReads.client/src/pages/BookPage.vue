@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="col-md-6 animate__animated animate__fadeInUp">
-        <h1 class="bookTitle">{{ book.title }}</h1>
+        <h1 class="bookTitle elevation-5 bg-create p-2 px-3">{{ book.title }}</h1>
         <div class="d-flex">
           <!-- <b class="authors mx-2" v-for="a in book.authors">{{ a }}</b> -->
           <b class="authors mx-2"> {{ book.authors }} </b>
@@ -83,7 +83,7 @@ import { onMounted, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
-import CreateReview from "../components/CreateReview.vue";
+import CreateReview from "../components/BookPage/CreateReview.vue";
 import ReviewCard from "../components/BookPage/ReviewCard.vue";
 import { router } from "../router.js";
 import { bookService } from "../services/BookService.js";
@@ -153,6 +153,7 @@ export default {
 .bookTitle {
   font-size: 40pt;
   font-family: "Abril Fatface", cursive;
+  
 }
 .authors {
   font-family: Arial, Helvetica, sans-serif;
