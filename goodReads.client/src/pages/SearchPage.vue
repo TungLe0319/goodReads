@@ -1,10 +1,35 @@
 <template>
-  <section class="container mt-5">
+  <section class="container mt-3">
+    <!-- SearchBar -->
+    <div
+      class="row justify-content-center sticky-top animate__animated animate__fadeInDown"
+    >
+      <div class="col-md-6">
+        <form @submit.prevent="searchByQuery()">
+          <div
+            class="input-group my-3 rounded-5 elevation-5 sticky-top bg-dark p-1 searchContainer"
+          >
+            <button class="btn d-flex justify-content-center" type="submit">
+              <i class="mdi mdi-magnify fs-2 text-light"></i>
+            </button>
+            <input
+              v-model="editable.term"
+              type="text"
+              class="form-control rounded-5 border-0"
+              aria-label="Username"
+              placeholder="Search Books By Title.."
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- !SearchBar -->
+
     <div class="row">
       <div class="col-md-12">
-        <h2>
-          Explore Some Lore
-        </h2>
+        <h2>Explore Some Lore</h2>
       </div>
       <div class="col-md-3">
         <div>
@@ -13,12 +38,18 @@
         </div>
         <strong>All Categories</strong>
         <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Check me out</label
+          >
         </div>
       </div>
       <div class="col-md-9">
-
+        <div class="row">
+          <div class="col-md-2" v-for="b in books" :key="b.id">
+            <SearchPageBookCard :book="b" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -28,26 +59,36 @@
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
-import { logger } from "../utils/Logger.js"
+import BookCard from "../components/BookCard.vue";
+import { bookService } from "../services/BookService.js";
+import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
 export default {
-  props: {
-
-  },
+  props: {},
   setup(props) {
     const editable = ref({});
-
-    onMounted(() => {
-
-    });
-    watchEffect(() => { });
-
+    onMounted(() => {});
+    watchEffect(() => {});
     return {
       editable,
-    }
-  }
-}
+      books: computed(() => AppState.sPBooks),
+      async searchByQuery() {
+        try {
+          await bookService.searchByQuery(editable.value.term);
+        } catch (error) {
+          if (
+            error ==
+            "TypeError: Cannot read properties of undefined (reading 'thumbnail')"
+          ) {
+          }
+          logger.error(error);
+        }
+      },
+    };
+  },
+  components: { BookCard },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -10,6 +10,8 @@ export const AppState = reactive({
 
   /** @type {import('./models/Book.js').Book[]} */
   books: [],
+  /** @type {import('./models/Book.js').Book[]} */
+  sPBooks: [],
 
   /** @type {import('./models/Book.js').Book | null} */
   activeBook: null,

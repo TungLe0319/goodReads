@@ -1,13 +1,13 @@
 <template>
      
         <div id="feedBack" class="card p-2  border-0 bg-secondary easySteps elevation-2">
-          <b class="ms-3 mt-2">Any Concerns or FeedBack for our UI Please Leave us a message</b>
+          <b class="ms-3 mt-2">We Appreciate any feedback you can give us to help improve your experience</b>
         
           <div class="card-body">
             <form @submit.prevent="sendFeedBack()">
 
               <div class="mb-3">
-                <label for="feedBack" class="form-label"> Leave us some FeedBack</label>
+           
                 <textarea class="form-control" name="feedBack" id="feedBack" rows="5"></textarea>
               </div>
 

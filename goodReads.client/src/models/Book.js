@@ -1,7 +1,7 @@
 export class Book {
   constructor(data) {
     this.id = data.id;
-    this.bookShelfId = data.bookShelfId;
+    this.bookShelfId = data.bookShelfId || delete this.bookShelfId;
     this.title = data.volumeInfo.title;
     this.authors = data.volumeInfo.authors;
     this.img =
@@ -16,8 +16,7 @@ export class Book {
     this.language = data.volumeInfo.language;
     this.printType = data.volumeInfo.printType;
     this.previewLink = data.volumeInfo.previewLink;
-    this.dimensions = data.dimensions;
-    this.largeImg = data.volumeInfo.imageLinks?.large;
+    this.dimensions = data?.dimensions || delete this.dimensions;
     this.buyLink = data.saleInfo.buyLink;
     this.country = data.saleInfo.country;
     this.isEbook = data.saleInfo.isEbook || false;
@@ -25,7 +24,9 @@ export class Book {
     this.retailPrice = data.saleInfo.retailPrice?.amount;
     this.currency = data.saleInfo.retailPrice?.currencyCode;
     this.flavorText = data.searchInfo?.textSnippet;
-    this.averageRating = data.volumeInfo?.averageRating;
-    this.Identifiers = data.volumeInfo?.industryIdentifiers;
+    this.averageRating =
+    data.volumeInfo?.averageRating || delete this.averageRating;
+    this.identifiers = data.volumeInfo?.industryIdentifiers;
+    this.largeImg = `http://books.google.com/books/publisher/content?id=${data.id}&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE71cWMe7Mn1QYpUrtA6GlLwzckuPGvU2_h0Ilt3PSoajxjZXdfEbt7uyDGa0D-RPuw7ArtF9N-CurJjCOeR2nd7k7td3GZIH-nimVlVwAGDssq9IiDe0lcnyAqEeO8938hE-DDFR&source=gbs_api`;
   }
 }

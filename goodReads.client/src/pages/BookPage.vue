@@ -4,6 +4,15 @@
     <div class="row bookRow">
       <div class="col-md-3 text-center animate__animated animate__fadeInLeft">
         <img
+        v-if="book?.largeImg"
+          :src="book?.largeImg"
+          alt=""
+          class="img-fluid rounded elevation-5"
+          width="400"
+          height="600"
+        />
+        <img
+        v-else
           :src="book?.img"
           alt=""
           class="img-fluid rounded elevation-5"
@@ -93,7 +102,7 @@ import ShareCard from "../components/BookPage/ShareCard.vue";
 export default {
   setup() {
     onMounted(() => {
-      // getBookInformation();
+      getBookInformation();
       getBookReviews();
     });
     watchEffect(() => {
