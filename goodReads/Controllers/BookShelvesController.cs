@@ -2,15 +2,10 @@ namespace goodReads.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BookShelvesController:ControllerBase
+public class BookShelvesController: IController
 {
-private readonly Auth0Provider _auth0;
-private readonly BookShelvesService _bs;
-
-  public BookShelvesController(Auth0Provider auth0, BookShelvesService bs)
+  public BookShelvesController(Auth0Provider auth0Provider, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService) : base(auth0Provider, reviewService, followsService, booksService, bookShelvesService)
   {
-    _auth0 = auth0;
-    _bs = bs;
   }
 
   [HttpPost]
@@ -20,9 +15,9 @@ private readonly BookShelvesService _bs;
     try
     {
 
-      var userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
+      var userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
       bookShelfData.CreatorId = userInfo.Id;
-      BookShelf bookShelf = _bs.CreateBookShelf(bookShelfData);
+      BookShelf bookShelf = _bookShelvesService.CreateBookShelf(bookShelfData);
       return Ok(bookShelf);
     }
     catch (Exception e)

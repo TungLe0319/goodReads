@@ -4,12 +4,12 @@ namespace goodReads.Controllers;
 [Route("api/[controller]")]
 public class ReviewsController : IController
 {
-  public ReviewsController(Auth0Provider auth0Provider, ReviewsService reviewService) : base(auth0Provider, reviewService)
+  public ReviewsController(Auth0Provider auth0Provider, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService) : base(auth0Provider, reviewService, followsService, booksService, bookShelvesService)
   {
   }
 
   [HttpPost]
- [Authorize]
+  [Authorize]
   public async Task<ActionResult<Review>> CreateReview([FromBody] Review reviewData)
   {
     try
@@ -18,7 +18,7 @@ public class ReviewsController : IController
       var userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
 
       reviewData.CreatorId = userInfo.Id;
-      Review review = _reviewService.CreateReview(reviewData,userInfo.Id);
+      Review review = _reviewService.CreateReview(reviewData, userInfo.Id);
       review.Creator = userInfo;
       return Ok(review);
     }
@@ -30,7 +30,7 @@ public class ReviewsController : IController
 
 
   [HttpGet("{bookId}")]
-  public ActionResult<List<Review>> GetBookReviews( string bookId)
+  public ActionResult<List<Review>> GetBookReviews(string bookId)
   {
     try
     {
@@ -44,22 +44,22 @@ public class ReviewsController : IController
   }
 
 
-  
-    [HttpDelete("{reviewId}")]
-    [Authorize]
-    public async Task<ActionResult<string>> DeleteReview(int reviewId)
+
+  [HttpDelete("{reviewId}")]
+  [Authorize]
+  public async Task<ActionResult<string>> DeleteReview(int reviewId)
+  {
+    try
     {
-      try
-      {
-        Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-        _reviewService.DeleteReview(reviewId, userInfo.Id);
-        return Ok("Review deleted");
-      }
-      catch (Exception e)
-      {
-        return BadRequest(e.Message);
-      }
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      _reviewService.DeleteReview(reviewId, userInfo.Id);
+      return Ok("Review deleted");
     }
-  
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
 
 }

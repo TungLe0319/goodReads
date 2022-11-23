@@ -1,4 +1,4 @@
--- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1668895251805@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(
@@ -16,9 +16,9 @@ CREATE TABLE
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         creatorId VARCHAR(255) NOT NULL,
-        followingId VARCHAR(255) NOT NULL,
+        followingUserId VARCHAR(255) NOT NULL,
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
-        FOREIGN KEY (followingId) REFERENCES accounts(id) ON DELETE CASCADE
+        FOREIGN KEY (followingUserId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE

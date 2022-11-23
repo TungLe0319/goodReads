@@ -4,7 +4,7 @@ namespace goodReads.Controllers;
 [Route("api/[controller]")]
 public class FollowsController : IController
 {
-  public FollowsController(Auth0Provider auth0Provider, ReviewsService reviewService) : base(auth0Provider, reviewService)
+  public FollowsController(Auth0Provider auth0Provider, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService) : base(auth0Provider, reviewService, followsService, booksService, bookShelvesService)
   {
   }
 
