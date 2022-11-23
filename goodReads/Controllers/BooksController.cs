@@ -3,15 +3,10 @@ namespace goodReads.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 
-public class BooksController : ControllerBase
+public class BooksController : IController
 {
-  private readonly BooksService _booksService;
-  private readonly Auth0Provider _auth0;
-
-  public BooksController(BooksService booksService, Auth0Provider auth0)
+  public BooksController(Auth0Provider auth0Provider, AccountService accountService, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService) : base(auth0Provider, accountService, reviewService, followsService, booksService, bookShelvesService)
   {
-    _booksService = booksService;
-    _auth0 = auth0;
   }
 
   [HttpPost]
@@ -19,7 +14,7 @@ public class BooksController : ControllerBase
   {
     try
     {
-      var userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
+      var userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
 
       Book book = _booksService.CreateBook(bookData);
       return Ok(book);
