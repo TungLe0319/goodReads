@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-12">
         <AccountDetails :account="account"/>
+        <EditAccountForm/>
       </div>
     </div>
   </div>
@@ -12,13 +13,14 @@
 import { computed } from 'vue'
 import { AppState } from '../AppState'
 import AccountDetails from '../components/AccountPage/AccountDetails.vue';
+import EditAccountForm from "../components/AccountPage/EditAccountForm.vue";
 export default {
     setup() {
         return {
             account: computed(() => AppState.account)
         };
     },
-    components: { AccountDetails }
+    components: { AccountDetails, EditAccountForm }
 }
 </script>
 

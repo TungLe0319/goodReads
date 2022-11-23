@@ -23,7 +23,12 @@ class AccountService {
     const res = await api.get("/account/bookshelves");
     console.log(res.data);
     AppState.accountBookshelves = res.data.map(a => new BookShelf(a))
- };
+  }
+  
+  async editAccount(formData) {
+    const res = await api.put('/account', formData)
+    AppState.account = new Account(res.data)
+  }
 }
 
 export const accountService = new AccountService()
