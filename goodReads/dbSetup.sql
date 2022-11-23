@@ -26,11 +26,9 @@ CREATE TABLE
         id INT NOT NULL primary key AUTO_INCREMENT COMMENT 'primary key',
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
-        title varchar(255),
-        img VARCHAR(500),
         type ENUM(
             "favorite",
-            'wishList',
+            'wishlist',
             'reading',
             'finished'
         ),
