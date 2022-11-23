@@ -15,6 +15,7 @@ public class Follow : IDbItem<int>
 }
 
 
-public class FollowCreator : Follow{
-  // public Profile Profile { get; set; }
-}
+// public class Follow : Follow
+// {
+//   // public Profile Profile { get; set; }
+// }

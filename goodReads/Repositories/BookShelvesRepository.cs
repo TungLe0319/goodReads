@@ -10,15 +10,11 @@ public class BookShelvesRepository : BaseRepository
     var sql = @"
               INSERT INTO
               bookshelves (
-                title,
                 type,
-                img,
                 creatorId
               )
               VALUES (
-                @Title,
                 @Type,
-                @img,
                 @CreatorId
               );
               SELECT LAST_INSERT_ID()

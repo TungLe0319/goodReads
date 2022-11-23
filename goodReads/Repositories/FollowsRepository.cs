@@ -16,7 +16,7 @@ public class FollowsRepository : BaseRepository
     return GetById(followId);
   }
 
-  internal FollowCreator GetById(int followId)
+  internal Follow GetById(int followId)
   {
     string sql = @"SELECT follow.*,
                 account.*
@@ -24,10 +24,11 @@ public class FollowsRepository : BaseRepository
                 join accounts account on account.id = follow.followingUserId
                 WHERE follow.id = @followId
                     ;";
-    return _db.Query<FollowCreator, Profile, FollowCreator>(sql, (follow, profile) => {
+    return _db.Query<Follow, Profile, Follow>(sql, (follow, profile) =>
+    {
       follow.Profile = profile;
       return follow;
-    } , new{ followId }).FirstOrDefault();
+    }, new { followId }).FirstOrDefault();
   }
 
   internal Follow GetOneFollow(string followingUserId, string creatorId)
@@ -40,7 +41,7 @@ public class FollowsRepository : BaseRepository
     return _db.Query<Follow>(sql, new { followingUserId, creatorId }).FirstOrDefault();
   }
 
-  internal List<FollowCreator> GetAllFollowing(string userId)
+  internal List<Follow> GetAllFollowing(string userId)
   {
     var sql = @"SELECT 
                 follow.*,
@@ -51,7 +52,7 @@ public class FollowsRepository : BaseRepository
                 GROUP BY follow.id
             
                     ;";
-    return _db.Query<FollowCreator, Profile, FollowCreator>(sql, (follow, profile) =>
+    return _db.Query<Follow, Profile, Follow>(sql, (follow, profile) =>
     {
       follow.Profile = profile;
 
@@ -60,7 +61,7 @@ public class FollowsRepository : BaseRepository
 
   }
 
-  internal List<FollowCreator> GetAllFollowers(object userId)
+  internal List<Follow> GetAllFollowers(object userId)
   {
     var sql = @"SELECT 
                 follow.*,
@@ -71,7 +72,7 @@ public class FollowsRepository : BaseRepository
                 GROUP BY follow.id
             
                     ;";
-    return _db.Query<FollowCreator, Profile, FollowCreator>(sql, (follow, profile) =>
+    return _db.Query<Follow, Profile, Follow>(sql, (follow, profile) =>
     {
       follow.Profile = profile;
 
@@ -82,12 +83,12 @@ public class FollowsRepository : BaseRepository
 
   internal void DeleteFollow(int followId)
   {
-      var sql = @"DELETE FROM follows WHERE id = @followId
+    var sql = @"DELETE FROM follows WHERE id = @followId
                   ;";
-    
-       var rows = _db.Execute(sql, new {followId});
-    if (rows !=1){throw new Exception("Data is bad or Id is Bad");}
+
+    var rows = _db.Execute(sql, new { followId });
+    if (rows != 1) { throw new Exception("Data is bad or Id is Bad"); }
     return;
-    
+
   }
 }
