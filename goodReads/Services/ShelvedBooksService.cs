@@ -1,4 +1,4 @@
-namespace betterAfterBooks.Services;
+namespace goodReads.Services;
 
 public class ShelvedBookService
 {
@@ -17,7 +17,8 @@ public class ShelvedBookService
     return newShelfBook;
   }
 
-  public ShelfBook GetById(int id){
+  public ShelfBook GetById(int id)
+  {
     ShelfBook shelfBook = _sbRepo.GetById(id);
     return shelfBook;
 
@@ -26,21 +27,21 @@ public class ShelvedBookService
   internal string DeleteShelfBook(int shelfBookId, string userId)
   {
     ShelfBook shelfBook = GetById(shelfBookId);
-    if( shelfBook == null)
+    if (shelfBook == null)
     {
-    throw new Exception("Invalid shelfBook Id");
+      throw new Exception("Invalid shelfBook Id");
     }
-    if( shelfBook.CreatorId != userId)
+    if (shelfBook.CreatorId != userId)
     {
-    throw new Exception("Unauthorized");
+      throw new Exception("Unauthorized");
     }
-    
+
     var deleted = _sbRepo.DeleteShelfBook(shelfBookId);
-    if( !deleted)
+    if (!deleted)
     {
-    throw new Exception("Unable to delete");
+      throw new Exception("Unable to delete");
     }
     return "Successfully removed from bookShelf";
-    
+
   }
 }

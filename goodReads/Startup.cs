@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
 
-namespace betterAfterBooks;
+namespace goodReads;
 
 public class Startup
 {
@@ -26,7 +26,7 @@ public class Startup
     services.AddControllers();
     services.AddSwaggerGen(c =>
     {
-      c.SwaggerDoc("v1", new OpenApiInfo { Title = "betterAfterBooks", Version = "v1" });
+      c.SwaggerDoc("v1", new OpenApiInfo { Title = "goodReads", Version = "v1" });
     });
     services.AddSingleton<Auth0Provider>();
     services.AddScoped<IDbConnection>(x => CreateDbConnection());
@@ -45,6 +45,9 @@ public class Startup
 
     services.AddTransient<FollowsRepository>();
     services.AddTransient<FollowsService>();
+
+    services.AddTransient<ShelvedBooksRepository>();
+    services.AddTransient<ShelvedBookService>();
 
 
   }

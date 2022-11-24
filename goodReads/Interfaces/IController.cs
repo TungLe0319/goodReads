@@ -1,4 +1,4 @@
-namespace betterAfterBooks.Interfaces;
+namespace goodReads.Interfaces;
 
 public class IController : ControllerBase
 {

@@ -23,7 +23,7 @@ jobs:
       - name: Set Env Vars
         uses: microsoft/variable-substitution@v1
         with:
-          files: "betterAfterBooks/appsettings.json"
+          files: "goodReads/appsettings.json"
         env:
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
@@ -32,7 +32,7 @@ jobs:
       # dotnet build and publish
       - name: dotnet publish
         run: |
-          dotnet publish ./betterAfterBooks -c Release
+          dotnet publish ./goodReads -c Release
       - name: Build, Push and Release a Docker container to Heroku.
         uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
@@ -43,4 +43,4 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           # Name of the heroku application to which the build is to be sent.
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          dockerfile_directory: ./betterAfterBooks
+          dockerfile_directory: ./goodReads

@@ -1,4 +1,4 @@
-namespace betterAfterBooks.Interfaces;
+namespace goodReads.Interfaces;
 public interface IHasCreator : IDbItem<int>
 {
   string CreatorId { get; set; }

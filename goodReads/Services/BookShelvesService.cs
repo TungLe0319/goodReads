@@ -1,4 +1,4 @@
-namespace betterAfterBooks.Services;
+namespace goodReads.Services;
 public class BookShelvesService
 {
 

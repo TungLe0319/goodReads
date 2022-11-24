@@ -1,4 +1,4 @@
-namespace betterAfterBooks.Models;
+namespace goodReads.Models;
 public class BookShelf : IHasCreator
 {
 

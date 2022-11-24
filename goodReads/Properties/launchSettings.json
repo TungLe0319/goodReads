@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "betterAfterBooks": {
+    "goodReads": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

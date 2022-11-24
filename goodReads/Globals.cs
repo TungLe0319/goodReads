@@ -10,8 +10,8 @@ global using Dapper;
 global using CodeWorks.Utils;
 
 // APPLICATION SPECIFIC
-global using betterAfterBooks.Repositories;
-global using betterAfterBooks.Services;
-global using betterAfterBooks.Models;
-global using betterAfterBooks.Interfaces;
+global using goodReads.Repositories;
+global using goodReads.Services;
+global using goodReads.Models;
+global using goodReads.Interfaces;
 global using PusherServer;
