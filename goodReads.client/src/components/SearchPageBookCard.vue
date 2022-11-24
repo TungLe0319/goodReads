@@ -66,7 +66,7 @@ export default {
       async searchByAuthor(){
         try {
        let author = props.book.authors
-            await bookService.searchByAuthor(author)
+            await bookService.searchBy(author)
           } catch (error) {
             Pop.error(error,'[searchByCategory]')
           }

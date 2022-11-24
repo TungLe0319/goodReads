@@ -1,4 +1,4 @@
--- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1669159198083@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(
@@ -84,6 +84,16 @@ CREATE TABLE
         recommend TINYINT DEFAULT 0,
         bookId VARCHAR(255) NOT NULL,
         creatorId VARCHAR(255) NOT NULL,
+        FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+    ) default charset utf8 COMMENT '';
+
+CREATE TABLE
+    IF NOT EXISTS feedBacks(
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
+        body LONGTEXT NOT NULL,
+        creatorId varchar(255),
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
 
