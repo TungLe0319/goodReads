@@ -51,6 +51,11 @@
                   Recommend a book
                 </p>
               </li>
+              <li>Profile Page</li>
+              <li>Notifications?</li>
+              <li>Adding to List</li>
+              <li>Pusher,</li>
+              <li>refine searchPage </li>
             </ul>
           </div>
         </div>
