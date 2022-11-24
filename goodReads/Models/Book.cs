@@ -25,16 +25,12 @@ public class Book
   public string Country { get; set; }
   public bool IsEBook { get; set; }
   public string SaleAbility { get; set; }
-  public string Currency { get; set; }
+
   public string FlavorText { get; set; }
-  public string BuyLink { get; set; }
+
   public decimal RetailPrice { get; set; }
 
   public decimal AverageRating { get; set; }
-  public string ISBN13 { get; set; }
-
-  public string ISBN10 { get; set; }
-
 
 
 }

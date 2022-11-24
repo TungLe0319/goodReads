@@ -1,4 +1,4 @@
--- Active: 1668895251805@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(
@@ -57,15 +57,15 @@ CREATE TABLE
         country VARCHAR(255),
         isEBook TINYINT DEFAULT 0,
         saleAbility VARCHAR(255),
-        currency VARCHAR(255),
         flavorText VARCHAR(255),
-        buyLink VARCHAR(255),
         retailPrice DECIMAL,
-        averageRating DECIMAL,
-        isbn13 VARCHAR(255),
-        isbn10 VARCHAR(255)
+        averageRating DECIMAL
 
     ) default charset utf8 COMMENT '';
+
+
+
+
 
 
 CREATE TABLE

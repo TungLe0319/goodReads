@@ -12,6 +12,9 @@
         </h5>
       </div>
     </div>
+    <div class=" bg-transparent border-0 bookTitle">
+<p class=" ">      {{book.title}} </p>
+    </div>
   </router-link>
 </template>
 
@@ -48,6 +51,9 @@ export default {
 
 <style lang="scss" scoped>
 
+.bookTitle{
+text-overflow: clip;
+}
 .card {
  
   transition: all 0.25s ease;
@@ -72,5 +78,10 @@ export default {
 opacity: 1;
 transition: all 1s ease;
  }
+
+}
+.bookTitle:hover{
+
+
 }
 </style>

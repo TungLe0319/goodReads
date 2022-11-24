@@ -39,27 +39,36 @@
         <strong> Categories</strong>
         <div class="mb-3 form-check" v-for="c in categories">
           <input
-          @click="searchByCategory(c)"
-          
-          type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >{{c}}</label
-          >
+            @click="searchByCategory(c)"
+            type="checkbox"
+            class="form-check-input"
+            id="exampleCheck1"
+          />
+          <label class="form-check-label" for="exampleCheck1">{{ c }}</label>
         </div>
       </div>
       <div class="col-md-9">
-        <div class="row">
-          <div class="col-md-2" v-for="b in books" :key="b.id">
+        <div class="row gy-3">
+          <div class="col-md-3" v-for="b in books" :key="b.id">
             <SearchPageBookCard :book="b" />
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 d-flex justify-content-center">
-   <button class="btn btn-outline-dark me-2"><b>Prev</b></button>
-   <button class="btn btn-outline-dark"><b>Next</b></button>
+            <button
+              :class="index <= 0 ? 'disabled' : ''"
+              :disabled="index <= 0"
+              class="btn btn-outline-dark me-2"
+              @click="paginate('prev')"
+            >
+              <b>Prev</b>
+            </button>
+            <button class="btn btn-outline-dark" @click="paginate('next')">
+              <b>Next</b>
+            </button>
           </div>
           <div class="col-md-12 text-center mt-3">
-            1-18 of 100000 results
+         <b>   {{ index }} -{{ (index += 24) }} of {{ totalItems }} results </b>
           </div>
         </div>
       </div>
@@ -85,7 +94,9 @@ export default {
     return {
       editable,
       books: computed(() => AppState.sPBooks),
-      categories : computed(()=> AppState.categories),
+      categories: computed(() => AppState.categories),
+      index: computed(() => AppState.startIndex),
+      totalItems: computed(() => AppState.totalItems),
       async searchByQuery() {
         try {
           await bookService.searchByQuery(editable.value.term);
@@ -98,14 +109,29 @@ export default {
           logger.error(error);
         }
       },
-        async searchByCategory(c) {
-              try {
-                await bookService.searchByCategory(c)
-              } catch (error) {
-                
-                Pop.error(error, "[searchByCategory]");
-              }
-            },
+      async searchByCategory(c) {
+        try {
+          await bookService.searchByCategory(c);
+        } catch (error) {
+          Pop.error(error, "[searchByCategory]");
+        }
+      },
+
+      async paginate(x) {
+        try {
+          let index = AppState.startIndex;
+          if (x == "prev") {
+            AppState.startIndex -= 24;
+            await bookService.searchByCategory(index);
+          }
+          if (x == "next") {
+            AppState.startIndex += 24;
+            await bookService.searchByCategory(index);
+          }
+        } catch (error) {
+          Pop.error(error, "[paginate]");
+        }
+      },
     };
   },
   components: { BookCard },

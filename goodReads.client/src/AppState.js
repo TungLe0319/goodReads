@@ -32,7 +32,8 @@ export const AppState = reactive({
   accountReviews: [],
 
   theme: false,
-
+totalItems: 0,
+startIndex:0,
   categories:[
     'Performing Arts',
     'Psychology',
