@@ -38,10 +38,10 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS shelfBooks(
-        id INT NOT NULL primary key COMMENT 'primary key',
+        id INT NOT NULL primary key AUTO_INCREMENT,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
-        bookID VARCHAR(255) NOT NULL,
+        bookId VARCHAR(255) NOT NULL,
         bookShelfId INT NOT NULL,
         creatorId VARCHAR(255) NOT NULL,
         FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE,
