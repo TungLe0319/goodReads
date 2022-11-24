@@ -31,20 +31,20 @@
       <div class="col-md-12">
         <h2>Explore Some Lore</h2>
       </div>
-      <div class="col-md-3">
-        <div>
-          <strong>Categories:</strong>
-          <p>Showing All</p>
-        </div>
-        <strong> Categories</strong>
-        <div class="mb-3 form-check" v-for="c in categories">
-          <input
-            @click="searchByCategory(c)"
-            type="checkbox"
-            class="form-check-input"
-            id="exampleCheck1"
-          />
-          <label class="form-check-label" for="exampleCheck1">{{ c }}</label>
+      <div class="col-md-3 ">
+        <div class="bg-secondary p-2 elevation-2">
+
+      
+          <p class="fw-bold fs-4"> Categories</p>
+          <div class="mb-3 form-check selectable rounded " v-for="c in categories">
+            <input
+              @click="searchByCategory(c)"
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+            />
+            <label class="form-check-label" for="exampleCheck1">{{ c }}</label>
+          </div>
         </div>
       </div>
       <div class="col-md-9">

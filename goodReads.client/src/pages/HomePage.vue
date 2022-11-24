@@ -47,18 +47,14 @@
 
     <div class="row">
       <div class="col-md-8">
-        <!-- <div class="row scrollX ">
+        <div class="row scrollX">
           <h2>Biography</h2>
-              <TransitionGroup
-            name=""
-            enterActiveClass="animate__fadeIn animate__animated"
-            leaveActiveClass="animate__fadeOut animate__animated"
-          >
+       
             <div class="col-md-3 gy-3" v-for="b in biographyBooks" :key="b.id">
               <BookCard :book="b" />
             </div>
-          </TransitionGroup>
-        </div> -->
+   
+        </div>
         <div class="row">
           <TransitionGroup
             name=""
@@ -138,11 +134,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.scrollX{
-overflow-x: auto;
-white-space: nowrap;
-
-}
 
 .blockquote{
   font-size: 3em;

@@ -43,7 +43,7 @@
             Discover
           </router-link>
         </li>
-        <li>
+        <!-- <li>
           <button
             class="btn selectable text-uppercase"
             data-bs-target="#bookShelfForm"
@@ -51,7 +51,7 @@
           >
             CreateBookShelf
           </button>
-        </li>
+        </li> -->
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div>

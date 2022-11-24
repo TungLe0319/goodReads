@@ -59,7 +59,7 @@ class BookService {
   }
 
   async searchByCategory(term) {
-  
+  console.log(term);
 AppState.categoryQuery
     const res = await googleBookApi.get("/volumes", {
       params: {

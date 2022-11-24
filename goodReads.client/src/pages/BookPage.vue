@@ -4,7 +4,7 @@
     <div class="row bookRow">
       <div class="col-md-3 text-center animate__animated animate__fadeInLeft">
         <img
-        v-if="book?.largeImg"
+          v-if="book?.largeImg"
           :src="book?.largeImg"
           alt=""
           class="img-fluid rounded elevation-5"
@@ -12,7 +12,7 @@
           height="600"
         />
         <img
-        v-else
+          v-else
           :src="book?.img"
           alt=""
           class="img-fluid rounded elevation-5"
@@ -30,12 +30,28 @@
         </div>
       </div>
       <div class="col-md-6 animate__animated animate__fadeInUp">
-        <h1 class="bookTitle elevation-5 bg-create p-2 px-3">{{ book.title }}</h1>
+        <h1 class="bookTitle elevation-5 bg-create p-2 px-3">
+          {{ book.title }}
+        </h1>
         <div class="d-flex">
           <!-- <b class="authors mx-2" v-for="a in book.authors">{{ a }}</b> -->
           <b class="authors mx-2 text-dark"> {{ book.authors }} </b>
         </div>
-        <div v-if="book.averageRating >=1" class="d-flex align-items-center "> <i class=" mdi mdi-star fs-3 text-create  " v-for="i in book.averageRating"></i> <h4>{{book.averageRating}}</h4>  </div>
+        <div v-if="book.averageRating >= 1" class="d-flex align-items-center">
+          <i
+            class="mdi mdi-star fs-3 text-create"
+            v-for="i in book.averageRating"
+          ></i>
+          <h4>{{ book.averageRating }}</h4>
+        </div>
+
+        <div v-else class="d-flex align-items-center">
+          <i
+            class="mdi mdi-star fs-3 text-grey"
+            v-for="i in 5"
+          ></i>
+          <h4 class="ms-2">no ratings</h4>
+        </div>
         <div class="border-bottom border-1 my-3 border-secondary"></div>
         <div>
           <p class="lead text-dark">
@@ -65,13 +81,13 @@
         </div>
       </div>
       <div class="col-md-3 animate__animated animate__fadeInRight">
-     <ShareCard/>
+        <ShareCard />
       </div>
     </div>
 
-    <section class="">
+    <section class="" id="reviews">
       <div class="row">
-        <div class="col-md-12 d-flex justify-content-between my-3 ">
+        <div class="col-md-12 d-flex justify-content-between my-3">
           <h3 class="text-dark">Community Reviews</h3>
           <button
             class="btn bg-create text-dark fw-bold d-flex align-items-center justify-content-center"
@@ -151,7 +167,6 @@ export default {
           Pop.error(error);
         }
       },
- 
     };
   },
   components: { BookCard, CreateReview, ReviewCard, ShareCard },
@@ -164,7 +179,6 @@ export default {
 .bookTitle {
   font-size: 40pt;
   font-family: "Abril Fatface", cursive;
-  
 }
 .authors {
   font-family: Arial, Helvetica, sans-serif;
