@@ -9,6 +9,16 @@ import { api } from './AxiosService'
 class AccountService {
   async getAccount() {
     try {
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher("5b205b8c9c1634b6853d", {
+          cluster: "us3",
+        });
+
+        var channel = pusher.subscribe("my-channel");
+        channel.bind("my-event", function (data) {
+          AppState.users.push(JSON.stringify(data));
+        });
       const res = await api.get("/account");
       AppState.account = new Account(res.data);
     } catch (err) {
