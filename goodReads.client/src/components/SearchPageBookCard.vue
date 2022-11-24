@@ -16,8 +16,14 @@
   </router-link>
   <div class=" bg-transparent border-0 bookTitle  ">
 <p class="text-truncate mb-0 fw-bold">      {{book.title}} </p>
-<p class="text-truncate mb-0"> {{book.authors}} </p>
-<small> {{book.categories}} </small>
+<router-link @click="searchByAuthor()" :to="{name: 'Search', params:{ }}" > 
+
+  <p class="text-truncate mb-0"> {{book.authors}} </p>
+</router-link>
+<router-link @click="searchByCategory(b)" :to="{name: 'Search', params:{ }}"> 
+
+  <small  v-for="b in book.categories"> {{b}} </small>
+</router-link>
   </div>
 </template>
 
@@ -27,6 +33,8 @@ import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { Book } from "../models/Book.js";
 import { SQLBook } from "../models/SQLBook.js";
+import { router } from "../router.js";
+import { bookService } from "../services/BookService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
@@ -47,6 +55,22 @@ export default {
         AppState.activeBook = props.book;
         console.log(AppState.activeBook);
       },
+      async searchByCategory(b){
+        try {
+       
+            await bookService.searchByCategory(b)
+          } catch (error) {
+            Pop.error(error,'[searchByCategory]')
+          }
+      },
+      async searchByAuthor(){
+        try {
+       let author = props.book.authors
+            await bookService.searchByAuthor(author)
+          } catch (error) {
+            Pop.error(error,'[searchByCategory]')
+          }
+      }
     };
   },
 };
@@ -72,10 +96,11 @@ text-overflow: clip;
 }
 .card:hover {
  img{
-   transform: scale(1.09);
+   transform: scale(1.03);
   transition: all 0.25s ease;
   filter: saturate(120%);
-  filter: brightness(50%);
+  filter: brightness(70%);
+box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
  }
  .card-title{
 opacity: 1;

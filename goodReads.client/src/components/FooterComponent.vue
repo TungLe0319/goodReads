@@ -3,7 +3,7 @@
 
   <!-- Footer -->
   <footer
-    class="text-center text-lg-start text-white"
+    class="text-center text-lg-start text-white mt-5"
     style="background-color: #1c2331"
   >
     <!-- Section: Social media -->
