@@ -37,6 +37,19 @@ CREATE TABLE
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE
+    IF NOT EXISTS shelfBooks(
+        id INT NOT NULL primary key COMMENT 'primary key',
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
+        bookID VARCHAR(255) NOT NULL,
+        bookShelfId INT NOT NULL,
+        creatorId VARCHAR(255) NOT NULL,
+        FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE,
+        Foreign Key (bookShelfId) REFERENCES bookshelves(id) ON DELETE CASCADE,
+        FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+    ) default charset utf8 COMMENT '';
+
+CREATE TABLE
     IF NOT EXISTS books(
         id VARCHAR(255) NOT NULL primary key COMMENT 'primary key',
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
@@ -60,13 +73,7 @@ CREATE TABLE
         flavorText VARCHAR(255),
         retailPrice DECIMAL,
         averageRating DECIMAL
-
     ) default charset utf8 COMMENT '';
-
-
-
-
-
 
 CREATE TABLE
     IF NOT EXISTS reviews(
