@@ -25,4 +25,20 @@ public class ShelvedBooksController : IController
     }
   
   
+    [HttpDelete("{shelfBookId}")]
+    [Authorize]
+    public async Task<ActionResult<string>> DeleteShelfBook(int shelfBookId)
+    {
+      try
+      {
+        Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+        _shelvedBooksService.DeleteShelfBook(shelfBookId, userInfo.Id);
+        return Ok("ShelfBook deleted");
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+  
 }
