@@ -13,8 +13,8 @@ public class ShelfBook : IDbItem<int>
 public class ShelvedBook : Book{
 
 public string BookId { get; set; }
-public int  BookShelfId { get; set; }
 public int ShelfBookId { get; set; }
+ public int BookShelfId { get; set; }
 public string  creatorId { get; set; }
 
 }

@@ -22,6 +22,5 @@ public class Book
   public decimal RetailPrice { get; set; }
   public decimal AverageRating { get; set; }
 
-  public int BookShelfId { get; set; }
   public int ShelvedBookId { get; set; }
 }
