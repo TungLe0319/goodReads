@@ -3,7 +3,7 @@ export class Book {
     this.id = data.id;
     this.bookShelfId = data.bookShelfId || delete this.bookShelfId;
     this.title = data.volumeInfo.title;
-    this.authors = data.volumeInfo.authors;
+    this.authors = data.volumeInfo.authors ;
     this.img =
       data.volumeInfo.imageLinks?.thumbnail ||
       "https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?k=6&m=1216251206&s=612x612&w=0&h=G8kmMKxZlh7WyeYtlIHJDxP5XRGm9ZXyLprtVJKxd-o=";

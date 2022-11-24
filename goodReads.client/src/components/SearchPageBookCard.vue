@@ -16,8 +16,8 @@
   </router-link>
   <div class=" bg-transparent border-0 bookTitle  ">
 <p class="text-truncate mb-0 fw-bold">      {{book.title}} </p>
-<p class="text-truncate mb-0"> {{book.authors.toString()}} </p>
-<small> {{book.categories.toString()}} </small>
+<p class="text-truncate mb-0"> {{book.authors}} </p>
+<small> {{book.categories}} </small>
   </div>
 </template>
 

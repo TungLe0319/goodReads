@@ -7,9 +7,9 @@
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          class="logo p-1"
+          class="logo p-1 "
           src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png"
-          height="60"
+       height="80"
         />
       </div>
     </router-link>
@@ -99,6 +99,12 @@ export default {
 </script>
 
 <style scoped>
+
+.forcedImg{
+  height:150px;
+  width: 150px;
+  object-fit: cover;
+}
 a:hover {
   text-decoration: none;
 }

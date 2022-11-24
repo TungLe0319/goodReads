@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="row my-2">
+  <div class="container" v-if="books">
+    <div class="row my-5">
       <div class="col-md-12">
         <div class="card elevation-5 border-0">
           <img
@@ -55,12 +55,7 @@
 
     <div class="row">
       <div class="col-md-8">
-        <h2>Performing Arts</h2>
-        <div class="row scrollX">
-          <div class="col-md-3 gy-3" v-for="b in biographyBooks" :key="b.id">
-            <BookCard :book="b" />
-          </div>
-        </div>
+
         <div class="row">
           <TransitionGroup
             name=""
@@ -72,6 +67,8 @@
             </div>
           </TransitionGroup>
         </div>
+
+
       </div>
       <div class="col-md-4">
         <div class="row g-3">
@@ -81,7 +78,62 @@
         </div>
       </div>
     </div>
+<section>
+  
+       <div class="mt-4">
+         <h2 class="categoryTitle">Cooking</h2>
+        <div class="row scrollX">
+          <div class="col-md-2 gy-3" v-for="c in cookingBooks" :key="c.id">
+            <BookCard :book="c" />
+          </div>
+        </div>
+       </div>
+        <div  class="mt-4">
+          <h2 class="categoryTitle">Science</h2>
+          <div class="row scrollX">
+            <div class="col-md-2 gy-3" v-for="s in scienceBooks" :key="s.id">
+              <BookCard :book="s" />
+            </div>
+          </div>
+        </div>
+        <div class="mt-4"> 
+          <h2 class="categoryTitle">Fiction</h2>
+          <div class="row scrollX">
+            <div class="col-md-2 gy-3" v-for="f in fictionBooks" :key="f.id">
+              <BookCard :book="f" />
+            </div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h2 class="categoryTitle">Nature</h2>
+          <div class="row scrollX">
+            <div class="col-md-2 gy-3" v-for="n in natureBooks" :key="n.id">
+              <BookCard :book="n" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <h2 class="categoryTitle">History</h2>
+          <div class="row scrollX">
+            <div class="col-md-2 gy-3" v-for="h in historyBooks" :key="h.id">
+              <BookCard :book="h" />
+            </div>
+          </div>
+        </div>
+
+</section>
+
+    <section>
+      <h2 class="categoryTitle">Best Sellers</h2>
+      <div class="row scrollX">
+        <div class="col-md-2 gy-3" v-for="b in bestSellers" :key="b.id">
+          <BookCard :book="b" />
+        </div>
+      </div>
+    </section>
   </div>
+  <div class="" v-else> <i class="mdi mdi-dots-horizontal fs-1"></i></div>
 </template>
 
 <script>
@@ -118,12 +170,24 @@ export default {
     let editable = ref({});
     return {
       editable,
-      books: computed(() => AppState.books),
-      biographyBooks: computed(() =>
-        AppState.books.filter((b) => b.categories.includes("Performing Arts"))
+      books: computed(() => AppState.books.slice([0],[16])),
+      cookingBooks: computed(() =>
+        AppState.books.filter((b) => b.categories.includes("Cooking"))
       ),
       scienceBooks: computed(() =>
         AppState.books.filter((b) => b.categories.includes("Science"))
+      ),
+      fictionBooks: computed(() =>
+        AppState.books.filter((b) => b.categories.includes("Fiction"))
+      ),
+      natureBooks: computed(() =>
+        AppState.books.filter((b) => b.categories.includes("Nature"))
+      ),
+      historyBooks: computed(() =>
+        AppState.books.filter((b) => b.categories.includes("History"))
+      ),
+      bestSellers: computed(() =>
+        AppState.books.filter((b) => b.averageRating >= 5)
       ),
       async searchByQuery() {
         try {
@@ -144,6 +208,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.categoryTitle {
+  font-size: 3em;
+  font-family: "Abril Fatface", cursive;
+}
 .scrollX {
   flex-wrap: nowrap;
   overflow-x: auto;
