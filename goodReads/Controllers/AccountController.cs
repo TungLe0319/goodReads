@@ -15,6 +15,24 @@ public class AccountController : IController
     try
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+   
+        var options = new PusherOptions
+        {
+          Cluster = "us3",
+          Encrypted = true
+        };
+
+        var pusher = new Pusher(
+          "1512865",
+          "5b205b8c9c1634b6853d",
+          "6e33b4ad32d2e6ff6e29",
+          options);
+
+        var result = await pusher.TriggerAsync(
+          "my-channel",
+          "my-event",
+          new { message = userInfo.Name + "connected" });
+
       return Ok(_accountService.GetOrCreateProfile(userInfo));
     }
     catch (Exception e)

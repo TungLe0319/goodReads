@@ -15,3 +15,5 @@ global using goodReads.Repositories;
 global using goodReads.Services;
 global using goodReads.Models;
 global using goodReads.Interfaces;
+global using PusherServer;
+global using System.Net;
