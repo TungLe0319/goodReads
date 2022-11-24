@@ -31,6 +31,8 @@ export const AppState = reactive({
   /** @type {import('./models/Review.js').Review[]} */
   accountReviews: [],
 
+  filePicker:{},
+
   theme: false,
 totalItems: 0,
 startIndex:0,
