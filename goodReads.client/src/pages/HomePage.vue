@@ -1,7 +1,25 @@
 <template>
   <div class="container">
+
+    <div class="row my-2 ">
+      <div class="col-md-12">
+        <div class="card elevation-5 border-0 ">
+          <img src="https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg" alt="" class="bannerImg">
+          <div class="card-img-overlay align-items-center d-flex justify-content-center ">
+            <figure>
+  <blockquote class="blockquote text-light">
+    <p><i class="mdi mdi-format-quote-open"></i> Books are a uniquely portable magic. <i class="mdi mdi-format-quote-close"></i></p>
+  </blockquote>
+  <figcaption class="blockquote-footer text-light">
+    Stephen King
+  </figcaption>
+</figure>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- SearchBar -->
-    <div
+    <!-- <div
       class="row justify-content-center sticky-top animate__animated animate__fadeInDown"
     >
       <div class="col-md-6">
@@ -23,12 +41,24 @@
           </div>
         </form>
       </div>
-    </div>
+    </div> -->
 
     <!-- !SearchBar -->
 
     <div class="row">
       <div class="col-md-8">
+        <!-- <div class="row scrollX ">
+          <h2>Biography</h2>
+              <TransitionGroup
+            name=""
+            enterActiveClass="animate__fadeIn animate__animated"
+            leaveActiveClass="animate__fadeOut animate__animated"
+          >
+            <div class="col-md-3 gy-3" v-for="b in biographyBooks" :key="b.id">
+              <BookCard :book="b" />
+            </div>
+          </TransitionGroup>
+        </div> -->
         <div class="row">
           <TransitionGroup
             name=""
@@ -88,6 +118,7 @@ export default {
     return {
       editable,
       books: computed(() => AppState.books),
+      biographyBooks : computed(() => AppState.books.filter(b=> b.categories.includes('Performing Arts'))),
       async searchByQuery() {
         try {
           await bookService.searchByQuery(editable.value.term);
@@ -106,4 +137,27 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.scrollX{
+overflow-x: auto;
+white-space: nowrap;
+
+}
+
+.blockquote{
+  font-size: 3em;
+  
+}
+.blockquote-footer{
+  font-size: 2em;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+}
+.bannerImg{
+  width: auto;
+  height: 300px;
+  object-fit: cover;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+  filter: brightness(80%);
+  
+}
+</style>

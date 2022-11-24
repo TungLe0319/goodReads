@@ -33,7 +33,7 @@ export const AppState = reactive({
   accountReviews: [],
 
   filePicker:{},
-
+categoryQuery:'',
   theme: false,
 totalItems: 0,
 startIndex:0,

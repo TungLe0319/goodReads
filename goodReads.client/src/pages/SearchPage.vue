@@ -68,7 +68,7 @@
             </button>
           </div>
           <div class="col-md-12 text-center mt-3">
-         <b>   {{ index }} -{{ (index += 24) }} of {{ totalItems }} results </b>
+         <b>   {{ index }} - {{ (endDex + 24) }} of {{ totalItems }} results </b>
           </div>
         </div>
       </div>
@@ -96,6 +96,7 @@ export default {
       books: computed(() => AppState.sPBooks),
       categories: computed(() => AppState.categories),
       index: computed(() => AppState.startIndex),
+      endDex: computed(() => AppState.startIndex ),
       totalItems: computed(() => AppState.totalItems),
       async searchByQuery() {
         try {
@@ -112,6 +113,7 @@ export default {
       async searchByCategory(c) {
         try {
           await bookService.searchByCategory(c);
+          AppState.categoryQuery = c
         } catch (error) {
           Pop.error(error, "[searchByCategory]");
         }
@@ -119,14 +121,14 @@ export default {
 
       async paginate(x) {
         try {
-          let index = AppState.startIndex;
+     
           if (x == "prev") {
             AppState.startIndex -= 24;
-            await bookService.searchByCategory(index);
+            await bookService.searchByCategory(AppState.startIndex);
           }
           if (x == "next") {
             AppState.startIndex += 24;
-            await bookService.searchByCategory(index);
+            await bookService.searchByCategory(AppState.startIndex);
           }
         } catch (error) {
           Pop.error(error, "[paginate]");

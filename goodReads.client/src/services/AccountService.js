@@ -32,8 +32,9 @@ class AccountService {
 
  async getAccountBookShelves(){
     const res = await api.get("/account/bookshelves");
-    console.log(res.data);
-    AppState.accountBookshelves = res.data.map(a => new BookShelf(a))
+    console.log("[accountBookShelves]", res.data);
+    console.log(AppState.accountBookshelves);
+    AppState.accountBookshelves = res.data.map((a) => new BookShelf(a));
   }
   
   async editAccount(formData) {
@@ -56,6 +57,9 @@ async getReviews(){
     const res = await api.get('/account/followers')
     console.log(res.data);
     AppState.followers = res.data.map(f=> new Follow(f))
+  }
+  async getBookShelves(){
+
   }
 }
 

@@ -3,6 +3,7 @@
     :to="{ name: 'Book', params: { id: book.id } }"
     @click="setActive()"
     v-if="book"
+    class="text-dark"
   >
     <div class="card elevation-5 border-0 my-1 text-shadow">
       <img :src="book.img" class="card-img" :alt="book.title" v-if="book.img" />
@@ -12,10 +13,12 @@
         </h5>
       </div>
     </div>
-    <div class=" bg-transparent border-0 bookTitle">
-<p class=" ">      {{book.title}} </p>
-    </div>
   </router-link>
+  <div class=" bg-transparent border-0 bookTitle  ">
+<p class="text-truncate mb-0 fw-bold">      {{book.title}} </p>
+<p class="text-truncate mb-0"> {{book.authors}} </p>
+<small> {{book.categories}} </small>
+  </div>
 </template>
 
 <script>

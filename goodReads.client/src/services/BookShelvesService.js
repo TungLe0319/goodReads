@@ -15,5 +15,9 @@ const res = await api.post(`api/bookshelves`,data)
   async deleteBookShelf(){
     
   }
+
+  async addToBookShelf(){
+    const res = await api.post('api/she')
+  }
 }
 export const bookShelvesService = new BookShelvesService()

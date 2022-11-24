@@ -5,7 +5,8 @@
     v-if="book"
   >
     <div class="card elevation-5 border-0 my-1 text-shadow">
-      <img :src="book.img" class="card-img" :alt="book.title" v-if="book.img" />
+      <!-- <img :src="book.largeImg" class="card-img" :alt="book.title" v-if="book.largeImg" /> -->
+      <img :src="book.img" class="card-img" :alt="book.title"  />
       <div class="card-img-overlay align-items-end d-flex">
         <h5 class="card-title d-flex align-items-end bookTitle">
           {{ book.title }}

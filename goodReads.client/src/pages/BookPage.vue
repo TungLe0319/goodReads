@@ -35,6 +35,7 @@
           <!-- <b class="authors mx-2" v-for="a in book.authors">{{ a }}</b> -->
           <b class="authors mx-2 text-dark"> {{ book.authors }} </b>
         </div>
+        <div v-if="book.averageRating >=1" class="d-flex align-items-center "> <i class=" mdi mdi-star fs-3 text-create  " v-for="i in book.averageRating"></i> <h4>{{book.averageRating}}</h4>  </div>
         <div class="border-bottom border-1 my-3 border-secondary"></div>
         <div>
           <p class="lead text-dark">
@@ -59,7 +60,7 @@
             <!-- <button class="btn btn-outline-dark p-1 rounded-pill px-2 mx-2">  </button> -->
           </div>
           <p><b>Language -</b> {{ book.language }}</p>
-          <p><b>Maturity Rating -</b> {{ book.maturityRating }}</p>
+          <!-- <p><b>Maturity Rating -</b> {{ book.maturityRating }}</p> -->
           <p><b> Page Count -</b> {{ book.pageCount }}</p>
         </div>
       </div>

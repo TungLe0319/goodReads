@@ -1,6 +1,6 @@
 <template>
   <div class="card bg-transparent my-3 square position-relative">
-    <div class="recommended">
+    <div class="recommended" v-if="review.recommend">
       <img src="src\assets\img\bookMark.png" alt="" width="40" />
     </div>
     <div

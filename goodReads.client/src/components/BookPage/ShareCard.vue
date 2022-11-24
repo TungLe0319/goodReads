@@ -5,20 +5,27 @@
           <p>Available for a limited time</p>
     
           <div class="card-body d-flex flex-column justify-content-center">
-            <button class="btn btn-outline-dark" @click="addToBookShelf()">
-              Save To BookShelf
-            </button>
-            <div class="mb-3">
-              <label for="" class="form-label">Add to BookShelf</label>
-              <select
-                v-model="editable.bookShelfId"
+            <form @submit.prevent="addToBookShelf()">
+
+              <div class="mb-3">
+                <label for="" class="form-label">Add to BookShelf</label>
+                <select
+                v-model="editable.type"
                 class="form-select form-select-lg"
                 name=""
                 id=""
-              >
-                <option value="" v-for="b in bookShelves">{{ b.title }}</option>
+                >
+                
+                <option :value="b.type" v-for="b in bookShelves">{{ b.type }}</option>
               </select>
             </div>
+            <button class="btn btn-outline-dark" type="submit">
+              Save To BookShelf
+            </button>
+            </form>
+
+
+
             <button
               class="btn btn-outline-dark mt-2"
               data-bs-toggle="modal"
@@ -91,6 +98,7 @@ import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../../AppState.js";
+import { bookShelvesService } from "../../services/BookShelvesService.js";
 import Pop from "../../utils/Pop.js";
 
 
@@ -101,7 +109,7 @@ props:{
 
        },
   setup(props) {
-    const editable = ref({});
+    const editable = ref({type : AppState.accountBookshelves[0]});
     
     onMounted(() => {
 
@@ -111,10 +119,18 @@ const route = useRoute()
     return {
       editable,
       book: computed(()=> AppState.activeBook),
+      bookShelves:computed(() => AppState.accountBookshelves),
            copyToClipBoard() {
         navigator.clipboard.writeText(route.fullPath);
         Pop.toast(`Copied To ClipBoard`);
       },
+      async addToBookShelf(){
+        try {
+            await bookShelvesService.addToBookShelf()
+          } catch (error) {
+            Pop.error(error,'[addToBookShelf]')
+          }
+      }
       }
     }
   }

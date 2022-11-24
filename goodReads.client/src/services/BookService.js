@@ -40,7 +40,7 @@ class BookService {
 //   const res2 = await api.post('api/books',b)
 //   console.log(res2.data);
 // }
-    // AppState.sPBooks = res.data.items.map((b) => new Book(b));
+    AppState.sPBooks = res.data.items.map((b) => new Book(b));
     // console.log(AppState.sPBooks);
   }
 
@@ -60,7 +60,7 @@ class BookService {
 
   async searchByCategory(term) {
   
-
+AppState.categoryQuery
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: term+'subject',
