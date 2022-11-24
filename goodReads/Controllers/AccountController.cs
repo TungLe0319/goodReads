@@ -31,7 +31,7 @@ public class AccountController : IController
         var result = await pusher.TriggerAsync(
           "my-channel",
           "my-event",
-          new { message = userInfo.Name + "connected" });
+          new { message = userInfo.Name + ", connected" });
 
       return Ok(_accountService.GetOrCreateProfile(userInfo));
     }
