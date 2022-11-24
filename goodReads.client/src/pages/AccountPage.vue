@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <AccountDetails :account="account" />
-        <!-- <EditAccountForm/> -->
+   <FileUpload/>
       </div>
     </div>
 
@@ -122,6 +122,7 @@ import { computed } from "vue";
 import { AppState } from "../AppState";
 import AccountDetails from "../components/AccountPage/AccountDetails.vue";
 import EditAccountForm from "../components/AccountPage/EditAccountForm.vue";
+import FileUpload from "../components/AccountPage/FileUpload.vue";
 import ReviewCard from "../components/BookPage/ReviewCard.vue";
 import FollowerCard from "../components/FollowerCard.vue";
 export default {
@@ -134,7 +135,7 @@ export default {
 
     };
   },
-  components: { AccountDetails, EditAccountForm, FollowerCard, ReviewCard },
+  components: { AccountDetails, EditAccountForm, FollowerCard, ReviewCard, FileUpload },
 };
 </script>
 
