@@ -1,4 +1,4 @@
-namespace goodReads.Repositories;
+namespace betterAfterBooks.Repositories;
 public class ReviewsRepository
 {
   private readonly IDbConnection _db;

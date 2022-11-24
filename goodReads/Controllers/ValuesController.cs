@@ -1,4 +1,4 @@
-namespace goodReads.Controllers;
+namespace betterAfterBooks.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

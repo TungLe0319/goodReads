@@ -1,4 +1,4 @@
-namespace goodReads.Models;
+namespace betterAfterBooks.Models;
 
 public class Follow : IDbItem<int>
 {

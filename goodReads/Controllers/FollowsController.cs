@@ -1,4 +1,4 @@
-namespace goodReads.Controllers;
+namespace betterAfterBooks.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -16,7 +16,7 @@ public class FollowsController : IController
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
       followData.creatorId = userInfo.Id;
       Follow follow = _followsService.CreateFollow(followData);
-     
+
       return Ok(follow);
     }
     catch (Exception e)
@@ -25,22 +25,22 @@ public class FollowsController : IController
     }
   }
 
-  
-    [HttpDelete("{followId}")]
-    [Authorize]
-    public async Task<ActionResult<string>> DeleteFollow(int followId)
+
+  [HttpDelete("{followId}")]
+  [Authorize]
+  public async Task<ActionResult<string>> DeleteFollow(int followId)
+  {
+    try
     {
-      try
-      {
-        Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-        _followsService.DeleteFollow(followId, userInfo.Id);
-        return Ok("Follow deleted");
-      }
-      catch (Exception e)
-      {
-        return BadRequest(e.Message);
-      }
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      _followsService.DeleteFollow(followId, userInfo.Id);
+      return Ok("Follow deleted");
     }
-  
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
 
 }

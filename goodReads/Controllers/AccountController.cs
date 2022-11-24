@@ -1,4 +1,4 @@
-namespace goodReads.Controllers;
+namespace betterAfterBooks.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -15,23 +15,23 @@ public class AccountController : IController
     try
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-   
-        var options = new PusherOptions
-        {
-          Cluster = "us3",
-          Encrypted = true
-        };
 
-        var pusher = new Pusher(
-          "1512865",
-          "5b205b8c9c1634b6853d",
-          "6e33b4ad32d2e6ff6e29",
-          options);
+      var options = new PusherOptions
+      {
+        Cluster = "us3",
+        Encrypted = true
+      };
 
-        var result = await pusher.TriggerAsync(
-          "my-channel",
-          "my-event",
-          new { user = userInfo});
+      var pusher = new Pusher(
+        "1512865",
+        "5b205b8c9c1634b6853d",
+        "6e33b4ad32d2e6ff6e29",
+        options);
+
+      var result = await pusher.TriggerAsync(
+        "my-channel",
+        "my-event",
+        new { user = userInfo });
 
       return Ok(_accountService.GetOrCreateProfile(userInfo));
     }
@@ -59,38 +59,38 @@ public class AccountController : IController
     }
   }
 
-  
-    [HttpGet("following")]
-    public async Task<ActionResult<List<Follow>>> GetAllFollowing()
+
+  [HttpGet("following")]
+  public async Task<ActionResult<List<Follow>>> GetAllFollowing()
+  {
+    try
     {
-      try
-      {
-        Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-        
-        List<Follow> follows = _followsService.GetAllFollowing(userInfo?.Id);
-        return Ok(follows);
-      }
-      catch (Exception e)
-      { 
-        return BadRequest(e.Message);
-      }
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+
+      List<Follow> follows = _followsService.GetAllFollowing(userInfo?.Id);
+      return Ok(follows);
     }
-    [HttpGet("followers")]
-    public async Task<ActionResult<List<Follow>>> GetAllFollowers()
+    catch (Exception e)
     {
-      try
-      {
-        Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-        
-        List<Follow> follows = _followsService.GetAllFollowers(userInfo?.Id);
-        return Ok(follows);
-      }
-      catch (Exception e)
-      { 
-        return BadRequest(e.Message);
-      }
+      return BadRequest(e.Message);
     }
-  
+  }
+  [HttpGet("followers")]
+  public async Task<ActionResult<List<Follow>>> GetAllFollowers()
+  {
+    try
+    {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+
+      List<Follow> follows = _followsService.GetAllFollowers(userInfo?.Id);
+      return Ok(follows);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
 
   [HttpPut]
   [Authorize]
@@ -111,7 +111,7 @@ public class AccountController : IController
 
 
   [HttpGet("reviews")]
-  public  async Task<ActionResult<List<Review>>> GetAccountReviews()
+  public async Task<ActionResult<List<Review>>> GetAccountReviews()
   {
     try
     {

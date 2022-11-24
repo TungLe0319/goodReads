@@ -1,4 +1,4 @@
-namespace goodReads.Repositories;
+namespace betterAfterBooks.Repositories;
 public class FollowsRepository : BaseRepository
 {
   public FollowsRepository(IDbConnection db) : base(db)

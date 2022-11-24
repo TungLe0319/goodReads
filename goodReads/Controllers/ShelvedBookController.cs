@@ -1,1 +1,1 @@
-namespace goodReads.Controllers;
+namespace betterAfterBooks.Controllers;

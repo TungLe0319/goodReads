@@ -1,10 +1,11 @@
-namespace goodReads.Interfaces;
+namespace betterAfterBooks.Interfaces;
 
-public class IController : ControllerBase{
+public class IController : ControllerBase
+{
   protected readonly Auth0Provider _auth0Provider;
   protected readonly AccountService _accountService;
-  protected readonly  ReviewsService _reviewService;
-  protected readonly  FollowsService _followsService;
+  protected readonly ReviewsService _reviewService;
+  protected readonly FollowsService _followsService;
   protected readonly BooksService _booksService;
   protected readonly BookShelvesService _bookShelvesService;
 

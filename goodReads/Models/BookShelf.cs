@@ -1,7 +1,7 @@
-namespace goodReads.Models;
+namespace betterAfterBooks.Models;
 public class BookShelf : IHasCreator
 {
-  
+
   public string Type { get; set; }
   public string CreatorId { get; set; }
   public Profile Creator { get; set; }
@@ -9,7 +9,7 @@ public class BookShelf : IHasCreator
   public DateTime CreatedAt { get; set; }
   public DateTime UpdatedAt { get; set; }
 
-  
+
 
 }
 public class Shelf : BookShelf

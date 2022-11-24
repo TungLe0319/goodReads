@@ -1,4 +1,4 @@
-namespace goodReads.Services;
+namespace betterAfterBooks.Services;
 
 public class AccountService
 {
@@ -36,11 +36,11 @@ public class AccountService
         new Shelf("finished", account.Id)
       }
      };
-     foreach (BookShelf bookShelf in bookShelves)
-     {
-      BookShelf newShelf = _bsRepo.CreateBookShelf(bookShelf);
-     }
-     
+      foreach (BookShelf bookShelf in bookShelves)
+      {
+        BookShelf newShelf = _bsRepo.CreateBookShelf(bookShelf);
+      }
+
       return account;
     }
     return profile;
