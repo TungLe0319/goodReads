@@ -36,6 +36,34 @@ public class ProfilesController : IController
     {
       return BadRequest(e.Message);
     }
-
   }
+
+  [HttpGet("{profileId}/following")]
+  public ActionResult<List<Follow>> GetProfileFollowings(string profileId)
+  {
+    try
+    {
+      List<Follow> follows = _followsService.GetProfileFollowings(profileId);
+      return Ok(follows);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+  [HttpGet("{profileId}/followers")]
+  public ActionResult<List<Follow>> GetProfileFollowers(string profileId)
+  {
+    try
+    {
+      List<Follow> follows = _followsService.GetProfileFollowers(profileId);
+      return Ok(follows);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
 }

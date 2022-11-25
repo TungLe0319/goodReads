@@ -73,4 +73,16 @@ public class FollowsService
 
 
   }
+
+  internal List<Follow> GetProfileFollowings(string profileId)
+  {
+    List<Follow> follows = _followsRepo.GetProfileFollowings(profileId);
+    return follows;
+  }
+
+  internal List<Follow> GetProfileFollowers(string profileId)
+  {
+    List<Follow> follows = _followsRepo.GetProfileFollowers(profileId);
+    return follows;
+  }
 }

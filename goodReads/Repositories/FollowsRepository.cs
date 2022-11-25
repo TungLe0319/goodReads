@@ -11,7 +11,6 @@ public class FollowsRepository : BaseRepository
               VALUES (@CreatorId, @FollowingUserId);
               SELECT LAST_INSERT_ID()
                   ;";
-
     int followId = _db.ExecuteScalar<int>(sql, followData);
     return GetById(followId);
   }
@@ -50,12 +49,10 @@ public class FollowsRepository : BaseRepository
                 JOIN accounts account ON account.id = follow.followingUserId
                 WHERE follow.creatorId = @userId
                 GROUP BY follow.id
-            
-                    ;";
+                ;";
     return _db.Query<Follow, Profile, Follow>(sql, (follow, profile) =>
     {
       follow.Profile = profile;
-
       return follow;
     }, new { userId }).ToList();
 
@@ -70,12 +67,10 @@ public class FollowsRepository : BaseRepository
                 JOIN accounts account ON account.id = follow.creatorId
                 WHERE follow.followingUserId = @userId
                 GROUP BY follow.id
-            
-                    ;";
+                ;";
     return _db.Query<Follow, Profile, Follow>(sql, (follow, profile) =>
     {
       follow.Profile = profile;
-
       return follow;
     }, new { userId }).ToList();
 
@@ -84,11 +79,45 @@ public class FollowsRepository : BaseRepository
   internal void DeleteFollow(int followId)
   {
     var sql = @"DELETE FROM follows WHERE id = @followId
-                  ;";
-
+    ;";
     var rows = _db.Execute(sql, new { followId });
     if (rows != 1) { throw new Exception("Data is bad or Id is Bad"); }
     return;
+  }
 
+  internal List<Follow> GetProfileFollowings(string profileId)
+  {
+    var sql = @"
+    SELECT
+    follow.*,
+    account.*
+    FROM follows follow
+    JOIN accounts account ON account.id = follow.followingUserId
+    WHERE follow.creatorId = @profileId
+    GROUP BY follow.id
+    ;";
+    return _db.Query<Follow, Profile, Follow>(sql, (follow, profile) =>
+    {
+      follow.Profile = profile;
+      return follow;
+    }, new { profileId }).ToList();
+  }
+
+  internal List<Follow> GetProfileFollowers(string profileId)
+  {
+    var sql = @"
+    SELECT
+    follow.*,
+    account.*
+    FROM follows follow
+    JOIN accounts account ON account.id = follow.creatorId
+    WHERE follow.followingUserId = @profileId
+    GROUP BY follow.id
+    ;";
+    return _db.Query<Follow, Profile, Follow>(sql, (follow, profile) =>
+    {
+      follow.Profile = profile;
+      return follow;
+    }, new { profileId }).ToList();
   }
 }
