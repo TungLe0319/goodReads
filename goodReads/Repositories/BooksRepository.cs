@@ -26,7 +26,7 @@ public class BooksRepository : BaseRepository
               previewLink,
               country,
               isEBook,
-              saleability,
+              saleAbility,
               flavorText,
               retailPrice,
               averageRating

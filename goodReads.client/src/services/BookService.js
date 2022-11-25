@@ -33,21 +33,22 @@ class BookService {
       },
     });
     console.log(res.data.items);
-// let books = res.data.items.map(b=> new Book(b))
-// for (const b of books) {
-//   b.authors = b.authors.toString() || b.authors
-//   b.categories = b.categories.toString() || b.categories
-//   const res2 = await api.post('api/books',b)
-//   console.log(res2.data);
-// }
+    // let books = res.data.items.map(b=> new Book(b))
+    // for (const b of books) {
+    //   b.authors = b.authors.toString() || b.authors
+    //   b.categories = b.categories.toString() || b.categories
+    //   const res2 = await api.post('api/books',b)
+    //   console.log(res2.data);
+    // }
     AppState.sPBooks = res.data.items.map((b) => new Book(b));
     // console.log(AppState.sPBooks);
   }
 
-  async addBookToDb(book){
-    // const res = await api.post("api/books", book)
-    // let newBook = new Book(res.data)
-    console.log(book, 'hi');
+  async addBookToDb(book) {
+    const res = await api.post("api/books", book);
+    let newBook = new Book(res.data);
+    AppState.books = [...AppState.books, newBook];
+    console.log(book, "hi", newBook);
   }
 
   async getBookInformation(id) {
@@ -65,18 +66,18 @@ class BookService {
   }
 
   async searchByCategory(term) {
-  console.log(term);
-AppState.categoryQuery
+    console.log(term);
+    AppState.categoryQuery;
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q: term+'subject',
+        q: term + "subject",
         maxResults: 24,
-        startIndex: AppState.startIndex
+        startIndex: AppState.startIndex,
       },
     });
     console.log(res.data);
-    console.log('[startIndex]',AppState.startIndex);
-    AppState.totalItems = res.data.totalItems
+    console.log("[startIndex]", AppState.startIndex);
+    AppState.totalItems = res.data.totalItems;
     AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
     // router.push({ name: "Home" });
@@ -88,12 +89,12 @@ AppState.categoryQuery
       params: {
         q: author,
         maxResults: 24,
-        startIndex: AppState.startIndex
+        startIndex: AppState.startIndex,
       },
     });
     console.log(res.data);
     // console.log('[startIndex]',AppState.startIndex);
-    AppState.totalItems = res.data.totalItems
+    AppState.totalItems = res.data.totalItems;
     AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
     // router.push({ name: "Home" });
@@ -112,39 +113,34 @@ AppState.categoryQuery
     AppState.books = res.data.map((b) => new SQLBook(b));
   }
 
-  async getAuthorsList(){
-    const res = await api.get('api/books/authors')
-    console.log("AuthorList",res.data);
-      let rest = res.data
-      // res.data.map(r => AppState.categoryList.push(r.categories))
+  async getAuthorsList() {
+    const res = await api.get("api/books/authors");
+    console.log("AuthorList", res.data);
+    let rest = res.data;
+    // res.data.map(r => AppState.categoryList.push(r.categories))
 
-
-   this.filterDuplicates(res.data,AppState.authorList)
-   this.filterDuplicateCategories(res.data,AppState.categoryList)
-   console.log("authorListAPP",AppState.authorList);
-   console.log("CategoryListAPP",AppState.categoryList);
-
+    this.filterDuplicates(res.data, AppState.authorList);
+    this.filterDuplicateCategories(res.data, AppState.categoryList);
+    console.log("authorListAPP", AppState.authorList);
+    console.log("CategoryListAPP", AppState.categoryList);
   }
-
-
 
   filterDuplicates(arr1, arr2) {
     arr1.forEach((i) => {
-      let found = arr2.find(f => f == i);
+      let found = arr2.find((f) => f == i);
       if (!found) {
         arr2.push(i);
       }
     });
-   
+    return arr2;
   }
   filterDuplicateCategories(arr1, arr2) {
     arr1.forEach((i) => {
-      let found = arr2.find(f => f.categories == i.categories);
+      let found = arr2.find((f) => f.categories == i.categories);
       if (!found) {
         arr2.push(i.categories);
       }
     });
-   
   }
 }
 export const bookService = new BookService();

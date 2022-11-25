@@ -10,16 +10,22 @@
     
     </div>
   </router-link>
-  <div class=" bg-transparent border-0 bookTitle  ">
-<p class="text-truncate mb-0 fw-bold text-dark" :title="book.title">      {{book.title}} </p>
-<router-link @click="searchByAuthor()" :to="{name: 'Search', params:{ }}"  class="text-dark "> 
-
-  <p class="mb-0 link fs-5" v-for="a in book.authors.split(',')"> {{a}} </p>
-</router-link>
-<router-link @click="searchByCategory(b)" :to="{name: 'Search', params:{ }}" class="text-dark "> 
-
-  <p  v-for="b in book.categories" class="link mb-0"> {{b}} </p>
-</router-link>
+  <div class="bg-transparent border-0 bookTitle">
+    <p class="text-truncate mb-0 fw-bold text-dark">{{ book.title }}</p>
+    <router-link
+      @click="searchByAuthor()"
+      :to="{ name: 'Search', params: {} }"
+      class="text-dark"
+    >
+      <p class="text-truncate mb-0 link fs-5">{{ book.authors }}</p>
+    </router-link>
+    <router-link
+      @click="searchByCategory(b)"
+      :to="{ name: 'Search', params: {} }"
+      class="text-dark"
+    >
+      <p v-for="b in book.categories" class="link mb-0">{{ b }}</p>
+    </router-link>
   </div>
 </template>
 
@@ -36,7 +42,7 @@ import Pop from "../utils/Pop.js";
 
 export default {
   props: {
-    book: { type: Object,required:true },
+    book: { type: Object, required: true },
   },
   setup(props) {
     const editable = ref({});
@@ -46,32 +52,35 @@ export default {
 
     return {
       editable,
-     async setActive(book) {
-        document.documentElement.scrollTop = 0
-        //IF NOT IN DATABASE PUSH
-        AppState.activeBook = book
-         let found = AppState.books.find((b) => b.id == book.id);
+      async setActive(book) {
+        try {
+          document.documentElement.scrollTop = 0;
+          //IF NOT IN DATABASE PUSH
+          AppState.activeBook = book;
+          let found = AppState.books.find((b) => b.id == book.id);
           if (!found) {
-            await bookService.addBookToDb(book)
+            await bookService.addBookToDb(book);
           }
-        // console.log(AppState.activeBook);
+          // console.log(AppState.activeBook);
+        } catch (error) {
+          Pop.error(error);
+        }
       },
-      async searchByCategory(b){
+      async searchByCategory(b) {
         try {
-       
-            await bookService.searchByCategory(b)
-          } catch (error) {
-            Pop.error(error,'[searchByCategory]')
-          }
+          await bookService.searchByCategory(b);
+        } catch (error) {
+          Pop.error(error, "[searchByCategory]");
+        }
       },
-      async searchByAuthor(){
+      async searchByAuthor() {
         try {
-       let author = props.book.authors
-            await bookService.searchByAuthor(author)
-          } catch (error) {
-            Pop.error(error,'[searchByCategory]')
-          }
-      }
+          let author = props.book.authors;
+          await bookService.searchBy(author);
+        } catch (error) {
+          Pop.error(error, "[searchByCategory]");
+        }
+      },
     };
   },
 };
@@ -81,41 +90,37 @@ export default {
 .link:hover {
   transform: scale(1.05);
   transition: all 0.75s ease;
-text-decoration: underline;
+  text-decoration: underline;
 }
 
-.bookTitle{
-text-overflow: clip;
+.bookTitle {
+  text-overflow: clip;
 }
 .card {
- 
   transition: all 0.25s ease;
-  .card-title{
+  .card-title {
     opacity: 0;
     transition: all 0.5s ease;
   }
-  .card-img{
+  .card-img {
     height: 275px;
     object-fit: cover;
     object-position: center;
   }
 }
 .card:hover {
- img{
-   transform: scale(1.03);
-  transition: all 0.25s ease;
-  filter: saturate(120%);
-  filter: brightness(70%);
-box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
- }
- .card-title{
-opacity: 1;
-transition: all 1s ease;
- }
-
+  img {
+    transform: scale(1.03);
+    transition: all 0.25s ease;
+    filter: saturate(120%);
+    filter: brightness(70%);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  }
+  .card-title {
+    opacity: 1;
+    transition: all 1s ease;
+  }
 }
-.bookTitle:hover{
-
-
+.bookTitle:hover {
 }
 </style>
