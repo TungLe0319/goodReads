@@ -70,10 +70,10 @@
           
         <a href="https://www.bookbub.com/profile/3069874122" target="_blank"> Example Link</a>
         </li>
-        <li>Notifications? </li>
-        <li>Adding to List</li>
-        <li>Pusher,</li>
-        <li>refine searchPage</li>
+        <li>Notifications? user able to send feed back, maybe send back notification response in account page that we received it</li>
+        <li>Adding  a book to bookShelf/List</li>
+        <li>Add Picture/GitHub/LinkedIn for everyone</li>
+        <li>refine searchPage  Created two Arrays full of all Authors/Categorys in our database</li>
       </ul>
     </div>
   </div>

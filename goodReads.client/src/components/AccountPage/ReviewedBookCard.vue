@@ -59,8 +59,10 @@
     </div>
  
  <div class="d-flex flex-column justify-content-center align-items-center">
+<router-link :to="{name: 'Book', params:{id: review.book.id }}"> 
 
-   <img :src="review.book.largeImg" alt="" width="200" height="300" class="elevation-4 rounded">
+  <img :src="review.book.largeImg" alt="" width="200" height="300" class="elevation-4 rounded">
+</router-link>
 <p>
 
   {{review.book.authors}}
