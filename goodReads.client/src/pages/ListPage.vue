@@ -1,5 +1,15 @@
 <template>
   <div class="container">
+      <div class="row mb-5">
+      <div class="col-md-12">
+        <div class="card elevation-5 border-0">
+       <h1>You Haven't Added any Books to your Wishlist Yet</h1>
+       
+       
+        </div>
+      </div>
+    </div>
+
     <div class="row mt-3">
       <div class="col-md-12">
         <div class="d-flex justify-content-between">

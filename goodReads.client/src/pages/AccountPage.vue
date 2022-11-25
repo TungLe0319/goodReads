@@ -48,7 +48,7 @@
               Following
             </button>
             <button
-              class="nav-link"
+              class="nav-link "
               id="nav-Followers-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-Followers"
