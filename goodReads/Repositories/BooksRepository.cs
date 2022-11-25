@@ -73,11 +73,34 @@ public class BooksRepository : BaseRepository
   {
     var sql = @"
           SELECT 
-          *
+      *
 
           FROM books     
                ; ";
     return _db.Query<Book>(sql).ToList();
+
+  }
+
+  internal List<Object> GetAuthors()
+  {
+    var sql = @"
+          SELECT 
+              authors,categories
+
+          FROM books     
+               ; ";
+    return _db.Query<Object>(sql).ToList();
+
+  }
+
+  internal List<string>GetCategories(){
+    var sql = @"
+          SELECT 
+              categories
+
+          FROM books     
+               ; ";
+    return _db.Query<string>(sql).ToList();
 
   }
 }

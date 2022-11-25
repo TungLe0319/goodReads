@@ -9,17 +9,21 @@
             class="bannerImg"
           />
           <div
-            class="card-img-overlay align-items-center d-flex justify-content-center"
+            class="card-img-overlay align-items-center d-flex justify-content-center flex-column justify-content-evenly"
           >
+          <div class=" text-constantLight text-decoration-underline 4border-bottom border-3">
+            <h1>Find Your Book, Find Your Why</h1>
+          </div>
+      
             <figure>
               <blockquote class="blockquote text-constantLight">
                 <p>
-                  <i class="mdi mdi-format-quote-open"></i> Books are a uniquely
-                  portable magic. <i class="mdi mdi-format-quote-close"></i>
+                  <i class="mdi mdi-format-quote-open"></i> {{quote?.content}} <i class="mdi mdi-format-quote-close"></i>
                 </p>
+          
               </blockquote>
               <figcaption class="blockquote-footer text-constantLight">
-                Stephen King
+                {{quote?.author}} 
               </figcaption>
             </figure>
           </div>
@@ -120,6 +124,7 @@ import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
 import SearchPageBookCard from "../components/SearchPageBookCard.vue";
 import { SQLBook } from "../models/SQLBook.js";
 import { bookService } from "../services/BookService.js";
+import { quotesService } from "../services/QuotesService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
@@ -128,10 +133,18 @@ export default {
     onMounted(() => {
       // getBooks();
       getMySQLBooks();
+      getQuote()
     });
     async function getBooks() {
       try {
         await bookService.getBooks();
+      } catch (error) {
+        Pop.error(error, "[getBooks]");
+      }
+    }
+    async function getQuote() {
+      try {
+        await quotesService.getQuote();
       } catch (error) {
         Pop.error(error, "[getBooks]");
       }
@@ -146,6 +159,7 @@ export default {
     let editable = ref({});
     return {
       editable,
+      quote:computed(() => AppState.quote),
       books: computed(() => AppState.books.slice([0],[16])),
       cookingBooks: computed(() =>
         AppState.books.filter((b) => b.categories.includes("Cooking"))
@@ -194,10 +208,10 @@ export default {
   height: 25em;
 }
 .blockquote {
-  font-size: 3em;
+  font-size: 1.25em;
 }
 .blockquote-footer {
-  font-size: 2em;
+  font-size: 1.25em;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 .bannerImg {

@@ -41,5 +41,20 @@ public class BooksController : IController
     }
   }
 
+  [HttpGet("authors")]
+  public ActionResult<List<Object>> GetAuthors()
+  {
+    try
+    {
+      List<Object> book = _booksService.GetAuthors();
+      return Ok(book);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+
 
 }

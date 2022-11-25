@@ -81,8 +81,8 @@
           >
         <div class="container-fluid">
          <div class="row">
-           <div class="col-md-12" v-for="r in reviews" :key="r.id">
-            <ReviewCard :review="r" />
+           <div class="col-md-4" v-for="r in reviews" :key="r.id">
+            <ReviewedBookCard :review="r" />
            </div>
          </div>
        </div>
@@ -123,8 +123,9 @@ import { AppState } from "../AppState";
 import AccountDetails from "../components/AccountPage/AccountDetails.vue";
 import EditAccountForm from "../components/AccountPage/EditAccountForm.vue";
 import FileUpload from "../components/AccountPage/FileUpload.vue";
+import ReviewedBookCard from "../components/AccountPage/ReviewedBookCard.vue";
 import ReviewCard from "../components/BookPage/ReviewCard.vue";
-import FollowerCard from "../components/FollowerCard.vue";
+import FollowerCard from "../components/AccountPage/FollowerCard.vue";
 export default {
   setup() {
     return {
@@ -135,7 +136,7 @@ export default {
 
     };
   },
-  components: { AccountDetails, EditAccountForm, FollowerCard, ReviewCard, FileUpload },
+  components: { AccountDetails, EditAccountForm, FollowerCard, ReviewCard, FileUpload, ReviewedBookCard },
 };
 </script>
 

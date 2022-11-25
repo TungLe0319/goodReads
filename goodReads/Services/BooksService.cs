@@ -18,4 +18,9 @@ public class BooksService
   {
     return _booksRepo.GetAllBooks();
   }
+
+  internal List<Object> GetAuthors()
+  {
+return _booksRepo.GetAuthors();
+  }
 }

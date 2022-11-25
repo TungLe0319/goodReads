@@ -9,5 +9,6 @@ export class Review {
     this.createdAt = data.createdAt;
     this.updatedAt = data.updatedAt;
     this.recommend=data.recommend
+    this.book = data.book
   }
 }

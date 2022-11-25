@@ -49,6 +49,9 @@ public class Startup
     services.AddTransient<ShelvedBooksRepository>();
     services.AddTransient<ShelvedBookService>();
 
+    services.AddTransient<FeedBacksRepository>();
+    services.AddTransient<FeedBacksService>();
+
 
   }
 

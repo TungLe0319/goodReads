@@ -105,5 +105,40 @@ AppState.categoryQuery
     console.log("[MySQL]", res.data);
     AppState.books = res.data.map((b) => new SQLBook(b));
   }
+
+  async getAuthorsList(){
+    const res = await api.get('api/books/authors')
+    console.log("AuthorList",res.data);
+      let rest = res.data
+      // res.data.map(r => AppState.categoryList.push(r.categories))
+
+
+   this.filterDuplicates(res.data,AppState.authorList)
+   this.filterDuplicateCategories(res.data,AppState.categoryList)
+   console.log("authorListAPP",AppState.authorList);
+   console.log("CategoryListAPP",AppState.categoryList);
+
+  }
+
+
+
+  filterDuplicates(arr1, arr2) {
+    arr1.forEach((i) => {
+      let found = arr2.find(f => f == i);
+      if (!found) {
+        arr2.push(i);
+      }
+    });
+   
+  }
+  filterDuplicateCategories(arr1, arr2) {
+    arr1.forEach((i) => {
+      let found = arr2.find(f => f.categories == i.categories);
+      if (!found) {
+        arr2.push(i.categories);
+      }
+    });
+   
+  }
 }
 export const bookService = new BookService();

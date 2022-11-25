@@ -17,6 +17,8 @@ public class Review : IHasCreator
 
 public class ReviewedBook
 {
+
+  public string Title { get; set; }
   public string Id { get; set; }
   public string authors { get; set; }
   public string LargeImg { get; set; }
