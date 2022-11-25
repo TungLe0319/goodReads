@@ -23,4 +23,19 @@ public class ProfilesController : IController
       return BadRequest(e.Message);
     }
   }
+
+  [HttpGet("{profileId}/bookshelves")]
+  public ActionResult<List<BookShelf>> GetProfileBookShelves(string profileId)
+  {
+    try
+    {
+      List<BookShelf> bookShelf = _bookShelvesService.GetProfileBookShelves(profileId);
+      return Ok(bookShelf);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+
+  }
 }

@@ -18,4 +18,9 @@ public class BookShelvesService
   {
     return _br.GetAccountBookShelves(userId);
   }
+
+  internal List<BookShelf> GetProfileBookShelves(string profileId)
+  {
+    return _br.GetProfileBookShelves(profileId);
+  }
 }

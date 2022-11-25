@@ -45,4 +45,22 @@ public class BookShelvesRepository : BaseRepository
 
 
   }
+
+  internal List<BookShelf> GetProfileBookShelves(string profileId)
+  {
+    var sql = @"
+    SELECT
+    bs.*,
+    a.*
+    FROM bookshelves bs
+    JOIN a ON a.id = bs.creatorId
+    WHERE bs.creatorId = @profileId
+    ;";
+
+    return _db.Query<BookShelf, Profile, BookShelf>(sql, (bs, p) =>
+    {
+      bs.Creator = p;
+      return bs;
+    }, new { profileId }).ToList();
+  }
 }
