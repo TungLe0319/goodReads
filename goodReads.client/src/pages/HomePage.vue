@@ -205,7 +205,7 @@ export default {
 .scrollX {
   flex-wrap: nowrap;
   overflow-x: auto;
-  height: 25em;
+  height: 28em;
 }
 .blockquote {
   font-size: 1.25em;

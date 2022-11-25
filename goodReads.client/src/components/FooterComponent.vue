@@ -56,8 +56,7 @@
               style="width: 60px; background-color: #7c4dff; height: 2px"
             />
             <p>
-              Thank you for using our Application, Hope you enjoyed your
-              experience, if not please leave us feedback on how we can improve!
+              Thank you for taking the time and viewing this application, If you would like to see more of our work please check out our Github Profiles and Get in touch with us through LinkedIn
             </p>
           </div>
           <!-- Grid column -->
@@ -108,7 +107,7 @@
               <img
                 src="src/assets/img/Portraits/tungle.jpg"
                 alt=""
-                class="forcedImg"
+                class="forcedImg elevation-5"
               />
             </div>
           </div>
@@ -121,8 +120,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  
     </div>
     <!-- Copyright -->
   </footer>
