@@ -26,8 +26,38 @@ export default {
         }
     }
 
+    async function getProfileBookshelves() {
+      try {
+          await profilesService.getProfileBookshelves(route.params.id)
+        } catch (error) {
+          console.error('[getProfileBookshelves]',error)
+          Pop.error(error)
+        }
+    }
+
+    async function getProfileFollows() {
+      try {
+        await profilesService.getProfileFollows(route.params.id)
+      } catch (error) {
+        console.error('[getProfileFollows]', error)
+        Pop.error(error)
+      }
+    }
+
+    async function getProfileFollowers() {
+      try {
+        await profilesService.getProfileFollowers(route.params.id)
+      } catch (error) {
+        console.error('[getProfileFollowers]', error)
+        Pop.error(error)
+      }
+    }
+
     onMounted(() => {
       getProfile()
+      getProfileBookshelves()
+      getProfileFollows()
+      getProfileFollowers()
     })
 
     return {}

@@ -8,6 +8,21 @@ class ProfilesService {
     // console.log(res.data);
     AppState.activeProfile = res.data
   }
+
+  async getProfileBookshelves(id) {
+    const res = await api.get(`api/profiles/${id}/bookshelves`)
+    console.log(res.data, "getProfileBookshelves");
+  }
+
+  async getProfileFollows(id) {
+    const res = await api.get(`api/profiles/${id}/following`)
+    console.log(res.data, "getProfileFollowing");
+  }
+
+  async getProfileFollowers(id) {
+    const res = await api.get(`api/profiles/${id}/followers`)
+    console.log(res.data, "getProfileFollowers");
+  }
 }
 
 export const profilesService = new ProfilesService()

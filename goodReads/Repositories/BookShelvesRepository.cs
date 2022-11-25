@@ -53,7 +53,7 @@ public class BookShelvesRepository : BaseRepository
     bs.*,
     a.*
     FROM bookshelves bs
-    JOIN a ON a.id = bs.creatorId
+    JOIN accounts a ON a.id = bs.creatorId
     WHERE bs.creatorId = @profileId
     ;";
 
