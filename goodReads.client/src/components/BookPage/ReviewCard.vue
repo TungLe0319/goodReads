@@ -123,10 +123,10 @@ let loggedInUser = {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
       following: computed(() =>
-        AppState.following.find((f) => f.creatorId == AppState.account.id)
+        AppState.following.find((f) => f.followingUserId == props.review.creatorId)
       ),
 
-      followId: computed(()=> AppState.following.find(f=> f.followingUserId == props.review.creatorId)),
+      // followId: computed(()=> AppState.following.find(f=> f.followingUserId == props.review.creatorId)),
 
       async deleteReview() {
         try {
@@ -144,6 +144,8 @@ let loggedInUser = {
           let id = {
             followingUserId: props.review.creator.id,
           };
+          // let hi = this.followId.id
+          console.log(id);
 
           await followsService.followByUserId(id);
           Pop.success(`Following ${props.review.creator.name}`);
@@ -153,7 +155,8 @@ let loggedInUser = {
       },
       async unFollowByUserId() {
         try {
-          let id = this.followId.id
+          let id = this.following.id
+          console.log(id);
           await followsService.unFollowByUserId(id);
           Pop.success(`UnFollowed ${props.review.creator.name}`);
         } catch (error) {

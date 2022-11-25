@@ -40,7 +40,7 @@ import Pop from "../utils/Pop.js";
 
 export default {
   props: {
-    book: { type: Book,required:true },
+    book: { type: Object,required:true },
   },
   setup(props) {
     const editable = ref({});
