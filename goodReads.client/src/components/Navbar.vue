@@ -9,7 +9,7 @@
           alt="logo"
           class="logo p-1 "
           src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png"
-       height="80"
+      
         />
       </div>
     </router-link>
@@ -101,8 +101,8 @@ export default {
 <style scoped>
 
 .forcedImg{
-  height:150px;
-  width: 150px;
+  height:100px;
+  width: 100px;
   object-fit: cover;
 }
 a:hover {
@@ -116,8 +116,10 @@ a:hover {
 }
 
 .logo {
-  background-color: rgba(189, 184, 176, 0.805);
+
   border-radius: 50%;
+  width: 80px;
+  height: 80px;
 }
 
 .nav-link {

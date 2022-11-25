@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <AccountDetails :account="account" />
-   <FileUpload/>
+
       </div>
     </div>
 

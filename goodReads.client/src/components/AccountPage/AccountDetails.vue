@@ -6,24 +6,21 @@
           :src="account.picture"
           :alt="account.name"
           :title="account.name"
-          class="rounded-circle accountImg"
+          class="rounded-circle accountImg elevation-5"
         />
       </div>
       <div class="col-8 d-flex flex-column justify-content-between">
         <div class="d-flex justify-content-between">
-          <span class="fs-1">{{ account.name }}</span>
-          <button class="btn btn-danger" @click="follow()">
-            <i class="mdi mdi-heart fs-1"></i>
-          </button>
-          <!-- <button class="btn btn-primary">Following</button> -->
-        </div>
-        <!-- <div class="d-flex gap-2">
-          <button class="btn btn-primary">About</button>
-          <button class="btn btn-primary">Reviews</button>
-          <button class="btn btn-primary">Following</button>
-          <button class="btn btn-primary">Followers</button>
-        </div> -->
+          <div class="">
 
+            <p class="fs-1 mb-0">{{ account.name }}</p>
+            <p class="fs-5  text-muted"> @{{ account.email.split('@')[0] }}</p>
+          </div>
+          <button class="btn border-0" @click="follow()">
+         <img src="src/assets/img/follow.png" alt="" width="80" height="80">
+          </button>
+        </div>
+    
         <EditAccountForm/>
       </div>
     </div>
