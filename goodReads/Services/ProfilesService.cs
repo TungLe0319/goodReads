@@ -8,4 +8,9 @@ public class ProfilesService
   {
     _profilesRepo = profilesRepo;
   }
+
+  internal Profile GetProfileById(string profileId)
+  {
+    return _profilesRepo.GetProfileById(profileId);
+  }
 }
