@@ -7,18 +7,14 @@
   >
     <div class="card elevation-5 border-0 my-1 text-shadow">
       <img :src="book.img" class="card-img" :alt="book.title" v-if="book.img" />
-      <div class="card-img-overlay align-items-end d-flex">
-        <h5 class="card-title d-flex align-items-end bookTitle">
-          {{ book.title }}
-        </h5>
-      </div>
+    
     </div>
   </router-link>
   <div class=" bg-transparent border-0 bookTitle  ">
-<p class="text-truncate mb-0 fw-bold text-dark">      {{book.title}} </p>
+<p class="text-truncate mb-0 fw-bold text-dark" :title="book.title">      {{book.title}} </p>
 <router-link @click="searchByAuthor()" :to="{name: 'Search', params:{ }}"  class="text-dark "> 
 
-  <p class="mb-0 link fs-5"> {{book.authors}} </p>
+  <p class="mb-0 link fs-5" v-for="a in book.authors.split(',')"> {{a}} </p>
 </router-link>
 <router-link @click="searchByCategory(b)" :to="{name: 'Search', params:{ }}" class="text-dark "> 
 
