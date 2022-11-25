@@ -16,9 +16,12 @@
             <p class="fs-1 mb-0">@{{ account.name }}</p>
             <p class="fs-5  text-muted"> {{ account.email}}</p>
           </div>
-          <button class="btn btn-outline-dark " @click="follow()">
-        Edit Profile
-          </button>
+          <div class=" mt-3 ms-3">
+
+            <button class="btn btn-outline-dark p-3 fw-bold rounded-1" @click="follow()">
+           <i class="mdi mdi-pencil fs-5 "></i> Edit Profile
+            </button>
+          </div>
         </div>
     
         <EditAccountForm/>

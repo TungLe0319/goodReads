@@ -76,6 +76,7 @@
         <li>refine searchPage  Created two Arrays full of all Authors/Categorys in our database</li>
         <li>Fix Pagienation buttons on search page, need it to keep the still active checkbox category into account when paginating</li>
         <li>Add More To List Page </li>
+        <li>Change SearchPageBookCard to BookCard throughout pages</li>
       </ul>
     </div>
   </div>

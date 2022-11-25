@@ -24,6 +24,9 @@
 <ModalComponent id="bookShelfForm" >
   <BookShelfForm/>
 </ModalComponent>
+<ModalComponent id="editAccountForm" >
+  <EditAccountForm/>
+</ModalComponent>
 </template>
 
 <script>
@@ -34,6 +37,7 @@ import ModalComponent from "./components/ModalComponent.vue"
 import Navbar from './components/Navbar.vue'
 import ReviewForm from "./components/BookPage/ReviewForm.vue"
 import FooterComponent from "./components/FooterComponent.vue"
+import EditAccountForm from "./components/AccountPage/EditAccountForm.vue"
 
 export default {
   setup() {
@@ -41,7 +45,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar, ModalComponent, ReviewForm, BookShelfForm, FooterComponent }
+  components: { Navbar, ModalComponent, ReviewForm, BookShelfForm, FooterComponent, EditAccountForm }
 }
 </script>
 <style lang="scss">
