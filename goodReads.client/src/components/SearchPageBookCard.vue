@@ -52,7 +52,7 @@ export default {
       editable,
       setActive() {
         document.documentElement.scrollTop = 0
-        //IF NOT IN DATABASE PUSH
+
         AppState.activeBook = props.book;
         console.log(AppState.activeBook);
       },
