@@ -38,11 +38,6 @@ img {
   max-width: 100px;
 }
 
-nav .active {
-  border: 0;
-  border-bottom: 4px solid rgba(255, 0, 0, 0.521) !important;
-
-}
 
 
 </style>
