@@ -14,7 +14,6 @@ export class SQLBook {
     this.language = data.language;
     this.printType = data.printType;
     this.previewLink = data.previewLink;
-    this.dimensions = data.dimensions;
     this.country = data.country
     this.isEbook= data.isEbook || false
     this.saleAbility = data.saleAbility
