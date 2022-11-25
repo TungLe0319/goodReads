@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="{ name: 'Book', params: { id: book.id } }"
-    @click="setActive()"
+    @click="setActive(book)"
     v-if="book"
     class="text-dark"
   >
@@ -50,11 +50,15 @@ export default {
 
     return {
       editable,
-      setActive() {
+     async setActive(book) {
         document.documentElement.scrollTop = 0
-
-        AppState.activeBook = props.book;
-        console.log(AppState.activeBook);
+        //IF NOT IN DATABASE PUSH
+        AppState.activeBook = book
+         let found = AppState.books.find((b) => b.id == book.id);
+          if (!found) {
+            await bookService.addBookToDb(book)
+          }
+        // console.log(AppState.activeBook);
       },
       async searchByCategory(b){
         try {
