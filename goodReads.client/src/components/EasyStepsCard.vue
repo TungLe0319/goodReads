@@ -77,6 +77,7 @@
         <li>Fix Pagienation buttons on search page, need it to keep the still active checkbox category into account when paginating</li>
         <li>Add More To List Page </li>
         <li>Change SearchPageBookCard to BookCard throughout pages</li>
+        <li> HOME PAGE book AUthors, need to .split them to individual authors</li>
       </ul>
     </div>
   </div>
