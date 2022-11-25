@@ -10,6 +10,7 @@
   >
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content border-0 elevation-5">
+     <div class="text-end">   <button class="btn" data-bs-dismiss="modal"> <i class="mdi mdi-close"></i></button></div>
         <slot> </slot>
       </div>
     </div>

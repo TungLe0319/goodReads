@@ -18,7 +18,7 @@
 <p class="text-truncate mb-0 fw-bold text-dark">      {{book.title}} </p>
 <router-link @click="searchByAuthor()" :to="{name: 'Search', params:{ }}"  class="text-dark "> 
 
-  <p class="text-truncate mb-0 link fs-5"> {{book.authors}} </p>
+  <p class="mb-0 link fs-5"> {{book.authors}} </p>
 </router-link>
 <router-link @click="searchByCategory(b)" :to="{name: 'Search', params:{ }}" class="text-dark "> 
 

@@ -1,7 +1,7 @@
 <template>
   <div class="accountDetails container mt-5" v-if="account">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 d-flex justify-content-center">
         <img
           :src="account.picture"
           :alt="account.name"
@@ -13,18 +13,23 @@
         <div class="d-flex ">
           <div class="">
 
-            <p class="fs-1 mb-0">@{{ account.name }}</p>
+            <p class=" mb-0 name">{{ account.name }}</p>
             <p class="fs-5  text-muted"> {{ account.email}}</p>
           </div>
           <div class=" mt-3 ms-3">
 
-            <button class="btn btn-outline-dark p-3 fw-bold rounded-1" @click="follow()">
+            <button class="btn btn-outline-dark p-3 fw-bold rounded-1" data-bs-target="#editAccountForm" data-bs-toggle="modal">
            <i class="mdi mdi-pencil fs-5 "></i> Edit Profile
             </button>
+
+<!-- NOTE THIS BUTTON ADD TO PROFILE PAGE  -->
+
+            <!-- <button class="btn btn-outline-dark p-3 fw-bold rounded-1" @click="follow()">
+           <i class="mdi mdi-pencil fs-5 "></i>Follow
+            </button> -->
           </div>
         </div>
-    
-        <EditAccountForm/>
+  
       </div>
     </div>
   </div>
@@ -32,6 +37,7 @@
 
 <script>
 import { accountService } from "../../services/AccountService";
+import { followsService } from "../../services/FollowsService.js";
 import Pop from "../../utils/Pop";
 import EditAccountForm from "./EditAccountForm.vue";
 
@@ -43,7 +49,7 @@ export default {
         return {
             async follow() {
                 try {
-                    await accountService.follow(props.account.id);
+                    await followsService.followByUserId()
                 }
                 catch (error) {
                     console.error("[]", error);
@@ -60,5 +66,10 @@ export default {
 .accountImg {
   width: 200px;
   height: 200px;
+}
+
+.name {
+  font-size: 3em;
+  font-family: "Abril Fatface", cursive;
 }
 </style>

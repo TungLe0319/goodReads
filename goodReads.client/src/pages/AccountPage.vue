@@ -3,16 +3,19 @@
     <div class="row">
       <div class="col-12">
         <AccountDetails :account="account" />
-
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
         <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <div
+            class="nav nav-tabs d-flex justify-content-center"
+            id="nav-tab"
+            role="tablist"
+          >
             <button
-              class="nav-link active"
+              class="nav-link active fs-5 text-dark"
               id="nav-About-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-About"
@@ -24,7 +27,7 @@
               About
             </button>
             <button
-              class="nav-link"
+              class="nav-link fs-5 text-dark"
               id="nav-Reviews-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-Reviews"
@@ -36,7 +39,7 @@
               Reviews
             </button>
             <button
-              class="nav-link"
+              class="nav-link fs-5 text-dark"
               id="nav-Following-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-Following"
@@ -48,7 +51,7 @@
               Following
             </button>
             <button
-              class="nav-link "
+              class="nav-link fs-5 text-dark"
               id="nav-Followers-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-Followers"
@@ -61,6 +64,8 @@
             </button>
           </div>
         </nav>
+
+        
         <div class="tab-content" id="nav-tabContent">
           <div
             class="tab-pane fade show active"
@@ -79,13 +84,13 @@
             aria-labelledby="nav-Reviews-tab"
             tabindex="0"
           >
-        <div class="container-fluid">
-         <div class="row">
-           <div class="col-md-4" v-for="r in reviews" :key="r.id">
-            <ReviewedBookCard :review="r" />
-           </div>
-         </div>
-       </div>
+            <div class="container-fluid">
+              <div class="row mt-5">
+                <div class="col-md-4" v-for="r in reviews" :key="r.id">
+                  <ReviewedBookCard :review="r" />
+                </div>
+              </div>
+            </div>
           </div>
           <div
             class="tab-pane fade"
@@ -94,13 +99,13 @@
             aria-labelledby="nav-Following-tab"
             tabindex="0"
           >
-       <div class="container-fluid">
-         <div class="row">
-           <div class="col-md-12" v-for="f in following" :key="f.id">
-             <FollowerCard :follow="f"/>
-           </div>
-         </div>
-       </div>
+            <div class="container-fluid">
+              <div class="row mt-5">
+                <div class="col-md-12" v-for="f in following" :key="f.id">
+                  <FollowerCard :follow="f" />
+                </div>
+              </div>
+            </div>
           </div>
           <div
             class="tab-pane fade"
@@ -132,11 +137,17 @@ export default {
       account: computed(() => AppState.account),
       following: computed(() => AppState.following),
       followers: computed(() => AppState.followers),
-      reviews:computed(() => AppState.accountReviews),
-
+      reviews: computed(() => AppState.accountReviews),
     };
   },
-  components: { AccountDetails, EditAccountForm, FollowerCard, ReviewCard, FileUpload, ReviewedBookCard },
+  components: {
+    AccountDetails,
+    EditAccountForm,
+    FollowerCard,
+    ReviewCard,
+    FileUpload,
+    ReviewedBookCard,
+  },
 };
 </script>
 
@@ -144,4 +155,12 @@ export default {
 img {
   max-width: 100px;
 }
+
+nav .active {
+  border: 0;
+  border-bottom: 4px solid rgba(255, 0, 0, 0.521) !important;
+
+}
+
+
 </style>
