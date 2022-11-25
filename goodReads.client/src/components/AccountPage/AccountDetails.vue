@@ -10,14 +10,14 @@
         />
       </div>
       <div class="col-8 d-flex flex-column justify-content-between">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex ">
           <div class="">
 
             <p class="fs-1 mb-0">@{{ account.name }}</p>
             <p class="fs-5  text-muted"> {{ account.email}}</p>
           </div>
-          <button class="btn border-0" @click="follow()">
-         <img src="src/assets/img/follow.png" alt="" width="80" height="80">
+          <button class="btn btn-outline-dark " @click="follow()">
+        Edit Profile
           </button>
         </div>
     
@@ -55,7 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 .accountImg {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
 }
 </style>

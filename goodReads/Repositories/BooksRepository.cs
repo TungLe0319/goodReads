@@ -27,13 +27,9 @@ public class BooksRepository : BaseRepository
               country,
               isEBook,
               saleability,
-              currency,
               flavorText,
-              buyLink,
               retailPrice,
-              averageRating,
-              isbn13,
-              isbn10
+              averageRating
 
             )
             VALUES (
@@ -54,13 +50,9 @@ public class BooksRepository : BaseRepository
               @Country,
               @IsEBook,
               @SaleAbility,
-              @Currency,
               @FlavorText,
-              @BuyLink,
               @RetailPrice,
-              @AverageRating,
-              @ISBN13,
-              @ISBN10
+              @AverageRating
               )
                 ;";
 
