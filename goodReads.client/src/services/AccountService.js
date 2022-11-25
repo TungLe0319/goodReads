@@ -28,8 +28,8 @@ class AccountService {
 
  async getAccountBookShelves(){
     const res = await api.get("/account/bookshelves");
-    console.log("[accountBookShelves]", res.data);
-    console.log(AppState.accountBookshelves);
+    // console.log("[accountBookShelves]", res.data);
+    // console.log(AppState.accountBookshelves);
     AppState.accountBookshelves = res.data.map((a) => new BookShelf(a));
   }
   
@@ -39,19 +39,19 @@ class AccountService {
   }
 async getReviews(){
     const res = await api.get(`/account/reviews`);
-    console.log('reviews',res.data);
+    // console.log('reviews',res.data);
     AppState.accountReviews = res.data.map((a) => new Review(a));
 }
 
   async getFollowing(){
     const res = await api.get(`/account/following`)
-    console.log(res.data);
+    // console.log(res.data);
     AppState.following = res.data.map(f => new Follow(f))
   }
 
   async getFollowers(){
     const res = await api.get('/account/followers')
-    console.log(res.data);
+    // console.log(res.data);
     AppState.followers = res.data.map(f=> new Follow(f))
   }
 

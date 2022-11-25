@@ -8,6 +8,8 @@ export const AppState = reactive({
   account: {},
   /** @type {import('./models/Account.js').Account[]} */
   profiles: [],
+  /** @type {import('./models/Account.js').Account | null} */
+  activeProfile: null,
 
   /** @type {import('./models/Book.js').Book[]} */
   books: [],
@@ -33,8 +35,8 @@ export const AppState = reactive({
   /** @type {import('./models/Quote.js').Quote | null} */
   quote: null,
 
-  authorList:[],
-  categoryList:[],
+  authorList: [],
+  categoryList: [],
   filePicker: {},
   categoryQuery: "",
   theme: false,
