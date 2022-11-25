@@ -9,25 +9,21 @@ import { api } from './AxiosService'
 class AccountService {
   async getAccount() {
     try {
-        Pusher.logToConsole = true;
+        // Pusher.logToConsole = true;
 
-        var pusher = new Pusher("5b205b8c9c1634b6853d", {
-          cluster: "us3",
-        });
+        // var pusher = new Pusher("5b205b8c9c1634b6853d", {
+        //   cluster: "us3",
+        // });
 
-        var channel = pusher.subscribe("my-channel");
-        channel.bind("my-event", function (data) {
-          AppState.users.push(JSON.stringify(data));
-        });
+        // var channel = pusher.subscribe("my-channel");
+        // channel.bind("my-event", function (data) {
+        //   AppState.users.push(JSON.stringify(data));
+        // });
       const res = await api.get("/account");
       AppState.account = new Account(res.data);
     } catch (err) {
       logger.error("HAVE YOU STARTED YOUR SERVER YET???", err);
     }
-  }
-  async follow(id) {
-    const res = await api.post("/follow", id);
-    AppState.follows = [new Follow(res.data), ...AppState.follows];
   }
 
  async getAccountBookShelves(){
@@ -43,7 +39,7 @@ class AccountService {
   }
 async getReviews(){
     const res = await api.get(`/account/reviews`);
-    console.log(res.data);
+    console.log('reviews',res.data);
     AppState.accountReviews = res.data.map((a) => new Review(a));
 }
 
@@ -58,9 +54,7 @@ async getReviews(){
     console.log(res.data);
     AppState.followers = res.data.map(f=> new Follow(f))
   }
-  async getBookShelves(){
 
-  }
 }
 
 export const accountService = new AccountService()

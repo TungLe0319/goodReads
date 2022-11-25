@@ -12,13 +12,13 @@
             class="card-img-overlay align-items-center d-flex justify-content-center"
           >
             <figure>
-              <blockquote class="blockquote text-light">
+              <blockquote class="blockquote text-constantLight">
                 <p>
                   <i class="mdi mdi-format-quote-open"></i> Books are a uniquely
                   portable magic. <i class="mdi mdi-format-quote-close"></i>
                 </p>
               </blockquote>
-              <figcaption class="blockquote-footer text-light">
+              <figcaption class="blockquote-footer text-constantLight">
                 Stephen King
               </figcaption>
             </figure>
@@ -55,7 +55,7 @@
 <section>
   
        <div class="mt-4">
-         <h2 class="categoryTitle">Cooking</h2>
+         <h2 class="categoryTitle text-dark">Cooking</h2>
         <div class="row scrollX">
           <div class="col-md-2 gy-3" v-for="c in cookingBooks" :key="c.id">
             <SearchPageBookCard :book="c" />
@@ -63,7 +63,7 @@
         </div>
        </div>
         <div  class="mt-4">
-          <h2 class="categoryTitle">Science</h2>
+          <h2 class="categoryTitle text-dark">Science</h2>
           <div class="row scrollX">
             <div class="col-md-2 gy-3" v-for="s in scienceBooks" :key="s.id">
               <SearchPageBookCard :book="s" />
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="mt-4"> 
-          <h2 class="categoryTitle">Fiction</h2>
+          <h2 class="categoryTitle text-dark">Fiction</h2>
           <div class="row scrollX">
             <div class="col-md-2 gy-3" v-for="f in fictionBooks" :key="f.id">
               <SearchPageBookCard :book="f" />
@@ -79,7 +79,7 @@
           </div>
         </div>
         <div class="mt-4">
-          <h2 class="categoryTitle">Nature</h2>
+          <h2 class="categoryTitle text-dark">Nature</h2>
           <div class="row scrollX">
             <div class="col-md-2 gy-3" v-for="n in natureBooks" :key="n.id">
               <SearchPageBookCard :book="n" />
@@ -88,7 +88,7 @@
         </div>
 
         <div class="mt-4">
-          <h2 class="categoryTitle">History</h2>
+          <h2 class="categoryTitle text-dark">History</h2>
           <div class="row scrollX">
             <div class="col-md-2 gy-3" v-for="h in historyBooks" :key="h.id">
               <SearchPageBookCard :book="h" />
@@ -99,7 +99,7 @@
 </section>
 
     <section>
-      <h2 class="categoryTitle">Best Sellers</h2>
+      <h2 class="categoryTitle text-dark">Best Sellers</h2>
       <div class="row scrollX">
         <div class="col-md-2 gy-3" v-for="b in bestSellers" :key="b.id">
           <SearchPageBookCard :book="b" />

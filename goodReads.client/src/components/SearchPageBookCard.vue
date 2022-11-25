@@ -15,12 +15,12 @@
     </div>
   </router-link>
   <div class=" bg-transparent border-0 bookTitle  ">
-<p class="text-truncate mb-0 fw-bold">      {{book.title}} </p>
-<router-link @click="searchByAuthor()" :to="{name: 'Search', params:{ }}" > 
+<p class="text-truncate mb-0 fw-bold text-dark">      {{book.title}} </p>
+<router-link @click="searchByAuthor()" :to="{name: 'Search', params:{ }}"  class="text-dark"> 
 
   <p class="text-truncate mb-0"> {{book.authors}} </p>
 </router-link>
-<router-link @click="searchByCategory(b)" :to="{name: 'Search', params:{ }}"> 
+<router-link @click="searchByCategory(b)" :to="{name: 'Search', params:{ }}" class="text-dark"> 
 
   <small  v-for="b in book.categories"> {{b}} </small>
 </router-link>

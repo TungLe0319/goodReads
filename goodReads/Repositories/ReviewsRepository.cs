@@ -41,17 +41,18 @@ public class ReviewsRepository
     var sql = @"
           SELECT 
           r.*,
-          a.*
+          a.*,
+          b.*
           FROM reviews r
           JOIN accounts a on a.id = r.creatorId
+          JOIN books b on b.id = r.bookId
           WHERE r.creatorId = @userId
           GROUP BY r.id
-           ORDER BY r.createdAt DESC
                ; ";
-    return _db.Query<Review, Profile, Review>(sql, (review, profile) =>
+    return _db.Query<Review, Profile, ReviewedBook, Review>(sql, (review, profile, book) =>
      {
        review.Creator = profile;
-
+       review.Book = book;
        return review;
      }, new { userId }).ToList();
 

@@ -13,8 +13,8 @@
         <div class="d-flex justify-content-between">
           <div class="">
 
-            <p class="fs-1 mb-0">{{ account.name }}</p>
-            <p class="fs-5  text-muted"> @{{ account.email.split('@')[0] }}</p>
+            <p class="fs-1 mb-0">@{{ account.name }}</p>
+            <p class="fs-5  text-muted"> {{ account.email}}</p>
           </div>
           <button class="btn border-0" @click="follow()">
          <img src="src/assets/img/follow.png" alt="" width="80" height="80">

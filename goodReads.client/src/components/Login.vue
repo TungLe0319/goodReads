@@ -25,7 +25,7 @@
               height="40"
               class="rounded-circle forcedImg elevation-5"
             />
-            <p class="mb-0 ms-2">
+            <p class="mb-0 ms-2 text-dark">
               {{ account.name?.split("@")[0] }}
             </p>
             <i class="mdi mdi-arrow-down"></i>
