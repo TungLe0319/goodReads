@@ -16,13 +16,13 @@
   </router-link>
   <div class=" bg-transparent border-0 bookTitle  ">
 <p class="text-truncate mb-0 fw-bold text-dark">      {{book.title}} </p>
-<router-link @click="searchByAuthor()" :to="{name: 'Search', params:{ }}"  class="text-dark"> 
+<router-link @click="searchByAuthor()" :to="{name: 'Search', params:{ }}"  class="text-dark "> 
 
-  <p class="text-truncate mb-0"> {{book.authors}} </p>
+  <p class="text-truncate mb-0 link fs-5"> {{book.authors}} </p>
 </router-link>
-<router-link @click="searchByCategory(b)" :to="{name: 'Search', params:{ }}" class="text-dark"> 
+<router-link @click="searchByCategory(b)" :to="{name: 'Search', params:{ }}" class="text-dark "> 
 
-  <small  v-for="b in book.categories"> {{b}} </small>
+  <p  v-for="b in book.categories" class="link mb-0"> {{b}} </p>
 </router-link>
   </div>
 </template>
@@ -77,6 +77,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.link:hover {
+  transform: scale(1.05);
+  transition: all 0.75s ease;
+text-decoration: underline;
+}
 
 .bookTitle{
 text-overflow: clip;
