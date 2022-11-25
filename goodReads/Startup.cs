@@ -52,6 +52,9 @@ public class Startup
     services.AddTransient<FeedBacksRepository>();
     services.AddTransient<FeedBacksService>();
 
+    services.AddTransient<ProfilesRepository>();
+    services.AddTransient<ProfilesService>();
+
 
   }
 
