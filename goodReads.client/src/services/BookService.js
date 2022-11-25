@@ -32,7 +32,7 @@ class BookService {
         maxResults: 40,
       },
     });
-    console.log(res.data.items);
+    // console.log(res.data.items);
     // let books = res.data.items.map(b=> new Book(b))
     // for (const b of books) {
     //   b.authors = b.authors.toString() || b.authors
@@ -48,12 +48,12 @@ class BookService {
     const res = await api.post("api/books", book);
     let newBook = new Book(res.data);
     AppState.books = [...AppState.books, newBook];
-    console.log(book, "hi", newBook);
+    // console.log(book, "hi", newBook);
   }
 
   async getBookInformation(id) {
     const res = await googleBookApi.get(`/volumes/${id}`);
-    console.log("res", res.data);
+    // console.log("res", res.data);
     // AppState.extraDetails= new Book(res.data)
     // console.log(AppState.extraDetails);
 
@@ -75,8 +75,8 @@ class BookService {
         startIndex: AppState.startIndex,
       },
     });
-    console.log(res.data);
-    console.log("[startIndex]", AppState.startIndex);
+    // console.log(res.data);
+    // console.log("[startIndex]", AppState.startIndex);
     AppState.totalItems = res.data.totalItems;
     AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
@@ -92,7 +92,7 @@ class BookService {
         startIndex: AppState.startIndex,
       },
     });
-    console.log(res.data);
+    // console.log(res.data);
     // console.log('[startIndex]',AppState.startIndex);
     AppState.totalItems = res.data.totalItems;
     AppState.sPBooks = res.data.items.map((b) => new Book(b));
@@ -104,25 +104,25 @@ class BookService {
     console.log(id);
     const res = await api.get(`api/reviews/${id}`);
     AppState.reviews = res.data.map((r) => new Review(r));
-    console.log(AppState.reviews);
+    // console.log(AppState.reviews);
   }
 
   async getMySQLBooks() {
     const res = await api.get(`api/books`);
-    console.log("[MySQL]", res.data);
+    // console.log("[MySQL]", res.data);
     AppState.books = res.data.map((b) => new SQLBook(b));
   }
 
   async getAuthorsList() {
     const res = await api.get("api/books/authors");
-    console.log("AuthorList", res.data);
+    // console.log("AuthorList", res.data);
     let rest = res.data;
     // res.data.map(r => AppState.categoryList.push(r.categories))
 
-    this.filterDuplicates(res.data, AppState.authorList);
-    this.filterDuplicateCategories(res.data, AppState.categoryList);
-    console.log("authorListAPP", AppState.authorList);
-    console.log("CategoryListAPP", AppState.categoryList);
+    this.filterDuplicates(rest, AppState.authorList);
+    this.filterDuplicateCategories(rest, AppState.categoryList);
+    // console.log("authorListAPP", AppState.authorList);
+    // console.log("CategoryListAPP", AppState.categoryList);
   }
 
   filterDuplicates(arr1, arr2) {
@@ -132,7 +132,6 @@ class BookService {
         arr2.push(i);
       }
     });
-    return arr2;
   }
   filterDuplicateCategories(arr1, arr2) {
     arr1.forEach((i) => {
