@@ -138,7 +138,7 @@ export default {
     async function getBookReviews() {
       try {
         await bookService.getBookReviews(route.params.id);
-        console.log(AppState.activeBook);
+        // console.log(AppState.activeBook);
       } catch (error) {
         Pop.error(error, "[getBookReviews]");
       }
@@ -161,7 +161,7 @@ export default {
       async searchByCategory(query) {
         try {
           await bookService.searchByCategory(query);
-          console.log(query);
+          // console.log(query);
         } catch (error) {
           console.error("[searchByCategory]", error);
           Pop.error(error);

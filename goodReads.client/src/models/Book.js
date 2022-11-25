@@ -16,13 +16,13 @@ export class Book {
     this.language = data.volumeInfo.language;
     this.printType = data.volumeInfo.printType;
     this.previewLink = data.volumeInfo.previewLink;
-    this.dimensions = data?.dimensions 
+    // this.dimensions = data?.dimensions 
     this.buyLink = data.saleInfo.buyLink;
     this.country = data.saleInfo.country;
     this.isEbook = data.saleInfo.isEbook || false;
     this.saleability = data.saleInfo.saleability;
     this.retailPrice = data.saleInfo.retailPrice?.amount;
-    this.currency = data.saleInfo.retailPrice?.currencyCode;
+    // this.currency = data.saleInfo.retailPrice?.currencyCode;
     this.flavorText = data.searchInfo?.textSnippet;
     this.averageRating =
       data.volumeInfo?.averageRating 

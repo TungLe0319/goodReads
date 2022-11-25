@@ -20,7 +20,7 @@ class BookService {
       b.categories = b.categories.toString();
       b.authors = b.authors.toString();
       const book = await api.post("api/books", b);
-      console.log(book.data);
+      // console.log(book.data);
     }
 
     AppState.books = res.data.items.map((b) => new Book(b));
@@ -42,6 +42,12 @@ class BookService {
 // }
     AppState.sPBooks = res.data.items.map((b) => new Book(b));
     // console.log(AppState.sPBooks);
+  }
+
+  async addBookToDb(book){
+    // const res = await api.post("api/books", book)
+    // let newBook = new Book(res.data)
+    console.log(book, 'hi');
   }
 
   async getBookInformation(id) {
