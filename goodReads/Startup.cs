@@ -42,11 +42,17 @@ public class Startup
 
     services.AddTransient<BooksRepository>();
     services.AddTransient<BooksService>();
-    
+
     services.AddTransient<FollowsRepository>();
     services.AddTransient<FollowsService>();
 
-    
+    services.AddTransient<ShelvedBooksRepository>();
+    services.AddTransient<ShelvedBookService>();
+
+    services.AddTransient<FeedBacksRepository>();
+    services.AddTransient<FeedBacksService>();
+
+
   }
 
   private void ConfigureCors(IServiceCollection services)

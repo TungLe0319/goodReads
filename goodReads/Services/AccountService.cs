@@ -3,10 +3,12 @@ namespace goodReads.Services;
 public class AccountService
 {
   private readonly AccountsRepository _repo;
+  private readonly BookShelvesService _bsRepo;
 
-  public AccountService(AccountsRepository repo)
+  public AccountService(AccountsRepository repo, BookShelvesService bsRepo)
   {
     _repo = repo;
+    _bsRepo = bsRepo;
   }
 
   internal Account GetProfileById(string email)
@@ -19,7 +21,27 @@ public class AccountService
     Account profile = _repo.GetById(userInfo.Id);
     if (profile == null)
     {
-      return _repo.Create(userInfo);
+      Account account = _repo.Create(userInfo);
+      List<BookShelf> bookShelves = new List<BookShelf>{
+      {
+        new Shelf("favorite", account.Id)
+      },
+      {
+        new Shelf("wishlist", account.Id)
+      },
+      {
+        new Shelf("reading", account.Id)
+      },
+      {
+        new Shelf("finished", account.Id)
+      }
+     };
+      foreach (BookShelf bookShelf in bookShelves)
+      {
+        BookShelf newShelf = _bsRepo.CreateBookShelf(bookShelf);
+      }
+
+      return account;
     }
     return profile;
   }

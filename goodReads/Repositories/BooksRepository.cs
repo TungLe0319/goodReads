@@ -13,6 +13,7 @@ public class BooksRepository : BaseRepository
               id,
               title,
               img,
+              largeImg,
               authors,
               publisher,
               publishedDate,
@@ -22,12 +23,20 @@ public class BooksRepository : BaseRepository
               maturityRating,
               language,
               printType,
-              previewLink
+              previewLink,
+              country,
+              isEBook,
+              saleability,
+              flavorText,
+              retailPrice,
+              averageRating
+
             )
             VALUES (
               @Id,
               @Title,
               @Img,
+              @LargeImg,
               @Authors,
               @Publisher,
               @PublishedDate,
@@ -37,24 +46,53 @@ public class BooksRepository : BaseRepository
               @MaturityRating,
               @Language,
               @PrintType,
-              @PreviewLink
+              @PreviewLink,
+              @Country,
+              @IsEBook,
+              @SaleAbility,
+              @FlavorText,
+              @RetailPrice,
+              @AverageRating
               )
                 ;";
-  
-     _db.Execute(sql, bookData);
- 
-      return bookData;
+
+    _db.Execute(sql, bookData);
+
+    return bookData;
   }
 
   internal List<Book> GetAllBooks()
   {
-   var sql = @"
+    var sql = @"
           SELECT 
-          *
+      *
 
           FROM books     
                ; ";
-    return _db.Query<Book >(sql).ToList();
- 
+    return _db.Query<Book>(sql).ToList();
+
+  }
+
+  internal List<Object> GetAuthors()
+  {
+    var sql = @"
+          SELECT 
+              authors,categories
+
+          FROM books     
+               ; ";
+    return _db.Query<Object>(sql).ToList();
+
+  }
+
+  internal List<string>GetCategories(){
+    var sql = @"
+          SELECT 
+              categories
+
+          FROM books     
+               ; ";
+    return _db.Query<string>(sql).ToList();
+
   }
 }

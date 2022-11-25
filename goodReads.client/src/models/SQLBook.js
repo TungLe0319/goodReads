@@ -14,6 +14,15 @@ export class SQLBook {
     this.language = data.language;
     this.printType = data.printType;
     this.previewLink = data.previewLink;
-    this.dimensions = data.dimensions;
+    this.country = data.country
+    this.isEbook= data.isEbook || false
+    this.saleAbility = data.saleAbility
+    if (data.saleAbility == 'NOT_FOR_SALE') {
+      this.saleAbility = 'Unavailable'
+    }
+    this.retailPrice = data.retailPrice
+    this.averageRating = data.averageRating
+    this.largeImg = data.largeImg
+    this.flavorText=data.flavorText
   }
 }

@@ -1,4 +1,5 @@
 <template>
+<div class="modal-body">
 
   <div class="row">
 
@@ -13,6 +14,9 @@
           <div>
             <label for="picture">Picture:</label>
             <input type="url" class="form-control" v-model="editable.picture" name="picture" placeholder="picture">
+          </div>
+          <div>
+            <input type="file" @change="onFileSelected">
           </div>
           <!-- <div>
             <label for="coverImg">Cover Image:</label>
@@ -38,10 +42,12 @@
     </div> -->
 
   </div>
+</div>
 </template>
 
 
 <script>
+import { computed } from "@vue/reactivity";
 import { Modal } from "bootstrap";
 import { ref, watchEffect } from "vue";
 import { AppState } from "../../AppState.js";
@@ -62,6 +68,7 @@ export default {
 
     return {
       editable,
+      file: computed(() => AppState?.filePicker),
 
       async handleSubmit() {
         try {
@@ -71,6 +78,13 @@ export default {
           console.error('[]', error)
           Pop.error(error)
         }
+      },
+      onFileSelected(event){
+console.log(event.target.files[0]);
+let test = event.target.files[0]
+AppState.filePicker = test
+console.log(AppState.filePicker);
+console.log(';hi');
       }
     }
   }

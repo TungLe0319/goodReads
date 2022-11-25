@@ -11,11 +11,16 @@ public class BooksService
 
   internal Book CreateBook(Book bookData)
   {
-return _booksRepo.CreateBook(bookData);
+    return _booksRepo.CreateBook(bookData);
   }
 
   internal List<Book> GetAllBooks()
   {
-   return _booksRepo.GetAllBooks();
+    return _booksRepo.GetAllBooks();
+  }
+
+  internal List<Object> GetAuthors()
+  {
+return _booksRepo.GetAuthors();
   }
 }

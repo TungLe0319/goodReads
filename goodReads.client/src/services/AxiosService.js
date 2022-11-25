@@ -10,3 +10,7 @@ export const googleBookApi = Axios.create({
   timeout: 8000,
 });
 
+export const SandBox = Axios.create({
+  baseURL: 'https://bcw-sandbox.herokuapp.com',
+  timeout: 8000
+})

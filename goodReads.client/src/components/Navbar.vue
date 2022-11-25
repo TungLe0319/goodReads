@@ -2,14 +2,14 @@
   <nav
     class="navbar navbar-expand-lg bg-transparent pe-5 ps-2 border-bottom border-secondary"
   >
-  <di class="ms-2"><h4 class="text-create"> 🅱🅴🆃🆃🅴🆁🅰🅵🆃🅴🆁🅱🅾🅾🅺🆂</h4></di>
+
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          class="logo p-1"
+          class="logo p-1 "
           src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png"
-          height="60"
+      
         />
       </div>
     </router-link>
@@ -40,10 +40,10 @@
             :to="{ name: 'Search' }"
             class="btn text-dark selectable text-uppercase"
           >
-            Search
+            Discover
           </router-link>
         </li>
-        <li>
+        <!-- <li>
           <button
             class="btn selectable text-uppercase"
             data-bs-target="#bookShelfForm"
@@ -51,7 +51,7 @@
           >
             CreateBookShelf
           </button>
-        </li>
+        </li> -->
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div>
@@ -99,6 +99,12 @@ export default {
 </script>
 
 <style scoped>
+
+.forcedImg{
+  height:100px;
+  width: 100px;
+  object-fit: cover;
+}
 a:hover {
   text-decoration: none;
 }
@@ -110,8 +116,10 @@ a:hover {
 }
 
 .logo {
-  background-color: rgba(189, 184, 176, 0.805);
+
   border-radius: 50%;
+  width: 80px;
+  height: 80px;
 }
 
 .nav-link {

@@ -49,7 +49,7 @@ import Pop from "../../utils/Pop.js";
 export default {
   props: {},
   setup(props) {
-    const editable = ref({});
+    let editable = ref({});
 
     onMounted(() => {});
     watchEffect(() => {});
@@ -61,6 +61,7 @@ export default {
         try {
           editable.value.bookId = AppState.activeBook?.id;
           await reviewsService.createReview(editable.value);
+          editable.value = {}
         
         } catch (error) {
           Pop.error(error, "[createReview]");

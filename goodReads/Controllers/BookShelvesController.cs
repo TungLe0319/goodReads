@@ -2,14 +2,14 @@ namespace goodReads.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BookShelvesController: IController
+public class BookShelvesController : IController
 {
-  public BookShelvesController(Auth0Provider auth0Provider, AccountService accountService, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService) : base(auth0Provider, accountService, reviewService, followsService, booksService, bookShelvesService)
+  public BookShelvesController(Auth0Provider auth0Provider, AccountService accountService, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService, ShelvedBookService shelvedBooksService) : base(auth0Provider, accountService, reviewService, followsService, booksService, bookShelvesService, shelvedBooksService)
   {
   }
 
   [HttpPost]
- [Authorize]
+  [Authorize]
   public async Task<ActionResult<BookShelf>> CreateBookShelf([FromBody] BookShelf bookShelfData)
   {
     try

@@ -1,34 +1,39 @@
 <template>
-  <div class="container">
-    <!-- SearchBar -->
-    <div
-      class="row justify-content-center sticky-top animate__animated animate__fadeInDown"
-    >
-      <div class="col-md-6">
-        <form @submit.prevent="searchByQuery()">
+  <div class="container p-5" v-if="books">
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <div class="card elevation-5 border-0">
+          <img
+            src="https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg"
+            alt=""
+            class="bannerImg"
+          />
           <div
-            class="input-group my-3 rounded-5 elevation-5 sticky-top bg-dark p-1 searchContainer"
+            class="card-img-overlay align-items-center d-flex justify-content-center flex-column justify-content-evenly"
           >
-            <button class="btn d-flex justify-content-center" type="submit">
-              <i class="mdi mdi-magnify fs-2 text-light"></i>
-            </button>
-            <input
-              v-model="editable.term"
-              type="text"
-              class="form-control rounded-5 border-0"
-              aria-label="Username"
-              placeholder="Search Books By Title.."
-              aria-describedby="basic-addon1"
-            />
+          <div class=" text-constantLight text-decoration-underline 4border-bottom border-3">
+            <h1>Find Your Book, Find Your Why</h1>
           </div>
-        </form>
+      
+            <figure>
+              <blockquote class="blockquote text-constantLight">
+                <p>
+                  <i class="mdi mdi-format-quote-open"></i> {{quote?.content}} <i class="mdi mdi-format-quote-close"></i>
+                </p>
+          
+              </blockquote>
+              <figcaption class="blockquote-footer text-constantLight">
+                {{quote?.author}} 
+              </figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- !SearchBar -->
-
     <div class="row">
       <div class="col-md-8">
+
         <div class="row">
           <TransitionGroup
             name=""
@@ -36,16 +41,77 @@
             leaveActiveClass="animate__fadeOut animate__animated"
           >
             <div class="col-md-3 gy-3" v-for="b in books" :key="b.id">
-              <BookCard :book="b" />
+              <SearchPageBookCard :book="b" />
             </div>
           </TransitionGroup>
         </div>
+
+
       </div>
       <div class="col-md-4">
-        <EasyStepsCard />
+        <div class="row g-3">
+          <EasyStepsCard />
+
+          <LeaveFeedBackCard />
+        </div>
       </div>
     </div>
+<section>
+  
+       <div class="mt-4">
+         <h2 class="categoryTitle text-dark">Cooking</h2>
+        <div class="row scrollX">
+          <div class="col-md-2 gy-3" v-for="c in cookingBooks" :key="c.id">
+            <SearchPageBookCard :book="c" />
+          </div>
+        </div>
+       </div>
+        <div  class="mt-4">
+          <h2 class="categoryTitle text-dark">Science</h2>
+          <div class="row scrollX">
+            <div class="col-md-2 gy-3" v-for="s in scienceBooks" :key="s.id">
+              <SearchPageBookCard :book="s" />
+            </div>
+          </div>
+        </div>
+        <div class="mt-4"> 
+          <h2 class="categoryTitle text-dark">Fiction</h2>
+          <div class="row scrollX">
+            <div class="col-md-2 gy-3" v-for="f in fictionBooks" :key="f.id">
+              <SearchPageBookCard :book="f" />
+            </div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h2 class="categoryTitle text-dark">Nature</h2>
+          <div class="row scrollX">
+            <div class="col-md-2 gy-3" v-for="n in natureBooks" :key="n.id">
+              <SearchPageBookCard :book="n" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <h2 class="categoryTitle text-dark">History</h2>
+          <div class="row scrollX">
+            <div class="col-md-2 gy-3" v-for="h in historyBooks" :key="h.id">
+              <SearchPageBookCard :book="h" />
+            </div>
+          </div>
+        </div>
+
+</section>
+
+    <section>
+      <h2 class="categoryTitle text-dark">Best Sellers</h2>
+      <div class="row scrollX">
+        <div class="col-md-2 gy-3" v-for="b in bestSellers" :key="b.id">
+          <SearchPageBookCard :book="b" />
+        </div>
+      </div>
+    </section>
   </div>
+  <div class="" v-else> <i class="mdi mdi-dots-horizontal fs-1"></i></div>
 </template>
 
 <script>
@@ -54,7 +120,11 @@ import { onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
 import EasyStepsCard from "../components/EasyStepsCard.vue";
+import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
+import SearchPageBookCard from "../components/SearchPageBookCard.vue";
+import { SQLBook } from "../models/SQLBook.js";
 import { bookService } from "../services/BookService.js";
+import { quotesService } from "../services/QuotesService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
@@ -63,10 +133,18 @@ export default {
     onMounted(() => {
       // getBooks();
       getMySQLBooks();
+      getQuote()
     });
     async function getBooks() {
       try {
         await bookService.getBooks();
+      } catch (error) {
+        Pop.error(error, "[getBooks]");
+      }
+    }
+    async function getQuote() {
+      try {
+        await quotesService.getQuote();
       } catch (error) {
         Pop.error(error, "[getBooks]");
       }
@@ -81,7 +159,26 @@ export default {
     let editable = ref({});
     return {
       editable,
-      books: computed(() => AppState.books),
+      quote:computed(() => AppState.quote),
+      books: computed(() => AppState.books.slice([0],[16])),
+      cookingBooks: computed(() =>
+        AppState.books.filter((b) => b.categories.includes("Cooking"))
+      ),
+      scienceBooks: computed(() =>
+        AppState.books.filter((b) => b.categories.includes("Science"))
+      ),
+      fictionBooks: computed(() =>
+        AppState.books.filter((b) => b.categories.includes("Fiction"))
+      ),
+      natureBooks: computed(() =>
+        AppState.books.filter((b) => b.categories.includes("Nature"))
+      ),
+      historyBooks: computed(() =>
+        AppState.books.filter((b) => b.categories.includes("History"))
+      ),
+      bestSellers: computed(() =>
+        AppState.books.filter((b) => b.averageRating >= 5)
+      ),
       async searchByQuery() {
         try {
           await bookService.searchByQuery(editable.value.term);
@@ -96,8 +193,32 @@ export default {
       },
     };
   },
-  components: { BookCard, EasyStepsCard },
+  components: { BookCard, EasyStepsCard, LeaveFeedBackCard, SQLBook, SearchPageBookCard },
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.categoryTitle {
+  font-size: 3em;
+  font-family: "Abril Fatface", cursive;
+}
+.scrollX {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  height: 25em;
+}
+.blockquote {
+  font-size: 1.25em;
+}
+.blockquote-footer {
+  font-size: 1.25em;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+}
+.bannerImg {
+  width: auto;
+  height: 300px;
+  object-fit: cover;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+  filter: brightness(80%);
+}
+</style>

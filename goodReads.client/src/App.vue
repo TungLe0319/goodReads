@@ -8,6 +8,7 @@
 
 
   <footer>
+    <FooterComponent/>
     <!-- <Navbar  class="d-flex d-md-none" /> -->
   </footer>
   <!-- <footer class="bg-dark p-5">
@@ -23,6 +24,9 @@
 <ModalComponent id="bookShelfForm" >
   <BookShelfForm/>
 </ModalComponent>
+<ModalComponent id="editAccountForm" >
+  <EditAccountForm/>
+</ModalComponent>
 </template>
 
 <script>
@@ -32,6 +36,8 @@ import BookShelfForm from "./components/BookShelfForm.vue"
 import ModalComponent from "./components/ModalComponent.vue"
 import Navbar from './components/Navbar.vue'
 import ReviewForm from "./components/BookPage/ReviewForm.vue"
+import FooterComponent from "./components/FooterComponent.vue"
+import EditAccountForm from "./components/AccountPage/EditAccountForm.vue"
 
 export default {
   setup() {
@@ -39,14 +45,14 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar, ModalComponent, ReviewForm, BookShelfForm }
+  components: { Navbar, ModalComponent, ReviewForm, BookShelfForm, FooterComponent, EditAccountForm }
 }
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
 :root {
-  --main-height: calc(100vh - 32px - 64px);
+  --main-height: calc(100vh  - 64px);
 }
 
 
@@ -59,8 +65,8 @@ export default {
 // }
 
 footer {
-  display: grid;
-  place-content: center;
-  height: 32px;
+
+
+
 }
 </style>
