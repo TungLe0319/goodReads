@@ -126,6 +126,5 @@ export default {
     transition: all 1s ease;
   }
 }
-.bookTitle:hover {
-}
+
 </style>
