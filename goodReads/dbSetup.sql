@@ -1,4 +1,4 @@
--- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1668895251805@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(
@@ -73,7 +73,7 @@ CREATE TABLE
         retailPrice DECIMAL,
         averageRating DECIMAL
     ) default charset utf8 COMMENT '';
-
+ALTER TABLE books MODIFY COLUMN flavorText VARCHAR(500);
 CREATE TABLE
     IF NOT EXISTS reviews(
         id INT NOT NULL primary key AUTO_INCREMENT,

@@ -48,10 +48,11 @@ class BookService {
   }
 
   async addBookToDb(book) {
-    console.log(book);
-    let bookDB = new Book(book, true);
-    console.log(bookDB);
-    // const res = await api.post("api/books", bookDB);
+    console.log(book, "oldBook");
+    let bookDB = new SQLBook(book, true);
+    console.log(bookDB, "newBook");
+    const res = await api.post("api/books", bookDB);
+    console.log(res.data, 'newBook');
     // let newBook = new Book(res.data);
     // AppState.books = [...AppState.books, newBook];
     // console.log(book, "hi", newBook);
