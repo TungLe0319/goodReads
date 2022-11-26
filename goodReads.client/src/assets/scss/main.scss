@@ -14,6 +14,18 @@ body{
 }
 
 
+.hover {
+  transition: all 0.9s ease;
+}
+
+.hover:hover {
+  transform: scale(1.04);
+  filter: brightness(110%);
+  filter: contrast(110%);
+  transition: 0.5s ease;
+}
+
+
 .text-shadow {
   color: aliceblue;
   text-shadow: 1px 1px black, 0px 0px 5px rgba(250, 128, 114, 0.719);

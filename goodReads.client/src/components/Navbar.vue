@@ -1,45 +1,26 @@
 <template>
-  <nav
-    class="navbar navbar-expand-lg bg-transparent pe-5 ps-2 border-bottom border-secondary"
-  >
+  <nav class="navbar navbar-expand-lg bg-transparent pe-5 ps-2 border-bottom border-secondary">
 
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          class="logo p-1 "
-          src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png"
-      
-        />
+        <img alt="logo" class="logo p-1 "
+          src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png" />
       </div>
     </router-link>
-    
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link
-            :to="{ name: 'List' }"
-            class="btn text-dark selectable text-uppercase"
-          >
+          <router-link :to="{ name: 'List' }" class="btn text-dark selectable text-uppercase">
             Lists
           </router-link>
         </li>
         <li>
-          <router-link
-            :to="{ name: 'Search' }"
-            class="btn text-dark selectable text-uppercase"
-          >
+          <router-link :to="{ name: 'Search' }" class="btn text-dark selectable text-uppercase">
             Discover
           </router-link>
         </li>
@@ -54,23 +35,11 @@
         </li> -->
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <div>
-        <img
-          src="../assets/img/light-bulb.png"
-          alt=""
-          width="50"
-          class="selectable"
-          @click="toggleTheme()"
-          v-if="theme"
-        />
-        <img
-          src="../assets/img/DarkLight-bulb.png"
-          alt=""
-          width="50"
-          class="selectable"
-          @click="toggleTheme()"
-          v-else
-        />
+      <div class="me-5">
+        <img src="../assets/img/light-bulb.png" alt="" width="50" class="selectable" @click="toggleTheme()"
+          v-if="theme" />
+        <img src="../assets/img/DarkLight-bulb.png" alt="" width="50" class="selectable" @click="toggleTheme()"
+          v-else />
       </div>
       <Login />
     </div>
@@ -99,12 +68,12 @@ export default {
 </script>
 
 <style scoped>
-
-.forcedImg{
-  height:100px;
+.forcedImg {
+  height: 100px;
   width: 100px;
   object-fit: cover;
 }
+
 a:hover {
   text-decoration: none;
 }
