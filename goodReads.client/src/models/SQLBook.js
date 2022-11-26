@@ -11,7 +11,7 @@ export class SQLBook {
       this.authors = data.authors.toString()
       this.categories = data.categories.toString()
     } else {
-      this.authors = data.authors;
+      this.authors = data.authors.split(",");
       this.categories =
         data.categories.split(" ") && data.categories.split("&");
     }
