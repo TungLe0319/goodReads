@@ -52,7 +52,7 @@
           ></i>
           <h4 class="ms-2">no ratings</h4>
         </div>
-        <div class="border-bottom border-1 my-3 border-secondary"></div>
+        <div class="border-bottom border-2 my-3 border-muted"></div>
         <div>
           <p class="lead text-dark">
             {{ book.description }}
@@ -160,7 +160,9 @@ export default {
       },
       async searchByCategory(query) {
         try {
-          await bookService.searchByCategory(query);
+          router.push('/search')
+          AppState.categoryQuery = query
+          await bookService.searchByCategory(AppState.categoryQuery);
           // console.log(query);
         } catch (error) {
           console.error("[searchByCategory]", error);

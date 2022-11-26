@@ -17,8 +17,9 @@
       :to="{ name: 'Search', params: {} }"
       class="text-dark"
     >
-      <p   @click="searchByAuthor(a)"  class="text-truncate mb-0 link fs-5" v-if="isArray"  v-for="a in book.authors.split(',')">{{a }}</p>
-      
+      <p 
+      @click="searchByAuthor(a)"  class="text-truncate mb-0 link fs-5" v-if="isArray "  v-for="a in book.authors.split(',')">{{a }}</p>
+     
       <p   @click="searchByAuthor(a)" class="text-truncate mb-0 link fs-5" v-else v-for="a in book.authors" >{{a }}</p>
       
     </router-link>
@@ -58,6 +59,7 @@ export default {
       isArray:computed(() => props.book.authors == [props.book.authors]),
       async setActive(book) {
         try {
+       
           document.documentElement.scrollTop = 0;
           //IF NOT IN DATABASE PUSH
           AppState.activeBook = book;
@@ -92,6 +94,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.hide{
+display: none;
+}
 .link:hover {
   transform: scale(1.05);
   transition: all 0.75s ease;

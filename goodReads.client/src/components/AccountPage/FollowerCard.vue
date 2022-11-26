@@ -4,12 +4,30 @@
 
   <div class="d-flex align-items-center">
 
-    <img :src="follow.profile.picture" :alt="follow.profile.name" :title="follow.profile.name" class="forcedImg">
-  <div>
-    <p> {{follow.profile.name}} </p>
+    <img :src="follow.profile.picture" :alt="follow.profile.name" :title="follow.profile.name" class="forcedImg elevation-5">
+  <div class="ms-4">
+    <p class="fs-4"> @{{follow.profile.name}} </p>
+    <p class="text-muted">  Began Following on  {{follow.createdAt}} </p>
   </div>
   </div>
-  <button class="me-5 btn h-25"> <img src="src\assets\img\follow.png" alt="" width="60" height="60"> </button>
+<div class="">
+    <!-- <button @click="followByUserId()" v-if="
+          user.isAuthenticated &&
+           
+          !following
+        " class="btn p-0 me-3">
+          <i class="mdi mdi-check"> Follow</i>
+        </button> -->
+        <!-- <button @click="unFollowByUserId()" v-else-if="review.creator.id == account.id"
+          class="btn p-0 me-3 text-danger">
+
+        </button> -->
+
+        <button @click="unFollowByUserId()"  class="unFollow btn fs-5 me-3  btn-outline-danger border-0 ">
+          <i class="mdi mdi-close"> UnFollow</i>
+        </button>
+
+</div>
 </div>
 </div>
 </template>
@@ -38,14 +56,22 @@ follow:{type:Follow,required:true}
       editable,
       profile:computed(() => AppState.profiles),
       account: computed(() => AppState.account),
-      following:computed(() => AppState.following),
+
       followers:computed(() => AppState.followers),
+      user: computed(() => AppState.user),
+  following: computed(() =>
+        AppState.following.find((f) => f.followingUserId == props.follow.followingUserId)
+      ),
+
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
+.unFollow{
+
+}
 .forcedImg{
   height: 60px;
   width: 60px;

@@ -69,7 +69,11 @@
 </p>
  </div>   
   
- 
+ <div>
+  <p>
+    {{review.createdAt}}
+  </p>
+ </div>
   
   </div>
 </template>

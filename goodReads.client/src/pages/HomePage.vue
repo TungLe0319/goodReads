@@ -111,7 +111,7 @@
       </div>
     </section>
   </div>
-  <div class="" v-else> <i class="mdi mdi-dots-horizontal fs-1"></i></div>
+  <div class="" v-else> <h1>LOADING</h1></div>
 </template>
 
 <script>
@@ -198,6 +198,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.animate__fadeIn{
+  animation-duration: 100ms;
+  animation-delay: 100ms;
+}
 .categoryTitle {
   font-size: 3em;
   font-family: "Abril Fatface", cursive;
@@ -205,7 +210,7 @@ export default {
 .scrollX {
   flex-wrap: nowrap;
   overflow-x: auto;
-  height: 28em;
+  height: 31em;
 }
 .blockquote {
   font-size: 1.25em;

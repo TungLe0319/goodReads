@@ -3,6 +3,7 @@ import { Book } from "../models/Book.js";
 import { Review } from "../models/Review.js";
 import { SQLBook } from "../models/SQLBook.js";
 import { router } from "../router.js";
+import { filterDuplicates } from "../utils/FilterDuplicates.js";
 import { api, googleBookApi } from "./AxiosService.js";
 
 class BookService {
@@ -134,13 +135,15 @@ class BookService {
   async getAuthorsList() {
     const res = await api.get("api/books/authors");
     // console.log("AuthorList", res.data);
-    let rest = res.data;
+    let authors  = res.data.map(a=> a.authors);
+    let categories = res.data.map(a=> a.categories);
     // res.data.map(r => AppState.categoryList.push(r.categories))
-
-    this.filterDuplicates(rest, AppState.authorList);
-    this.filterDuplicateCategories(rest, AppState.categoryList);
-    // console.log("authorListAPP", AppState.authorList);
-    // console.log("CategoryListAPP", AppState.categoryList);
+    console.log(authors);
+ filterDuplicates(authors, AppState.authorList);
+ 
+   filterDuplicates(categories, AppState.categoryList)
+    console.log("authorListAPP", AppState.authorList);
+    console.log("CategoryListAPP", AppState.categoryList);
   }
 
   filterDuplicates(arr1, arr2) {

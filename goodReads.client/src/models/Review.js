@@ -1,3 +1,4 @@
+import { getDate } from "../utils/GetDate.js";
 import { Account } from "./Account.js";
 
 export class Review {
@@ -6,7 +7,7 @@ export class Review {
     this.body = data.body;
     this.creator = new Account(data.creator);
     this.creatorId=data.creatorId
-    this.createdAt = data.createdAt;
+    this.createdAt = getDate(data.createdAt)
     this.updatedAt = data.updatedAt;
     this.recommend=data.recommend
     this.book = data.book

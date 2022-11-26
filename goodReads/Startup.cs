@@ -54,6 +54,8 @@ public class Startup
 
     services.AddTransient<ProfilesRepository>();
     services.AddTransient<ProfilesService>();
+    services.AddTransient<FavoriteBooksRepository>();
+    services.AddTransient<FavoriteBooksService>();
 
 
   }
