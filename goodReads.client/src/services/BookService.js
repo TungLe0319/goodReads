@@ -71,17 +71,18 @@ class BookService {
 
   async searchByCategory(term) {
   
-    console.log("term",term);
+ 
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q: term + "subject",
+        q:  "Romance+Action",
         maxResults: 24,
         startIndex: AppState.startIndex,
-        filter: 'full'
+      
       },
     });
+    console.log('Term',term);
     console.log('response Data',res.data);
-    // console.log("[startIndex]", AppState.startIndex);
+    console.log("[startIndex]", AppState.startIndex);
     AppState.totalItems = res.data.totalItems;
     
     console.log("totalItems",res.data.totalItems);
@@ -99,8 +100,7 @@ class BookService {
         startIndex: AppState.startIndex,
       },
     });
-    // console.log(res.data);
-    // console.log('[startIndex]',AppState.startIndex);
+
     AppState.totalItems = res.data.totalItems;
     AppState.sPBooks = res.data.items.map((b) => new Book(b));
 

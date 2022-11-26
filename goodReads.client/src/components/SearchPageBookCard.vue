@@ -13,11 +13,14 @@
   <div class="bg-transparent border-0 bookTitle">
     <p class="text-truncate mb-0 fw-bold text-dark">{{ book.title }}</p>
     <router-link
-      @click="searchByAuthor()"
+   
       :to="{ name: 'Search', params: {} }"
       class="text-dark"
     >
-      <p class="text-truncate mb-0 link fs-5" v-for="a in book.authors">{{ a }}</p>
+      <p   @click="searchByAuthor(a)"  class="text-truncate mb-0 link fs-5" v-if="isArray"  v-for="a in book.authors.split(',')">{{a }}</p>
+      
+      <p   @click="searchByAuthor(a)" class="text-truncate mb-0 link fs-5" v-else v-for="a in book.authors" >{{a }}</p>
+      
     </router-link>
     <router-link
       @click="searchByCategory(b)"
@@ -52,6 +55,7 @@ export default {
 
     return {
       editable,
+      isArray:computed(() => props.book.authors == [props.book.authors]),
       async setActive(book) {
         try {
           document.documentElement.scrollTop = 0;
@@ -73,10 +77,11 @@ export default {
           Pop.error(error, "[searchByCategory]");
         }
       },
-      async searchByAuthor() {
+      async searchByAuthor(a) {
         try {
-          let author = props.book.authors;
-          await bookService.searchBy(author);
+          let author = a
+          console.log(author);
+          await bookService.searchByAuthor(author);
         } catch (error) {
           Pop.error(error, "[searchByCategory]");
         }
