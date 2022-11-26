@@ -44,7 +44,7 @@ public class ShelvedBooksRepository : BaseRepository
          FROM shelfBooks sb
          JOIN accounts a ON a.id = sb.creatorId
          JOIN books b on b.id = sb.bookId
-         WHERE sb.
+         WHERE sb.creatorId = @userId
          GROUP BY sb.id
       
               ; ";
