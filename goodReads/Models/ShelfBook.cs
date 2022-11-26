@@ -10,9 +10,9 @@ public class ShelfBook : IDbItem<int>
   public DateTime UpdatedAt { get; set; }
 }
 
-public class ShelvedBook : Book
+public class ShelvedBook
 {
-
+  public Book Book { get; set; }
   public string BookId { get; set; }
   public int ShelfBookId { get; set; }
   public int BookShelfId { get; set; }

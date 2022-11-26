@@ -76,7 +76,7 @@ CREATE TABLE
         averageRating DECIMAL
     ) default charset utf8 COMMENT '';
 
-ALTER TABLE books MODIFY COLUMN flavorText VARCHAR(500);
+ALTER TABLE books DROP COLUMN retailPrice;
 
 CREATE TABLE
     IF NOT EXISTS reviews(
