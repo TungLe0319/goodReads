@@ -33,6 +33,7 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   accountService.getFollowing()
   accountService.getReviews()
   accountService.getFavoriteBooks()
+  accountService.getShelvedBooks()
   bookService.getAuthorsList()
 })
 

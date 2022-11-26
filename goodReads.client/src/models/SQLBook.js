@@ -1,15 +1,16 @@
 export class SQLBook {
   constructor(data, todb) {
     this.id = data.id;
-    this.bookShelfId = data.bookShelfId;
+    this.bookShelfId = data.bookShelfId || delete this.bookShelfId;
+    this.shelfBookId = data.shelfBookId || delete this.shelfBookId;
     this.title = data.title;
     this.img = data.img;
     this.publishedDate = data.publishedDate;
     this.publisher = data.publisher;
     this.pageCount = data.pageCount;
     if (todb) {
-      this.authors = data.authors.toString()
-      this.categories = data.categories.toString()
+      this.authors = data.authors.toString();
+      this.categories = data.categories.toString();
     } else {
       this.authors = data.authors.split(",");
       this.categories =

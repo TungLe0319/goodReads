@@ -67,6 +67,10 @@ class AccountService {
     console.log(AppState.favoriteBooks);
   }
 
+  async getShelvedBooks(){
+    const res = await api.get(`/account/shelvedBooks`)
+console.log(res.data);
+  }
 
 }
 

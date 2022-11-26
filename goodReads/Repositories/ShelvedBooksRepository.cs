@@ -33,6 +33,30 @@ public class ShelvedBooksRepository : BaseRepository
   {
     return _db.Execute("DELETE FROM shelfBooks WHERE id = @id", new { id }) == 1;
   }
+
+  internal List<ShelvedBook> GetAccountShelvedBooks(string userId)
+  {
+    var sql = @"
+         SELECT 
+         sb. *,
+         a.*,
+         b.*
+         FROM shelfBooks sb
+         JOIN accounts a ON a.id = sb.creatorId
+         JOIN books b on b.id = sb.bookId
+         WHERE sb.
+         GROUP BY sb.id
+      
+              ; ";
+    return _db.Query<ShelvedBook, Profile, ShelvedBook>(sql, (book, profile) =>
+     {
+       book.creatorId = profile.Id;
+
+       return book;
+     }).ToList();
+
+  }
+
   internal ShelfBook GetById(int shelfBookId)
   {
     var sql = @"

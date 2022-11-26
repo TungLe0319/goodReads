@@ -44,4 +44,9 @@ public class ShelvedBookService
     return "Successfully removed from bookShelf";
 
   }
+
+  internal List<ShelvedBook> GetAccountShelvedBooks(string userId)
+  {
+  return _sbRepo.GetAccountShelvedBooks(userId);
+  }
 }

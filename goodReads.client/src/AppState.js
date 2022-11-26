@@ -39,6 +39,7 @@ export const AppState = reactive({
   /** @type {import('./models/BookShelf.js').BookShelf[]} */
   accountBookshelves: [],
   accountReviews: [],
+  accountShelvedBooks:[],
   /** @type {import('./models/Quote.js').Quote | null} */
   quote: null,
 

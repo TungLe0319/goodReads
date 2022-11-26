@@ -30,10 +30,9 @@ public class BookShelvesRepository : BaseRepository
     var sql = @"
          SELECT 
            bs.*,
-           a.* 
+           a.*
          FROM bookshelves bs
          JOIN accounts a ON a.id = bs.creatorId
-         
          WHERE bs.creatorId =  @userId
    
          ;";

@@ -4,17 +4,7 @@ import { api } from "./AxiosService.js"
 class BookShelvesService{
 
 
-  async createBookShelf(data){
-const res = await api.post(`api/bookshelves`,data)
-     console.log('[bookshelves]',res.data);
-    //  console.log(AppState.bookshelves);
-  }
-  async editBookShelf(){
 
-  }
-  async deleteBookShelf(){
-    
-  }
 
   async addToBookShelf(data){
 console.log(data);

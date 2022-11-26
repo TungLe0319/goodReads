@@ -144,5 +144,21 @@ public class AccountController : IController
 
 
 
+  [HttpGet("shelvedBooks")]
+  public async  Task<ActionResult<List<ShelvedBook>>> GetAccountShelvedBooks()
+  {
+    try
+    {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      List<ShelvedBook> shelvedBooks = _shelvedBooksService.GetAccountShelvedBooks(userInfo?.Id);
+      return Ok(shelvedBooks);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+
 
 }
