@@ -14,7 +14,7 @@ public class ShelvedBook
 {
   public Book Book { get; set; }
   public string BookId { get; set; }
-  public int ShelfBookId { get; set; }
+  public int Id { get; set; }
   public int BookShelfId { get; set; }
   public string creatorId { get; set; }
 

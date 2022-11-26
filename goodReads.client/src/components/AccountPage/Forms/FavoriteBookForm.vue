@@ -92,7 +92,7 @@ export default {
         let id ={
           bookId: b.id
         } 
-        console.log(id);
+        // console.log(id);
            await favoriteBooksService.addFavoriteBook(id, b)
           } catch (error) {
             Pop.error(error,'[addToFavorites]')

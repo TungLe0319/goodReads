@@ -5,19 +5,21 @@ import { bookService } from "./BookService.js";
 
 class FavoriteBooksService {
   async addFavoriteBook(id, book) {
-    const res = await api.post("api/favoritebooks", id);
-    console.log(res.data);
+    // const res = await api.post("api/favoritebooks", id);
+    // console.log(AppState.favoriteBooks);
     // AppState.favoriteBooks = res.data.map(f=> new Book(f))
+    console.log(book);
 
     const favBook = await bookService.addBookToDb(book);
+    // console.log(favBook);
     //  const res2 = await googleBookApi.get(`/volumes/${id.bookId}`)
     //  res.data.book = res2.data
-    if (favBook) {
-      AppState.favoriteBooks.push(favBook);
-    } else {
-      let alreadyHave = AppState.books.find((b) => b.id == book.id);
-      AppState.favoriteBooks.push(alreadyHave);
-    }
+    // if (favBook) {
+    //   AppState.favoriteBooks.push(favBook);
+    // } else {
+    //   let alreadyHave = AppState.books.find((b) => b.id == book.id);
+    //   AppState.favoriteBooks.push(alreadyHave);
+    // }
   }
 
   async removeFavoriteBook(id) {

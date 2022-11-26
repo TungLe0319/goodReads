@@ -38,23 +38,21 @@ public class ShelvedBooksRepository : BaseRepository
   {
     var sql = @"SELECT 
          sb. *,
-         a.*,
          b.*
          FROM shelfBooks sb
-         JOIN accounts a ON a.id = sb.creatorId
          JOIN books b on b.id = sb.bookId
          WHERE sb.creatorId = @userId
          GROUP BY sb.id
       
-              ; ";
-    return _db.Query<ShelvedBook, Profile, Book, ShelvedBook>(sql, (sb, profile, book) =>
+              ;";
+    return _db.Query<ShelvedBook, Book, ShelvedBook>(sql, (sb,book) =>
      {
-      //  sb.creatorId = profile.Id;
-      sb.Book = book;
+       //  sb.creatorId = profile.Id;
+       sb.Book = book;
 
 
        return sb;
-     }, new{userId}).ToList();
+     }, new { userId }).ToList();
 
   }
 
