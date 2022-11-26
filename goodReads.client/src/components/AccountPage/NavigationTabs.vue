@@ -140,13 +140,7 @@
       aria-labelledby="nav-Following-tab"
       tabindex="0"
     >
-      <div class="container-fluid">
-        <div class="row mt-5">
-          <div class="col-md-12" v-for="f in following" :key="f.id">
-            <FollowerCard :follow="f" />
-          </div>
-        </div>
-      </div>
+    <FollowingTab/>
     </div>
     <div
       class="tab-pane fade"
@@ -155,7 +149,7 @@
       aria-labelledby="nav-Followers-tab"
       tabindex="0"
     >
-      Followers
+    
     </div>
   </div>
 </template>
@@ -168,6 +162,7 @@ import { favoriteBooksService } from "../../services/FavoriteBooksService.js";
 import Pop from "../../utils/Pop.js";
 import FavoritedBookCard from "./FavoritedBookCard.vue";
 import FollowerCard from "./FollowerCard.vue";
+import FollowingTab from "./FollowingTab.vue";
 import ReviewedBookCard from "./ReviewedBookCard.vue";
 
 export default {
@@ -179,7 +174,7 @@ export default {
     return {
       editable,
       account: computed(() => AppState.account),
-      following: computed(() => AppState.following),
+
       followers: computed(() => AppState.followers),
       reviews: computed(() => AppState.accountReviews),
       favoriteBooks: computed(() => AppState.favoriteBooks),
@@ -201,7 +196,7 @@ export default {
       }
     };
   },
-  components: { FollowerCard, ReviewedBookCard, FavoritedBookCard },
+  components: { FollowerCard, ReviewedBookCard, FavoritedBookCard, FollowingTab },
 };
 </script>
 
