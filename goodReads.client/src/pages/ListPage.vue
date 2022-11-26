@@ -13,7 +13,7 @@
     <div class="row mt-3">
       <div class="col-md-12 mb-3">
         <div class="d-flex justify-content-between">
-          <h1>My Book Lists</h1>
+          <h1 class="text-dark booklist">My Book Lists</h1>
           <button class="btn btn-danger h-50">
             <i class="mdi mdi-plus fs-5"> Add Book</i>
           </button>
@@ -87,5 +87,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.booklist{
+  font-family: "Abril Fatface", cursive;
+}
 </style>
