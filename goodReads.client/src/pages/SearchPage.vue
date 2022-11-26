@@ -81,6 +81,8 @@ import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
+import SearchPageBookCard from "../components/SearchPageBookCard.vue";
+import SearchPageBookCard from "../components/SearchPageBookCard.vue";
 import { bookService } from "../services/BookService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
@@ -112,8 +114,10 @@ export default {
       },
       async searchByCategory(c) {
         try {
-          await bookService.searchByCategory(c);
+
           AppState.categoryQuery = c
+          await bookService.searchByCategory(AppState.categoryQuery);
+          console.log(AppState.categoryQuery);
         } catch (error) {
           Pop.error(error, "[searchByCategory]");
         }
@@ -136,7 +140,7 @@ export default {
       },
     };
   },
-  components: { BookCard },
+  components: { BookCard, SearchPageBookCard, SearchPageBookCard },
 };
 </script>
 

@@ -66,8 +66,8 @@ class BookService {
   }
 
   async searchByCategory(term) {
-    console.log(term);
-    AppState.categoryQuery;
+  
+    
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: term + "subject",
@@ -78,6 +78,7 @@ class BookService {
     // console.log(res.data);
     // console.log("[startIndex]", AppState.startIndex);
     AppState.totalItems = res.data.totalItems;
+    console.log(res.data.totalItems);
     AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
     // router.push({ name: "Home" });
