@@ -35,7 +35,7 @@
         </h1>
         <div class="d-flex">
           <!-- <b class="authors mx-2" v-for="a in book.authors">{{ a }}</b> -->
-          <b class="authors mx-2 text-dark"> {{ book.authors }} </b>
+          <b class="authors mx-2 text-dark" v-for="a in book.authors"> {{a}} </b>
         </div>
         <div v-if="book.averageRating >= 1" class="d-flex align-items-center">
           <i
