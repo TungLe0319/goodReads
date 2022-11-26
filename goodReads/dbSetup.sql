@@ -9,6 +9,7 @@ CREATE TABLE
         email varchar(255) COMMENT 'User Email',
         picture varchar(255) COMMENT 'User Picture'
     ) default charset utf8 COMMENT '';
+    ALTER TABLE accounts ADD COLUMN bio VARCHAR(500);
 
 CREATE TABLE
     IF NOT EXISTS follows(

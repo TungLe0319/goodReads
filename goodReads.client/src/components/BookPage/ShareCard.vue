@@ -119,10 +119,11 @@ export default {
       async addToBookShelf() {
         try {
         let data = {
-            bookId: AppState.account.id,
+            bookId: AppState.activeBook.id,
             bookShelfId: editable.value.id,
           };
-          await bookShelvesService.addToBookShelf(data);
+          console.log(data);
+          // await bookShelvesService.addToBookShelf(data);
         } catch (error) {
           Pop.error(error, "[addToBookShelf]");
         }
