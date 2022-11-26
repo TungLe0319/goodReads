@@ -46,15 +46,15 @@ public class ShelvedBooksRepository : BaseRepository
          WHERE sb.creatorId = @userId
          GROUP BY sb.id
       
-              ; ";
+              ;";
     return _db.Query<ShelvedBook, Profile, Book, ShelvedBook>(sql, (sb, profile, book) =>
      {
-      //  sb.creatorId = profile.Id;
-      sb.Book = book;
+       //  sb.creatorId = profile.Id;
+       sb.Book = book;
 
 
        return sb;
-     }, new{userId}).ToList();
+     }, new { userId }).ToList();
 
   }
 
