@@ -8,7 +8,7 @@
 
     <div class="row">
       <div class="col-md-12">
-     <NavigationTabs/>
+     <MainTab/>
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@
 import { computed } from "vue";
 import { AppState } from "../AppState";
 import AccountDetails from "../components/AccountPage/AccountDetails.vue";
-import NavigationTabs from "../components/AccountPage/NavigationTabs.vue";
+import MainTab from "../components/AccountPage/Tabs/MainTab.vue";
 export default {
   setup() {
     return {
@@ -28,7 +28,7 @@ export default {
   },
   components: {
     AccountDetails,
-    NavigationTabs
+    MainTab
 },
 };
 </script>

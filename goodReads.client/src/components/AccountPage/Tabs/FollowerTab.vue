@@ -11,9 +11,9 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
-import { AppState } from "../../AppState.js";
-import Pop from "../../utils/Pop.js";
-import FollowerCard from "./FollowerCard.vue";
+import { AppState } from "../../../AppState.js";
+import Pop from "../../../utils/Pop.js";
+import FollowerCard from "../FollowerCard.vue";
 
 export default {
   props: {},

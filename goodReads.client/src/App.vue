@@ -40,7 +40,7 @@ import ModalComponent from "./components/ModalComponent.vue"
 import Navbar from './components/Navbar.vue'
 import ReviewForm from "./components/BookPage/ReviewForm.vue"
 import FooterComponent from "./components/FooterComponent.vue"
-import EditAccountForm from "./components/AccountPage/EditAccountForm.vue"
+import EditAccountForm from "./components/AccountPage/Forms/EditAccountForm.vue"
 import FavoriteBookForm from "./components/AccountPage/Forms/FavoriteBookForm.vue"
 import Pop from './utils/Pop'
 import { bookService } from './services/BookService'
