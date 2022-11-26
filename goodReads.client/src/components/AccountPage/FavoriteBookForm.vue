@@ -85,10 +85,10 @@ export default {
           } catch (error) {
             Pop.error(error,'[searchByTitle]')
           }
-      }
+      },
       async addToFavorites(){
         try {
-            await 
+            // await 
           } catch (error) {
             Pop.error(error,'[addToFavorites]')
           }
