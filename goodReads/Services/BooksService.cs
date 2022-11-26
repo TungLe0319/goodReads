@@ -11,7 +11,12 @@ public class BooksService
 
   internal Book CreateBook(Book bookData)
   {
-    return _booksRepo.CreateBook(bookData);
+    Book book = _booksRepo.GetBookById(bookData.Id);
+    if (book != null)
+    {
+      throw new Exception("book already in db");
+    }
+      return _booksRepo.CreateBook(bookData);
   }
 
   internal List<Book> GetAllBooks()
@@ -21,6 +26,6 @@ public class BooksService
 
   internal List<Object> GetAuthors()
   {
-return _booksRepo.GetAuthors();
+    return _booksRepo.GetAuthors();
   }
 }

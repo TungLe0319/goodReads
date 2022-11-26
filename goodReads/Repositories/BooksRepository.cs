@@ -85,6 +85,17 @@ public class BooksRepository : BaseRepository
 
   }
 
+  internal Book GetBookById(string bookId)
+  {
+      string sql = @"
+                SELECT 
+                *
+                FROM books
+                WHERE id = @bookId
+                     ;";
+        return _db.Query<Book>(sql, new { bookId }).FirstOrDefault();
+  }
+
   internal List<string>GetCategories(){
     var sql = @"
           SELECT 

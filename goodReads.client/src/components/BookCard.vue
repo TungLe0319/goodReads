@@ -3,17 +3,34 @@
     :to="{ name: 'Book', params: { id: book.id } }"
     @click="setActive(book)"
     v-if="book"
+    class="text-dark"
   >
     <div class="card elevation-5 border-0 my-1 text-shadow">
-      <!-- <img :src="book.largeImg" class="card-img" :alt="book.title" v-if="book.largeImg" /> -->
-      <img :src="book.img" class="card-img" :alt="book.title" />
-      <div class="card-img-overlay align-items-end d-flex">
-        <h5 class="card-title d-flex align-items-end bookTitle">
-          {{ book.title }}
-        </h5>
-      </div>
+      <img :src="book.img" class="card-img" :alt="book.title" v-if="book.img" />
+    
     </div>
   </router-link>
+  <div class="bg-transparent border-0 bookTitle">
+    <p class="text-truncate mb-0 fw-bold text-dark">{{ book.title }}</p>
+    <router-link
+   
+      :to="{ name: 'Search', params: {} }"
+      class="text-dark"
+    >
+      <p 
+      @click="searchByAuthor(a)"  class="text-truncate mb-0 link fs-5" v-if="isArray "  v-for="a in book.authors.split(',')">{{a }}</p>
+     
+      <p   @click="searchByAuthor(a)" class="text-truncate mb-0 link fs-5" v-else v-for="a in book.authors" >{{a }}</p>
+      
+    </router-link>
+    <router-link
+      @click="searchByCategory(b)"
+      :to="{ name: 'Search', params: {} }"
+      class="text-dark"
+    >
+      <p v-for="b in book.categories" class="link mb-0">{{ b }}</p>
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -22,13 +39,14 @@ import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { Book } from "../models/Book.js";
 import { SQLBook } from "../models/SQLBook.js";
-import { bookService } from "../services/BookService";
+import { router } from "../router.js";
+import { bookService } from "../services/BookService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
 export default {
   props: {
-    book: { type: SQLBook, required: true },
+    book: { type: Object, required: true },
   },
   setup(props) {
     const editable = ref({});
@@ -38,15 +56,37 @@ export default {
 
     return {
       editable,
-     async setActive(book) {
+      isArray:computed(() => props.book.authors == [props.book.authors]),
+      async setActive(book) {
         try {
+       
           document.documentElement.scrollTop = 0;
+          //IF NOT IN DATABASE PUSH
           AppState.activeBook = book;
-         
+          let found = AppState.books.find((b) => b.id == book.id);
+          if (!found) {
+            await bookService.addBookToDb(book);
+          }
+          // console.log(AppState.activeBook);
         } catch (error) {
           Pop.error(error);
         }
-        // console.log(AppState.activeBook);
+      },
+      async searchByCategory(b) {
+        try {
+          await bookService.searchByCategory(b);
+        } catch (error) {
+          Pop.error(error, "[searchByCategory]");
+        }
+      },
+      async searchByAuthor(a) {
+        try {
+          let author = a
+          console.log(author);
+          await bookService.searchByAuthor(author);
+        } catch (error) {
+          Pop.error(error, "[searchByCategory]");
+        }
       },
     };
   },
@@ -54,6 +94,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.hide{
+display: none;
+}
+.link:hover {
+  transform: scale(1.05);
+  transition: all 0.75s ease;
+  text-decoration: underline;
+}
+
+.bookTitle {
+  text-overflow: clip;
+}
 .card {
   transition: all 0.25s ease;
   .card-title {
@@ -68,14 +120,16 @@ export default {
 }
 .card:hover {
   img {
-    transform: scale(1.09);
+    transform: scale(1.03);
     transition: all 0.25s ease;
     filter: saturate(120%);
-    filter: brightness(50%);
+    filter: brightness(70%);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   }
   .card-title {
     opacity: 1;
     transition: all 1s ease;
   }
 }
+
 </style>

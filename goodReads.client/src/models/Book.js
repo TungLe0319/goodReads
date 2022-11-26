@@ -29,16 +29,16 @@ export class Book {
     this.identifiers = data.volumeInfo?.industryIdentifiers;
     this.largeImg = `http://books.google.com/books/publisher/content?id=${data.id}&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE71cWMe7Mn1QYpUrtA6GlLwzckuPGvU2_h0Ilt3PSoajxjZXdfEbt7uyDGa0D-RPuw7ArtF9N-CurJjCOeR2nd7k7td3GZIH-nimVlVwAGDssq9IiDe0lcnyAqEeO8938hE-DDFR&source=gbs_api`;
     if (toDB) {
-      this.getAuthors(data.volumeInfo.authors);
+      this.getReadyForDb();
     }
   }
-  getAuthors(author) {
-    let authors = author;
-    
-    
-    if (Array.isArray(authors)) {
-      authors = author.toString();
+
+getReadyForDb(){
+  for (const item in Book) {
+    if (Array.isArray(item)) {
+      console.log(item);
+      
     }
-    this.authors = authors;
   }
+}
 }

@@ -84,7 +84,7 @@ import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
-import SearchPageBookCard from "../components/SearchPageBookCard.vue";
+import SearchPageBookCard from "../components/BookCard.vue";
 import { bookService } from "../services/BookService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";

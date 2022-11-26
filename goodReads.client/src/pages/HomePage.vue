@@ -121,7 +121,7 @@ import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
 import EasyStepsCard from "../components/EasyStepsCard.vue";
 import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
-import SearchPageBookCard from "../components/SearchPageBookCard.vue";
+import SearchPageBookCard from "../components/BookCard.vue";
 import { SQLBook } from "../models/SQLBook.js";
 import { bookService } from "../services/BookService.js";
 import { quotesService } from "../services/QuotesService.js";
@@ -130,11 +130,18 @@ import Pop from "../utils/Pop.js";
 
 export default {
   setup() {
-    onMounted(() => {
+    // onMounted(() => {
   
-      getMySQLBooks();
+    //   getMySQLBooks();
  
-    });
+    // });
+    // async function getMySQLBooks() {
+    //   try {
+    //     await bookService.getMySQLBooks();
+    //   } catch (error) {
+    //     Pop.error(error, "[getBooks]");
+    //   }
+    // }
     async function getBooks() {
       try {
         await bookService.getBooks();
@@ -145,13 +152,6 @@ export default {
     async function getQuote() {
       try {
         await quotesService.getQuote();
-      } catch (error) {
-        Pop.error(error, "[getBooks]");
-      }
-    }
-    async function getMySQLBooks() {
-      try {
-        await bookService.getMySQLBooks();
       } catch (error) {
         Pop.error(error, "[getBooks]");
       }

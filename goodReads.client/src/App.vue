@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from './AppState'
 import BookShelfForm from "./components/BookShelfForm.vue"
 import ModalComponent from "./components/ModalComponent.vue"
@@ -42,9 +42,23 @@ import ReviewForm from "./components/BookPage/ReviewForm.vue"
 import FooterComponent from "./components/FooterComponent.vue"
 import EditAccountForm from "./components/AccountPage/EditAccountForm.vue"
 import FavoriteBookForm from "./components/AccountPage/FavoriteBookForm.vue"
+import Pop from './utils/Pop'
+import { bookService } from './services/BookService'
 
 export default {
   setup() {
+    onMounted(() => {
+  
+      getMySQLBooks();
+ 
+    });
+    async function getMySQLBooks() {
+      try {
+        await bookService.getMySQLBooks();
+      } catch (error) {
+        Pop.error(error, "[getBooks]");
+      }
+    }
     return {
       appState: computed(() => AppState)
     }
