@@ -123,7 +123,7 @@ export default {
             bookShelfId: editable.value.id,
           };
           console.log(data);
-          // await bookShelvesService.addToBookShelf(data);
+          await bookShelvesService.addToBookShelf(data);
         } catch (error) {
           Pop.error(error, "[addToBookShelf]");
         }

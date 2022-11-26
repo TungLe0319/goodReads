@@ -17,9 +17,9 @@ public class Book
   public string PreviewLink { get; set; }
   public string Country { get; set; }
   public bool IsEBook { get; set; }
-  public string SaleAbility { get; set; }
+  // public string SaleAbility { get; set; }
   public string FlavorText { get; set; }
-  public decimal RetailPrice { get; set; }
+  // public decimal RetailPrice { get; set; }
   public decimal AverageRating { get; set; }
 
   public int ShelvedBookId { get; set; }
