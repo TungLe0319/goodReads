@@ -118,7 +118,7 @@ export default {
       },
       async addToBookShelf() {
         try {
-        let  data = {
+        let data = {
             bookId: AppState.account.id,
             bookShelfId: editable.value.id,
           };

@@ -44,6 +44,7 @@ CREATE TABLE
         bookId VARCHAR(255) NOT NULL,
         bookShelfId INT NOT NULL,
         creatorId VARCHAR(255) NOT NULL,
+        FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE,
         Foreign Key (bookShelfId) REFERENCES bookshelves(id) ON DELETE CASCADE,
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
@@ -73,7 +74,9 @@ CREATE TABLE
         retailPrice DECIMAL,
         averageRating DECIMAL
     ) default charset utf8 COMMENT '';
+
 ALTER TABLE books MODIFY COLUMN flavorText VARCHAR(500);
+
 CREATE TABLE
     IF NOT EXISTS reviews(
         id INT NOT NULL primary key AUTO_INCREMENT,
