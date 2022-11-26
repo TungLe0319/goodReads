@@ -133,7 +133,7 @@ export default {
     onMounted(() => {
       // getBooks();
       getMySQLBooks();
-      getQuote()
+      // getQuote()
     });
     async function getBooks() {
       try {

@@ -70,9 +70,14 @@
         <h2>Favorite Books</h2>
         <div class="row">
           <div class="col-md-2" v-for="i in 3">
-            <div class="card p-5 h-100 elevation-3 bg-dark">
-              Add a Favorite Book
-              <i class="mdi mdi-plus fs-1"></i>
+            <div class="card p-5 h-100 elevation-3 bg-dark d-flex justify-content-center">
+           <div class=" d-flex justify-content-center flex-column align-items-center">
+             <p class="text-center">  Add a Favorite Book</p>
+             <button class="btn border-0" data-bs-target="#favoriteBookForm" data-bs-toggle="modal">
+
+               <i class="mdi mdi-plus fs-1 p-2 rounded h-50 favoriteIcon"></i>
+             </button>
+           </div>
             </div>
           </div>
         </div>
@@ -148,6 +153,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.favoriteIcon{
+  background: rgba(235, 10, 10, 0.675);
+}
 nav .active {
   border: 0;
   border-bottom: 5px solid #6351ce !important;
