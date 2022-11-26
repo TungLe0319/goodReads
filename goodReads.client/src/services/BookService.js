@@ -79,7 +79,7 @@ class BookService {
         filter: 'full'
       },
     });
-    console.log('startIndex',res.data);
+    console.log('response Data',res.data);
     // console.log("[startIndex]", AppState.startIndex);
     AppState.totalItems = res.data.totalItems;
     
