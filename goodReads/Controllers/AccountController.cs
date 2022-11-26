@@ -127,4 +127,21 @@ public class AccountController : IController
 
 
 
+  [HttpGet("favoriteBooks")]
+  public ActionResult<List<FavoriteBook>> GetAccountFavoriteBooks()
+  {
+    try
+    {
+      List<FavoriteBook> favoriteBook = _favBooksService.GetAccountFavoriteBooks();
+      return Ok(favoriteBook);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+
+
+
 }

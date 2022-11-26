@@ -54,7 +54,12 @@ async getReviews(){
     // console.log(res.data);
     AppState.followers = res.data.map(f=> new Follow(f))
   }
-
+  async getFavoriteBooks(){
+    const res = await api.get('/account/favoriteBooks')
+  let test= res.data
+    console.log('favoriteBooks',test);
+    
+  }
 }
 
 export const accountService = new AccountService()

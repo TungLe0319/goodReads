@@ -27,7 +27,7 @@ class BookService {
     AppState.books = res.data.items.map((b) => new Book(b));
   }
   async searchByQuery(term) {
-    AppState.categories.forEach(c => c.checked = false)
+    AppState.categories.forEach((c) => (c.checked = false));
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: term,
@@ -135,15 +135,15 @@ class BookService {
   async getAuthorsList() {
     const res = await api.get("api/books/authors");
     // console.log("AuthorList", res.data);
-    let authors  = res.data.map(a=> a.authors);
-    let categories = res.data.map(a=> a.categories);
+    let authors = res.data.map((a) => a.authors);
+    let categories = res.data.map((a) => a.categories);
     // res.data.map(r => AppState.categoryList.push(r.categories))
-    console.log(authors);
- filterDuplicates(authors, AppState.authorList);
- 
-   filterDuplicates(categories, AppState.categoryList)
-    console.log("authorListAPP", AppState.authorList);
-    console.log("CategoryListAPP", AppState.categoryList);
+    // console.log(authors);
+    filterDuplicates(authors, AppState.authorList);
+
+    filterDuplicates(categories, AppState.categoryList);
+    // console.log("authorListAPP", AppState.authorList);
+    // console.log("CategoryListAPP", AppState.categoryList);
   }
 
   filterDuplicates(arr1, arr2) {

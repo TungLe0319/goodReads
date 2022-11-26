@@ -27,7 +27,7 @@
         <div class="col-md-12 pe-0 ">
           <div class="" v-if="editable.title">
             <ul class="list-group">
-              <li  @click="addToFavorites()" class="list-group-item d-flex align-items-center justify-content-between selectable " v-for="b in books">
+              <li  @click="addToFavorites(b)" class="list-group-item d-flex align-items-center justify-content-between selectable " v-for="b in books">
                 <div class="d-flex align-items-center">
 
                   <img :src="b.img" alt=""  width="100" height="150" class="elevation-5 rounded-1">
@@ -87,9 +87,13 @@ export default {
             Pop.error(error,'[searchByTitle]')
           }
       },
-      async addToFavorites(){
+      async addToFavorites(b){
         try {
-           await favoriteBooksService.addFavoriteBook()
+        let id ={
+          bookId: b.id
+        } 
+        console.log(id);
+           await favoriteBooksService.addFavoriteBook(id)
           } catch (error) {
             Pop.error(error,'[addToFavorites]')
           }
