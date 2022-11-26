@@ -4,7 +4,10 @@
 
   <div class="d-flex align-items-center">
 
-    <img :src="follow.profile.picture" :alt="follow.profile.name" :title="follow.profile.name" class="forcedImg elevation-5">
+<router-link :to="{ name: 'Profile', params: { id: follow.profile?.id } }">
+  <img :src="follow.profile.picture" :alt="follow.profile.name" :title="follow.profile.name" class="forcedImg elevation-5">
+</router-link>
+
   <div class="ms-4">
     <p class="fs-4"> @{{follow.profile.name}} </p>
     <p class="text-muted">  Began Following on  {{follow.createdAt}} </p>
