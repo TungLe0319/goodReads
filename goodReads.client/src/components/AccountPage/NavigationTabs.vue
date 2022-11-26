@@ -1,69 +1,27 @@
 <template>
   <nav>
-    <div
-      class="nav nav-tabs d-flex justify-content-center"
-      id="nav-tab"
-      role="tablist"
-    >
-      <button
-        class="nav-link active fs-5 text-dark"
-        id="nav-About-tab"
-        data-bs-toggle="tab"
-        data-bs-target="#nav-About"
-        type="button"
-        role="tab"
-        aria-controls="nav-About"
-        aria-selected="true"
-      >
+    <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+      <button class="nav-link active fs-5 text-dark" id="nav-About-tab" data-bs-toggle="tab" data-bs-target="#nav-About"
+        type="button" role="tab" aria-controls="nav-About" aria-selected="true">
         About
       </button>
-      <button
-        class="nav-link fs-5 text-dark"
-        id="nav-Reviews-tab"
-        data-bs-toggle="tab"
-        data-bs-target="#nav-Reviews"
-        type="button"
-        role="tab"
-        aria-controls="nav-Reviews"
-        aria-selected="false"
-      >
+      <button class="nav-link fs-5 text-dark" id="nav-Reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-Reviews"
+        type="button" role="tab" aria-controls="nav-Reviews" aria-selected="false">
         Reviews
       </button>
-      <button
-        class="nav-link fs-5 text-dark"
-        id="nav-Following-tab"
-        data-bs-toggle="tab"
-        data-bs-target="#nav-Following"
-        type="button"
-        role="tab"
-        aria-controls="nav-Following"
-        aria-selected="false"
-      >
+      <button class="nav-link fs-5 text-dark" id="nav-Following-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-Following" type="button" role="tab" aria-controls="nav-Following" aria-selected="false">
         Following
       </button>
-      <button
-        class="nav-link fs-5 text-dark"
-        id="nav-Followers-tab"
-        data-bs-toggle="tab"
-        data-bs-target="#nav-Followers"
-        type="button"
-        role="tab"
-        aria-controls="nav-Followers"
-        aria-selected="false"
-      >
+      <button class="nav-link fs-5 text-dark" id="nav-Followers-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-Followers" type="button" role="tab" aria-controls="nav-Followers" aria-selected="false">
         Followers
       </button>
     </div>
   </nav>
 
   <div class="tab-content" id="nav-tabContent">
-    <div
-      class="tab-pane fade show active"
-      id="nav-About"
-      role="tabpanel"
-      aria-labelledby="nav-About-tab"
-      tabindex="0"
-    >
+    <div class="tab-pane fade show active" id="nav-About" role="tabpanel" aria-labelledby="nav-About-tab" tabindex="0">
       <div class="my-4" v-if="!account.bio">
         <b> add a Bio</b> to share who you are.
       </div>
@@ -73,11 +31,7 @@
       <div class="">
         <div class="d-flex my-3">
           <h2>Favorite Books</h2>
-          <button
-            class="btn btn-outline-dark"
-            data-bs-target="#favoriteBookForm"
-            data-bs-toggle="modal"
-          >
+          <button class="btn btn-outline-dark" data-bs-target="#favoriteBookForm" data-bs-toggle="modal">
             Add Favorite Book
           </button>
         </div>
@@ -96,35 +50,21 @@
 
           <div class="col-md-2 mx-3" v-for="f in favoriteBooks" :key="f.id">
             <div class="card position-relative">
-              <router-link :to="{name: 'Book', params:{id: f.bookId }}"> 
-              
-                <img
-                  :src="f.book?.volumeInfo?.imageLinks?.thumbnail"
-                  alt=""
-                  width="200"
-                  height="300"
-                  class="elevation-5 selectable rounded-1"
-                  @click="setActive(f.book)"
-                />
+              <router-link :to="{ name: 'Book', params: { id: f.bookId } }">
+
+                <img :src="f.book?.volumeInfo?.imageLinks?.thumbnail" alt="" width="200" height="300"
+                  class="elevation-5 selectable rounded-1" @click="setActive(f.book)" />
               </router-link>
 
-              <i
-                @click="removeFavoriteBook(f.id)"
-                class="mdi mdi-delete fs-2 text-danger position-absolute selectable rounded top-0 end-0"
-              ></i>
+              <i @click="removeFavoriteBook(f.id)"
+                class="mdi mdi-delete fs-2 text-danger position-absolute selectable rounded top-0 end-0"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div
-      class="tab-pane fade"
-      id="nav-Reviews"
-      role="tabpanel"
-      aria-labelledby="nav-Reviews-tab"
-      tabindex="0"
-    >
+    <div class="tab-pane fade" id="nav-Reviews" role="tabpanel" aria-labelledby="nav-Reviews-tab" tabindex="0">
       <div class="container-fluid">
         <div class="row mt-5">
           <div class="col-md-4" v-for="r in reviews" :key="r.id">
@@ -133,23 +73,11 @@
         </div>
       </div>
     </div>
-    <div
-      class="tab-pane fade"
-      id="nav-Following"
-      role="tabpanel"
-      aria-labelledby="nav-Following-tab"
-      tabindex="0"
-    >
-    <FollowingTab/>
+    <div class="tab-pane fade" id="nav-Following" role="tabpanel" aria-labelledby="nav-Following-tab" tabindex="0">
+      <FollowingTab />
     </div>
-    <div
-      class="tab-pane fade"
-      id="nav-Followers"
-      role="tabpanel"
-      aria-labelledby="nav-Followers-tab"
-      tabindex="0"
-    >
-    
+    <div class="tab-pane fade" id="nav-Followers" role="tabpanel" aria-labelledby="nav-Followers-tab" tabindex="0">
+
     </div>
   </div>
 </template>
@@ -169,8 +97,8 @@ export default {
   props: {},
   setup(props) {
     const editable = ref({});
-    onMounted(() => {});
-    watchEffect(() => {});
+    onMounted(() => { });
+    watchEffect(() => { });
     return {
       editable,
       account: computed(() => AppState.account),
@@ -180,19 +108,19 @@ export default {
       favoriteBooks: computed(() => AppState.favoriteBooks),
       async removeFavoriteBook(id) {
         try {
-              if (await Pop.confirm()) {
-                   
-                await favoriteBooksService.removeFavoriteBook(id);
-                    }
+          if (await Pop.confirm()) {
+
+            await favoriteBooksService.removeFavoriteBook(id);
+          }
         } catch (error) {
           Pop.error(error, "[removeFavoriteBook]");
         }
       },
-      setActive(book){
-           document.documentElement.scrollTop = 0;
-          //IF NOT IN DATABASE PUSH
-          console.log(book);
-          // AppState.activeBook = book;
+      setActive(book) {
+        document.documentElement.scrollTop = 0;
+        //IF NOT IN DATABASE PUSH
+        console.log(book);
+        // AppState.activeBook = book;
       }
     };
   },
@@ -204,6 +132,7 @@ export default {
 .favoriteIcon {
   background: rgba(235, 10, 10, 0.675);
 }
+
 nav .active {
   border: 0;
   border-bottom: 5px solid #6351ce !important;

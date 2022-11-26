@@ -1,25 +1,15 @@
 <template>
   <section class="container mt-3">
     <!-- SearchBar -->
-    <div
-      class="row justify-content-center sticky-top animate__animated animate__fadeInDown"
-    >
+    <div class="row justify-content-center sticky-top animate__animated animate__fadeInDown">
       <div class="col-md-6">
         <form @submit.prevent="searchByQuery()">
-          <div
-            class="input-group my-3 rounded-5 elevation-5 sticky-top bg-dark p-1 searchContainer"
-          >
+          <div class="input-group my-3 rounded-5 elevation-5 sticky-top bg-dark p-1 searchContainer">
             <button class="btn d-flex justify-content-center" type="submit">
               <i class="mdi mdi-magnify fs-2 text-light"></i>
             </button>
-            <input
-              v-model="editable.term"
-              type="text"
-              class="form-control rounded-5 border-0"
-              aria-label="Username"
-              placeholder="Search Books By Title.."
-              aria-describedby="basic-addon1"
-            />
+            <input v-model="editable.term" type="text" class="form-control rounded-5 border-0" aria-label="Username"
+              placeholder="Search Books By Title.." aria-describedby="basic-addon1" />
           </div>
         </form>
       </div>
@@ -34,18 +24,9 @@
       <div class="col-md-3">
         <div class="bg-secondary p-2 elevation-2">
           <p class="fw-bold fs-4">Categories</p>
-          <div
-            class="mb-3 form-check selectable rounded"
-            v-for="c in categories"
-            
-            >
-            <input
-              v-model="c.checked"
-              v-on:change="searchByCategory(c)"
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
+          <div class="mb-3 form-check selectable rounded" v-for="c in categories">
+            <input v-model="c.checked" v-on:change="searchByCategory(c)" type="checkbox" class="form-check-input"
+              id="exampleCheck1" />
             <label class="form-check-label" for="exampleCheck1">{{ c.name }}</label>
           </div>
         </div>
@@ -58,12 +39,8 @@
         </div>
         <div class="row">
           <div class="col-md-12 d-flex justify-content-center">
-            <button
-              :class="index <= 0 ? 'disabled' : ''"
-              :disabled="index <= 0"
-              class="btn btn-outline-dark me-2"
-              @click="paginate('prev')"
-            >
+            <button :class="index <= 0 ? 'disabled' : ''" :disabled="index <= 0" class="btn btn-outline-dark me-2"
+              @click="paginate('prev')">
               <b>Prev</b>
             </button>
             <button class="btn btn-outline-dark" @click="paginate('next')">
@@ -93,8 +70,8 @@ export default {
   props: {},
   setup(props) {
     const editable = ref({});
-    onMounted(() => {});
-    watchEffect(() => {});
+    onMounted(() => { });
+    watchEffect(() => { });
     return {
       editable,
       books: computed(() => AppState.sPBooks),
@@ -115,17 +92,17 @@ export default {
 
           let found = AppState.categories.find(c => c == newCategory)
           console.log(found);
-        
-         for (const category of AppState.categories) {
-           if (category.name != newCategory.name) {
+
+          for (const category of AppState.categories) {
+            if (category.name != newCategory.name) {
               category.checked = false
             }
-         }
-         
+          }
+
           editable.value.term = ''
 
           AppState.categoryQuery = newCategory.name
-          // await bookService.searchByCategory(AppState.categoryQuery);
+          await bookService.searchByCategory(AppState.categoryQuery);
           // console.log(AppState.categoryQuery);
         } catch (error) {
           Pop.error(error, "[searchByCategory]");

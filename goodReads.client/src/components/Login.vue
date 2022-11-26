@@ -1,49 +1,25 @@
 <template>
   <span class="navbar-text">
-    <button
-      class="btn selectable text-dark text-uppercase my-2 my-lg-0"
-      @click="login"
-      v-if="!user.isAuthenticated"
-    >
+    <button class="btn selectable text-dark text-uppercase my-2 my-lg-0" @click="login" v-if="!user.isAuthenticated">
       Login
     </button>
     <div v-else>
       <div class="dropdown my-2 my-lg-0">
-        <div
-          type="button"
-          class="border-0 no-select"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <div
-            v-if="account.picture || user.picture"
-            class="d-flex align-items-center"
-          >
-            <img
-              :src="account.picture || user.picture"
-              alt="account photo"
-              height="40"
-              class="rounded-circle forcedImg elevation-5"
-            />
+        <div type="button" class="border-0 no-select" data-bs-toggle="dropdown" aria-expanded="false">
+          <div v-if="account.picture || user.picture" class="d-flex align-items-center">
+            <img :src="account.picture || user.picture" alt="account photo" height="40"
+              class="rounded-circle forcedImg elevation-5" />
             <p class="mb-0 ms-2 text-dark">
               {{ account.name?.split("@")[0] }}
             </p>
             <i class="mdi mdi-arrow-down"></i>
           </div>
         </div>
-        <div
-          class="dropdown-menu mt-3 p-0 border-0 elevation-4"
-          aria-labelledby="authDropdown"
-        >
+        <div class="dropdown-menu mt-3 p-0 border-0 elevation-4" aria-labelledby="authDropdown">
           <div class="list-group">
             <router-link :to="{ name: 'List' }">
               <div class="list-group-item dropdown-item list-group-item-action">
-                Wishlist
-              </div>
-            </router-link>
-            <router-link :to="{ name: 'List' }">
-              <div class="list-group-item dropdown-item list-group-item-action">
-                BookMarked
+                Bookshelves
               </div>
             </router-link>
             <router-link :to="{ name: 'Account' }">
@@ -52,10 +28,7 @@
               </div>
             </router-link>
 
-            <div
-              class="list-group-item dropdown-item list-group-item-action text-danger selectable"
-              @click="logout"
-            >
+            <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
               <i class="mdi mdi-logout"></i>
               logout
             </div>
@@ -91,6 +64,6 @@ export default {
   height: 60px;
   width: 60px;
   object-fit: cover;
- 
+
 }
 </style>
