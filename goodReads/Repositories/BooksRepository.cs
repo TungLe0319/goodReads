@@ -26,7 +26,6 @@ public class BooksRepository : BaseRepository
               previewLink,
               country,
               isEBook,
-              saleAbility,
               flavorText,
               retailPrice,
               averageRating
@@ -49,7 +48,6 @@ public class BooksRepository : BaseRepository
               @PreviewLink,
               @Country,
               @IsEBook,
-              @SaleAbility,
               @FlavorText,
               @RetailPrice,
               @AverageRating
