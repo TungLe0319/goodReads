@@ -31,12 +31,13 @@
       <div class="col-md-12">
         <h2>Explore Some Lore</h2>
       </div>
-      <div class="col-md-3 ">
+      <div class="col-md-3">
         <div class="bg-secondary p-2 elevation-2">
-
-      
-          <p class="fw-bold fs-4"> Categories</p>
-          <div class="mb-3 form-check selectable rounded " v-for="c in categories">
+          <p class="fw-bold fs-4">Categories</p>
+          <div
+            class="mb-3 form-check selectable rounded"
+            v-for="c in categories"
+          >
             <input
               @click="searchByCategory(c)"
               type="checkbox"
@@ -68,7 +69,7 @@
             </button>
           </div>
           <div class="col-md-12 text-center mt-3">
-         <b>   {{ index }} - {{ (endDex + 24) }} of {{ totalItems }} results </b>
+            <b> {{ index }} - {{ endDex + 24 }} of {{ totalItems }} results </b>
           </div>
         </div>
       </div>
@@ -81,7 +82,6 @@ import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
-import SearchPageBookCard from "../components/SearchPageBookCard.vue";
 import SearchPageBookCard from "../components/SearchPageBookCard.vue";
 import { bookService } from "../services/BookService.js";
 import { logger } from "../utils/Logger.js";
@@ -98,24 +98,18 @@ export default {
       books: computed(() => AppState.sPBooks),
       categories: computed(() => AppState.categories),
       index: computed(() => AppState.startIndex),
-      endDex: computed(() => AppState.startIndex ),
+      endDex: computed(() => AppState.startIndex),
       totalItems: computed(() => AppState.totalItems),
       async searchByQuery() {
         try {
           await bookService.searchByQuery(editable.value.term);
         } catch (error) {
-          if (
-            error ==
-            "TypeError: Cannot read properties of undefined (reading 'thumbnail')"
-          ) {
-          }
           logger.error(error);
         }
       },
       async searchByCategory(c) {
         try {
-
-          AppState.categoryQuery = c
+          AppState.categoryQuery = c;
           await bookService.searchByCategory(AppState.categoryQuery);
           console.log(AppState.categoryQuery);
         } catch (error) {
@@ -125,14 +119,13 @@ export default {
 
       async paginate(x) {
         try {
-     
           if (x == "prev") {
             AppState.startIndex -= 24;
-            await bookService.searchByCategory(AppState.startIndex);
+            await bookService.searchByCategory(AppState.categoryQuery);
           }
           if (x == "next") {
             AppState.startIndex += 24;
-            await bookService.searchByCategory(AppState.startIndex);
+            await bookService.searchByCategory(AppState.categoryQuery);
           }
         } catch (error) {
           Pop.error(error, "[paginate]");
