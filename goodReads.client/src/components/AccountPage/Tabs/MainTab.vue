@@ -86,14 +86,14 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
-import { AppState } from "../../AppState.js";
-import { favoriteBooksService } from "../../services/FavoriteBooksService.js";
-import Pop from "../../utils/Pop.js";
-import FavoritedBookCard from "./FavoritedBookCard.vue";
-import FollowerCard from "./FollowerCard.vue";
+import { AppState } from "../../../AppState.js";
+import { favoriteBooksService } from "../../../services/FavoriteBooksService.js";
+import Pop from "../../../utils/Pop.js";
+import FavoritedBookCard from "../FavoritedBookCard.vue";
+import FollowerCard from "../FollowerCard.vue";
 import FollowerTab from "./FollowerTab.vue";
 import FollowingTab from "./FollowingTab.vue";
-import ReviewedBookCard from "./ReviewedBookCard.vue";
+import ReviewedBookCard from "../ReviewedBookCard.vue";
 
 export default {
   props: {},

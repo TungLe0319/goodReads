@@ -80,6 +80,8 @@ export default {
     return {
       editable,
       account: computed(() => AppState.account),
+      favorites: computed(() => AppState.accountShelvedBooks),
+      bookShelves: computed(()=> AppState.accountBookshelves)
     };
   },
   components: { BookShelfCard },
