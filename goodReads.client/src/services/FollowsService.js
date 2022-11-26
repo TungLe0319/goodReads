@@ -4,15 +4,15 @@ import { api } from "./AxiosService.js";
 
 class FollowsService {
   async followByUserId(accountId) {
-    console.log(accountId);
+    // console.log(accountId);
     const res = await api.post(`api/follows`, accountId);
     let follow = new Follow(res.data);
-    console.log(follow);
+    // console.log(follow);
     AppState.following = [follow, ...AppState.following];
   }
   async unFollowByUserId(id) {
     const res = await api.delete(`api/follows/${id}`);
-    console.log(res.data);
+    // console.log(res.data);
     let index = AppState.following.findIndex((f) => {
       f.id == id;
     });
