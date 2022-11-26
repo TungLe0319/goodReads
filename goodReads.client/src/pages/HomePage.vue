@@ -131,9 +131,9 @@ import Pop from "../utils/Pop.js";
 export default {
   setup() {
     onMounted(() => {
-      // getBooks();
+  
       getMySQLBooks();
-      getQuote()
+ 
     });
     async function getBooks() {
       try {
