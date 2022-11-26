@@ -23,11 +23,11 @@ export class SQLBook {
     this.previewLink = data.previewLink;
     this.country = data.country;
     this.isEbook = data.isEbook || false;
-    this.saleAbility = data.saleAbility;
-    if (data.saleAbility == "NOT_FOR_SALE") {
-      this.saleAbility = "Unavailable";
-    }
-    this.retailPrice = data.retailPrice;
+    // this.saleAbility = data.saleAbility;
+    // if (data.saleAbility == "NOT_FOR_SALE") {
+    //   this.saleAbility = "Unavailable";
+    // }
+    // this.retailPrice = data.retailPrice;
     this.averageRating = data.averageRating;
     this.largeImg = data.largeImg;
     this.flavorText = data.flavorText;

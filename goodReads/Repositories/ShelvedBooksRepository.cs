@@ -36,8 +36,7 @@ public class ShelvedBooksRepository : BaseRepository
 
   internal List<ShelvedBook> GetAccountShelvedBooks(string userId)
   {
-    var sql = @"
-         SELECT 
+    var sql = @"SELECT 
          sb. *,
          a.*,
          b.*
@@ -48,12 +47,14 @@ public class ShelvedBooksRepository : BaseRepository
          GROUP BY sb.id
       
               ; ";
-    return _db.Query<ShelvedBook, Profile, ShelvedBook>(sql, (book, profile) =>
+    return _db.Query<ShelvedBook, Profile, Book, ShelvedBook>(sql, (sb, profile, book) =>
      {
-       book.creatorId = profile.Id;
+      //  sb.creatorId = profile.Id;
+      sb.Book = book;
 
-       return book;
-     }).ToList();
+
+       return sb;
+     }, new{userId}).ToList();
 
   }
 

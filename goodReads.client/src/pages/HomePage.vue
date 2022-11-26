@@ -207,6 +207,8 @@ export default {
   font-size: 3em;
   font-family: "Abril Fatface", cursive;
 }
+
+
 .scrollX {
   flex-wrap: nowrap;
   overflow-x: auto;

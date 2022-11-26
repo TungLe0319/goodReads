@@ -2,10 +2,7 @@
   <div class="modal-body">
     <div class="row justify-content-center">
       <div class="col-md-6 text-black">
-        <form
-          class="account-form acc-bio rounded"
-          @submit.prevent="handleSubmit()"
-        >
+        <form class="account-form acc-bio rounded" @submit.prevent="handleSubmit()">
           <div class="acc-pic text-start">
             <div class="mb-3">
               <label for="name">Name:</label>
@@ -13,18 +10,12 @@
             </div>
             <div class="mb-3">
               <label for="picture">Picture:</label>
-              <input
-                type="url"
-                class="form-control"
-                v-model="editable.picture"
-                name="picture"
-                placeholder="picture"
-              />
+              <input type="url" class="form-control" v-model="editable.picture" name="picture" placeholder="picture" />
             </div>
 
             <div class="mb-3">
               <label for="" class="form-label">Bio:</label>
-              <textarea class="form-control" name="" id="" rows="3"></textarea>
+              <textarea class="form-control" v-model="editable.bio" name="" id="" rows="3"></textarea>
             </div>
           </div>
           <div class="col-md-4">
@@ -33,16 +24,16 @@
         </form>
       </div>
 
-      <!-- <div class="col-md-6 elevation-5  d-flex justify-content-center align-items-center text-shadow rounded-end"
-      :style="{ backgroundImage: `url(${editable.coverImg})` }">
-      <div>
-        <img :src="editable.picture" alt="" class="rounded-circle border border-white border-4" height="150"
-          width="150">
-        <h4 class="text-center my-3">{{ editable.name }}</h4>
+      <div class="col-md-6 elevation-5  d-flex justify-content-center align-items-center text-shadow rounded-end"
+        :style="{ backgroundImage: `url(${editable.coverImg})` }">
+        <div>
+          <img :src="editable.picture" alt="" class="rounded-circle border border-white border-4" height="150"
+            width="150">
+          <h4 class="text-center my-3">{{ editable.name }}</h4>
+          <p class="text-shadow">{{editable.bio}}</p>
+        </div>
       </div>
 
-
-    </div> -->
     </div>
   </div>
 </template>
@@ -90,4 +81,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

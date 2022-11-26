@@ -31,7 +31,7 @@ class AccountService {
     const res = await api.get("/account/bookshelves");
     // console.log("[accountBookShelves]", res.data);
     AppState.accountBookshelves = res.data.map((a) => new BookShelf(a));
-    console.log(AppState.accountBookshelves);
+    // console.log(AppState.accountBookshelves);
   }
 
   async editAccount(formData) {
@@ -64,7 +64,7 @@ class AccountService {
       f.book = res2.data
     
     }
-    console.log(AppState.favoriteBooks);
+    // console.log(AppState.favoriteBooks);
   }
 
   async getShelvedBooks(){
