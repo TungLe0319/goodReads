@@ -64,12 +64,25 @@
       aria-labelledby="nav-About-tab"
       tabindex="0"
     >
-      <div class="my-4"><b> add a Bio</b> to share who you are.</div>
-
+      <div class="my-4" v-if="!account.bio">
+        <b> add a Bio</b> to share who you are.
+      </div>
+      <div v-else>
+        <p>{{ account.bio }}</p>
+      </div>
       <div class="">
-        <h2>Favorite Books</h2>
+        <div class="d-flex my-3">
+          <h2>Favorite Books</h2>
+          <button
+            class="btn btn-outline-dark"
+            data-bs-target="#favoriteBookForm"
+            data-bs-toggle="modal"
+          >
+            Add Favorite Book
+          </button>
+        </div>
         <div class="row">
-          <div class="col-md-2" v-for="i in 5">
+          <!-- <div class="col-md-2" v-for="i in 5">
             <div class="card p-5 h-100 elevation-3 bg-dark d-flex justify-content-center">
            <div class=" d-flex justify-content-center flex-column align-items-center">
              <p class="text-center">  Add a Favorite Book</p>
@@ -79,6 +92,17 @@
              </button>
            </div>
             </div>
+          </div> -->
+
+          <div class="col-md-2 mx-3" v-for="f in favoriteBooks" :key="f.id">
+            <img
+              :src="f.book?.volumeInfo?.imageLinks?.thumbnail"
+              alt=""
+              width="200"
+              height="300"
+              class="elevation-5 selectable rounded-1"
+              @click="removeFavoriteBook(f.id)"
+            />
           </div>
         </div>
       </div>
@@ -130,7 +154,9 @@
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../../AppState.js";
+import { favoriteBooksService } from "../../services/FavoriteBooksService.js";
 import Pop from "../../utils/Pop.js";
+import FavoritedBookCard from "./FavoritedBookCard.vue";
 import FollowerCard from "./FollowerCard.vue";
 import ReviewedBookCard from "./ReviewedBookCard.vue";
 
@@ -146,15 +172,22 @@ export default {
       following: computed(() => AppState.following),
       followers: computed(() => AppState.followers),
       reviews: computed(() => AppState.accountReviews),
+      favoriteBooks: computed(() => AppState.favoriteBooks),
+      async removeFavoriteBook(id) {
+        try {
+          await favoriteBooksService.removeFavoriteBook(id);
+        } catch (error) {
+          Pop.error(error, "[removeFavoriteBook]");
+        }
+      },
     };
   },
-  components: { FollowerCard, ReviewedBookCard },
+  components: { FollowerCard, ReviewedBookCard, FavoritedBookCard },
 };
 </script>
 
 <style lang="scss" scoped>
-
-.favoriteIcon{
+.favoriteIcon {
   background: rgba(235, 10, 10, 0.675);
 }
 nav .active {

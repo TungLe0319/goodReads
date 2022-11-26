@@ -38,24 +38,25 @@ public class FavoriteBooksRepository : BaseRepository
 
   }
 
-  internal List<FavoriteBook> GetAccountFavoriteBooks()
+  internal List<FavoriteBook> GetAccountFavoriteBooks(string userId)
   {
-  var sql = @"
+    var sql = @"
          SELECT 
-         fb. *,
+         fb.*,
          a.*
          FROM favoriteBooks fb
-         JOIN accounts a ON a.id = fb.creatorId
-
+         Join accounts a on a.id = fb.creatorId
+         WHERE fb.creatorId = @userId
          GROUP BY fb.id
       
               ; ";
-   return _db.Query<FavoriteBook, Profile,FavoriteBook >(sql, (favoriteBook, profile) =>
-    {
-      favoriteBook.Creator = profile;
-      
-      return favoriteBook;
-    }).ToList();
+    return _db.Query<FavoriteBook, Profile, FavoriteBook>(sql, (favoriteBook, profile) =>
+     {
+       favoriteBook.Creator = profile;
+
+      //  favoriteBook.Book = book;
+       return favoriteBook;
+     }, new { userId }).ToList();
 
 
   }

@@ -128,11 +128,12 @@ public class AccountController : IController
 
 
   [HttpGet("favoriteBooks")]
-  public ActionResult<List<FavoriteBook>> GetAccountFavoriteBooks()
+  public async Task<ActionResult<List<FavoriteBook>>> GetAccountFavoriteBooks()
   {
     try
     {
-      List<FavoriteBook> favoriteBook = _favBooksService.GetAccountFavoriteBooks();
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      List<FavoriteBook> favoriteBook = _favBooksService.GetAccountFavoriteBooks(userInfo?.Id);
       return Ok(favoriteBook);
     }
     catch (Exception e)

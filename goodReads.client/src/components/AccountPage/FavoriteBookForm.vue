@@ -27,7 +27,7 @@
         <div class="col-md-12 pe-0 ">
           <div class="" v-if="editable.title">
             <ul class="list-group">
-              <li  @click="addToFavorites(b)" class="list-group-item d-flex align-items-center justify-content-between selectable " v-for="b in books">
+              <li  @click="addToFavorites(b)" class="list-group-item d-flex align-items-center justify-content-between selectable " v-for="b in books" data-bs-dismiss="modal">
                 <div class="d-flex align-items-center">
 
                   <img :src="b.img" alt=""  width="100" height="150" class="elevation-5 rounded-1">

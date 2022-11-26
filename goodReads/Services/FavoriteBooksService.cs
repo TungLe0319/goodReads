@@ -9,7 +9,7 @@ public class FavoriteBooksService{
 
   internal FavoriteBook CreateFavoriteBook(FavoriteBook favoriteBookData, string userId)
   {
-    List<FavoriteBook> favoriteBooks = _favBookRepo.GetAccountFavoriteBooks();
+    List<FavoriteBook> favoriteBooks = _favBookRepo.GetAccountFavoriteBooks(userId);
     if( favoriteBooks.Capacity >=5)
     {
     throw new Exception("Already have 5");
@@ -24,9 +24,9 @@ public class FavoriteBooksService{
   _favBookRepo.DeleteFavoriteBook(favoriteBookId);
   }
 
-  internal List<FavoriteBook> GetAccountFavoriteBooks()
+  internal List<FavoriteBook> GetAccountFavoriteBooks(string userId)
   {
-  return _favBookRepo.GetAccountFavoriteBooks();
+  return _favBookRepo.GetAccountFavoriteBooks(userId);
   }
 
   internal FavoriteBook GetById(int favoriteBookId){
