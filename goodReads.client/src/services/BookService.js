@@ -33,7 +33,7 @@ class BookService {
       },
     });
     // console.log(res.data.items);
-    let books = res.data.items.map(b=> new Book(b))
+    let books = res.data.items.map((b) => new Book(b));
     // console.log(books);
     // for (const b of books) {
     //   b.authors = b.authors.toString() || b.authors
@@ -41,13 +41,13 @@ class BookService {
     //   const res2 = await api.post('api/books',b)
     //   console.log(res2.data);
     // }
-    AppState.sPBooks = books
+    AppState.sPBooks = books;
     // console.log(AppState.sPBooks);
   }
 
   async addBookToDb(book) {
     console.log(book);
-    let bookDB = new Book(book, true)
+    let bookDB = new Book(book, true);
     console.log(bookDB);
     // const res = await api.post("api/books", bookDB);
     // let newBook = new Book(res.data);
@@ -70,29 +70,26 @@ class BookService {
   }
 
   async searchByCategory(term) {
-  
- 
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q:  "Romance+Action",
+        q: "Romance+Action",
         maxResults: 24,
         startIndex: AppState.startIndex,
-      
       },
     });
-    console.log('Term',term);
-    console.log('response Data',res.data);
+    console.log("Term", term);
+    console.log("response Data", res.data);
     console.log("[startIndex]", AppState.startIndex);
     AppState.totalItems = res.data.totalItems;
-    
-    console.log("totalItems",res.data.totalItems);
+
+    console.log("totalItems", res.data.totalItems);
     AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
     // router.push({ name: "Home" });
   }
   async searchByAuthor(author) {
-  console.log(author);
-// AppState.categoryQuery
+    console.log(author);
+    // AppState.categoryQuery
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: author,
@@ -118,6 +115,19 @@ class BookService {
     const res = await api.get(`api/books`);
     // console.log("[MySQL]", res.data);
     AppState.books = res.data.map((b) => new SQLBook(b));
+  }
+
+  async searchByTitle(title) {
+    console.log(title);
+    const res = await googleBookApi.get("/volumes", {
+      params: {
+        q: title,
+        maxResults: 24,
+        // startIndex: AppState.startIndex,
+      },
+    });
+    AppState.aPBooks = res.data.items.map((a) => new Book(a));
+    console.log("totalItems", res.data.totalItems);
   }
 
   async getAuthorsList() {
