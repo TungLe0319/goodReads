@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row mt-5">
-      <div class="col-md-12" v-for="f in following" :key="f.id">
+      <div class="col-md-12" v-for="f in followers" :key="f.id">
         <FollowerCard :follow="f" />
       </div>
     </div>
@@ -23,7 +23,7 @@ export default {
     watchEffect(() => {});
     return {
       editable,
-      following: computed(() => AppState.following),
+      followers: computed(() => AppState.followers),
     };
   },
   components: { FollowerCard },

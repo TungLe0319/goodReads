@@ -77,7 +77,7 @@
       <FollowingTab />
     </div>
     <div class="tab-pane fade" id="nav-Followers" role="tabpanel" aria-labelledby="nav-Followers-tab" tabindex="0">
-
+<FollowerTab/>
     </div>
   </div>
 </template>
@@ -90,6 +90,7 @@ import { favoriteBooksService } from "../../services/FavoriteBooksService.js";
 import Pop from "../../utils/Pop.js";
 import FavoritedBookCard from "./FavoritedBookCard.vue";
 import FollowerCard from "./FollowerCard.vue";
+import FollowerTab from "./FollowerTab.vue";
 import FollowingTab from "./FollowingTab.vue";
 import ReviewedBookCard from "./ReviewedBookCard.vue";
 
@@ -124,7 +125,7 @@ export default {
       }
     };
   },
-  components: { FollowerCard, ReviewedBookCard, FavoritedBookCard, FollowingTab },
+  components: { FollowerCard, ReviewedBookCard, FavoritedBookCard, FollowingTab, FollowerTab },
 };
 </script>
 
