@@ -95,14 +95,24 @@
           </div> -->
 
           <div class="col-md-2 mx-3" v-for="f in favoriteBooks" :key="f.id">
-            <img
-              :src="f.book?.volumeInfo?.imageLinks?.thumbnail"
-              alt=""
-              width="200"
-              height="300"
-              class="elevation-5 selectable rounded-1"
-              @click="removeFavoriteBook(f.id)"
-            />
+            <div class="card position-relative">
+              <router-link :to="{name: 'Book', params:{id: f.bookId }}"> 
+              
+                <img
+                  :src="f.book?.volumeInfo?.imageLinks?.thumbnail"
+                  alt=""
+                  width="200"
+                  height="300"
+                  class="elevation-5 selectable rounded-1"
+                  @click="setActive(f.book)"
+                />
+              </router-link>
+
+              <i
+                @click="removeFavoriteBook(f.id)"
+                class="mdi mdi-delete fs-2 text-danger position-absolute selectable rounded top-0 end-0"
+              ></i>
+            </div>
           </div>
         </div>
       </div>
@@ -175,11 +185,20 @@ export default {
       favoriteBooks: computed(() => AppState.favoriteBooks),
       async removeFavoriteBook(id) {
         try {
-          await favoriteBooksService.removeFavoriteBook(id);
+              if (await Pop.confirm()) {
+                   
+                await favoriteBooksService.removeFavoriteBook(id);
+                    }
         } catch (error) {
           Pop.error(error, "[removeFavoriteBook]");
         }
       },
+      setActive(book){
+           document.documentElement.scrollTop = 0;
+          //IF NOT IN DATABASE PUSH
+          console.log(book);
+          // AppState.activeBook = book;
+      }
     };
   },
   components: { FollowerCard, ReviewedBookCard, FavoritedBookCard },

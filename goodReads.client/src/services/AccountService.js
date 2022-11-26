@@ -30,8 +30,8 @@ class AccountService {
   async getAccountBookShelves() {
     const res = await api.get("/account/bookshelves");
     // console.log("[accountBookShelves]", res.data);
-    // console.log(AppState.accountBookshelves);
     AppState.accountBookshelves = res.data.map((a) => new BookShelf(a));
+    console.log(AppState.accountBookshelves);
   }
 
   async editAccount(formData) {
