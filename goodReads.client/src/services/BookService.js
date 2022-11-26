@@ -26,6 +26,7 @@ class BookService {
     AppState.books = res.data.items.map((b) => new Book(b));
   }
   async searchByQuery(term) {
+    AppState.categories.forEach(c => c.checked = false)
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: term,
@@ -74,7 +75,7 @@ class BookService {
  
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q:  "Romance+Action",
+        q: term,
         maxResults: 24,
         startIndex: AppState.startIndex,
       
