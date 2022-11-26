@@ -17,14 +17,15 @@ export const AppState = reactive({
   sPBooks: [],
   /** @type {import('./models/Book.js').Book[]} */
   aPBooks: [],
-  
-  
+
   /** @type {import('./models/Book.js').Book[]} */
   favoriteBooks: [],
   favoriteBookImgs: [],
 
   /** @type {import('./models/SQLBook.js').SQLBook | null} */
   activeBook: null,
+
+  activeBookShelf: null,
 
   /** @type {import('./models/Book.js').Book | null} */
   extraDetails: null,
@@ -39,7 +40,9 @@ export const AppState = reactive({
   /** @type {import('./models/BookShelf.js').BookShelf[]} */
   accountBookshelves: [],
   accountReviews: [],
-  accountShelvedBooks:[],
+
+  accountShelvedBooks: [],
+
   /** @type {import('./models/Quote.js').Quote | null} */
   quote: null,
 
