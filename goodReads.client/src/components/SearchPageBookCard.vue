@@ -17,7 +17,7 @@
       :to="{ name: 'Search', params: {} }"
       class="text-dark"
     >
-      <p class="text-truncate mb-0 link fs-5">{{ book.authors }}</p>
+      <p class="text-truncate mb-0 link fs-5" v-for="a in book.authors">{{ a }}</p>
     </router-link>
     <router-link
       @click="searchByCategory(b)"

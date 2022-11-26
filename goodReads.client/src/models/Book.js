@@ -33,8 +33,12 @@ export class Book {
     }
   }
   getAuthors(author) {
-    let authors;
-    authors = author.toString();
+    let authors = author;
+    
+    
+    if (Array.isArray(authors)) {
+      authors = author.toString();
+    }
     this.authors = authors;
   }
 }
