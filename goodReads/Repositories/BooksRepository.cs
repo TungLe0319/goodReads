@@ -27,7 +27,6 @@ public class BooksRepository : BaseRepository
               country,
               isEBook,
               flavorText,
-              retailPrice,
               averageRating
 
             )
@@ -49,7 +48,6 @@ public class BooksRepository : BaseRepository
               @Country,
               @IsEBook,
               @FlavorText,
-              @RetailPrice,
               @AverageRating
               )
                 ;";
