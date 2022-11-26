@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="row mb-5">
+    <div class="row my-5">
       <div class="col-md-12">
-        <div class="card elevation-5 border-0">
+        <div class="card elevation-5 border-0 p-4 ">
           <h1>You Haven't Added any Books to your Wishlist Yet</h1>
 
 
@@ -11,7 +11,7 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col-md-12">
+      <div class="col-md-12 mb-3">
         <div class="d-flex justify-content-between">
           <h1>My Book Lists</h1>
           <button class="btn btn-danger h-50">
@@ -43,14 +43,8 @@
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-wishlist" role="tabpanel" aria-labelledby="nav-wishlist-tab"
             tabindex="0">
-            .
-            <div class="container">
-              <div class="row">
-                <div class="col-md-3" v-for="b in bookShelves">
-                  <BookShelfCard :bookShelf="b" />
-                </div>
-              </div>
-            </div>
+            
+         
           </div>
 
           <div class="tab-pane fade" id="nav-owned" role="tabpanel" aria-labelledby="nav-owned-tab" tabindex="0">
@@ -81,19 +75,11 @@ export default {
   setup() {
     const editable = ref({});
     onMounted(() => {
-      // getAccountBookShelves()
     });
-    async function getAccountBookShelves() {
-      try {
-        await accountService.getAccountBookShelves();
-      } catch (error) {
-        Pop.error(error, "[getAccountBookShelves]");
-      }
-    }
+
     return {
       editable,
       account: computed(() => AppState.account),
-      bookShelves: computed(() => AppState.accountBookshelves),
     };
   },
   components: { BookShelfCard },

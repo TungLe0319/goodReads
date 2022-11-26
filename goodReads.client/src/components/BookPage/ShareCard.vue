@@ -2,12 +2,12 @@
   <div class="card p-2 elevation-4 border-0">
     <h3
       v-if="book.saleAbility == 'Unavailable'"
-      class="text-danger text-decoration-underline"
+      class="ms-3 text-danger text-decoration-underline"
     >
       {{ book.saleAbility }}
     </h3>
     <h3 v-else>{{ book.saleAbility }}</h3>
-    <p>Available for a limited time</p>
+    <p class="ms-3">Available for a limited time</p>
 
     <div class="card-body d-flex flex-column justify-content-center">
       <form @submit.prevent="addToBookShelf()">
@@ -33,7 +33,7 @@
         class="btn btn-outline-dark mt-2"
         data-bs-toggle="modal"
         data-bs-target="#createReview"
-        data-bs-backdrop="false"
+   
       >
         Review
       </button>

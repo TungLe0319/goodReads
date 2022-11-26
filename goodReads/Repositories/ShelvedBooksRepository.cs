@@ -23,7 +23,7 @@ public class ShelvedBooksRepository : BaseRepository
             SELECT LAST_INSERT_ID()
                 ; ";
 
-   int Id = _db.ExecuteScalar<int>(sql, shelfBookData);
+    int Id = _db.ExecuteScalar<int>(sql, shelfBookData);
 
     return GetById(Id);
   }

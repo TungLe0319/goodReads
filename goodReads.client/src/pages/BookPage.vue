@@ -90,6 +90,9 @@
         <div class="col-md-12 d-flex justify-content-between my-3">
           <h3 class="text-dark">Community Reviews</h3>
           <button
+             data-bs-toggle="modal"
+        data-bs-target="#createReview"
+   
             class="btn bg-create text-dark fw-bold d-flex align-items-center justify-content-center"
           >
             <i class="mdi mdi-comment fs-4 text-dark me-2"></i> Write a Review
