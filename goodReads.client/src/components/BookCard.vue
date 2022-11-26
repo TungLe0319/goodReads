@@ -63,10 +63,8 @@ export default {
           document.documentElement.scrollTop = 0;
           //IF NOT IN DATABASE PUSH
           AppState.activeBook = book;
-          let found = AppState.books.find((b) => b.id == book.id);
-          if (!found) {
+         
             await bookService.addBookToDb(book);
-          }
           // console.log(AppState.activeBook);
         } catch (error) {
           Pop.error(error);
