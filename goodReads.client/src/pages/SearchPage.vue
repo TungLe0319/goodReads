@@ -37,14 +37,16 @@
           <div
             class="mb-3 form-check selectable rounded"
             v-for="c in categories"
-          >
+            
+            >
             <input
-              @click="searchByCategory(c)"
+              v-model="c.checked"
+              v-on:change="searchByCategory(c)"
               type="checkbox"
               class="form-check-input"
               id="exampleCheck1"
             />
-            <label class="form-check-label" for="exampleCheck1">{{ c }}</label>
+            <label class="form-check-label" for="exampleCheck1">{{ c.name }}</label>
           </div>
         </div>
       </div>
@@ -102,16 +104,29 @@ export default {
       totalItems: computed(() => AppState.totalItems),
       async searchByQuery() {
         try {
+
           await bookService.searchByQuery(editable.value.term);
         } catch (error) {
           logger.error(error);
         }
       },
-      async searchByCategory(c) {
+      async searchByCategory(newCategory) {
         try {
-          AppState.categoryQuery = c;
-          await bookService.searchByCategory(AppState.categoryQuery);
-          console.log(AppState.categoryQuery);
+
+          let found = AppState.categories.find(c => c == newCategory)
+          console.log(found);
+        
+         for (const category of AppState.categories) {
+           if (category.name != newCategory.name) {
+              category.checked = false
+            }
+         }
+         
+          editable.value.term = ''
+
+          AppState.categoryQuery = newCategory.name
+          // await bookService.searchByCategory(AppState.categoryQuery);
+          // console.log(AppState.categoryQuery);
         } catch (error) {
           Pop.error(error, "[searchByCategory]");
         }
