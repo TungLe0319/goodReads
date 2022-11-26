@@ -48,7 +48,10 @@ class BookService {
   }
 
   async addBookToDb(book) {
-    // console.log(book, "oldBook");
+    let found = AppState.books.find((b) => b.id == book.id);
+    if (found) {
+      return
+    }
     let bookDB = new SQLBook(book, true);
     // console.log(bookDB, "newBook");
     const res = await api.post("api/books", bookDB);
@@ -56,7 +59,7 @@ class BookService {
     console.log(newBook, 'newBook');
     // let newBook = new Book(res.data);
     AppState.books = [...AppState.books, newBook];
-    // console.log(book, "hi", newBook);
+    return newBook
   }
 
   async getBookInformation(id) {
