@@ -13,7 +13,7 @@
         <div class="d-flex ">
           <div class="">
 
-            <p class=" mb-0 name">{{ account.name }}</p>
+            <p class=" mb-0 name text-dark">{{ account.name }}</p>
             <p class="fs-5  text-muted"> {{ account.email}}</p>
           </div>
           <div class=" mt-3 ms-3">
