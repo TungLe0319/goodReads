@@ -5,7 +5,9 @@
       <div class="d-flex flex-column align-items-center">
         <img alt="logo" class="logo p-1 "
           src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png" />
+          
       </div>
+
     </router-link>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"

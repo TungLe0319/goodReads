@@ -2,14 +2,18 @@
   <div
     @click="setActive(book)"
     v-if="book"
-    class="text-dark"
+    class="text-dark "
+     
+    @mouseenter="uphere = true"
+    @mouseleave="uphere = false"
   >
     <div class="card elevation-5 border-0 my-1 text-shadow">
       <img :src="book.img" class="card-img" :alt="book.title" v-if="book.img" />
     
     </div>
-  </div>
-  <div class="bg-transparent border-0 bookTitle" v-if="book">
+
+
+ <div class="  bg-transparent border-0 bookTitle" v-if="book">
     <p class="text-truncate mb-0 fw-bold text-dark">{{ book.title }}</p>
     <router-link
    
@@ -31,6 +35,8 @@
     </router-link>
  
   </div>
+  </div>
+ 
 </template>
 
 <script>
@@ -54,10 +60,15 @@ export default {
     const editable = ref({});
 
     onMounted(() => {});
-    watchEffect(() => {});
+    watchEffect(() => {
+ 
+
+    });
 const route = useRoute();
 const router = useRouter()
+let uphere = false
     return {
+      uphere,
       editable,
       route,
       router,
@@ -100,6 +111,13 @@ const router = useRouter()
              } catch (error) {
                Pop.error(error,'[removeFromBookShelf]')
              }
+      },
+      hoverTest(){
+     
+        AppState.hovering = !AppState.hovering
+     
+       console.log(AppState.hovering);
+       
       }
     };
   },
@@ -107,6 +125,35 @@ const router = useRouter()
 </script>
 
 <style lang="scss" scoped>
+.wrapper{
+z-index: -2 !important;
+
+.wrapper-item{
+  position: absolute;
+  opacity: 0;
+  
+}
+}
+
+.wrapper:hover {
+  transition-delay: 500ms !important;
+  transform: scale(1.5);
+  transition: transform 0.50s ease;
+  z-index: 9 !important;
+.card{
+  z-index: 9999!important;
+}
+
+img{
+  z-index:  9999 !important;
+}
+  .wrapper-item{
+    transition-delay: 500ms !important;
+  opacity: 1;
+  transition: all 0.5s ease;
+  z-index: 99999 !important;
+  }
+}
 .hide{
 display: none;
 }

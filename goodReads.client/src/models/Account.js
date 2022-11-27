@@ -5,6 +5,7 @@ export class Account {
     this.name = data.name.split("@")[0]
     this.picture = data.picture
     this.bio = data.bio
+    this.lightTheme = data.theme || false
     // TODO add additional properties if needed
   }
 }

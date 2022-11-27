@@ -1,4 +1,4 @@
--- Active: 1668895251805@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(
@@ -10,6 +10,7 @@ CREATE TABLE
         picture varchar(255) COMMENT 'User Picture'
     ) default charset utf8 COMMENT '';
     ALTER TABLE accounts ADD COLUMN bio VARCHAR(500);
+    ALTER TABLE accounts ADD COLUMN theme TINYINT DEFAULT 0 ;
 
 CREATE TABLE
     IF NOT EXISTS follows(
