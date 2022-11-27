@@ -8,6 +8,10 @@ class BookShelvesService {
     const res = await api.post("api/shelvedbooks", data);
     console.log(res.data);
 
+    // let data = {
+    //   book: AppState.activeBook
+    // }
+
     //  AddOne(AppState.accountShelvedBooks, new ShelvedBook(res.data))
     // addMany(AppState.accountShelvedBooks, res.data, new ShelvedBook)
   }
