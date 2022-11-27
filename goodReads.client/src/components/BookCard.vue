@@ -30,9 +30,7 @@
     >
       <p v-for="b in book.categories" class="link mb-0">{{ b }}</p>
     </router-link>
-    <div v-if="route.path =='List'">
-      <button class="fs-5 text-danger btn p-0">Remove</button>
-    </div>
+ 
   </div>
 </template>
 
@@ -95,6 +93,14 @@ const router = useRouter()
           Pop.error(error, "[searchByCategory]");
         }
       },
+      async removeFromBookShelf(){
+           try {
+            
+               await bookShelvesService.removeFromBookShelf()
+             } catch (error) {
+               Pop.error(error,'[removeFromBookShelf]')
+             }
+      }
     };
   },
 };

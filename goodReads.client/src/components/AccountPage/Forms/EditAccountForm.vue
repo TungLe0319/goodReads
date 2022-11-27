@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <button type="submit" class="btn btn-outline-dark w-100 mt-2"> Save Changes</button>
+            <button data-bs-dismiss="modal" type="submit" class="btn btn-outline-dark w-100 mt-2"> Save Changes</button>
           </div>
         </form>
       </div>

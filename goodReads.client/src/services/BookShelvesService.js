@@ -6,7 +6,7 @@ class BookShelvesService{
 console.log(data);
     const res = await api.post('api/shelvedbooks',data)
     console.log(res.data);
-    
+
   }
   async findBook(){
       for (const shelf of AppState.accountBookshelves) {
@@ -21,6 +21,11 @@ console.log(data);
         }
       }
       console.log(AppState.accountBookshelves);
+  }
+
+  async removeFromBookShelf(id){
+    await api.delete(`api/shelvedbooks/${id}`)
+    AppState.accountShelvedBooks = AppState.accountShelvedBooks.filter(a=> a.shelvedId != id)
   }
 }
 export const bookShelvesService = new BookShelvesService();
