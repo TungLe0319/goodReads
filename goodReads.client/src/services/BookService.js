@@ -64,16 +64,7 @@ class BookService {
 
   async getBookInformation(id) {
     const res = await googleBookApi.get(`/volumes/${id}`);
-    // console.log("res", res.data);
-    // AppState.extraDetails= new Book(res.data)
-    // console.log(AppState.extraDetails);
-
-    // AppState.activeBook.categories = AppState.activeBook.categories.toString();
-    // AppState.activeBook.authors = AppState.activeBook.authors.toString();
-    // let book = AppState.books;
-    // const res2 = await api.post("api/books", AppState.activeBook);
-    // console.log(res2.data);
-    // console.log(AppState.activeBook.largeImg);
+  
   }
 
   async searchByCategory(term) {
