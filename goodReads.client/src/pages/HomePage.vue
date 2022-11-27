@@ -194,7 +194,7 @@ export default {
       },
     };
   },
-  components: { BookCard, EasyStepsCard, LeaveFeedBackCard, SQLBook, BookCard },
+  components: { EasyStepsCard, LeaveFeedBackCard, SQLBook, BookCard },
 };
 </script>
 

@@ -93,7 +93,6 @@ import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
-import BookShelfCard from "../components/BookShelfCard.vue";
 import { accountService } from "../services/AccountService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
@@ -116,7 +115,7 @@ console.log(AppState.activeBookShelf);
       }
     };
   },
-  components: { BookShelfCard, BookCard },
+  components: {  BookCard },
 };
 </script>
 
