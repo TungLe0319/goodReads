@@ -1,4 +1,4 @@
--- Active: 1668895251805@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(
@@ -43,7 +43,7 @@ CREATE TABLE
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         bookId VARCHAR(255) NOT NULL,
-        bookShelfId INT NOT NULL,
+        bookShelfId INT NOT NULL UNIQUE,
         creatorId VARCHAR(255) NOT NULL,
         FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE,
         Foreign Key (bookShelfId) REFERENCES bookshelves(id) ON DELETE CASCADE,

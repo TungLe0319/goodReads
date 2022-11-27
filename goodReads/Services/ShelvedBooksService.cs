@@ -14,13 +14,18 @@ public class ShelvedBookService
   internal ShelfBook CreateShelfBook(ShelfBook shelfBookData)
   {
     ShelfBook newShelfBook = _sbRepo.CreateShelfBook(shelfBookData);
+    if( newShelfBook == null)
+    {
+    throw new Exception("Invalid [example]");
+    }
+    
     return newShelfBook;
   }
 
   public ShelfBook GetById(int id)
   {
     ShelfBook shelfBook = _sbRepo.GetById(id);
-    
+
 if( shelfBook == null)
 {
 throw new Exception("Bad Id");
