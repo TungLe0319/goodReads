@@ -4,7 +4,7 @@ import { BookShelf } from "../models/BookShelf.js";
 import { FavoritedBook } from "../models/FavoritedBook.js";
 import { Follow } from "../models/Follow";
 import { Review } from "../models/Review.js";
-import { SQLBook } from "../models/SQLBook";
+import { ShelvedBook, SQLBook } from "../models/SQLBook";
 import { logger } from "../utils/Logger";
 import { api, googleBookApi } from "./AxiosService";
 
@@ -71,7 +71,7 @@ class AccountService {
   async getShelvedBooks(){
     const res = await api.get(`/account/shelvedBooks`)
 console.log(res.data);
-AppState.accountShelvedBooks = res.data.map(x => new SQLBook(x.book, false, x))
+AppState.accountShelvedBooks = res.data.map(x => new ShelvedBook(x))
 console.log(AppState.accountShelvedBooks);
   }
 
