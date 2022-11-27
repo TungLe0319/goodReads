@@ -93,7 +93,12 @@ export default {
       },
       async addToBookShelf() {
         try {
-          console.log(AppState.accountBookshelves);
+          // console.log(AppState.accountBookshelves);
+          let shelf = AppState.accountBookshelves.find(s => s.id == editable.value.id)
+          if (shelf.hasActiveBook) {
+            console.log('shelf has book');
+            return
+          }
 
           let data = {
             bookId: AppState.activeBook.id,

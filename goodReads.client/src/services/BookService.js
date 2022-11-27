@@ -50,7 +50,7 @@ class BookService {
     // console.log(bookDB, "newBook");
     const res = await api.post("api/books", bookDB);
     let newBook = new SQLBook(res.data)
-    console.log(newBook, 'newBook');
+    // console.log(newBook, 'newBook');
     // let newBook = new Book(res.data);
     AppState.books = [...AppState.books, newBook];
     return newBook

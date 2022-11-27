@@ -72,7 +72,7 @@ class AccountService {
     const res = await api.get(`/account/shelvedBooks`);
     // console.log(res.data);
     AppState.accountShelvedBooks = res.data.map((x) => new ShelvedBook(x));
-    console.log("SHELVEDBOOK", AppState.accountShelvedBooks);
+    // console.log("SHELVEDBOOK", AppState.accountShelvedBooks);
   }
 }
 

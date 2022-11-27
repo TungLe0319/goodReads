@@ -9,11 +9,11 @@
           <div
             class="card-img-overlay align-items-center d-flex justify-content-center flex-column justify-content-evenly">
             <div class=" text-constantLight text-decoration-underline 4border-bottom border-3">
-              <h1>Find Your Book, Find Your Why</h1>
+              <h1 class="text-shadow abril">Find Your Book, Find Your Why</h1>
             </div>
 
-            <figure>
-              <blockquote class="blockquote text-constantLight">
+            <figure class="text-shadow px-5">
+              <blockquote class="blockquote text-constantLight ">
                 <p>
                   <i class="mdi mdi-format-quote-open"></i> {{ quote?.content }} <i
                     class="mdi mdi-format-quote-close"></i>
