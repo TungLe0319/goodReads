@@ -40,6 +40,8 @@
             </button>
           </div>
         </nav>
+
+
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-wishlist" role="tabpanel" aria-labelledby="nav-wishlist-tab"
             tabindex="0">
@@ -54,13 +56,31 @@
           </div>
 
           <div class="tab-pane fade" id="nav-owned" role="tabpanel" aria-labelledby="nav-owned-tab" tabindex="0">
-           {{filtered}}
+              <div class="row mt-3">
+            <div class="col-md-2" v-for="f in filtered" :key="f.id">
+<BookCard :book="f" />
+            </div>
+          </div>
+
+    
           </div>
           <div class="tab-pane fade" id="nav-reading" role="tabpanel" aria-labelledby="nav-reading-tab" tabindex="0">
-               {{filtered}}
+                 <div class="row mt-3">
+            <div class="col-md-2" v-for="f in filtered" :key="f.id">
+<BookCard :book="f" />
+            </div>
+          </div>
+
+    
           </div>
           <div class="tab-pane fade" id="nav-finished" role="tabpanel" aria-labelledby="nav-finished-tab" tabindex="0">
-              {{filtered}}
+              <div class="row mt-3">
+            <div class="col-md-2" v-for="f in filtered" :key="f.id">
+<BookCard :book="f" />
+            </div>
+          </div>
+
+    
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mt-5">
       <div class="col-md-12" v-for="f in followers" :key="f.id">
-        <FollowerCard :follow="f" />
+        <FollowCard :follow="f" />
       </div>
     </div>
   </div>
@@ -13,7 +13,7 @@ import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../../../AppState.js";
 import Pop from "../../../utils/Pop.js";
-import FollowerCard from "../FollowerCard.vue";
+import FollowCard from "../FollowCard.vue";
 
 export default {
   props: {},
@@ -26,7 +26,7 @@ export default {
       followers: computed(() => AppState.followers),
     };
   },
-  components: { FollowerCard },
+  components: { FollowCard },
 };
 </script>
 
