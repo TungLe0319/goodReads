@@ -20,6 +20,13 @@ public class ShelvedBookService
   public ShelfBook GetById(int id)
   {
     ShelfBook shelfBook = _sbRepo.GetById(id);
+    
+if( shelfBook == null)
+{
+throw new Exception("Bad Id");
+}
+
+
     return shelfBook;
 
   }

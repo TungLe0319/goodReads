@@ -15,7 +15,7 @@
           v-else
           :src="book?.img"
           alt=""
-          class="img-fluid rounded elevation-5"
+          class=" img-fluid rounded elevation-5"
           width="400"
           height="600"
         />
@@ -28,6 +28,17 @@
             <i class="mdi mdi-book fs-5"></i> Read Preview</a
           >
         </div>
+
+        <div class=" ">
+      
+          <img
+          v-if="book"
+          :src="book?.img"
+          alt=""
+          class="img-fluid smallerImg rounded elevation-5 mt-5"
+          width="100"
+          height="200"
+        /></div>
       </div>
       <div class="col-md-6 animate__animated animate__fadeInUp">
         <h1 class="bookTitle elevation-5 bg-create p-2 px-3">
@@ -179,6 +190,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.smallerImg{
+  transition: all 0.3s ease;
+  cursor: zoom-in;
+}
+.smallerImg:hover{
+transform: scale(2);
+transition: all 0.5s ease-in-out
+}
 .bookRow {
 }
 .bookTitle {

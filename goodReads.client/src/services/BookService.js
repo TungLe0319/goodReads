@@ -31,18 +31,12 @@ class BookService {
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: term,
-        maxResults: 40,
+        maxResults: 24,
       },
     });
     // console.log(res.data.items);
     let books = res.data.items.map((b) => new Book(b));
-    // console.log(books);
-    // for (const b of books) {
-    //   b.authors = b.authors.toString() || b.authors
-    //   b.categories = b.categories.toString() || b.categories
-    //   const res2 = await api.post('api/books',b)
-    //   console.log(res2.data);
-    // }
+   
     AppState.sPBooks = books;
     // console.log(AppState.sPBooks);
   }

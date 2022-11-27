@@ -25,7 +25,7 @@
     </router-link>
     <router-link
       @click="searchByCategory(b)"
-      :to="{ name: 'Search', params: {} }"
+      :to="{ name: 'Search' }"
       class="text-dark"
     >
       <p v-for="b in book.categories" class="link mb-0">{{ b }}</p>
@@ -72,6 +72,7 @@ export default {
       },
       async searchByCategory(b) {
         try {
+          console.log(b);
           await bookService.searchByCategory(b);
         } catch (error) {
           Pop.error(error, "[searchByCategory]");
