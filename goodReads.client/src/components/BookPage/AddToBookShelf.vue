@@ -10,10 +10,25 @@
     <p class="ms-3">Available for a limited time</p>
 
     <div class="card-body d-flex flex-column justify-content-center">
-      <form @submit.prevent="addToBookShelf()">
+      <div>
         <div class="mb-3">
           <label for="" class="form-label">Add to BookShelf</label>
-          <select
+          <div class="dropdown open">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+               <span v-if="shelf" :class="shelf.hasActiveBook? 'text-warning noSelect': 'text-primary'" type="button" :disabled="shelf.hasActiveBook">{{shelf.type}}</span>
+               <span v-else>{{"pick a shelf"}}</span>
+                </button>
+            <div class="dropdown-menu" aria-labelledby="triggerId">
+              <button class="dropdown-item" v-for="b in bookShelves">
+                <span :class="b.hasActiveBook? 'text-warning noSelect' : 'text-primary'" @click="makeActiveShelf(b)">
+                  {{b.type}}
+                </span>
+              </button>
+            
+            </div>
+          </div>
+          <!-- <select
             v-model="editable.id"
             class="form-select form-select-lg"
             name=""
@@ -26,13 +41,13 @@
             :value="b.id" v-for="b in bookShelves" :class="test2 != b.id? 'text-primary' : 'text-danger'" >
               {{ b.type }}
             </option>
-          </select>
+          </select> -->
         </div>
       
-        <button class="btn btn-outline-dark" type="submit">
+        <button class="btn btn-outline-dark" type="button" @click="addToBookShelf(book)">
           Save To BookShelf
         </button>
-      </form>
+      </div>
 
       <button
         class="btn btn-outline-dark mt-2"
@@ -115,66 +130,30 @@ export default {
       editable,
       book: computed(() => AppState.activeBook),
       bookShelves: computed(() => AppState.accountBookshelves),
-      inBookShelf: computed(() => {
-        // for (const shelf of AppState.accountBookshelves) {
-        //   let shelved = AppState.accountShelvedBooks.filter(s => s.bookShelfId != shelf.id)
-        //   for (const books of shelved) {
-        //     if (books.id == AppState.activeBook) {
-        //       shelf.hasActiveBook = true
-        //     }
-        //   }
-        // }
-      }),
-      alreadyShelved: computed(() => {
-        if (AppState.accountBookshelves && AppState.accountShelvedBooks) {
-          let found = AppState.accountShelvedBooks.find(
-            (x) =>
-              x.bookShelfId == editable.value.id &&
-              x.id == AppState.activeBook.id
-          );
-          return found;
-        }
-      }),
-
-
-test2: computed(() => {
-        if (AppState.accountBookshelves && AppState.accountShelvedBooks) {
-          let found = AppState.accountShelvedBooks.find(
-            (x) =>
-              x.bookShelfId == editable.value.id &&
-              x.id == AppState.activeBook.id
-          );
-   return found?.bookShelfId
-        }
-      }),
-
+      shelf: computed(() => AppState.activeBookShelf),
 
       copyToClipBoard() {
         navigator.clipboard.writeText(route.fullPath);
         Pop.toast(`Copied To ClipBoard`);
       },
-      async addToBookShelf() {
+      async makeActiveShelf(shelf){
+        AppState.activeBookShelf = shelf
+      },
+      async addToBookShelf(book) {
         try {
-          // console.log('bookId',this.alreadyShelved.id,"bookShelfId",this.alreadyShelved.bookShelfId);
+          // console.log();
        
-          if (this.alreadyShelved) {
+          if (AppState.activeBookShelf.hasActiveBook) {
             Pop.toast("already apart of this list");
             return;
           }
-          // let shelf = AppState.accountBookshelves.find(
-          //   (s) => s.id == editable.value.id
-          // );
-          // if (shelf.hasActiveBook) {
-          //   console.log("shelf has book");
-          //   return;
-          // }
-
+  
           let data = {
             bookId: AppState.activeBook.id,
-            bookShelfId: editable.value.id,
+            bookShelfId: AppState.activeBookShelf.id,
           };
         
-          await bookShelvesService.addToBookShelf(data);
+          await bookShelvesService.addToBookShelf(data,book);
         } catch (error) {
           Pop.error(error, "[addToBookShelf]");
         }
@@ -185,6 +164,9 @@ test2: computed(() => {
 </script>
 
 <style lang="scss" scoped>
+.noSelect{
+  pointer-events: none;
+}
 a {
   transition: all 0.25s ease;
 }

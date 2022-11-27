@@ -10,6 +10,6 @@ export function addOne(array, item){
   return array
 }
 
-export function addMany(array, adding ,model){
-  array =  adding.map(element => model(element));
+export function addMany(array, adding ,type){
+  array =  adding.map(element => new type(element));
 }
