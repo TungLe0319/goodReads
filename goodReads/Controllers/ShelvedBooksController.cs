@@ -16,7 +16,7 @@ public class ShelvedBooksController : IController
     {
       var userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
       shelfBookData.CreatorId = userInfo?.Id;
-      ShelfBook example = _shelvedBooksService.CreateShelfBook(shelfBookData);
+      ShelfBook example = _shelvedBooksService.CreateShelfBook(shelfBookData,userInfo?.Id);
       return Ok(example);
     }
     catch (Exception e)

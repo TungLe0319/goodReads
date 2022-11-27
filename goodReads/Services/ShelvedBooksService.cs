@@ -3,19 +3,29 @@ namespace goodReads.Services;
 public class ShelvedBookService
 {
 
-
+  private readonly AccountService _accountRepo;
   private readonly ShelvedBooksRepository _sbRepo;
 
-  public ShelvedBookService(ShelvedBooksRepository sbRepo)
+  public ShelvedBookService(AccountService accountRepo, ShelvedBooksRepository sbRepo)
   {
+    _accountRepo = accountRepo;
     _sbRepo = sbRepo;
   }
 
-  internal ShelfBook CreateShelfBook(ShelfBook shelfBookData)
+  internal ShelfBook CreateShelfBook(ShelfBook shelfBookData, string userInfo)
   {
+    List<ShelvedBook> accountBooks = _sbRepo.GetAccountShelvedBooks(userInfo);
+    var found = accountBooks.Find(x => x.BookId == shelfBookData.BookId && x.BookShelfId == shelfBookData.BookShelfId);
+    if (found != null)
+    {
+      throw new Exception("You already have this apart of this list");
+    }
+
+
+
     ShelfBook newShelfBook = _sbRepo.CreateShelfBook(shelfBookData);
 
-    
+
     return newShelfBook;
   }
 
@@ -23,10 +33,10 @@ public class ShelvedBookService
   {
     ShelfBook shelfBook = _sbRepo.GetById(id);
 
-if( shelfBook == null)
-{
-throw new Exception("Bad Id");
-}
+    if (shelfBook == null)
+    {
+      throw new Exception("Bad Id");
+    }
 
 
     return shelfBook;
@@ -56,6 +66,6 @@ throw new Exception("Bad Id");
 
   internal List<ShelvedBook> GetAccountShelvedBooks(string userId)
   {
-  return _sbRepo.GetAccountShelvedBooks(userId);
+    return _sbRepo.GetAccountShelvedBooks(userId);
   }
 }
