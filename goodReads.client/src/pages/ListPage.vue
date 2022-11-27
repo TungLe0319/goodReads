@@ -20,9 +20,7 @@
       <div class="col-md-12 mb-3">
         <div class="d-flex justify-content-between">
           <h1 class="text-dark abril display-3">My Book Lists</h1>
-          <button class="btn btn-danger h-50">
-            <i class="mdi mdi-plus fs-5"> Add Book</i>
-          </button>
+        
         </div>
       </div>
       <div class="col-md-12">
@@ -184,7 +182,7 @@ export default {
         )
       ),
       bookShelves: computed(() => AppState.accountShelvedBooks),
-      books:computed(() => AppState.books.sort(() => Math.random - 0.5).splice([0],[16])),
+      books:computed(() => AppState.books.filter(x=> x.averageRating >=5).sort(() => Math.random - 0.5).splice([0],[16])),
       setActiveShelf(x) {
         let found = AppState.accountBookshelves.find((a) => a.type == x);
         AppState.activeBookShelf = found;

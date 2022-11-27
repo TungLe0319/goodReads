@@ -11,23 +11,23 @@
           <img
             :src="review.creator.picture"
             alt=""
-            class=" profileImg  elevation-5"
-       
-        
+            class="profileImg elevation-5"
           />
         </div>
         <div role="name ">
-          <p class="ms-3  mb-0 fs-5  text-dark">
+          <p class="ms-3 mb-0 fs-5 text-dark">
             {{ review.creator.name.split("@")[0] }}
           </p>
-          <small class="ms-3 fs-6">recommended:</small>
+         
         </div>
       </div>
 
       <div role="createdAt " class="d-flex align-items-center">
-        <button 
-        @click="followByUserId()"
-        v-if="user.isAuthenticated && review.creator.id != account.id" class="btn p-0 me-3">
+        <button
+          @click="followByUserId()"
+          v-if="user.isAuthenticated && review.creator.id != account.id"
+          class="btn p-0 me-3"
+        >
           <img
             src="src\assets\img\follow.png"
             alt="follow icon"
@@ -35,7 +35,7 @@
             title="Follow This User"
           />
         </button>
-     
+
         <button
           v-if="review.creator.id == account.id"
           @click="deleteReview()"
@@ -49,7 +49,7 @@
 
     <div class="px-4 text-dark">
       <div v-if="review.recommend" class="mt-2 mb-3 text-center">
-        <b class="fs-5"> Recommends </b>
+        <b class="fs-5"> Recommended: </b>
       </div>
       <div class="div p-3 px-4" v-else></div>
 
@@ -57,9 +57,9 @@
         <p class="fs-5">{{ review.body }}</p>
       </div> -->
     </div>
- 
- <div class="d-flex flex-column justify-content-center align-items-center">
-<router-link :to="{name: 'Book', params:{id: review.book.id }}"> 
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <router-link :to="{name: 'Book', params:{id: review.book.id }}"> 
 
   <img :src="review.book.largeImg" alt="" width="200" height="300" class="elevation-4 rounded">
 </router-link>
@@ -67,14 +67,14 @@
 
   {{review.book.authors}}
 </p>
- </div>   
-  
- <div>
-  <p>
-    {{review.createdAt}}
-  </p>
- </div>
-  
+      <!-- <BookCard :book="review.book" /> -->
+    </div>
+
+    <div class="text-muted text-center">
+      <p>
+        {{ review.createdAt }}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -87,6 +87,7 @@ import { reviewsService } from "../../services/ReviewsService.js";
 import { followsService } from "../../services/FollowsService.js";
 import { logger } from "../../utils/Logger.js";
 import Pop from "../../utils/Pop.js";
+import BookCard from "../BookCard.vue";
 
 export default {
   props: {
@@ -94,17 +95,15 @@ export default {
   },
   setup(props) {
     const editable = ref({});
-
     onMounted(() => {});
     watchEffect(() => {});
-
     return {
       editable,
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
-
       async deleteReview() {
         try {
+          console.log(props.review.book);
           if (await Pop.confirm()) {
             let reviewId = props.review.id;
             await reviewsService.deleteReview(reviewId);
@@ -113,21 +112,19 @@ export default {
           Pop.error(error, "[removeReview]");
         }
       },
-
-      async followByUserId(){
+      async followByUserId() {
         try {
           let id = {
-            followingUserId: props.review.creator.id
-            
-          } 
-
-            await followsService.followByUserId(id)
-          } catch (error) {
-            Pop.error(error,'[followingUserId]')
-          }
-      }
+            followingUserId: props.review.creator.id,
+          };
+          await followsService.followByUserId(id);
+        } catch (error) {
+          Pop.error(error, "[followingUserId]");
+        }
+      },
     };
   },
+  components: { BookCard },
 };
 </script>
 
@@ -137,17 +134,15 @@ export default {
   border-radius: 50%;
 }
 
-.accountImg img{
-  transition:  transform 0.5s ease;
+.accountImg img {
+  transition: transform 0.5s ease;
 }
 
 .accountImg:hover img {
-  transform: scale(.5);
+  transform: scale(0.5);
   border-radius: 50%;
- 
-
 }
-.profileImg{
+.profileImg {
   width: 60px;
   height: 60px;
   object-fit: cover;
@@ -165,6 +160,5 @@ export default {
 .btn:hover {
   transform: scale(1.1);
   transition: all 0.25s ease;
-
 }
 </style>

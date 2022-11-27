@@ -49,7 +49,7 @@ public class ReviewsRepository
           WHERE r.creatorId = @userId
           GROUP BY r.id
                ; ";
-    return _db.Query<Review, Profile, ReviewedBook, Review>(sql, (review, profile, book) =>
+    return _db.Query<Review, Profile, Book, Review>(sql, (review, profile, book) =>
      {
        review.Creator = profile;
        review.Book = book;

@@ -7,15 +7,15 @@
       </button>
       <button class="nav-link fs-5 text-dark" id="nav-Reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-Reviews"
         type="button" role="tab" aria-controls="nav-Reviews" aria-selected="false">
-        Reviews
+        Reviews   <b>({{reviews.length}}) </b>
       </button>
       <button class="nav-link fs-5 text-dark" id="nav-Following-tab" data-bs-toggle="tab"
         data-bs-target="#nav-Following" type="button" role="tab" aria-controls="nav-Following" aria-selected="false">
-        Following
+        Following  <b>({{following.length}}) </b> 
       </button>
       <button class="nav-link fs-5 text-dark" id="nav-Followers-tab" data-bs-toggle="tab"
         data-bs-target="#nav-Followers" type="button" role="tab" aria-controls="nav-Followers" aria-selected="false">
-        Followers
+        Followers  <b>({{followers.length}}) </b> 
       </button>
     </div>
   </nav>
@@ -104,7 +104,7 @@ export default {
     return {
       editable,
       account: computed(() => AppState.account),
-
+     following : computed(()=> AppState.following),
       followers: computed(() => AppState.followers),
       reviews: computed(() => AppState.accountReviews),
       favoriteBooks: computed(() => AppState.favoriteBooks),
@@ -138,5 +138,11 @@ export default {
 nav .active {
   border: 0;
   border-bottom: 5px solid #f5a53c !important;
+  background-color:rgb(245, 216, 162) !important;
+  font-weight: bold;
+}
+nav .nav-link{
+  margin:0 20px;
+  font-size: 1.5rem;
 }
 </style>
