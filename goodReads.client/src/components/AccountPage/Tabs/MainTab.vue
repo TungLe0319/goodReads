@@ -27,7 +27,7 @@
         <p>to share who you are.</p>
       </div>
       <div v-else>
-        <p>{{ account.bio }}</p>
+        <p class="text-dark">{{ account.bio }}</p>
       </div>
     
       <div class="">
