@@ -137,6 +137,6 @@ export default {
 
 nav .active {
   border: 0;
-  border-bottom: 5px solid #6351ce !important;
+  border-bottom: 5px solid #f5a53c !important;
 }
 </style>

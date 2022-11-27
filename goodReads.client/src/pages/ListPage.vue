@@ -1,9 +1,17 @@
 <template>
   <div class="container">
-    <div class="row my-5">
+    <div class="row my-5  "  v-if="filtered.length <=0">
       <div class="col-md-12">
         <div class="card elevation-5 border-0 p-4">
-          <h1>You Haven't Added any Books to your Wishlist Yet</h1>
+          <p class="fs-1 fw-bold">You Haven't Added any Books to this list Yet break </p>
+        </div>
+
+
+      </div>
+      <div class="row scrollX flex-nowrap mt-5">
+
+        <div class="col-md-2" v-for="b in books" :key="b.id">
+  <BookCard  :book="b" />
         </div>
       </div>
     </div>
@@ -11,7 +19,7 @@
     <div class="row mt-3">
       <div class="col-md-12 mb-3">
         <div class="d-flex justify-content-between">
-          <h1 class="text-dark booklist">My Book Lists</h1>
+          <h1 class="text-dark abril display-3">My Book Lists</h1>
           <button class="btn btn-danger h-50">
             <i class="mdi mdi-plus fs-5"> Add Book</i>
           </button>
@@ -21,7 +29,7 @@
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <button
-              class="nav-link active"
+              class="nav-link active text-dark"
               id="nav-wishlist-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-wishlist"
@@ -34,7 +42,7 @@
               Wishlist
             </button>
             <button
-              class="nav-link"
+              class="nav-link text-dark"
               id="nav-owned-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-owned"
@@ -47,7 +55,7 @@
               Favorites
             </button>
             <button
-              class="nav-link"
+              class="nav-link text-dark"
               id="nav-reading-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-reading"
@@ -60,7 +68,7 @@
               Reading
             </button>
             <button
-              class="nav-link"
+              class="nav-link text-dark"
               id="nav-finished-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-finished"
@@ -176,6 +184,7 @@ export default {
         )
       ),
       bookShelves: computed(() => AppState.accountShelvedBooks),
+      books:computed(() => AppState.books.sort(() => Math.random - 0.5).splice([0],[16])),
       setActiveShelf(x) {
         let found = AppState.accountBookshelves.find((a) => a.type == x);
         AppState.activeBookShelf = found;
@@ -197,7 +206,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.scrollX{
+  overflow-x: auto;
+
+  
+}
 .booklist {
   font-family: "Abril Fatface", cursive;
+}
+
+nav .active {
+  border: 0;
+  border-bottom: 5px solid #f5a53c !important;
+  background-color:rgb(245, 216, 162) !important;
+  font-weight: bold;
+}
+nav .nav-link{
+  margin:0 20px;
+  font-size: 1.5rem;
 }
 </style>

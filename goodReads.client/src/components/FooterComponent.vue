@@ -1,14 +1,14 @@
 <template>
   <footer
-    class="text-center text-lg-start text-white mt-5"
+    class="text-center text-lg-start text-white mt-5 "
     style="background-color: #1c2331"
   >
     <section
-      class="d-flex justify-content-between p-3"
-      style="background-color: #6351ce"
+      class="d-flex justify-content-between p-3 bg-create"
+     
     >
       <div class="me-5 d-flex align-items-center">
-        <span>Get connected with us on social networks:</span>
+        <h5 class="abril">Get connected with us on social networks:</h5>
       </div>
 
       <div class="">
@@ -57,7 +57,7 @@
               <a href="#/account/lists" class="text-white">Your Lists</a>
             </p>
             <p>
-              <a href="#" class="text-white">Help</a>
+              <a href="#/search" class="text-white">SearchPage</a>
             </p>
           </div>
 

@@ -16,12 +16,12 @@
       <ul class="navbar-nav me-auto">
         <li>
           <router-link :to="{ name: 'List' }" class="btn text-dark selectable text-uppercase">
-            Lists
+           My Lists
           </router-link>
         </li>
         <li>
           <router-link :to="{ name: 'Search' }" class="btn text-dark selectable text-uppercase">
-            Discover
+            Search
           </router-link>
         </li>
         <!-- <li>
