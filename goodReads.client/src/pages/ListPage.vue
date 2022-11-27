@@ -23,19 +23,22 @@
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-wishlist-tab" data-bs-toggle="tab" data-bs-target="#nav-wishlist"
-              type="button" role="tab" aria-controls="nav-wishlist" aria-selected="true" @click="setActiveShelf('wishlist')">
+              type="button" role="tab" aria-controls="nav-wishlist" aria-selected="true"
+              @click="setActiveShelf('wishlist')">
               Wishlist
             </button>
             <button class="nav-link" id="nav-owned-tab" data-bs-toggle="tab" data-bs-target="#nav-owned" type="button"
               role="tab" aria-controls="nav-owned" aria-selected="false" @click="setActiveShelf('favorite')">
-              favorites
+              Favorites
             </button>
             <button class="nav-link" id="nav-reading-tab" data-bs-toggle="tab" data-bs-target="#nav-reading"
-              type="button" role="tab" aria-controls="nav-reading" aria-selected="false" @click="setActiveShelf('reading')">
+              type="button" role="tab" aria-controls="nav-reading" aria-selected="false"
+              @click="setActiveShelf('reading')">
               Reading
             </button>
             <button class="nav-link" id="nav-finished-tab" data-bs-toggle="tab" data-bs-target="#nav-finished"
-              type="button" role="tab" aria-controls="nav-finished" aria-selected="false" @click="setActiveShelf('finished')">
+              type="button" role="tab" aria-controls="nav-finished" aria-selected="false"
+              @click="setActiveShelf('finished')">
               Finished
             </button>
           </div>
@@ -45,43 +48,43 @@
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-wishlist" role="tabpanel" aria-labelledby="nav-wishlist-tab"
             tabindex="0">
-          <div class="row mt-3">
-            <div class="col-md-2" v-for="f in filtered" :key="f.id">
-<BookCard :book="f" />
+            <div class="row mt-3">
+              <div class="col-md-2" v-for="f in filtered" :key="f.id">
+                <BookCard :book="f" />
+              </div>
             </div>
-          </div>
 
-    
-         
+
+
           </div>
 
           <div class="tab-pane fade" id="nav-owned" role="tabpanel" aria-labelledby="nav-owned-tab" tabindex="0">
-              <div class="row mt-3">
-            <div class="col-md-2 " v-for="f in filtered" :key="f.id">
-<BookCard :book="f" />
-<button class="fs-5 text-danger btn p-0"> Remove</button>
+            <div class="row mt-3">
+              <div class="col-md-2 " v-for="f in filtered" :key="f.id">
+                <BookCard :book="f" />
+                <button class="fs-5 text-danger btn p-0"> Remove</button>
+              </div>
             </div>
-          </div>
 
-    
+
           </div>
           <div class="tab-pane fade" id="nav-reading" role="tabpanel" aria-labelledby="nav-reading-tab" tabindex="0">
-                 <div class="row mt-3">
-            <div class="col-md-2" v-for="f in filtered" :key="f.id">
-<BookCard :book="f" />
+            <div class="row mt-3">
+              <div class="col-md-2" v-for="f in filtered" :key="f.id">
+                <BookCard :book="f" />
+              </div>
             </div>
-          </div>
 
-    
+
           </div>
           <div class="tab-pane fade" id="nav-finished" role="tabpanel" aria-labelledby="nav-finished-tab" tabindex="0">
-              <div class="row mt-3">
-            <div class="col-md-2" v-for="f in filtered" :key="f.id">
-<BookCard :book="f" />
+            <div class="row mt-3">
+              <div class="col-md-2" v-for="f in filtered" :key="f.id">
+                <BookCard :book="f" />
+              </div>
             </div>
-          </div>
 
-    
+
           </div>
         </div>
       </div>
@@ -113,22 +116,21 @@ AppState.activeBookShelf = found
     return {
       editable,
       account: computed(() => AppState.account),
-      filtered: computed(() => AppState.accountShelvedBooks?.filter(x=> x.bookShelfId  == AppState.activeBookShelf?.id)),
-      bookShelves: computed(()=> AppState.accountShelvedBooks),
-      setActiveShelf(x){
-        
-       let found = AppState.accountBookshelves.find(a=> a.type == x)
-AppState.activeBookShelf = found
-console.log(AppState.activeBookShelf);
+      filtered: computed(() => AppState.accountShelvedBooks?.filter(x => x.bookShelfId == AppState.activeBookShelf?.id)),
+      bookShelves: computed(() => AppState.accountShelvedBooks),
+      setActiveShelf(x) {
+        let found = AppState.accountBookshelves.find(a => a.type == x)
+        AppState.activeBookShelf = found
+        console.log(AppState.activeBookShelf);
       }
     };
   },
-  components: {  BookCard },
+  components: { BookCard },
 };
 </script>
 
 <style lang="scss" scoped>
-.booklist{
+.booklist {
   font-family: "Abril Fatface", cursive;
 }
 </style>
