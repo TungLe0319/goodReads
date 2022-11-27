@@ -6,6 +6,7 @@ class BookShelvesService{
 console.log(data);
     const res = await api.post('api/shelvedbooks',data)
     console.log(res.data);
+    
   }
   async findBook(){
       for (const shelf of AppState.accountBookshelves) {

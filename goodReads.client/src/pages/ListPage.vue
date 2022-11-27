@@ -102,14 +102,21 @@ export default {
   setup() {
     const editable = ref({});
     onMounted(() => {
+      setWishListDefault()
     });
-
+async function setWishListDefault(){
+  if (AppState.accountBookshelves) {
+  let found =  AppState.accountBookshelves.find(a=> a.type == 'wishlist')
+AppState.activeBookShelf = found
+  }
+}
     return {
       editable,
       account: computed(() => AppState.account),
       filtered: computed(() => AppState.accountShelvedBooks?.filter(x=> x.bookShelfId  == AppState.activeBookShelf?.id)),
       bookShelves: computed(()=> AppState.accountShelvedBooks),
       setActiveShelf(x){
+        
        let found = AppState.accountBookshelves.find(a=> a.type == x)
 AppState.activeBookShelf = found
 console.log(AppState.activeBookShelf);
