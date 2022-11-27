@@ -20,6 +20,7 @@
     <div class="row">
       <div class="col-md-12">
         <h2>Explore Some Lore</h2>
+     
       </div>
       <div class="col-md-3">
         <div class="bg-secondary p-2 elevation-2">
@@ -35,7 +36,8 @@
           class="mb-3 form-check selectable rounded" v-for="c in categories" :key="c.name">
             <input 
          
-             :class="c.checked? 'p-3 ' : ''"
+             :class="c.checked? 'p-3 ' : ''
+             "
             v-model="c.checked" v-on:change="searchByCategory(c)" type="checkbox" class="form-check-input"
               id="exampleCheck1" />
             <label
@@ -91,6 +93,7 @@ export default {
       editable,
       books: computed(() => AppState.sPBooks),
       categories: computed(() => AppState.categories),
+      test: computed(()=> AppState.categories[0]),
       index: computed(() => AppState.startIndex),
       endDex: computed(() => AppState.startIndex),
       totalItems: computed(() => AppState.totalItems),
