@@ -1,14 +1,14 @@
 export class SQLBook {
-  constructor(data, todb) {
+  constructor(data, todb = false, shelved) {
     this.id = data.id;
-    this.bookShelfId = data.bookShelfId || delete this.bookShelfId;
-    this.shelfBookId = data.shelfBookId || delete this.shelfBookId;
+    // this.bookShelfId = data.bookShelfId || delete this.bookShelfId;
+    // this.shelfBookId = data.shelfBookId || delete this.shelfBookId;
     this.title = data.title;
     this.img = data.img;
     this.publishedDate = data.publishedDate;
     this.publisher = data.publisher;
     this.pageCount = data.pageCount;
-    if (todb) {
+    if (todb === true) {
       this.authors = data.authors.toString();
       this.categories = data.categories.toString();
     } else {
@@ -31,5 +31,11 @@ export class SQLBook {
     this.averageRating = data.averageRating;
     this.largeImg = data.largeImg;
     this.flavorText = data.flavorText;
+    if (shelved) {
+      this.shelfBookId = shelved.id
+      this.bookShelfId = shelved.bookShelfId
+      this.creatorId = shelved.creatorId
+    }
+    
   }
 }
