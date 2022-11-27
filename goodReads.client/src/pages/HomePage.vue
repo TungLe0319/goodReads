@@ -4,27 +4,24 @@
     <div class="row mb-5">
       <div class="col-md-12">
         <div class="card elevation-5 border-0">
-          <img
-            src="https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg"
-            alt=""
-            class="bannerImg"
-          />
+          <img src="https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg" alt=""
+            class="bannerImg" />
           <div
-            class="card-img-overlay align-items-center d-flex justify-content-center flex-column justify-content-evenly"
-          >
-          <div class=" text-constantLight text-decoration-underline 4border-bottom border-3">
-            <h1>Find Your Book, Find Your Why</h1>
-          </div>
-      
+            class="card-img-overlay align-items-center d-flex justify-content-center flex-column justify-content-evenly">
+            <div class=" text-constantLight text-decoration-underline 4border-bottom border-3">
+              <h1>Find Your Book, Find Your Why</h1>
+            </div>
+
             <figure>
               <blockquote class="blockquote text-constantLight">
                 <p>
-                  <i class="mdi mdi-format-quote-open"></i> {{quote?.content}} <i class="mdi mdi-format-quote-close"></i>
+                  <i class="mdi mdi-format-quote-open"></i> {{ quote?.content }} <i
+                    class="mdi mdi-format-quote-close"></i>
                 </p>
-          
+
               </blockquote>
               <figcaption class="blockquote-footer text-constantLight">
-                {{quote?.author}} 
+                {{ quote?.author }}
               </figcaption>
             </figure>
           </div>
@@ -36,11 +33,8 @@
       <div class="col-md-8">
 
         <div class="row">
-          <TransitionGroup
-            name=""
-            enterActiveClass="animate__fadeIn animate__animated"
-            leaveActiveClass="animate__fadeOut animate__animated"
-          >
+          <TransitionGroup name="" enterActiveClass="animate__fadeIn animate__animated"
+            leaveActiveClass="animate__fadeOut animate__animated">
             <div class="col-md-3 gy-3" v-for="b in books" :key="b.id">
               <BookCard :book="b" />
             </div>
@@ -57,51 +51,51 @@
         </div>
       </div>
     </div>
-<section>
-  
-       <div class="mt-4">
-         <h2 class="categoryTitle text-dark">Cooking</h2>
+    <section>
+
+      <div class="mt-4">
+        <h2 class="categoryTitle text-dark">Cooking</h2>
         <div class="row scrollX">
           <div class="col-md-2 gy-3" v-for="c in cookingBooks" :key="c.id">
             <BookCard :book="c" />
           </div>
         </div>
-       </div>
-        <div  class="mt-4">
-          <h2 class="categoryTitle text-dark">Science</h2>
-          <div class="row scrollX">
-            <div class="col-md-2 gy-3" v-for="s in scienceBooks" :key="s.id">
-              <BookCard :book="s" />
-            </div>
+      </div>
+      <div class="mt-4">
+        <h2 class="categoryTitle text-dark">Science</h2>
+        <div class="row scrollX">
+          <div class="col-md-2 gy-3" v-for="s in scienceBooks" :key="s.id">
+            <BookCard :book="s" />
           </div>
         </div>
-        <div class="mt-4"> 
-          <h2 class="categoryTitle text-dark">Fiction</h2>
-          <div class="row scrollX">
-            <div class="col-md-2 gy-3" v-for="f in fictionBooks" :key="f.id">
-              <BookCard :book="f" />
-            </div>
+      </div>
+      <div class="mt-4">
+        <h2 class="categoryTitle text-dark">Fiction</h2>
+        <div class="row scrollX">
+          <div class="col-md-2 gy-3" v-for="f in fictionBooks" :key="f.id">
+            <BookCard :book="f" />
           </div>
         </div>
-        <div class="mt-4">
-          <h2 class="categoryTitle text-dark">Nature</h2>
-          <div class="row scrollX">
-            <div class="col-md-2 gy-3" v-for="n in natureBooks" :key="n.id">
-              <BookCard :book="n" />
-            </div>
+      </div>
+      <div class="mt-4">
+        <h2 class="categoryTitle text-dark">Nature</h2>
+        <div class="row scrollX">
+          <div class="col-md-2 gy-3" v-for="n in natureBooks" :key="n.id">
+            <BookCard :book="n" />
           </div>
         </div>
+      </div>
 
-        <div class="mt-4">
-          <h2 class="categoryTitle text-dark">History</h2>
-          <div class="row scrollX">
-            <div class="col-md-2 gy-3" v-for="h in historyBooks" :key="h.id">
-              <BookCard :book="h" />
-            </div>
+      <div class="mt-4">
+        <h2 class="categoryTitle text-dark">History</h2>
+        <div class="row scrollX">
+          <div class="col-md-2 gy-3" v-for="h in historyBooks" :key="h.id">
+            <BookCard :book="h" />
           </div>
         </div>
+      </div>
 
-</section>
+    </section>
 
     <section>
       <h2 class="categoryTitle text-dark">Best Sellers</h2>
@@ -112,7 +106,9 @@
       </div>
     </section>
   </div>
-  <div class="" v-else> <h1>LOADING</h1></div>
+  <div class="" v-else>
+    <h1>LOADING</h1>
+  </div>
 </template>
 
 <script>
@@ -130,18 +126,18 @@ import Pop from "../utils/Pop.js";
 
 export default {
   setup() {
-    // onMounted(() => {
-  
-    //   getMySQLBooks();
- 
-    // });
-    // async function getMySQLBooks() {
-    //   try {
-    //     await bookService.getMySQLBooks();
-    //   } catch (error) {
-    //     Pop.error(error, "[getBooks]");
-    //   }
-    // }
+    onMounted(() => {
+      getQuote()
+      // getMySQLBooks();
+
+    });
+    async function getMySQLBooks() {
+      try {
+        await bookService.getMySQLBooks();
+      } catch (error) {
+        Pop.error(error, "[getBooks]");
+      }
+    }
     async function getBooks() {
       try {
         await bookService.getBooks();
@@ -159,8 +155,8 @@ export default {
     let editable = ref({});
     return {
       editable,
-      quote:computed(() => AppState.quote),
-      books: computed(() => AppState.books.slice([0],[16])),
+      quote: computed(() => AppState.quote),
+      books: computed(() => AppState.books.slice([0], [16])),
       cookingBooks: computed(() =>
         AppState.books.filter((b) => b.categories.includes("Cooking"))
       ),
@@ -198,11 +194,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-.animate__fadeIn{
+.animate__fadeIn {
   animation-duration: 100ms;
   animation-delay: 100ms;
 }
+
 .categoryTitle {
   font-size: 3em;
   font-family: "Abril Fatface", cursive;
@@ -214,13 +210,16 @@ export default {
   overflow-x: auto;
   height: 31em;
 }
+
 .blockquote {
   font-size: 1.25em;
 }
+
 .blockquote-footer {
   font-size: 1.25em;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
+
 .bannerImg {
   width: auto;
   height: 300px;

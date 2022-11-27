@@ -8,8 +8,6 @@ class QuotesService {
       params: {
         author:
           "Mark Twain" 
-    
- 
       },
     });
     AppState.quote = new Quote(res.data);
