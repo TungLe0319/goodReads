@@ -92,7 +92,7 @@
         </div>
       </div>
       <div class="col-md-3 animate__animated animate__fadeInRight">
-        <ShareCard />
+        <AddToBookShelf />
       </div>
     </div>
 
@@ -128,7 +128,7 @@ import ReviewCard from "../components/BookPage/ReviewCard.vue";
 import { router } from "../router.js";
 import { bookService } from "../services/BookService.js";
 import Pop from "../utils/Pop.js";
-import ShareCard from "../components/BookPage/ShareCard.vue";
+import AddToBookShelf from "../components/BookPage/AddToBookShelf.vue";
 
 export default {
   setup() {
@@ -185,7 +185,7 @@ export default {
       },
     };
   },
-  components: { BookCard, CreateReview, ReviewCard, ShareCard },
+  components: { BookCard, CreateReview, ReviewCard, AddToBookShelf },
 };
 </script>
 

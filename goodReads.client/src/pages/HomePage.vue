@@ -42,7 +42,7 @@
             leaveActiveClass="animate__fadeOut animate__animated"
           >
             <div class="col-md-3 gy-3" v-for="b in books" :key="b.id">
-              <SearchPageBookCard :book="b" />
+              <BookCard :book="b" />
             </div>
           </TransitionGroup>
         </div>
@@ -63,7 +63,7 @@
          <h2 class="categoryTitle text-dark">Cooking</h2>
         <div class="row scrollX">
           <div class="col-md-2 gy-3" v-for="c in cookingBooks" :key="c.id">
-            <SearchPageBookCard :book="c" />
+            <BookCard :book="c" />
           </div>
         </div>
        </div>
@@ -71,7 +71,7 @@
           <h2 class="categoryTitle text-dark">Science</h2>
           <div class="row scrollX">
             <div class="col-md-2 gy-3" v-for="s in scienceBooks" :key="s.id">
-              <SearchPageBookCard :book="s" />
+              <BookCard :book="s" />
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
           <h2 class="categoryTitle text-dark">Fiction</h2>
           <div class="row scrollX">
             <div class="col-md-2 gy-3" v-for="f in fictionBooks" :key="f.id">
-              <SearchPageBookCard :book="f" />
+              <BookCard :book="f" />
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
           <h2 class="categoryTitle text-dark">Nature</h2>
           <div class="row scrollX">
             <div class="col-md-2 gy-3" v-for="n in natureBooks" :key="n.id">
-              <SearchPageBookCard :book="n" />
+              <BookCard :book="n" />
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@
           <h2 class="categoryTitle text-dark">History</h2>
           <div class="row scrollX">
             <div class="col-md-2 gy-3" v-for="h in historyBooks" :key="h.id">
-              <SearchPageBookCard :book="h" />
+              <BookCard :book="h" />
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@
       <h2 class="categoryTitle text-dark">Best Sellers</h2>
       <div class="row scrollX">
         <div class="col-md-2 gy-3" v-for="b in bestSellers" :key="b.id">
-          <SearchPageBookCard :book="b" />
+          <BookCard :book="b" />
         </div>
       </div>
     </section>
@@ -122,7 +122,7 @@ import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
 import EasyStepsCard from "../components/EasyStepsCard.vue";
 import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
-import SearchPageBookCard from "../components/BookCard.vue";
+import BookCard from "../components/BookCard.vue";
 import { SQLBook } from "../models/SQLBook.js";
 import { bookService } from "../services/BookService.js";
 import { quotesService } from "../services/QuotesService.js";
@@ -194,7 +194,7 @@ export default {
       },
     };
   },
-  components: { BookCard, EasyStepsCard, LeaveFeedBackCard, SQLBook, SearchPageBookCard },
+  components: { BookCard, EasyStepsCard, LeaveFeedBackCard, SQLBook, BookCard },
 };
 </script>
 
