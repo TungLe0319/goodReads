@@ -1,31 +1,30 @@
 import { AppState } from "../AppState.js";
+import { ShelvedBook } from "../models/ShelvedBook.js";
+import { addMany, addOne } from "../utils/Functions.js";
 import { api } from "./AxiosService.js";
 
-class BookShelvesService{
-  async addToBookShelf(data){
-console.log(data);
-    const res = await api.post('api/shelvedbooks',data)
+class BookShelvesService {
+  async addToBookShelf(data) {
+    const res = await api.post("api/shelvedbooks", data);
     console.log(res.data);
 
+    //  AddOne(AppState.accountShelvedBooks, new ShelvedBook(res.data))
+    // addMany(AppState.accountShelvedBooks, res.data, new ShelvedBook)
   }
-  async findBook(){
-      for (const shelf of AppState.accountBookshelves) {
-        let shelved = AppState.accountShelvedBooks.filter(
-          (s) => s.bookShelfId != shelf.id
-        );
-        for (const books of shelved) {
-          if (books.id == AppState.activeBook.id) {
-            shelf.hasActiveBook = true;
-            // console.log('was true');
-          }
+  findBook() {
+    let bookId = AppState.activeBook.id;
+    for (const shelf of AppState.accountBookshelves) {
+      let shelved = AppState.accountShelvedBooks.filter(
+        (s) => s.bookShelfId != shelf.id && s.id != bookId
+      );
+      for (const books of shelved) {
+        if (books.id == bookId) {
+          shelf.hasActiveBook = true;
         }
       }
-      console.log(AppState.accountBookshelves);
-  }
-
-  async removeFromBookShelf(id){
-    await api.delete(`api/shelvedbooks/${id}`)
-    AppState.accountShelvedBooks = AppState.accountShelvedBooks.filter(a=> a.shelvedId != id)
+    }
+    console.log(AppState.accountShelvedBooks, "books");
+    console.log(AppState.accountBookshelves, "shelves");
   }
 }
 export const bookShelvesService = new BookShelvesService();

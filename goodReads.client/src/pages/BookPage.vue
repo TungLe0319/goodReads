@@ -129,17 +129,20 @@ import { router } from "../router.js";
 import { bookService } from "../services/BookService.js";
 import Pop from "../utils/Pop.js";
 import AddToBookShelf from "../components/BookPage/AddToBookShelf.vue";
+import { bookShelvesService } from "../services/BookShelvesService";
 
 export default {
   setup() {
     onMounted(() => {
       // getBookInformation();
       getBookReviews();
+      // bookShelvesService.findBook()
     });
     watchEffect(() => {
       if (!AppState.activeBook) {
         router.push("/");
       }
+      
     });
     async function getBookInformation() {
       try {

@@ -1,6 +1,5 @@
 <template>
-  <router-link
-    :to="{ name: 'Book', params: { id: book.id } }"
+  <div
     @click="setActive(book)"
     v-if="book"
     class="text-dark"
@@ -9,7 +8,7 @@
       <img :src="book.img" class="card-img" :alt="book.title" v-if="book.img" />
     
     </div>
-  </router-link>
+  </div>
   <div class="bg-transparent border-0 bookTitle" v-if="book">
     <p class="text-truncate mb-0 fw-bold text-dark">{{ book.title }}</p>
     <router-link
@@ -69,8 +68,9 @@ const router = useRouter()
           document.documentElement.scrollTop = 0;
           //IF NOT IN DATABASE PUSH
           AppState.activeBook = book;
-            await bookShelvesService.findBook()
+          //  bookShelvesService.findBook()
             await bookService.addBookToDb(book);
+            router.push({name: "Book", params:{id: book.id}})
           // console.log(AppState.activeBook);
         } catch (error) {
           Pop.error(error);
