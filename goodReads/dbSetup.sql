@@ -1,4 +1,4 @@
--- Active: 1669006953911@@bobocat.mysql.database.azure.com@3306@books
+-- Active: 1668895251805@@bobocat.mysql.database.azure.com@3306@books
 
 CREATE TABLE
     IF NOT EXISTS accounts(

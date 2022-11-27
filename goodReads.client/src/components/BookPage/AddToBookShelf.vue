@@ -20,7 +20,9 @@
             id=""
           >
             <option :value="b.id" v-for="b in bookShelves">
-              {{ b.type }}
+              <div :class="b.hasActiveBook ? 'text-warning' : ''">
+                {{ b.type }}
+              </div>
             </option>
           </select>
         </div>
@@ -103,7 +105,6 @@ export default {
   props: {},
   setup(props) {
     const editable = ref({});
-
     onMounted(() => {});
     watchEffect(() => {});
     const route = useRoute();
@@ -111,31 +112,31 @@ export default {
       editable,
       book: computed(() => AppState.activeBook),
       bookShelves: computed(() => AppState.accountBookshelves),
-      inBookShelf: computed(() =>
-        AppState.accountShelvedBooks.find(
-          (b) =>
-            b.id == AppState.activeBook.id &&
-            b.bookShelfId == editable.value?.id
-        )
-      ),
+      inBookShelf: computed(() => {
+
+        // for (const shelf of AppState.accountBookshelves) {
+        //   let shelved = AppState.accountShelvedBooks.filter(s => s.bookShelfId != shelf.id)
+        //   for (const books of shelved) {
+        //     if (books.id == AppState.activeBook) {
+        //       shelf.hasActiveBook = true
+        //     }
+        //   }
+        // }
+      }),
       copyToClipBoard() {
         navigator.clipboard.writeText(route.fullPath);
         Pop.toast(`Copied To ClipBoard`);
       },
       async addToBookShelf() {
         try {
-          // console.log(this.inBookShelf);
-          
-          if (!this.inBookShelf) {
-            let data = {
-              bookId: AppState.activeBook.id,
-              bookShelfId: editable.value.id,
-            };
-            console.log(data);
-            await bookShelvesService.addToBookShelf(data);
-          }
+          console.log(AppState.accountBookshelves);
 
-          
+          let data = {
+            bookId: AppState.activeBook.id,
+            bookShelfId: editable.value.id,
+          };
+          console.log(data);
+          await bookShelvesService.addToBookShelf(data);
         } catch (error) {
           Pop.error(error, "[addToBookShelf]");
         }
