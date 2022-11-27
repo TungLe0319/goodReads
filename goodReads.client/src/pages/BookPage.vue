@@ -42,7 +42,7 @@
             class="mdi mdi-star fs-3 text-create"
             v-for="i in book.averageRating"
           ></i>
-          <h4>{{ book.averageRating }}</h4>
+          <h4 class="text-dark">{{ book.averageRating }}</h4>
         </div>
 
         <div v-else class="d-flex align-items-center">
@@ -67,7 +67,7 @@
           <div class="d-flex align-items-center">
             <b class="me-2 mb-3 mt-3">Categories -</b>
             <button
-              class="btn btn-outline-dark my-3 p-1 rounded-pill px-2 mx-2"
+              class="btn btn-outline-dark my-3 text-dark p-1 rounded-pill px-2 mx-2"
               v-for="c in book.categories"
               @click="searchByCategory(c)"
             >

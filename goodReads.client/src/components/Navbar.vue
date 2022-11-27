@@ -37,10 +37,10 @@
       <!-- LOGIN COMPONENT HERE -->
       <div class="me-5">
         <ToggleTheme class="kitty" />
-        <img src="../assets/img/light-bulb.png" alt="" width="50" class="selectable" @click="toggleTheme()"
+        <!-- <img src="../assets/img/light-bulb.png" alt="" width="50" class="selectable" @click="toggleTheme()"
           v-if="theme" />
         <img src="../assets/img/DarkLight-bulb.png" alt="" width="50" class="selectable" @click="toggleTheme()"
-          v-else />
+          v-else /> -->
       </div>
       <Login />
     </div>

@@ -10,7 +10,7 @@
     
     </div>
   </router-link>
-  <div class="bg-transparent border-0 bookTitle">
+  <div class="bg-transparent border-0 bookTitle" v-if="book">
     <p class="text-truncate mb-0 fw-bold text-dark">{{ book.title }}</p>
     <router-link
    

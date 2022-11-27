@@ -43,9 +43,9 @@
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-wishlist" role="tabpanel" aria-labelledby="nav-wishlist-tab"
             tabindex="0">
-          <div class="row">
-            <div class="col-md-3" v-for="f in filtered" :key="f.id">
-<BookCard :book="f.book" />
+          <div class="row mt-3">
+            <div class="col-md-2" v-for="f in filtered" :key="f.id">
+<BookCard :book="f" />
             </div>
           </div>
 
@@ -87,7 +87,7 @@ export default {
     return {
       editable,
       account: computed(() => AppState.account),
-      filtered: computed(() => AppState?.accountShelvedBooks.filter(x=> x.bookShelfId  == AppState.activeBookShelf?.id)),
+      filtered: computed(() => AppState.accountShelvedBooks?.filter(x=> x.bookShelfId  == AppState.activeBookShelf?.id)),
       bookShelves: computed(()=> AppState.accountShelvedBooks),
       setActiveShelf(x){
        let found = AppState.accountBookshelves.find(a=> a.type == x)

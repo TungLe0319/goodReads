@@ -1,53 +1,44 @@
 <template>
-  <div class="the-container" >
-    <input @click="toggleTheme()" type="checkbox" id="toggle" />
-    <label for="toggle"></label>
-
-    <div class="day-night-cont">
-      <span class="the-sun"></span>
-      <div class="the-moon"><span class="moon-inside"></span></div>
-    </div>
-
-    <div class="switch">
-      <div class="button">
-        <div class="b-inside"></div>
-      </div>
-    </div>
-
-    <div class="c-window">
-      <span class="the-sun"></span>
-      <span class="the-moon"></span>
-
-      <div class="the-cat">
-        <div class="cat-face">
-          <section class="eyes left"><span class="pupil"></span></section>
-          <section class="eyes right"><span class="pupil"></span></section>
-
-          <span class="nose"></span>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="toggleWrapper">
+  <input @click="toggleTheme()" type="checkbox" class="dn" id="dn"/>
+  <label for="dn" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+    <span class="star star--1"></span>
+    <span class="star star--2"></span>
+    <span class="star star--3"></span>
+    <span class="star star--4"></span>
+    <span class="star star--5"></span>
+    <span class="star star--6"></span>
+  </label>
+</div>
 </template>
 
 <script>
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
-import { logger } from "../utils/Logger.js";
+import { logger } from "../utils/Logger.js"
 import Pop from "../utils/Pop.js";
 
 export default {
-  props: {},
+props:{
+
+       },
   setup(props) {
     const editable = ref({});
+    
+    onMounted(() => {
 
-    onMounted(() => {});
+    });
     watchEffect(() => {});
 
     return {
       editable,
-       theme: computed(() => AppState.theme),
+          theme: computed(() => AppState.theme),
       toggleTheme() {
         AppState.theme = !AppState.theme;
         document.body.setAttribute(
@@ -55,319 +46,220 @@ export default {
           AppState.theme ? "dark" : "light"
         );
       },
-    };
-  },
-};
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
-.the-container {
 
-  width: 450px;
-  height: 380px;
 
-}
 
-.c-window {
-  display: block;
-  position: relative;
-  width: 240px;
-  height: 240px;
-  margin: 0 auto;
-  border-radius: 100%;
-  border: 5px solid #32a84a;
-  background: #5ddfe8;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25) inset;
+.toggleWrapper {
+
+  top: 50%;
+  left: 70%;
   overflow: hidden;
-  transition: background 1s ease-in-out;
+  padding: 0 200px;
+  transform: translate3d(-50%, -50%, 0);
+  
+  input {
+    position: absolute;
+    left: -99em;
+  }
 }
 
-.c-window .the-sun {
-  display: block;
-  position: relative;
-  top: 19px;
-  height: 42px;
-  width: 42px;
-  background: #ffee94;
-  border-radius: 100%;
-  margin: 0 auto;
-  box-shadow: 0px 0px 40px #ffee94;
-  left: 30px;
-  transition: top 0.5s ease-in-out;
-}
-
-.c-window .the-moon {
-  position: relative;
-  height: 26px;
-  width: 26px;
-  top: 200px;
-  background: #eee;
-  border-radius: 100%;
-  box-shadow: 0px 0px 20px #fff;
-  transition: top 0.6s ease-in-out;
-}
-
-.c-window .the-cat {
-  display: block;
-  position: absolute;
-  bottom: -20px;
-  height: 150px;
-  width: 145px;
-  margin: 0 50px;
-  background: #555555;
-  transition: bottom 0.25s ease-in-out;
-}
-
-.c-window .the-cat:before {
-  width: 0;
-  height: 0;
-  border-left: 0px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 20px solid #777;
-  top: -20px;
-  left: 0;
-  position: absolute;
-  content: "";
-}
-.c-window .the-cat:after {
-  width: 0;
-  height: 0;
-  border-right: 0px solid transparent;
-  border-left: 30px solid transparent;
-  border-bottom: 20px solid #777;
-  top: -20px;
-  right: 0;
-  position: absolute;
-  content: "";
-}
-
-.c-window .the-cat:hover {
-  display: block;
-  position: absolute;
-  bottom: -40px;
+.toggle {
   cursor: pointer;
-}
-
-.c-window .the-cat .eyes {
-  display: block;
-  position: absolute;
-  background: #ffee94;
-  height: 40px;
-  width: 40px;
-  border-radius: 100%;
-  bottom: 80px;
-}
-
-.c-window .the-cat:hover .eyes {
-  display: block;
-  position: absolute;
-  height: 10px;
-  width: 45px;
-  bottom: 100px;
-}
-
-.c-window .the-cat .eyes.left {
-  left: 12px;
-}
-
-.c-window .the-cat .eyes.right {
-  right: 12px;
-}
-
-.c-window .the-cat .eyes .pupil {
-  display: block;
+  display: inline-block;
   position: relative;
-  background: #d9add2;
-  height: 100%;
-  width: 7px;
-  border-radius: 100%;
-  margin: 0 auto;
-  transition: width 0.5s ease-in-out;
+  width: 90px;
+  height: 50px;
+  background-color: #83D8FF;
+  border-radius: 90px - 6;
+  transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  
+  &:before {
+    content: 'Light ';
+    position: absolute;
+    left: -50px;
+    top: 15px;
+    font-size: 18px;
+    color: #749DD6;
+  }
+  
+  &:after {
+    content: 'Dark';
+    position: absolute;
+    right: -48px;
+    top: 15px;
+    font-size: 18px;
+    color: #749ED7;
+  }
 }
 
-.c-window .the-cat .nose {
-  display: block;
+.toggle__handler {
+  display: inline-block;
   position: relative;
-  background: #9e4790;
-  height: 10px;
-  width: 10px;
-  border-radius: 100%;
-  margin: 0 auto;
-  top: 45px;
+  z-index: 1;
+  top: 3px;
+  left: 3px;
+  width: 50px - 6;
+  height: 50px - 6;
+  background-color: #ffbc6b;
+  border-radius: 50px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
+  transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform:  rotate(-45deg);
+  
+  .crater {
+    position: absolute;
+    background-color: #b1a89c;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+    border-radius: 100%;
+  }
+  
+  .crater--1 {
+    top: 18px;
+    left: 10px;
+    width: 4px;
+    height: 4px;
+  }
+  
+  .crater--2 {
+    top: 28px;
+    left: 22px;
+    width: 6px;
+    height: 6px;
+  }
+  
+  .crater--3 {
+    top: 10px;
+    left: 25px;
+    width: 8px;
+    height: 8px;
+  }
 }
 
-input[type="checkbox"] {
+.star {
   position: absolute;
-  top: -9999px;
-  left: -9999px;
+  background-color: #ffffff;
+  transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  border-radius: 50%;
 }
 
-input#toggle[type="checkbox"] {
-  display: none;
-}
-
-label {
-  position: absolute;
-  height: 47px;
-  width: 125px;
-  display: block;
-  top: 0px;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 9999;
-  cursor: pointer;
-  margin: 0 auto;
-}
-
-.switch {
-  display: block;
-  position: relative;
-  border-bottom: 1px solid #fff;
-  border-radius: 27px;
-  background: #ffb399;
-  box-shadow: inset 0 0 10px #888888;
-  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
-  height: 40px;
-  width: 100px;
-  margin: 0px auto 30px auto;
-}
-
-.switch .button {
-  display: block;
-  position: absolute;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #aaa;
-  border-radius: 100%;
-  background: #ffcfbf;
-  height: 34px;
-  width: 34px;
-  top: 4px;
-  left: 4px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
-}
-
-.switch .button .b-inside {
-  display: block;
-  position: absolute;
-  border: 1px solid #888;
-  border-radius: 100%;
-  background: #ffee94;
-  height: 17px;
-  width: 17px;
-  top: 7px;
-  left: 7px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
-}
-
-.day-night-cont {
-  display: block;
-  position: absolute;
-  width: 180px;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  height: 40px;
-  top: 0px;
-}
-
-.day-night-cont .the-sun {
-  display: block;
-  position: absolute;
-  left: 10px;
+.star--1 {
   top: 10px;
-  height: 23px;
-  width: 23px;
-  border-radius: 100%;
-  background: #ffee94;
-  box-shadow: 0px 0px 40px #ffee94;
+  left: 35px;
+  z-index: 0;
+  width: 30px;
+  height: 3px;
 }
 
-.day-night-cont .the-moon {
-  display: block;
-  position: absolute;
-  right: 8px;
-  top: 10px;
-  height: 22px;
-  width: 22px;
-  border-radius: 100%;
-  background: #eee;
-  box-shadow: 0px 0px 20px #eee;
+.star--2 {
+  top: 18px;
+  left: 28px;
+  z-index: 1;
+  width: 30px;
+  height: 3px;
 }
 
-.day-night-cont .the-moon .moon-inside {
-  display: block;
-  position: absolute;
-  left: 8px;
-  height: 22px;
-  width: 22px;
-  border-radius: 100%;
-  background: #ffcfbf;
+.star--3 {
+  top: 27px;
+  left: 40px;
+  z-index: 0;
+  width: 30px;
+  height: 3px;
+}
+    
+.star--4,
+.star--5,
+.star--6 {
+  opacity: 0;
+  transition: all 300ms 0 cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-.switch .button {
-  transition: left 0.25s ease-in-out;
-  -webkit-transition: left 0.25s ease-in-out;
+.star--4 {
+  top: 16px;
+  left: 11px;
+  z-index: 0;
+  width: 2px;
+  height: 2px;
+  transform: translate3d(3px,0,0);
 }
 
-input[type="checkbox"]:checked ~ .switch .button {
-  position: absolute;
-  left: 64px;
+.star--5 {
+  top: 32px;
+  left: 17px;
+  z-index: 0;
+  width: 3px;
+  height: 3px;
+  transform: translate3d(3px,0,0);
 }
 
-input[type="checkbox"]:checked ~ .c-window {
-  background: #111;
+.star--6 {
+  top: 36px;
+  left: 28px;
+  z-index: 0;
+  width: 2px;
+  height: 2px;
+  transform: translate3d(3px,0,0);
 }
 
-input[type="checkbox"]:checked ~ .c-window .the-sun {
-  top: 200px;
+input:checked {
+  + .toggle {
+    background-color: #749DD6;
+  
+    &:before {
+      color: #ffffff;
+    }
+
+    &:after {
+      color: #ffffff;
+    }
+    
+    .toggle__handler {
+      background-color: #ffeac3;
+      transform: translate3d(40px, 0, 0) rotate(0);
+  
+      .crater { opacity: 1; }
+    }
+    
+    .star--1 {
+      width: 2px;
+      height: 2px;
+    }
+    
+    .star--2 {
+      width: 4px;
+      height: 4px;
+      transform: translate3d(-5px, 0, 0);
+    }
+    
+    .star--3 {
+      width: 2px;
+      height: 2px;
+      transform: translate3d(-7px, 0, 0);
+    }
+    
+    .star--4,
+    .star--5,
+    .star--6 {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+    }
+    .star--4 {
+      transition: all 300ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    }
+    .star--5 {
+      transition: all 300ms 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    }
+    .star--6 {
+      transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    }
+  }
 }
 
-input[type="checkbox"]:checked ~ .c-window .the-moon {
-  display: block;
-  position: absolute;
-  margin: 0 auto;
-  top: 42px;
-  left: 60px;
-}
 
-input[type="checkbox"]:checked ~ .c-window .the-cat {
-  background: #555;
-}
-
-input[type="checkbox"]:checked ~ .c-window .the-cat:before {
-  width: 0;
-  height: 0;
-  border-left: 0px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 20px solid #555;
-  top: -20px;
-  left: 0;
-  position: absolute;
-  content: "";
-}
-input[type="checkbox"]:checked ~ .c-window .the-cat:after {
-  width: 0;
-  height: 0;
-  border-right: 0px solid transparent;
-  border-left: 30px solid transparent;
-  border-bottom: 20px solid #555;
-  top: -20px;
-  right: 0;
-  position: absolute;
-  content: "";
-}
-
-input[type="checkbox"]:checked ~ .c-window .the-cat .eyes .pupil {
-  height: 90%;
-  width: 36px;
-  margin: 5% auto;
-}
-
-input[type="checkbox"]:checked ~ .c-window .the-cat:hover .eyes {
-  height: 40px;
-  bottom: 80px;
-}
 </style>
