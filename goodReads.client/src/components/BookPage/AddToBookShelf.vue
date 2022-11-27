@@ -159,7 +159,7 @@ test2: computed(() => {
        
           if (this.alreadyShelved) {
             Pop.toast("already apart of this list");
-            return
+            return;
           }
           // let shelf = AppState.accountBookshelves.find(
           //   (s) => s.id == editable.value.id
