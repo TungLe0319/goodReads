@@ -4,27 +4,33 @@ import { addMany, addOne } from "../utils/Functions.js";
 import { api } from "./AxiosService.js";
 
 class BookShelvesService {
-  async addToBookShelf(data) {
+  async addToBookShelf(data, book) {
     const res = await api.post("api/shelvedbooks", data);
-    console.log(res.data);
+    // console.log(res.data);
+    res.data.book = book
+    let newBook = new ShelvedBook(res.data, true)
+    console.log(newBook);
 
-    // let data = {
-    //   book: AppState.activeBook
-    // }
 
-    //  AddOne(AppState.accountShelvedBooks, new ShelvedBook(res.data))
+
+
+   
+
+    AppState.accountShelvedBooks = [...AppState.accountShelvedBooks, newBook]
     // addMany(AppState.accountShelvedBooks, res.data, new ShelvedBook)
   }
   findBook() {
-    debugger
+    AppState.accountBookshelves.forEach(s => s.hasActiveBook = false)
+    AppState.activeBookShelf = null
+  
+
     let bookId = AppState.activeBook.id;
     for (const shelf of AppState.accountBookshelves) {
-      let id = shelf.id
       let shelved = AppState.accountShelvedBooks.filter(
         (s) =>  s.id == bookId && s.bookShelfId == shelf.id
       );
-      for (const books of shelved) {
-        if (books.id == bookId) {
+      for (const book of shelved) {
+        if (book.id == bookId) {
           shelf.hasActiveBook = true;
           console.log(shelf);
         }

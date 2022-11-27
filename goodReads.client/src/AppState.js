@@ -24,6 +24,7 @@ export const AppState = reactive({
 
   /** @type {import('./models/SQLBook.js').SQLBook | null} */
   activeBook: null,
+  
 
   activeBookShelf: null,
 
