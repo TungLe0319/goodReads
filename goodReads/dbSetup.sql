@@ -43,7 +43,7 @@ CREATE TABLE
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         bookId VARCHAR(255) NOT NULL,
-        bookShelfId INT NOT NULL UNIQUE,
+        bookShelfId INT NOT NULL ,
         creatorId VARCHAR(255) NOT NULL,
         FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE,
         Foreign Key (bookShelfId) REFERENCES bookshelves(id) ON DELETE CASCADE,
