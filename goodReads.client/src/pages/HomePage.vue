@@ -122,7 +122,6 @@ import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
 import EasyStepsCard from "../components/EasyStepsCard.vue";
 import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
-import BookCard from "../components/BookCard.vue";
 import { SQLBook } from "../models/SQLBook.js";
 import { bookService } from "../services/BookService.js";
 import { quotesService } from "../services/QuotesService.js";
