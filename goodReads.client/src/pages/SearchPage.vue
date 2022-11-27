@@ -24,11 +24,26 @@
       <div class="col-md-3">
         <div class="bg-secondary p-2 elevation-2">
           <p class="fw-bold fs-4">Categories</p>
-          <div class="mb-3 form-check selectable rounded" v-for="c in categories">
-            <input v-model="c.checked" v-on:change="searchByCategory(c)" type="checkbox" class="form-check-input"
+            <TransitionGroup
+                    name=""
+                    enterActiveClass="animate__fadeIn animate__animated"
+                    leaveActiveClass="animate__fadeOut animate__animated"
+                  >
+             <div
+          
+             :class="c.checked? 'bg-create mb-5 p-5' : ''"
+          class="mb-3 form-check selectable rounded" v-for="c in categories" :key="c.name">
+            <input 
+         
+             :class="c.checked? 'p-3 ' : ''"
+            v-model="c.checked" v-on:change="searchByCategory(c)" type="checkbox" class="form-check-input"
               id="exampleCheck1" />
-            <label class="form-check-label" for="exampleCheck1">{{ c.name }}</label>
+            <label
+             :class="c.checked? 'fw-bolder fs-4 ms-2' : ''"
+            class="form-check-label" for="exampleCheck1">{{ c.name }}</label>
           </div>
+                  </TransitionGroup>
+        
         </div>
       </div>
       <div class="col-md-9">
@@ -102,7 +117,14 @@ export default {
           editable.value.term = ''
 
           AppState.categoryQuery = newCategory.name
+
           await bookService.searchByCategory(AppState.categoryQuery);
+          AppState.categories.forEach(function(item,i){
+  if(item.name == newCategory.name){
+    AppState.categories.splice(i, 1);
+    AppState.categories.unshift(item);
+  }
+});
           // console.log(AppState.categoryQuery);
         } catch (error) {
           Pop.error(error, "[searchByCategory]");

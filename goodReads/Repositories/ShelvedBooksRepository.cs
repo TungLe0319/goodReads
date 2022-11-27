@@ -8,6 +8,8 @@ public class ShelvedBooksRepository : BaseRepository
 
   internal ShelfBook CreateShelfBook(ShelfBook shelfBookData)
   {
+
+  
     var sql = @"
             INSERT INTO
             shelfBooks (

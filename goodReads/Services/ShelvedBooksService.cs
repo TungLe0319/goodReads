@@ -14,10 +14,7 @@ public class ShelvedBookService
   internal ShelfBook CreateShelfBook(ShelfBook shelfBookData)
   {
     ShelfBook newShelfBook = _sbRepo.CreateShelfBook(shelfBookData);
-    if( newShelfBook == null)
-    {
-    throw new Exception("Invalid [example]");
-    }
+
     
     return newShelfBook;
   }
