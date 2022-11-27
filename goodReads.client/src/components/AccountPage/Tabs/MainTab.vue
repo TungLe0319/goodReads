@@ -29,6 +29,7 @@
       <div v-else>
         <p>{{ account.bio }}</p>
       </div>
+    
       <div class="">
         <div class="d-flex my-3">
           <h2>Favorite Books</h2>
