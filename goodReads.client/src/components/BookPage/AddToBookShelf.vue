@@ -18,12 +18,17 @@
             class="form-select form-select-lg"
             name=""
             id=""
+            
+            :class="test2 != editable.id? 'bg-light' : 'border-danger text-danger '"
           >
-            <option :value="b.id" v-for="b in bookShelves">
+            <option 
+          
+            :value="b.id" v-for="b in bookShelves" :class="test2 != b.id? 'text-primary' : 'text-danger'" >
               {{ b.type }}
             </option>
           </select>
         </div>
+      
         <button class="btn btn-outline-dark" type="submit">
           Save To BookShelf
         </button>
@@ -131,6 +136,19 @@ export default {
         }
       }),
 
+
+test2: computed(() => {
+        if (AppState.accountBookshelves && AppState.accountShelvedBooks) {
+          let found = AppState.accountShelvedBooks.find(
+            (x) =>
+              x.bookShelfId == editable.value.id &&
+              x.id == AppState.activeBook.id
+          );
+   return found?.bookShelfId
+        }
+      }),
+
+
       copyToClipBoard() {
         navigator.clipboard.writeText(route.fullPath);
         Pop.toast(`Copied To ClipBoard`);
@@ -138,6 +156,7 @@ export default {
       async addToBookShelf() {
         try {
           // console.log('bookId',this.alreadyShelved.id,"bookShelfId",this.alreadyShelved.bookShelfId);
+       
           if (this.alreadyShelved) {
             Pop.toast("already apart of this list");
             return
@@ -154,7 +173,7 @@ export default {
             bookId: AppState.activeBook.id,
             bookShelfId: editable.value.id,
           };
-          // console.log(data);
+        
           await bookShelvesService.addToBookShelf(data);
         } catch (error) {
           Pop.error(error, "[addToBookShelf]");
