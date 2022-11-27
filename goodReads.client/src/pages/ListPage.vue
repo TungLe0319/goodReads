@@ -40,12 +40,14 @@
             </button>
           </div>
         </nav>
+
+        
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-wishlist" role="tabpanel" aria-labelledby="nav-wishlist-tab"
             tabindex="0">
           <div class="row">
             <div class="col-md-3" v-for="f in filtered" :key="f.id">
-<BookCard :book="f.book" />
+<BookCard :book="f" />
             </div>
           </div>
 

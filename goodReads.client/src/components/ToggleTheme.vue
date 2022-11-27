@@ -65,7 +65,7 @@ export default {
 
   width: 450px;
   height: 380px;
-
+z-index: 9999;
 }
 
 .c-window {

@@ -70,9 +70,9 @@ class AccountService {
 
   async getShelvedBooks(){
     const res = await api.get(`/account/shelvedBooks`)
-console.log(res.data);
+// console.log(res.data);
 AppState.accountShelvedBooks = res.data.map(x => new ShelvedBook(x))
-console.log(AppState.accountShelvedBooks);
+console.log('SHELVEDBOOK',AppState.accountShelvedBooks);
   }
 
 }
