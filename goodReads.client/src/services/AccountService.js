@@ -7,6 +7,7 @@ import { SQLBook } from "../models/SQLBook";
 import { ShelvedBook } from "../models/ShelvedBook";
 import { logger } from "../utils/Logger";
 import { api, googleBookApi } from "./AxiosService";
+import { bookShelvesService } from "./BookShelvesService";
 
 class AccountService {
   async getAccount() {
@@ -23,7 +24,7 @@ class AccountService {
       // });
       const res = await api.get("/account");
       AppState.account = new Account(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     } catch (err) {
       logger.error("HAVE YOU STARTED YOUR SERVER YET???", err);
     }
@@ -72,7 +73,10 @@ class AccountService {
     const res = await api.get(`/account/shelvedBooks`);
     // console.log(res.data);
     AppState.accountShelvedBooks = res.data.map((x) => new ShelvedBook(x));
-    console.log("SHELVEDBOOK", AppState.accountShelvedBooks);
+    let book  = AppState.activeBook
+    if (book) {
+      bookShelvesService.findBook()
+    }
   }
 }
 
