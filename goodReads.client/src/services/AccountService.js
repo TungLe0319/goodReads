@@ -1,7 +1,6 @@
 import { AppState } from "../AppState";
 import { Account } from "../models/Account";
 import { BookShelf } from "../models/BookShelf.js";
-import { FavoritedBook } from "../models/FavoritedBook.js";
 import { Follow } from "../models/Follow";
 import { Review } from "../models/Review.js";
 import { SQLBook } from "../models/SQLBook";

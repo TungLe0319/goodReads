@@ -63,7 +63,6 @@ import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../../../AppState.js";
 import { bookService } from "../../../services/BookService.js";
-import { favoriteBooksService } from "../../../services/FavoriteBooksService.js";
 import Pop from "../../../utils/Pop.js";
 
 export default {
