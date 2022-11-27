@@ -57,8 +57,9 @@
 
           <div class="tab-pane fade" id="nav-owned" role="tabpanel" aria-labelledby="nav-owned-tab" tabindex="0">
               <div class="row mt-3">
-            <div class="col-md-2" v-for="f in filtered" :key="f.id">
+            <div class="col-md-2 " v-for="f in filtered" :key="f.id">
 <BookCard :book="f" />
+<button class="fs-5 text-danger btn p-0"> Remove</button>
             </div>
           </div>
 
