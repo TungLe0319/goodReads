@@ -86,6 +86,14 @@
             <div class="row mt-3">
               <div class="col-md-2" v-for="f in filtered" :key="f.id">
                 <BookCard :book="f" />
+                <div>
+                  <button
+                    @click="removeFromBookShelf(f.shelvedId)"
+                    class="fs-6 link text-danger btn p-0"
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -100,7 +108,6 @@
             <div class="row mt-3">
               <div class="col-md-2" v-for="f in filtered" :key="f.id">
                 <BookCard :book="f" />
-          
               </div>
             </div>
           </div>
@@ -142,6 +149,7 @@ import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
 import { accountService } from "../services/AccountService.js";
+import { bookShelvesService } from "../services/BookShelvesService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
@@ -172,6 +180,15 @@ export default {
         let found = AppState.accountBookshelves.find((a) => a.type == x);
         AppState.activeBookShelf = found;
         console.log(AppState.activeBookShelf);
+      },
+      async removeFromBookShelf(id) {
+        try {
+          if (await Pop.confirm()) {
+            await bookShelvesService.removeFromBookShelf(id);
+          }
+        } catch (error) {
+          Pop.error(error, "[removeFromBookShelf]");
+        }
       },
     };
   },
