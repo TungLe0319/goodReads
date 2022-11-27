@@ -41,6 +41,7 @@ import { Book } from "../models/Book.js";
 import { SQLBook } from "../models/SQLBook.js";
 import { router } from "../router.js";
 import { bookService } from "../services/BookService.js";
+import { bookShelvesService } from "../services/BookShelvesService";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
@@ -63,7 +64,7 @@ export default {
           document.documentElement.scrollTop = 0;
           //IF NOT IN DATABASE PUSH
           AppState.activeBook = book;
-         
+            await bookShelvesService.findBook()
             await bookService.addBookToDb(book);
           // console.log(AppState.activeBook);
         } catch (error) {

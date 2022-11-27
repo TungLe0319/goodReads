@@ -119,7 +119,6 @@
 import { computed, ref } from "@vue/reactivity";
 import { onMounted } from "vue";
 import { AppState } from "../AppState.js";
-import BookCard from "../components/BookCard.vue";
 import EasyStepsCard from "../components/EasyStepsCard.vue";
 import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
 import BookCard from "../components/BookCard.vue";
@@ -143,6 +142,7 @@ export default {
     //     Pop.error(error, "[getBooks]");
     //   }
     // }
+    
     async function getBooks() {
       try {
         await bookService.getBooks();
