@@ -4,7 +4,8 @@ import { BookShelf } from "../models/BookShelf.js";
 import { FavoritedBook } from "../models/FavoritedBook.js";
 import { Follow } from "../models/Follow";
 import { Review } from "../models/Review.js";
-import { ShelvedBook, SQLBook } from "../models/SQLBook";
+import { SQLBook } from "../models/SQLBook";
+import { ShelvedBook } from "../models/ShelvedBook";
 import { logger } from "../utils/Logger";
 import { api, googleBookApi } from "./AxiosService";
 
@@ -58,23 +59,21 @@ class AccountService {
   }
   async getFavoriteBooks() {
     const res = await api.get("/account/favoriteBooks");
-    
+
     AppState.favoriteBooks = res.data.map((f) => f);
-    for (const f  of AppState.favoriteBooks) {
-      const res2 = await googleBookApi.get(`/volumes/${f.bookId}`)
-      f.book = res2.data
-    
+    for (const f of AppState.favoriteBooks) {
+      const res2 = await googleBookApi.get(`/volumes/${f.bookId}`);
+      f.book = res2.data;
     }
     // console.log(AppState.favoriteBooks);
   }
 
-  async getShelvedBooks(){
-    const res = await api.get(`/account/shelvedBooks`)
-// console.log(res.data);
-AppState.accountShelvedBooks = res.data.map(x => new ShelvedBook(x))
-console.log('SHELVEDBOOK',AppState.accountShelvedBooks);
+  async getShelvedBooks() {
+    const res = await api.get(`/account/shelvedBooks`);
+    // console.log(res.data);
+    AppState.accountShelvedBooks = res.data.map((x) => new ShelvedBook(x));
+    console.log("SHELVEDBOOK", AppState.accountShelvedBooks);
   }
-
 }
 
 export const accountService = new AccountService();

@@ -33,7 +33,6 @@
         class="btn btn-outline-dark mt-2"
         data-bs-toggle="modal"
         data-bs-target="#createReview"
-   
       >
         Review
       </button>
@@ -103,7 +102,7 @@ import Pop from "../../utils/Pop.js";
 export default {
   props: {},
   setup(props) {
-    const editable = ref({  });
+    const editable = ref({});
 
     onMounted(() => {});
     watchEffect(() => {});
@@ -112,18 +111,31 @@ export default {
       editable,
       book: computed(() => AppState.activeBook),
       bookShelves: computed(() => AppState.accountBookshelves),
+      inBookShelf: computed(() =>
+        AppState.accountShelvedBooks.find(
+          (b) =>
+            b.id == AppState.activeBook.id &&
+            b.bookShelfId == editable.value?.id
+        )
+      ),
       copyToClipBoard() {
         navigator.clipboard.writeText(route.fullPath);
         Pop.toast(`Copied To ClipBoard`);
       },
       async addToBookShelf() {
         try {
-        let data = {
-            bookId: AppState.activeBook.id,
-            bookShelfId: editable.value.id,
-          };
-          console.log(data);
-          await bookShelvesService.addToBookShelf(data);
+          // console.log(this.inBookShelf);
+          
+          if (!this.inBookShelf) {
+            let data = {
+              bookId: AppState.activeBook.id,
+              bookShelfId: editable.value.id,
+            };
+            console.log(data);
+            await bookShelvesService.addToBookShelf(data);
+          }
+
+          
         } catch (error) {
           Pop.error(error, "[addToBookShelf]");
         }
