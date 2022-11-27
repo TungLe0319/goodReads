@@ -30,12 +30,16 @@
     >
       <p v-for="b in book.categories" class="link mb-0">{{ b }}</p>
     </router-link>
+    <div v-if="route.path =='List'">
+      <button class="fs-5 text-danger btn p-0">Remove</button>
+    </div>
   </div>
 </template>
 
 <script>
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { AppState } from "../AppState.js";
 import { Book } from "../models/Book.js";
 import { SQLBook } from "../models/SQLBook.js";
@@ -54,9 +58,12 @@ export default {
 
     onMounted(() => {});
     watchEffect(() => {});
-
+const route = useRoute();
+const router = useRouter()
     return {
       editable,
+      route,
+      router,
       isArray:computed(() => props.book.authors == [props.book.authors]),
       async setActive(book) {
         try {
