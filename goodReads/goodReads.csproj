@@ -13,6 +13,7 @@
     <PackageReference Include="PusherServer" Version="4.6.1" />
     <PackageReference Include="SocketIOClient" Version="3.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>

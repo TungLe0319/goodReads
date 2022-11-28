@@ -123,12 +123,18 @@ import { bookService } from "../services/BookService.js";
 import { quotesService } from "../services/QuotesService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
+// import { useSignalR } from '@dreamonkey/vue-signalr';
+// import { inject } from 'vue';
 
 export default {
   setup() {
+    // const signalR = useSignalR()
     onMounted(() => {
       getQuote()
       // getMySQLBooks();
+      // signalR.on("ReceiveMessage", ({message}) =>{
+      //   Pop.success(`${message}`)
+      // })
 
     });
     async function getMySQLBooks() {

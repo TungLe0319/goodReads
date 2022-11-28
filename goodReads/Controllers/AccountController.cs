@@ -4,9 +4,16 @@ namespace goodReads.Controllers;
 [Route("[controller]")]
 public class AccountController : IController
 {
-  public AccountController(Auth0Provider auth0Provider, AccountService accountService, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService, ShelvedBookService shelvedBooksService, ProfilesService profilesService, FavoriteBooksService favBooksService) : base(auth0Provider, accountService, reviewService, followsService, booksService, bookShelvesService, shelvedBooksService, profilesService, favBooksService)
+  private readonly IHubContext<ChatHub> _hubContext;
+
+  // public IHubContext<ChatHub> HubContext => _hubContext;
+
+  public AccountController(IHubContext<ChatHub> hubContext,Auth0Provider auth0Provider, AccountService accountService, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService, ShelvedBookService shelvedBooksService, ProfilesService profilesService, FavoriteBooksService favBooksService) : base(auth0Provider, accountService, reviewService, followsService, booksService, bookShelvesService, shelvedBooksService, profilesService, favBooksService)
   {
+    _hubContext = hubContext;
   }
+
+ 
 
   [HttpGet]
   [Authorize]
@@ -16,22 +23,24 @@ public class AccountController : IController
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
 
-      var options = new PusherOptions
-      {
-        Cluster = "us3",
-        Encrypted = true
-      };
+      // var options = new PusherOptions
+      // {
+      //   Cluster = "us3",
+      //   Encrypted = true
+      // };
 
-      var pusher = new Pusher(
-        "1512865",
-        "5b205b8c9c1634b6853d",
-        "6e33b4ad32d2e6ff6e29",
-        options);
+      // var pusher = new Pusher(
+      //   "1512865",
+      //   "5b205b8c9c1634b6853d",
+      //   "6e33b4ad32d2e6ff6e29",
+      //   options);
 
-      var result = await pusher.TriggerAsync(
-        "my-channel",
-        "my-event",
-        new { user = userInfo });
+      await _hubContext.Clients.All.SendAsync("ReceiveMessage", new String(userInfo.Name + ", is online"));
+
+      // var result = await pusher.TriggerAsync(
+      //   "my-channel",
+      //   "my-event",
+      //   new { user = userInfo });
 
       return Ok(_accountService.GetOrCreateProfile(userInfo));
     }

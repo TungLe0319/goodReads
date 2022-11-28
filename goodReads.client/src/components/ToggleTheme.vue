@@ -35,7 +35,6 @@ props:{
     
     onMounted(() => {
       getTheme()
-
     });
     function getTheme(){
      

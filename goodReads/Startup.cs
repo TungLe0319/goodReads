@@ -24,6 +24,7 @@ public class Startup
     ConfigureCors(services);
     ConfigureAuth(services);
     services.AddControllers();
+    services.AddSignalR(cfg => cfg.EnableDetailedErrors = true);
     services.AddSwaggerGen(c =>
     {
       c.SwaggerDoc("v1", new OpenApiInfo { Title = "goodReads", Version = "v1" });
@@ -121,9 +122,11 @@ public class Startup
     app.UseAuthorization();
 
 
+
     app.UseEndpoints(endpoints =>
     {
       endpoints.MapControllers();
+      endpoints.MapHub<ChatHub>("/chathub");
     });
   }
 }

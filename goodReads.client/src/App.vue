@@ -46,11 +46,16 @@ import Pop from "./utils/Pop";
 import { bookService } from "./services/BookService";
 import ToggleTheme from "./components/ToggleTheme.vue";
 import { loadState } from "./utils/Store";
+import SignalHandler from "./utils/SignalHandler";
 
 export default {
   setup() {
     onMounted(() => {
       getMySQLBooks();
+      SignalHandler.socket.on("ReceiveMessage",function(message){
+        Pop.success(`${message}`)
+      })
+      SignalHandler.start()
     })
    
     async function getMySQLBooks() {
