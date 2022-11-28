@@ -15,8 +15,10 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";
+import { AppState } from "../AppState.js";
 import MainTabProfile from "../components/ProfilePage/MainTabProfile.vue";
 
 import ProfileDetails from "../components/ProfilePage/ProfileDetails.vue";
@@ -64,7 +66,10 @@ export default {
       getProfileFollows();
       getProfileFollowers();
     });
-    return {};
+    return {
+profile : computed(() => AppState.activeProfile),
+
+    };
   },
   components: { ProfileDetails, MainTabProfile },
 };

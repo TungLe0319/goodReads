@@ -38,7 +38,7 @@
       <div v-else>
         <p class="text-dark">{{ profile?.bio }}</p>
       </div>
-
+<!-- 
       <div class="">
         <div class="d-flex my-3">
           <h2>Favorite Books</h2>
@@ -56,7 +56,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+
+
+
     </div>
 
     <div class="tab-pane fade" id="nav-Reviews" role="tabpanel" aria-labelledby="nav-Reviews-tab" tabindex="0">
