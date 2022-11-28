@@ -5,4 +5,10 @@ public class ChatHub : Hub
   {
     Clients.All.SendAsync("ReceiveMessage", message);
   }
-}
+
+
+
+
+
+
+}    

@@ -8,12 +8,12 @@ public class AccountController : IController
 
   // public IHubContext<ChatHub> HubContext => _hubContext;
 
-  public AccountController(IHubContext<ChatHub> hubContext,Auth0Provider auth0Provider, AccountService accountService, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService, ShelvedBookService shelvedBooksService, ProfilesService profilesService, FavoriteBooksService favBooksService) : base(auth0Provider, accountService, reviewService, followsService, booksService, bookShelvesService, shelvedBooksService, profilesService, favBooksService)
+  public AccountController(IHubContext<ChatHub> hubContext, Auth0Provider auth0Provider, AccountService accountService, ReviewsService reviewService, FollowsService followsService, BooksService booksService, BookShelvesService bookShelvesService, ShelvedBookService shelvedBooksService, ProfilesService profilesService, FavoriteBooksService favBooksService) : base(auth0Provider, accountService, reviewService, followsService, booksService, bookShelvesService, shelvedBooksService, profilesService, favBooksService)
   {
     _hubContext = hubContext;
   }
 
- 
+
 
   [HttpGet]
   [Authorize]
@@ -37,6 +37,7 @@ public class AccountController : IController
 
       await _hubContext.Clients.All.SendAsync("ReceiveMessage", new String(userInfo.Name + ", is online"));
 
+// await _hubContext.Clients.Client.SendAsync("ReceiveMessage", new String ())
       // var result = await pusher.TriggerAsync(
       //   "my-channel",
       //   "my-event",
@@ -154,7 +155,7 @@ public class AccountController : IController
 
 
   [HttpGet("shelvedBooks")]
-  public async  Task<ActionResult<List<ShelvedBook>>> GetAccountShelvedBooks()
+  public async Task<ActionResult<List<ShelvedBook>>> GetAccountShelvedBooks()
   {
     try
     {
