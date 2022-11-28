@@ -36,7 +36,7 @@
 import { accountService } from "../../services/AccountService";
 import { followsService } from "../../services/FollowsService.js";
 import Pop from "../../utils/Pop";
-import EditAccountForm from "./Forms/EditAccountForm.vue";
+
 
 export default {
   props: {
@@ -55,7 +55,7 @@ export default {
       },
     };
   },
-  components: { EditAccountForm }
+  components: { }
 };
 </script>
 

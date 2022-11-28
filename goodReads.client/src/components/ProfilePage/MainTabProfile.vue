@@ -87,8 +87,6 @@
           </button>
         </div>
         <div class="row">
-  
-
           <div class="col-md-2 mx-3" v-for="f in favoriteBooks" :key="f.id">
             <div class="card position-relative">
               <router-link :to="{ name: 'Book', params: { id: f.bookId } }">
@@ -101,7 +99,6 @@
                   @click="setActive(f.book)"
                 />
               </router-link>
-     
             </div>
           </div>
         </div>
@@ -146,16 +143,16 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { onMounted, ref, watchEffect } from "vue";
-import { AppState } from "../../../AppState.js";
-import Pop from "../../../utils/Pop.js";
-import FavoritedBookCard from "../FavoritedBookCard.vue";
-import FollowCard from "../FollowCard.vue";
-import FollowerTab from "./FollowerTab.vue";
-import FollowingTab from "./FollowingTab.vue";
-import ReviewedBookCard from "../ReviewedBookCard.vue";
+import { onMounted, ref, watchEffect } from "vue"
+import { AppState } from "../../AppState.js";
+import Pop from "../../utils/Pop.js";
+import FavoritedBookCard from "../AccountPage/FavoritedBookCard.vue";
+import FollowCard from "../AccountPage/FollowCard.vue";
+import ReviewedBookCard from "../AccountPage/ReviewedBookCard.vue";
+import FollowerTab from "../AccountPage/Tabs/FollowerTab.vue";
+import FollowingTab from "../AccountPage/Tabs/FollowingTab.vue";
+import NotificationTab from "../AccountPage/Tabs/NotificationTab.vue";
 
-import NotificationTab from "./NotificationTab.vue";
 export default {
   setup() {
     const editable = ref({});
@@ -169,7 +166,7 @@ export default {
       followers: computed(() => AppState.followers),
       reviews: computed(() => AppState.accountReviews),
       favoriteBooks: computed(() => AppState.favoriteBooks),
-     
+
       setActive(book) {
         document.documentElement.scrollTop = 0;
         //IF NOT IN DATABASE PUSH
