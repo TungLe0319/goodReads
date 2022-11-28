@@ -51,12 +51,19 @@ import SignalHandler from "./utils/SignalHandler";
 export default {
   setup() {
     onMounted(() => {
-      getMySQLBooks();
-      SignalHandler.socket.on("ReceiveMessage",function(message){
-        Pop.success(`${message}`)
-      })
       SignalHandler.start()
+      SignalHandler.id()
+      getMySQLBooks();
+      // SignalHandler.socket.on("ReceiveMessage",function(message){
+      //   Pop.success(`${message}`)
+      // })
+      SignalHandler.on("ReceiveMessage", function(message){
+       getMessage(message)
+      })
     })
+    function getMessage(message){
+      Pop.success(`${message}`)
+    }
    
     async function getMySQLBooks() {
       try {
