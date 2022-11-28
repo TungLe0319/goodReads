@@ -7,7 +7,7 @@ class QuotesService {
     const res = await SandBox.get(`api/quotes`, {
       params: {
         author:
-          "Mark Twain" 
+          "Aldous Huxley" 
       },
     });
     AppState.quote = new Quote(res.data);
