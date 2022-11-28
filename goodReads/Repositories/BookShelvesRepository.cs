@@ -34,16 +34,12 @@ public class BookShelvesRepository : BaseRepository
          FROM bookshelves bs
          JOIN accounts a ON a.id = bs.creatorId
          WHERE bs.creatorId =  @userId
-   
          ;";
-
     return _db.Query<BookShelf, Profile, BookShelf>(sql, (bs, p) =>
     {
       bs.Creator = p;
       return bs;
     }, new { userId }).ToList();
-
-
   }
 
   internal List<BookShelf> GetProfileBookShelves(string profileId)
@@ -56,7 +52,6 @@ public class BookShelvesRepository : BaseRepository
     JOIN accounts a ON a.id = bs.creatorId
     WHERE bs.creatorId = @profileId
     ;";
-
     return _db.Query<BookShelf, Profile, BookShelf>(sql, (bs, p) =>
     {
       bs.Creator = p;
