@@ -31,13 +31,13 @@
       aria-labelledby="nav-About-tab"
       tabindex="0"
     >
-      <div class="my-4 d-flex gap-1" v-if="!profile?.bio">
+      <!-- <div class="my-4 d-flex gap-1" v-if="!profile?.bio">
         <b> add a Bio</b>
         <p>to share who you are.</p>
       </div>
       <div v-else>
         <p class="text-dark">{{ profile?.bio }}</p>
-      </div>
+      </div> -->
 <!-- 
       <div class="">
         <div class="d-flex my-3">
@@ -63,13 +63,13 @@
     </div>
 
     <div class="tab-pane fade" id="nav-Reviews" role="tabpanel" aria-labelledby="nav-Reviews-tab" tabindex="0">
-      <div class="container-fluid">
+      <!-- <div class="container-fluid">
         <div class="row mt-5">
           <div class="col-md-4" v-for="r in reviews" :key="r.id">
             <ReviewedBookCard :review="r" />
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="tab-pane fade" id="nav-Following" role="tabpanel" aria-labelledby="nav-Following-tab" tabindex="0">
       <FollowingTab />
@@ -88,9 +88,10 @@ import Pop from "../../utils/Pop.js";
 import FavoritedBookCard from "../AccountPage/FavoritedBookCard.vue";
 import FollowCard from "../AccountPage/FollowCard.vue";
 import ReviewedBookCard from "../AccountPage/ReviewedBookCard.vue";
-import FollowerTab from "../AccountPage/Tabs/FollowerTab.vue";
-import FollowingTab from "../AccountPage/Tabs/FollowingTab.vue";
 import NotificationTab from "../AccountPage/Tabs/NotificationTab.vue";
+import FollowCard from "./FollowCard.vue.js";
+import FollowerTab from "./FollowerTab.vue.js";
+import FollowingTab from "./FollowingTab.vue.js";
 
 export default {
   setup() {
