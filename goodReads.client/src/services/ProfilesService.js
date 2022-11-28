@@ -12,6 +12,7 @@ class ProfilesService {
   async getProfileBookshelves(id) {
     const res = await api.get(`api/profiles/${id}/bookshelves`)
     console.log(res.data, "getProfileBookshelves");
+    
   }
 
   async getProfileFollows(id) {
