@@ -26,6 +26,11 @@
             Search
           </router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'Notification' }" class="btn text-dark selectable text-uppercase">
+            My Notifications
+          </router-link>
+        </li>
         <!-- <li>
           <button
             class="btn selectable text-uppercase"

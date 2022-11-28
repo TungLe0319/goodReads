@@ -17,6 +17,10 @@
         data-bs-target="#nav-Followers" type="button" role="tab" aria-controls="nav-Followers" aria-selected="false">
         Followers  <b>({{followers.length}}) </b> 
       </button>
+      <button class="nav-link fs-5 text-dark" id="nav-Notification-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-Notification" type="button" role="tab" aria-controls="nav-Notification" aria-selected="false">
+       Notifications 
+      </button>
     </div>
   </nav>
 
@@ -81,6 +85,10 @@
     <div class="tab-pane fade" id="nav-Followers" role="tabpanel" aria-labelledby="nav-Followers-tab" tabindex="0">
 <FollowerTab/>
     </div>
+    <div class="tab-pane fade" id="nav-Notification" role="tabpanel" aria-labelledby="nav-Notification-tab" tabindex="0">
+<NotificationTab />
+    </div>
+
   </div>
 </template>
 
@@ -94,7 +102,7 @@ import FollowCard from "../FollowCard.vue";
 import FollowerTab from "./FollowerTab.vue";
 import FollowingTab from "./FollowingTab.vue";
 import ReviewedBookCard from "../ReviewedBookCard.vue";
-
+import NotificationTab from '../Tabs/NotificationTab.vue'
 export default {
   props: {},
   setup(props) {
