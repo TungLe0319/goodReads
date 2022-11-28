@@ -1,7 +1,16 @@
 <template>
-  <div class="component">
-this is profiles page
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <ProfileDetails :profile="profile" />
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-12">
+     <MainTab/>
+      </div>
+    </div>
   </div>
 </template>
 

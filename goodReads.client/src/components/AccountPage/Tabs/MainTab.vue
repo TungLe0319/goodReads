@@ -86,7 +86,9 @@
 <FollowerTab/>
     </div>
     <div class="tab-pane fade" id="nav-Notification" role="tabpanel" aria-labelledby="nav-Notification-tab" tabindex="0">
-<NotificationTab />
+
+<NotificationTab/>
+
     </div>
 
   </div>
@@ -102,7 +104,8 @@ import FollowCard from "../FollowCard.vue";
 import FollowerTab from "./FollowerTab.vue";
 import FollowingTab from "./FollowingTab.vue";
 import ReviewedBookCard from "../ReviewedBookCard.vue";
-import NotificationTab from '../Tabs/NotificationTab.vue'
+
+import NotificationTab from "./NotificationTab.vue";
 export default {
   props: {},
   setup(props) {
@@ -134,7 +137,7 @@ export default {
       }
     };
   },
-  components: { FollowCard, ReviewedBookCard, FavoritedBookCard, FollowingTab, FollowerTab },
+  components: { FollowCard, ReviewedBookCard, FavoritedBookCard, FollowingTab, FollowerTab, NotificationTab },
 };
 </script>
 

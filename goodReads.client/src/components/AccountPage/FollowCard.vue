@@ -19,18 +19,7 @@
         </div>
       </div>
       <div class="">
-        <!-- <button @click="followByUserId()" v-if="
-          user.isAuthenticated &&
-           
-          !following
-        " class="btn p-0 me-3">
-          <i class="mdi mdi-check"> Follow</i>
-        </button> -->
-        <!-- <button @click="unFollowByUserId()" v-else-if="review.creator.id == account.id"
-          class="btn p-0 me-3 text-danger">
-
-        </button> -->
-
+    
         <button
           v-if="!followers"
           @click="unFollowByUserId()"
