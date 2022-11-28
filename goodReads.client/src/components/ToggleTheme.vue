@@ -1,6 +1,6 @@
 <template>
 <div class="toggleWrapper">
-  <input @click="toggleTheme()" type="checkbox" class="dn" id="dn"/>
+  <input v-model="theme" type="checkbox" class="dn" id="dn" v-on:change="toggleTheme(theme)"/>
   <label for="dn" class="toggle">
     <span class="toggle__handler">
       <span class="crater crater--1"></span>
@@ -19,10 +19,12 @@
 
 <script>
 import { computed } from "@vue/reactivity";
+// import { get } from "https";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js"
 import Pop from "../utils/Pop.js";
+import { saveState } from "../utils/Store";
 
 export default {
 props:{
@@ -32,19 +34,33 @@ props:{
     const editable = ref({});
     
     onMounted(() => {
+      getTheme()
 
     });
+    function getTheme(){
+     
+      let theme = AppState.theme
+      console.log(theme);
+       document.body.setAttribute(
+          "data-theme",
+          theme ? "dark" : "light"
+        );
+      
+    }
     watchEffect(() => {});
 
     return {
       editable,
           theme: computed(() => AppState.theme),
-      toggleTheme() {
+      toggleTheme(theme) {
+        console.log(theme);
         AppState.theme = !AppState.theme;
         document.body.setAttribute(
           "data-theme",
           AppState.theme ? "dark" : "light"
         );
+        saveState('theme', AppState.theme)
+        console.log(AppState.theme);
       },
       }
     }

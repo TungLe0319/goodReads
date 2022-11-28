@@ -45,12 +45,14 @@ import FavoriteBookForm from "./components/AccountPage/Forms/FavoriteBookForm.vu
 import Pop from "./utils/Pop";
 import { bookService } from "./services/BookService";
 import ToggleTheme from "./components/ToggleTheme.vue";
+import { loadState } from "./utils/Store";
 
 export default {
   setup() {
     onMounted(() => {
       getMySQLBooks();
-    });
+    })
+   
     async function getMySQLBooks() {
       try {
         await bookService.getMySQLBooks();

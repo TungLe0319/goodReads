@@ -1,4 +1,5 @@
 import { reactive } from "vue";
+import { loadState } from "./utils/Store.js";
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -7,6 +8,7 @@ export const AppState = reactive({
   users: [],
   /** @type {import('./models/Account.js').Account} */
   account: {},
+  // light: loadState('light') || false,
   /** @type {import('./models/Account.js').Account[]} */
   profiles: [],
   /** @type {import('./models/Account.js').Account | null} */
@@ -25,7 +27,7 @@ export const AppState = reactive({
 
   /** @type {import('./models/SQLBook.js').SQLBook | null} */
   activeBook: null,
-  
+
 
   activeBookShelf: null,
 
@@ -53,7 +55,7 @@ export const AppState = reactive({
   categoryList: [],
   filePicker: {},
   categoryQuery: "",
-  theme: false,
+  theme: loadState("theme"),
   totalItems: 0,
   startIndex: 0,
   categories: [
