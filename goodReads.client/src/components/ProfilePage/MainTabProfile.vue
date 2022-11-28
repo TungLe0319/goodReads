@@ -89,9 +89,9 @@ import FavoritedBookCard from "../AccountPage/FavoritedBookCard.vue";
 import FollowCard from "../AccountPage/FollowCard.vue";
 import ReviewedBookCard from "../AccountPage/ReviewedBookCard.vue";
 import NotificationTab from "../AccountPage/Tabs/NotificationTab.vue";
-import FollowCard from "./FollowCard.vue.js";
-import FollowerTab from "./FollowerTab.vue.js";
-import FollowingTab from "./FollowingTab.vue.js";
+import FollowCard from "./FollowCard.vue";
+import FollowerTab from "./FollowerTab.vue";
+import FollowingTab from "./FollowingTab.vue";
 
 export default {
   setup() {
