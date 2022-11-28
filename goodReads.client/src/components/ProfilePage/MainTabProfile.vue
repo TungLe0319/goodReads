@@ -67,12 +67,12 @@
       aria-labelledby="nav-About-tab"
       tabindex="0"
     >
-      <div class="my-4 d-flex gap-1" v-if="!account.bio">
+      <div class="my-4 d-flex gap-1" v-if="!profile.bio">
         <b> add a Bio</b>
         <p>to share who you are.</p>
       </div>
       <div v-else>
-        <p class="text-dark">{{ account.bio }}</p>
+        <p class="text-dark">{{ profile.bio }}</p>
       </div>
 
       <div class="">

@@ -3,6 +3,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center">
         <router-link
+       
           :to="{ name: 'Profile', params: { id: follow.profile?.id } }"
         >
           <img
