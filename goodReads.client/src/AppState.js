@@ -11,8 +11,18 @@ export const AppState = reactive({
   // light: loadState('light') || false,
   /** @type {import('./models/Account.js').Account[]} */
   profiles: [],
+
   /** @type {import('./models/Account.js').Account | null} */
   activeProfile: null,
+  /** @type {import('./models/Review.js').Review[]} */
+  activeProfileReviews : [],
+  /** @type {import('./models/BookShelf.js').BookShelf[]} */
+  activeProfileBookshelves : [],
+  /** @type {import('./models/Follow.js').Follow[]} */
+  activeProfileFollowers : [],
+  /** @type {import('./models/Follow.js').Follow[]} */
+  activeProfileFollowing : [],
+
 
   /** @type {import('./models/Book.js').Book[]} */
   books: [],
