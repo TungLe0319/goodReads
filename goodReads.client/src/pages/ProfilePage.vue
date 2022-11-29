@@ -9,6 +9,7 @@
     <div class="row">
       <div class="col-md-12">
      <!-- <MainTab/> -->
+     <MainTabProfile/>
       </div>
     </div>
   </div>
@@ -20,8 +21,9 @@ import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState.js";
 import MainTabProfile from "../components/ProfilePage/MainTabProfile.vue";
-
 import ProfileDetails from "../components/ProfilePage/ProfileDetails.vue";
+
+
 import { profilesService } from "../services/profilesService.js";
 import Pop from "../utils/Pop.js";
 
@@ -67,11 +69,12 @@ export default {
       getProfileFollowers();
     });
     return {
+      route,
 profile : computed(() => AppState.activeProfile),
 
     };
   },
-  components: { ProfileDetails, MainTabProfile },
+  components: { ProfileDetails, MainTabProfile, ProfileDetails, ProfileDetails },
 };
 </script>
 

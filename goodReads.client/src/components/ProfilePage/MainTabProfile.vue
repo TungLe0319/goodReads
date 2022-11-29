@@ -1,22 +1,58 @@
 <template>
   <nav>
-    <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
-      <button class="nav-link active fs-5 text-dark" id="nav-About-tab" data-bs-toggle="tab" data-bs-target="#nav-About"
-        type="button" role="tab" aria-controls="nav-About" aria-selected="true">
+    <div
+      class="nav nav-tabs d-flex justify-content-center"
+      id="nav-tab"
+      role="tablist"
+    >
+      <button
+        class="nav-link active fs-5 text-dark"
+        id="nav-About-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#nav-About"
+        type="button"
+        role="tab"
+        aria-controls="nav-About"
+        aria-selected="true"
+      >
         About
       </button>
-      <button class="nav-link fs-5 text-dark" id="nav-Reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-Reviews"
-        type="button" role="tab" aria-controls="nav-Reviews" aria-selected="false">
+      <button
+        class="nav-link fs-5 text-dark"
+        id="nav-Reviews-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#nav-Reviews"
+        type="button"
+        role="tab"
+        aria-controls="nav-Reviews"
+        aria-selected="false"
+      >
         Reviews
         <!-- <b>({{reviews.length}}) </b> -->
       </button>
-      <button class="nav-link fs-5 text-dark" id="nav-Following-tab" data-bs-toggle="tab"
-        data-bs-target="#nav-Following" type="button" role="tab" aria-controls="nav-Following" aria-selected="false">
+      <button
+        class="nav-link fs-5 text-dark"
+        id="nav-Following-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#nav-Following"
+        type="button"
+        role="tab"
+        aria-controls="nav-Following"
+        aria-selected="false"
+      >
         Following
         <!-- <b>({{following.length}}) </b>  -->
       </button>
-      <button class="nav-link fs-5 text-dark" id="nav-Followers-tab" data-bs-toggle="tab"
-        data-bs-target="#nav-Followers" type="button" role="tab" aria-controls="nav-Followers" aria-selected="false">
+      <button
+        class="nav-link fs-5 text-dark"
+        id="nav-Followers-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#nav-Followers"
+        type="button"
+        role="tab"
+        aria-controls="nav-Followers"
+        aria-selected="false"
+      >
         Followers
         <!-- <b>({{followers.length}}) </b>  -->
       </button>
@@ -38,7 +74,7 @@
       <div v-else>
         <p class="text-dark">{{ profile?.bio }}</p>
       </div> -->
-<!-- 
+      <!-- 
       <div class="">
         <div class="d-flex my-3">
           <h2>Favorite Books</h2>
@@ -57,12 +93,15 @@
           </div>
         </div>
       </div> -->
-
-
-
     </div>
 
-    <div class="tab-pane fade" id="nav-Reviews" role="tabpanel" aria-labelledby="nav-Reviews-tab" tabindex="0">
+    <div
+      class="tab-pane fade"
+      id="nav-Reviews"
+      role="tabpanel"
+      aria-labelledby="nav-Reviews-tab"
+      tabindex="0"
+    >
       <!-- <div class="container-fluid">
         <div class="row mt-5">
           <div class="col-md-4" v-for="r in reviews" :key="r.id">
@@ -71,10 +110,22 @@
         </div>
       </div> -->
     </div>
-    <div class="tab-pane fade" id="nav-Following" role="tabpanel" aria-labelledby="nav-Following-tab" tabindex="0">
+    <div
+      class="tab-pane fade"
+      id="nav-Following"
+      role="tabpanel"
+      aria-labelledby="nav-Following-tab"
+      tabindex="0"
+    >
       <FollowingTab />
     </div>
-    <div class="tab-pane fade" id="nav-Followers" role="tabpanel" aria-labelledby="nav-Followers-tab" tabindex="0">
+    <div
+      class="tab-pane fade"
+      id="nav-Followers"
+      role="tabpanel"
+      aria-labelledby="nav-Followers-tab"
+      tabindex="0"
+    >
       <FollowerTab />
     </div>
   </div>
@@ -82,21 +133,24 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { onMounted, ref, watchEffect } from "vue"
+import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../../AppState.js";
+
 import Pop from "../../utils/Pop.js";
-import FavoritedBookCard from "../AccountPage/FavoritedBookCard.vue";
-import FollowCard from "../AccountPage/FollowCard.vue";
-import ReviewedBookCard from "../AccountPage/ReviewedBookCard.vue";
-import FollowerTab from "../AccountPage/Tabs/FollowerTab.vue";
-import FollowingTab from "../AccountPage/Tabs/FollowingTab.vue";
-import NotificationTab from "../AccountPage/Tabs/NotificationTab.vue";
+// import FavoritedBookCard from "../AccountPage/FavoritedBookCard.vue";
+
+// import ReviewedBookCard from "../AccountPage/ReviewedBookCard.vue";
+
+// import NotificationTab from "../AccountPage/Tabs/NotificationTab.vue";
+import FollowCard from "../FollowCard.vue";
+import FollowerTab from "../FollowerTab.vue";
+import FollowingTab from "../FollowingTab.vue";
 
 export default {
   setup() {
     const editable = ref({});
-    onMounted(() => { });
-    watchEffect(() => { });
+    onMounted(() => {});
+    watchEffect(() => {});
     return {
       editable,
       account: computed(() => AppState.account),
@@ -117,11 +171,9 @@ export default {
   },
   components: {
     FollowCard,
-    ReviewedBookCard,
-    FavoritedBookCard,
+
     FollowingTab,
     FollowerTab,
-    NotificationTab,
   },
 };
 </script>

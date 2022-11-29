@@ -13,7 +13,7 @@
         <div class="d-flex">
           <div class="">
             <p class="mb-0 name text-dark">{{ profile.name }}</p>
-            <p class="fs-5 text-muted">{{ profile.email }}</p>
+            <!-- <p class="fs-5 text-muted">{{ profile.email }}</p> -->
           </div>
           <div class="mt-3 ms-3">
             <!-- <button class="btn btn-outline-dark p-3 fw-bold rounded-1" data-bs-target="#editprofiletForm"
@@ -36,6 +36,7 @@
 <script>
 import { accountService } from "../../services/AccountService";
 import { followsService } from "../../services/FollowsService.js";
+
 import Pop from "../../utils/Pop";
 
 export default {

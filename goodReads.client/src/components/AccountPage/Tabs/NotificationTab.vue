@@ -32,7 +32,9 @@ import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../../../AppState.js";
 import Pop from "../../../utils/Pop.js";
-import FollowCard from "../FollowCard.vue";
+// import FollowCard from "../../FollowCard.vue.js";
+
+
 
 export default {
   props: {},
@@ -49,7 +51,7 @@ export default {
       }
     };
   },
-  components: { FollowCard },
+  components: { },
 };
 </script>
 
