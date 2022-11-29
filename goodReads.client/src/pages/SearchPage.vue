@@ -91,7 +91,7 @@ export default {
     watchEffect(() => { });
     return {
       editable,
-      books: computed(() => AppState.sPBooks),
+      books: computed(() => AppState.sPBooks.sort(a=> a.averageRating -0.5 )),
       categories: computed(() => AppState.categories),
       test: computed(()=> AppState.categories[0]),
       index: computed(() => AppState.startIndex),

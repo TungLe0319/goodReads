@@ -62,11 +62,13 @@ class BookService {
   }
 
   async searchByCategory(term) {
-  
+  console.log(term +"+subject");
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q: term,
+        q: term +'+subject',
         maxResults: 24,
+        printType:'books',
+        projection:'full',
         startIndex: AppState.startIndex,
       },
     });
@@ -74,7 +76,9 @@ class BookService {
     AppState.totalItems = res.data.totalItems;
 
     console.log("totalItems", res.data.totalItems);
-    AppState.sPBooks = res.data.items.map((b) => new Book(b));
+    let results = res.data.items.map((b) => new Book(b));
+     AppState.sPBooks = results
+    // AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
   }
   async searchByAuthor(author) {
