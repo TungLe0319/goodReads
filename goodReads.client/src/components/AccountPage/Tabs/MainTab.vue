@@ -100,10 +100,10 @@ import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../../../AppState.js";
 import Pop from "../../../utils/Pop.js";
 import FavoritedBookCard from "../FavoritedBookCard.vue";
-import FollowCard from "../FollowCard.vue";
-import FollowerTab from "./FollowerTab.vue";
-import FollowingTab from "./FollowingTab.vue";
-import ReviewedBookCard from "../ReviewedBookCard.vue";
+import FollowCard from "../../FollowCard.vue";
+import FollowerTab from "../../FollowerTab.vue";
+import FollowingTab from "../../FollowingTab.vue";
+import ReviewedBookCard from "../../ReviewedBookCard.vue";
 
 import NotificationTab from "./NotificationTab.vue";
 export default {
