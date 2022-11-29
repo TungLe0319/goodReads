@@ -61,7 +61,7 @@
           <div class="col-md-4  mx-2 mb-md-0 mb-4">
             <!-- NOTE tung -->
             <div class="d-flex">
-              <img src="src/assets/img/Portraits/tungle.jpg" alt="" class="forcedImg elevation-5" />
+              <img src="src/assets/img/Portraits/tungle.jpg" alt="" class="forcedImg elevation-5 hover" />
               <div class="ms-3 d-flex align-items-center">
                 <a href="https://www.linkedin.com/in/tung-le0319
 " target="_blank" title="LinkedIn" class="text-white me-4">
@@ -77,7 +77,7 @@
             </div>
             <!-- NOTE tri -->
             <div class="d-flex">
-              <img src="src/assets/img/Portraits/trile.jpg" alt="" class="forcedImg elevation-5" />
+              <img src="src/assets/img/Portraits/trile.jpg" alt="" class="forcedImg elevation-5 hover" />
               <div class="ms-3 d-flex align-items-center">
                 <a href="https://www.linkedin.com/in/tri-le1122
 " target="_blank" title="LinkedIn" class="text-white me-4">
@@ -93,7 +93,7 @@
             </div>
             <!-- NOTE dan -->
             <div class="d-flex">
-              <img src="src/assets/img/Portraits/daniel-le.jpg" alt="" class="forcedImg elevation-5" />
+              <img src="src/assets/img/Portraits/daniel-le.jpg" alt="" class="forcedImg elevation-5 hover" />
               <div class="ms-3 d-flex align-items-center">
                 <a href="https://www.linkedin.com/in/daniel-le97/
 " target="_blank" title="LinkedIn" class="text-white me-4">
