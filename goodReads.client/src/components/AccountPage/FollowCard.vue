@@ -4,26 +4,25 @@
       <div class="d-flex align-items-center">
         <router-link
        
-          :to="{ name: 'Profile', params: { id: follow.profile?.id } }"
+          :to="{ name: 'Profile', params: { id: follow?.profile.id } }"
         >
           <img
-            :src="follow.profile.picture"
-            :alt="follow.profile.name"
-            :title="follow.profile.name"
+            :src="follow?.profile.picture"
+            :alt="follow?.profile.name"
+            :title="follow?.profile.name"
             class="forcedImg elevation-5"
           />
         </router-link>
 
         <div class="ms-4">
-          <p class="fs-4">@{{ follow.profile.name }}</p>
-          <p class="text-muted">Began Following on {{ follow.createdAt }}</p>
+          <p class="fs-4">@{{ follow?.profile.name }}</p>
+          <p class="text-muted">Began Following on {{ follow?.createdAt }}</p>
         </div>
       </div>
       <div class="">
     
         <button
-
-          v-if="!followers && accountPage"
+          v-if="!followers"
           @click="unFollowByUserId()"
           class="unFollow btn fs-5 me-3 btn-outline-danger border-0"
         >
@@ -37,12 +36,11 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
-import { useRoute } from "vue-router";
-import { AppState } from "../AppState.js";
-import { Follow } from "../models/Follow.js";
-import { followsService } from "../services/FollowsService.js";
-import { logger } from "../utils/Logger.js";
-import Pop from "../utils/Pop.js";
+import { AppState } from "../../AppState.js";
+import { Follow } from "../../models/Follow.js";
+import { followsService } from "../../services/FollowsService.js";
+import { logger } from "../../utils/Logger.js";
+import Pop from "../../utils/Pop.js";
 
 export default {
   props: {
@@ -53,13 +51,12 @@ export default {
 
     onMounted(() => {});
     watchEffect(() => {});
-const route = useRoute()
+
     return {
-      route,
       editable,
       profile: computed(() => AppState.activeProfile),
       account: computed(() => AppState.account),
-     accountPage: computed(() => route.name == "Account"),
+
       followers: computed(() =>
         AppState.followers.find(
           (f) => f.followingUserId == props.follow.followingUserId
@@ -73,9 +70,9 @@ const route = useRoute()
       ),
           async unFollowByUserId() {
         try {
-          let id = this.following.id
-          console.log(id);
-          await followsService.unFollowByUserId(id);
+          // let id = this.following.id
+          // console.log(id);
+          // await followsService.unFollowByUserId(id);
           Pop.success();
         } catch (error) {
           Pop.error(error, "[followingUserId]");
@@ -88,8 +85,7 @@ const route = useRoute()
 
 <style lang="scss" scoped>
 
-.unFollow {
-}
+
 .forcedImg {
   height: 60px;
   width: 60px;

@@ -6,7 +6,7 @@
           :src="profile.picture"
           :alt="profile.name"
           :title="profile.name"
-          class="rounded-circle profileImg elevation-5"
+          class="rounded-circle profileImg forcedImg elevation-5"
         />
       </div>
       <div class="col-8 d-flex flex-column justify-content-between">
@@ -16,7 +16,7 @@
             <!-- <p class="fs-5 text-muted">{{ profile.email }}</p> -->
           </div>
           <div class="mt-3 ms-3">
-            <!-- <button class="btn btn-outline-dark p-3 fw-bold rounded-1" data-bs-target="#editprofiletForm"
+            <!-- <button class="btn btn-outline-dark p-3 fw-bold rounded-1" data-bs-target="#editProfileForm"
               data-bs-toggle="modal">
               <i class="mdi mdi-pencil fs-5 "></i> Edit Profile
             </button> -->
@@ -64,7 +64,11 @@ export default {
   width: 200px;
   height: 200px;
 }
-
+.forcedImg{
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+}
 .name {
   font-size: 3em;
   font-family: "Abril Fatface", cursive;
