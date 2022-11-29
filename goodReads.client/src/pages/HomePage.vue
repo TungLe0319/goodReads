@@ -164,22 +164,22 @@ export default {
       quote: computed(() => AppState.quote),
       books: computed(() => AppState.books.slice([0], [16])),
       cookingBooks: computed(() =>
-        AppState.books.filter((b) => b.categories.includes("Cooking"))
+        AppState.books.filter((b) => b.categories.includes("Cooking")).slice([0],[24]).sort(()=> Math.random -0.5)
       ),
       scienceBooks: computed(() =>
-        AppState.books.filter((b) => b.categories.includes("Science"))
+        AppState.books.filter((b) => b.categories.includes("Science")).slice([0],[24]).sort(()=> Math.random -0.5)
       ),
       fictionBooks: computed(() =>
-        AppState.books.filter((b) => b.categories.includes("Fiction"))
+        AppState.books.filter((b) => b.categories.includes("Fiction")).slice([0],[24]).sort(()=> Math.random -0.5)
       ),
       natureBooks: computed(() =>
-        AppState.books.filter((b) => b.categories.includes("Nature"))
+        AppState.books.filter((b) => b.categories.includes("Nature")).slice([0],[24]).sort(()=> Math.random -0.5)
       ),
       historyBooks: computed(() =>
-        AppState.books.filter((b) => b.categories.includes("History"))
+        AppState.books.filter((b) => b.categories.includes("History")).slice([0],[24]).sort(()=> Math.random -0.5)
       ),
       bestSellers: computed(() =>
-        AppState.books.filter((b) => b.averageRating >= 5)
+        AppState.books.filter((b) => b.averageRating >= 5).slice([0],[24]).sort(()=> Math.random -0.5)
       ),
       async searchByQuery() {
         try {
