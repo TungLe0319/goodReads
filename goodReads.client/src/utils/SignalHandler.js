@@ -17,41 +17,51 @@ class SignalHub {
   /**
    * @param {String} url
    */
-  constructor(requiresAuth = false,) {
+  constructor(requiresAuth = false) {
     if (!useSocket) {
       return;
     }
     // let signalR = signalR
     this.socket = new HubConnectionBuilder()
-    .withUrl(baseURL + '/chathub')
-    .configureLogging(LogLevel.Debug)
-    .build()
-    this.connection = this.socket.connectionId
+      .withUrl(baseURL + "/chathub")
+      // .configureLogging(LogLevel.Debug)
+      .build();
+    this.user = null;
+    this.connectionId = null;
     this.requiresAuth = requiresAuth;
     this.queue = [];
     this.authenticated = false;
-    this
-      .on(SOCKET_EVENTS.connected, this.onConnected)
-      .on(SOCKET_EVENTS.authenticated, this.onAuthenticated)
-      .on(SOCKET_EVENTS.error, this.onError);
+    this.socket.onreconnecting(function(error){
+      logger.log("[SOCKET_CONNECTION]",error)
+    });
+    // this.socket.(function (error) {
+    //   this.onError(error);
+    // });
+    this.socket.onreconnected(function(connectionId) {
+      this.onReconnected(connectionId);
+    });
   }
 
-  start(){
-    this.socket?.start()
+  start() {
+    this.socket?.start();
   }
-  off(event, fn){
-    this.socket.off(event, fn.bind(this))
-    return this
+  off(event, fn) {
+    this.socket?.off(event, fn.bind(this));
+    return this;
   }
-  
+
+  invoke(methodName) {
+    this.socket?.invoke(methodName);
+  }
+
   on(event, fn) {
     this.socket.on(event, fn.bind(this));
     // logger.log(this.connection)
     return this;
   }
 
-  id(){
-  console.log(this.connected);
+  onReconnected(id) {
+    logger.log("[SOCKET_ID]", id);
   }
 
   onConnected(connection) {

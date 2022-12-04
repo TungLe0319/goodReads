@@ -52,7 +52,7 @@ export default {
   setup() {
     onMounted(() => {
       SignalHandler.start()
-      SignalHandler.id()
+      // SignalHandler.id()
       getMySQLBooks();
       // SignalHandler.socket.on("ReceiveMessage",function(message){
       //   Pop.success(`${message}`)
