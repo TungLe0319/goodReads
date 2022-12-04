@@ -181,6 +181,7 @@ export default {
     filter: saturate(120%);
     filter: brightness(70%);
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    cursor: pointer;
   }
   .card-title {
     opacity: 1;
