@@ -3,7 +3,13 @@ import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue({
+    template:{
+      transformAssetUrls:{
+        includeAbsolute:false
+      }
+    }
+  })],
   build: {
     outDir: "../goodReads/wwwroot",
     sourcemap: false,
