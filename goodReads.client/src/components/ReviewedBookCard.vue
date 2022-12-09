@@ -103,7 +103,7 @@ export default {
       account: computed(() => AppState.account),
       async deleteReview() {
         try {
-          console.log(props.review.book);
+       //   console.log(props.review.book);
           if (await Pop.confirm()) {
             let reviewId = props.review.id;
             await reviewsService.deleteReview(reviewId);

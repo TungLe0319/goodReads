@@ -186,7 +186,7 @@ export default {
       setActiveShelf(x) {
         let found = AppState.accountBookshelves.find((a) => a.type == x);
         AppState.activeBookShelf = found;
-        console.log(AppState.activeBookShelf);
+   //     console.log(AppState.activeBookShelf);
       },
       async removeFromBookShelf(id) {
         try {

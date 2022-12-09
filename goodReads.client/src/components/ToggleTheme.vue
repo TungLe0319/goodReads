@@ -39,7 +39,7 @@ props:{
     function getTheme(){
      
       let theme = AppState.theme
-      console.log(theme);
+    //  console.log(theme);
        document.body.setAttribute(
           "data-theme",
           theme ? "dark" : "light"
@@ -52,14 +52,14 @@ props:{
       editable,
           theme: computed(() => AppState.theme),
       toggleTheme(theme) {
-        console.log(theme);
+      //  console.log(theme);
         AppState.theme = !AppState.theme;
         document.body.setAttribute(
           "data-theme",
           AppState.theme ? "dark" : "light"
         );
         saveState('theme', AppState.theme)
-        console.log(AppState.theme);
+      //  console.log(AppState.theme);
       },
       }
     }

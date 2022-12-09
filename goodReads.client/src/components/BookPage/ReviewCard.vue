@@ -119,7 +119,7 @@ export default {
             followingUserId: props.review.creator.id,
           };
           // let hi = this.followId.id
-          console.log(id);
+       //   console.log(id);
 
           await followsService.followByUserId(id);
           Pop.success(`Following ${props.review.creator.name}`);
@@ -130,7 +130,7 @@ export default {
       async unFollowByUserId() {
         try {
           let id = this.following.id
-          console.log(id);
+     //     console.log(id);
           await followsService.unFollowByUserId(id);
           Pop.success(`UnFollowed ${props.review.creator.name}`);
         } catch (error) {

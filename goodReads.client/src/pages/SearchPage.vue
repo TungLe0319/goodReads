@@ -109,7 +109,7 @@ export default {
         try {
 
           let found = AppState.categories.find(c => c == newCategory)
-          console.log(found);
+     //     console.log(found);
 
           for (const category of AppState.categories) {
             if (category.name != newCategory.name) {

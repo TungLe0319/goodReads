@@ -62,7 +62,7 @@ class BookService {
   }
 
   async searchByCategory(term) {
-  console.log(term +"+subject");
+ // console.log(term +"+subject");
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: term +'+subject',
@@ -75,14 +75,14 @@ class BookService {
   
     AppState.totalItems = res.data.totalItems;
 
-    console.log("totalItems", res.data.totalItems);
+  //  console.log("totalItems", res.data.totalItems);
     let results = res.data.items.map((b) => new Book(b));
      AppState.sPBooks = results
     // AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
   }
   async searchByAuthor(author) {
-    console.log(author);
+  //  console.log(author);
     // AppState.categoryQuery
     const res = await googleBookApi.get("/volumes", {
       params: {
@@ -99,7 +99,7 @@ class BookService {
   }
 
   async getBookReviews(id) {
-    console.log(id);
+   // console.log(id);
     const res = await api.get(`api/reviews/${id}`);
     AppState.reviews = res.data.map((r) => new Review(r));
     // console.log(AppState.reviews);
@@ -112,7 +112,7 @@ class BookService {
   }
 
   async searchByTitle(title) {
-    console.log(title);
+   // console.log(title);
     const res = await googleBookApi.get("/volumes", {
       params: {
         q: title,
@@ -121,7 +121,7 @@ class BookService {
       },
     });
     AppState.aPBooks = res.data.items.map((a) => new Book(a));
-    console.log("totalItems", res.data.totalItems);
+    //console.log("totalItems", res.data.totalItems);
   }
 
   async getAuthorsList() {

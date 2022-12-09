@@ -98,7 +98,7 @@ export default {
       async searchByAuthor(a) {
         try {
           let author = a;
-          console.log(author);
+       //   console.log(author);
           await bookService.searchByAuthor(author);
         } catch (error) {
           Pop.error(error, "[searchByCategory]");

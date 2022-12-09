@@ -7,9 +7,9 @@ import { api } from "./AxiosService.js";
 class ProfilesService {
   async getProfile(id) {
     const res = await api.get(`api/profiles/${id}`);
-    console.log("activeProfile", res.data);
+   // console.log("activeProfile", res.data);
     AppState.activeProfile = res.data;
-    console.log(AppState.activeProfile);
+  //  console.log(AppState.activeProfile);
   }
 
   async getProfileBookshelves(id) {
@@ -28,7 +28,7 @@ class ProfilesService {
     const res = await api.get(`api/profiles/${id}/followers`);
     // console.log(res.data, "getProfileFollowers");
     AppState.activeProfileFollowers = res.data.map((a) => new Follow(a));
-    console.log("appState", AppState.activeProfileFollowers);
+ //   console.log("appState", AppState.activeProfileFollowers);
   }
 }
 

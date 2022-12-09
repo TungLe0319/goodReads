@@ -165,7 +165,7 @@ export default {
       setActive(book) {
         document.documentElement.scrollTop = 0;
         //IF NOT IN DATABASE PUSH
-        console.log(book);
+      //  console.log(book);
         // AppState.activeBook = book;
       },
     };

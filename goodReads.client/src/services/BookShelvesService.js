@@ -9,7 +9,7 @@ class BookShelvesService {
     // console.log(res.data);
     res.data.book = book
     let newBook = new ShelvedBook(res.data, true)
-    console.log(newBook);
+   // console.log(newBook);
 
 
 
@@ -32,12 +32,12 @@ class BookShelvesService {
       for (const book of shelved) {
         if (book.id == bookId) {
           shelf.hasActiveBook = true;
-          console.log(shelf);
+        //  console.log(shelf);
         }
       }
     }
-    console.log(AppState.accountShelvedBooks.map(s => new Object({title: s.title, shelf:s.bookShelfId})), "books");
-    console.log(AppState.accountBookshelves.map(g=> g.hasActiveBook), "shelves");
+  //  console.log(AppState.accountShelvedBooks.map(s => new Object({title: s.title, shelf:s.bookShelfId})), "books");
+  //  console.log(AppState.accountBookshelves.map(g=> g.hasActiveBook), "shelves");
   }
 }
 export const bookShelvesService = new BookShelvesService();

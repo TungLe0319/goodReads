@@ -36,7 +36,7 @@ export class Book {
 getReadyForDb(){
   for (const item in Book) {
     if (Array.isArray(item)) {
-      console.log(item);
+    //  console.log(item);
       
     }
   }

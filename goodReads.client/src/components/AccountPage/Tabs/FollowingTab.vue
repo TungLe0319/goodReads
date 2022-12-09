@@ -31,7 +31,7 @@ export default {
     onMounted(() => {});
     watchEffect(() => {
       if (AppState.activeProfileFollowing) {
-        console.log(AppState.activeProfileFollowing);
+       // console.log(AppState.activeProfileFollowing);
       }
     });
     

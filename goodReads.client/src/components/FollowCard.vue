@@ -74,7 +74,7 @@ const route = useRoute()
           async unFollowByUserId() {
         try {
           let id = this.following.id
-          console.log(id);
+      //    console.log(id);
           await followsService.unFollowByUserId(id);
           Pop.success();
         } catch (error) {

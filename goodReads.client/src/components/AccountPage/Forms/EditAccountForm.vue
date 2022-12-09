@@ -70,11 +70,11 @@ export default {
         }
       },
       onFileSelected(event) {
-        console.log(event.target.files[0]);
+     //   console.log(event.target.files[0]);
         let test = event.target.files[0];
         AppState.filePicker = test;
-        console.log(AppState.filePicker);
-        console.log(";hi");
+    //    console.log(AppState.filePicker);
+    //    console.log(";hi");
       },
     };
   },
