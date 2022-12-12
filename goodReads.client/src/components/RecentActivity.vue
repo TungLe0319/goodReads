@@ -3,9 +3,12 @@
     <b class="ms-3 mt-2"> Recent Activity</b>
     <p class="text-muted ms-3 my-2 mb-0">Follow these easy steps.</p>
     <p class="text-muted ms-3 my-2">Help us create better Recommendations for you</p>
-    <div class="card-body">
-   <ReviewedBookCard  :review="r" v-for="r in review" />
-<FollowCard v-for="f in following"   :follow="f"/>
+    <div class="card-body  ">
+      <div class=" ">
+
+        <ReviewedBookCard  :review="r" v-for="r in review" />
+      </div>
+<!-- <FollowCard v-for="f in following"   :follow="f"/> -->
     </div>
   </div>
 </template>
@@ -38,5 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.review{
+  transform: scale(0.75);
+}
 </style>

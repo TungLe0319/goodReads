@@ -6,18 +6,9 @@ import { api } from "./AxiosService.js";
 class BookShelvesService {
   async addToBookShelf(data, book) {
     const res = await api.post("api/shelvedbooks", data);
-    // console.log(res.data);
     res.data.book = book
     let newBook = new ShelvedBook(res.data, true)
-   // console.log(newBook);
-
-
-
-
-   
-
     AppState.accountShelvedBooks = [...AppState.accountShelvedBooks, newBook]
-    // addMany(AppState.accountShelvedBooks, res.data, new ShelvedBook)
   }
   findBook() {
     AppState.accountBookshelves.forEach(s => s.hasActiveBook = false)
@@ -32,12 +23,10 @@ class BookShelvesService {
       for (const book of shelved) {
         if (book.id == bookId) {
           shelf.hasActiveBook = true;
-        //  console.log(shelf);
         }
       }
     }
-  //  console.log(AppState.accountShelvedBooks.map(s => new Object({title: s.title, shelf:s.bookShelfId})), "books");
-  //  console.log(AppState.accountBookshelves.map(g=> g.hasActiveBook), "shelves");
+
   }
 }
 export const bookShelvesService = new BookShelvesService();

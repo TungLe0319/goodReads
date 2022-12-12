@@ -23,25 +23,9 @@ public class AccountController : IController
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
 
-      // var options = new PusherOptions
-      // {
-      //   Cluster = "us3",
-      //   Encrypted = true
-      // };
+    
+      // await _hubContext.Clients.All.SendAsync("ReceiveMessage", new String(userInfo.Name + ", is online"));
 
-      // var pusher = new Pusher(
-      //   "1512865",
-      //   "5b205b8c9c1634b6853d",
-      //   "6e33b4ad32d2e6ff6e29",
-      //   options);
-
-      await _hubContext.Clients.All.SendAsync("ReceiveMessage", new String(userInfo.Name + ", is online"));
-
-// await _hubContext.Clients.Client.SendAsync("ReceiveMessage", new String ())
-      // var result = await pusher.TriggerAsync(
-      //   "my-channel",
-      //   "my-event",
-      //   new { user = userInfo });
 
       return Ok(_accountService.GetOrCreateProfile(userInfo));
     }

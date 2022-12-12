@@ -14,13 +14,13 @@
         <div class="mb-3">
           <label for="" class="form-label">Add to BookShelf</label>
           <div class="dropdown open">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+            <button class="btn btn-outline-dark dropdown-toggle " type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                <span v-if="shelf" :class="shelf.hasActiveBook? 'text-warning noSelect': 'text-primary'" type="button" :disabled="shelf.hasActiveBook">{{shelf.type}}</span>
                <span v-else>{{"pick a shelf"}}</span>
                 </button>
             <div class="dropdown-menu" aria-labelledby="triggerId">
-              <button class="dropdown-item" v-for="b in bookShelves">
+              <button class="dropdown-item btn selectable " v-for="b in bookShelves">
                 <span :class="b.hasActiveBook? 'text-warning noSelect' : 'text-primary'" @click="makeActiveShelf(b)">
                   {{b.type}}
                 </span>
@@ -154,6 +154,7 @@ export default {
           };
         
           await bookShelvesService.addToBookShelf(data,book);
+          Pop.success(`${AppState.activeBook.title} added to your ${AppState.activeBookShelf.type} shelf`)
         } catch (error) {
           Pop.error(error, "[addToBookShelf]");
         }

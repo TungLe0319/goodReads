@@ -69,10 +69,8 @@ export const AppState = reactive({
   totalItems: 0,
   startIndex: 0,
   categories: [
-    { name: "Performing Arts", checked: false },
     { name: "Psychology", checked: false },
     { name: "Religion", checked: false },
-    { name: "Biomechanics", checked: false },
     { name: "Nature", checked: false },
     { name: "Social Science", checked: false },
     { name: "History", checked: false },
@@ -92,7 +90,6 @@ export const AppState = reactive({
     { name: "Law", checked: false },
     { name: "Humor", checked: false },
     { name: "Sports & Recreation", checked: false },
-    { name: "Bereavement", checked: false },
     { name: "Poetry", checked: false },
     { name: "Art", checked: false },
     { name: "Education", checked: false },
