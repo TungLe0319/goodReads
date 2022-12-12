@@ -19,4 +19,4 @@ registerGlobalComponents(root)
 root
   .use(router)
   .mount('#app')
-  // .use(VueSignalR, {connection})
+ 
