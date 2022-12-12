@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mb-5">
         <AccountDetails :account="account" />
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 mb-5">
      <MainTab/>
       </div>
     </div>

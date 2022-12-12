@@ -48,7 +48,7 @@
           <!-- <b class="authors mx-2" v-for="a in book.authors">{{ a }}</b> -->
           <b class="authors mx-2 text-dark selectable p-1 rounded" v-for="a in book.authors"  @click="searchByCategory(a)" :title="book.authors"> {{a}} </b>
         </div>
-        <div v-if="book.averageRating >= 1" class="d-flex align-items-center">
+        <div v-if=" book.averageRating.toFixed >1 " class="d-flex align-items-center">
           <i
             class="mdi mdi-star fs-3 text-create"
             v-for="i in book.averageRating"
