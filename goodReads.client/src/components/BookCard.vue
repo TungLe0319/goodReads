@@ -88,10 +88,10 @@ export default {
           document.documentElement.scrollTop = 0;
           //IF NOT IN DATABASE PUSH
           AppState.activeBook = book;
-          if (bookShelvesService.findBook()) {
+       bookShelvesService.findBook()
             
             await bookService.addBookToDb(book);
-          }
+   
           
           router.push({ name: "Book", params: { id: book.id } });
           // console.log(AppState.activeBook);

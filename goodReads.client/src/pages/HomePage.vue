@@ -54,6 +54,7 @@
           <EasyStepsCard />
 
           <LeaveFeedBackCard />
+          <RecentActivity/>
         </div>
       </div>
     </div>
@@ -124,6 +125,7 @@ import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
 import EasyStepsCard from "../components/EasyStepsCard.vue";
 import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
+import RecentActivity from "../components/RecentActivity.vue";
 import { SQLBook } from "../models/SQLBook.js";
 import { bookService } from "../services/BookService.js";
 import { quotesService } from "../services/QuotesService.js";
@@ -201,7 +203,7 @@ export default {
       },
     };
   },
-  components: { EasyStepsCard, LeaveFeedBackCard, SQLBook, BookCard },
+  components: { EasyStepsCard, LeaveFeedBackCard, SQLBook, BookCard, RecentActivity },
 };
 </script>
 

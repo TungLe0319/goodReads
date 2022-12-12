@@ -48,21 +48,22 @@
           <!-- <b class="authors mx-2" v-for="a in book.authors">{{ a }}</b> -->
           <b class="authors mx-2 text-dark selectable p-1 rounded" v-for="a in book.authors"  @click="searchByCategory(a)" :title="book.authors"> {{a}} </b>
         </div>
-        <div v-if=" book.averageRating.toFixed >1 " class="d-flex align-items-center">
+        <!-- <div class="d-flex align-items-center">
           <i
             class="mdi mdi-star fs-3 text-create"
             v-for="i in book.averageRating"
+         
           ></i>
           <h4 class="text-dark">{{ book.averageRating }}</h4>
-        </div>
-
+        </div> -->
+<!-- 
         <div v-else class="d-flex align-items-center">
           <i
             class="mdi mdi-star fs-3 text-grey"
             v-for="i in 5"
           ></i>
           <h4 class="ms-2">no ratings</h4>
-        </div>
+        </div> -->
         <div class="border-bottom border-2 my-3 border-muted"></div>
         <div>
           <p class="lead text-dark">
