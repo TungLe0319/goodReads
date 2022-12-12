@@ -1,18 +1,20 @@
 <template>
-  <div class="container p-5" v-if="books">
-
-    <div class="row mb-5">
+  <div class="container-fluid p-0">
+       <div class="row mb-5">
       <div class="col-md-12">
-        <div class="card elevation-5 border-0">
+        <div class="card  border-0">
           <img src="https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg" alt=""
             class="bannerImg" />
+
           <div
             class="card-img-overlay align-items-center d-flex justify-content-center flex-column justify-content-evenly">
-            <div class=" text-constantLight text-decoration-underline 4border-bottom border-3">
-              <h1 class="text-shadow abril">Find Your Book, Find Your Why</h1>
+            <div class=" text-constantLight ">
+              <h1 class="text-shadow abril text-center display-4">Find Your Book, Find Your Why <br>
+              Become Better After Books</h1>
+              
             </div>
 
-            <figure class="text-shadow px-5">
+            <figure class="text-shadow px-5 mb-5">
               <blockquote class="blockquote text-constantLight ">
                 <p>
                   <i class="mdi mdi-format-quote-open"></i> {{ quote?.content }} <i
@@ -20,7 +22,7 @@
                 </p>
 
               </blockquote>
-              <figcaption class="blockquote-footer text-constantLight">
+              <figcaption class="blockquote-footer text-constantLight text-center mt-3">
                 {{ quote?.author }}
               </figcaption>
             </figure>
@@ -29,6 +31,10 @@
       </div>
     </div>
 
+  </div>
+  <div class="container p-5" v-if="books">
+
+ 
     <div class="row">
       <div class="col-md-8">
 
@@ -200,6 +206,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+
 .animate__fadeIn {
   animation-duration: 100ms;
   animation-delay: 100ms;
@@ -228,7 +236,7 @@ export default {
 
 .bannerImg {
   width: auto;
-  height: 300px;
+  height: 500px;
   object-fit: cover;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   filter: brightness(80%);

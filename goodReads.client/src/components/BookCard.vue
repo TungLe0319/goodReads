@@ -31,7 +31,7 @@
         {{ a }}
       </p>
     </router-link>
-    <router-link :to="{ name: 'Search' }" class="text-dark">
+    <router-link :to="{ name: 'Search' }" class="text-dark" >
       <p
         @click="searchByCategory(b)"
         v-for="b in book.categories"
@@ -40,6 +40,15 @@
         {{ b }}
       </p>
     </router-link>
+    <!-- <router-link :to="{ name: 'Search' }" class="text-dark" v-else>
+      <p
+        @click="searchByCategory(b)"
+
+        class="link mb-0"
+      >
+        {{ book.categories }}
+      </p>
+    </router-link> -->
   </div>
 </template>
 

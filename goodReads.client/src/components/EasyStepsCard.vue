@@ -47,7 +47,7 @@
           <p class="bg-create rounded-circle p-2 mb-0 px-3">5</p>
           <p class="mb-0 ms-2 text-decoration-underline">Recommend a book</p>
         </li>
-        <div class="p-3">
+        <!-- <div class="p-3">
           <h2>TODO LIST FOR APP</h2>
         <li>Profile Page want it pretty much similar to Account with your touch on how it will look
 
@@ -64,7 +64,7 @@
         <li>Change SearchPageBookCard to BookCard throughout pages</li>
         <li> HOME PAGE book AUthors, need to .split them to individual authors</li>
         </div>
-        
+         -->
       </ul>
     </div>
   </div>

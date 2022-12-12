@@ -65,18 +65,19 @@ class BookService {
  // console.log(term +"+subject");
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q: term +'+subject',
+        q: term ,
         maxResults: 24,
         printType:'books',
-        projection:'full',
+        filter:'full',
         startIndex: AppState.startIndex,
       },
     });
   
-    AppState.totalItems = res.data.totalItems;
+    // AppState.totalItems = res.data.totalItems;
 
   //  console.log("totalItems", res.data.totalItems);
     let results = res.data.items.map((b) => new Book(b));
+    
      AppState.sPBooks = results
     // AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
