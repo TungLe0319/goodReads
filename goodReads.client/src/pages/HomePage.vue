@@ -59,9 +59,23 @@
       </div>
     </div>
     <section>
-
       <div class="mt-4">
         <h2 class="categoryTitle text-dark">Cooking</h2>
+         <!-- <swiper
+    :slidesPerView="6"
+    :spaceBetween="30"
+     :navigation="true"
+        :loop="true"
+    :pagination="{
+      clickable: true,
+    }"
+    :modules="modules"
+    class="mySwiper"
+  >
+    <swiper-slide v-for="c in cookingBooks" :key="c.id"> 
+            <BookCard :book="c" />
+         </swiper-slide>
+  </swiper> -->
         <div class="row scrollX">
           <div class="col-md-2 gy-3" v-for="c in cookingBooks" :key="c.id">
             <BookCard :book="c" />
@@ -126,23 +140,27 @@ import BookCard from "../components/BookCard.vue";
 import EasyStepsCard from "../components/EasyStepsCard.vue";
 import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
 import RecentActivity from "../components/RecentActivity.vue";
+import SwiperTest from "../components/SwiperTest.vue";
 import { SQLBook } from "../models/SQLBook.js";
 import { bookService } from "../services/BookService.js";
 import { quotesService } from "../services/QuotesService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
-// import { useSignalR } from '@dreamonkey/vue-signalr';
-// import { inject } from 'vue';
+import { Swiper, SwiperSlide } from "swiper/vue";
 
+// Import Swiper styles
+import "swiper/css";
+
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Pagination,Navigation } from "swiper";
 export default {
   setup() {
-    // const signalR = useSignalR()
+   
     onMounted(() => {
       getQuote()
       // getMySQLBooks();
-      // signalR.on("ReceiveMessage", ({message}) =>{
-      //   Pop.success(`${message}`)
-      // })
+  
 
     });
     async function getMySQLBooks() {
@@ -201,9 +219,11 @@ export default {
           logger.error(error);
         }
       },
+        modules: [Pagination,Navigation],
     };
   },
-  components: { EasyStepsCard, LeaveFeedBackCard, SQLBook, BookCard, RecentActivity },
+  components: { EasyStepsCard, LeaveFeedBackCard, SQLBook, BookCard, RecentActivity, SwiperTest,  Swiper,
+    SwiperSlide, },
 };
 </script>
 

@@ -46,20 +46,20 @@ import Pop from "./utils/Pop";
 import { bookService } from "./services/BookService";
 import ToggleTheme from "./components/ToggleTheme.vue";
 import { loadState } from "./utils/Store";
-import SignalHandler from "./utils/SignalHandler";
+
 
 export default {
   setup() {
     onMounted(() => {
-      SignalHandler.start()
+      // SignalHandler.start()
       // SignalHandler.id()
       getMySQLBooks();
       // SignalHandler.socket.on("ReceiveMessage",function(message){
       //   Pop.success(`${message}`)
       // })
-      SignalHandler.on("ReceiveMessage", function(message){
-       getMessage(message)
-      })
+      // SignalHandler.on("ReceiveMessage", function(message){
+      //  getMessage(message)
+      // })
     })
     function getMessage(message){
       Pop.success(`${message}`)
