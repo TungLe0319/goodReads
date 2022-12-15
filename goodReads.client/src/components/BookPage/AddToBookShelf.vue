@@ -65,18 +65,18 @@
             href="https://www.twitter.com"
           >
             <img
-              src="src\assets\img\ShareIcons\twitter.png"
+              src="/src\assets\img\ShareIcons\twitter.png"
               alt=""
               width="30"
             />
           </a>
 
           <a href="mailto:">
-            <img src="src\assets\img\ShareIcons\email.png" alt="" width="30" />
+            <img src="/src\assets\img\ShareIcons\email.png" alt="" width="30" />
           </a>
           <img
             class="link"
-            src="src\assets\img\ShareIcons\link.png"
+            src="/src\assets\img\ShareIcons\link.png"
             alt=""
             width="30"
             @click="copyToClipBoard()"
@@ -88,7 +88,7 @@
             href="https://www.facebook.com"
           >
             <img
-              src="src\assets\img\ShareIcons\facebook.png"
+              src="/src\assets\img\ShareIcons\facebook.png"
               alt=""
               width="30"
             />
@@ -100,7 +100,7 @@
             href="http://pinterest.com"
           >
             <img
-              src="src\assets\img\ShareIcons\pinterest.png"
+              src="/src\assets\img\ShareIcons\pinterest.png"
               alt=""
               width="30"
             />

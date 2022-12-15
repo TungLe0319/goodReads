@@ -11,8 +11,8 @@ export default defineConfig({
     }
   })],
   build: {
-    outDir: "../goodReads/wwwroot",
-    sourcemap: false,
+    outDir: '../goodReads/wwwroot',
+    sourcemap: false
   },
   server: {
     port: 8080,

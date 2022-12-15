@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-light text-dark my-3 square position-relative">
     <div class="recommended" v-if="review.recommend">
-      <img src="src\assets\img\bookMark.png" alt="" width="40" />
+      <img src="../../../src/assets/img/bookMark.png" alt="" width="40" />
     </div>
     <div class="d-flex align-items-center justify-content-between px-5 pt-3 pb-2">
       <div class="d-flex align-items-center">
@@ -41,7 +41,7 @@
           {{ new Date(review.createdAt).toLocaleString() }}
         </p>
         <button v-if="review.creator.id == account.id" @click="deleteReview()" class="btn ms-3" title="Delete Review">
-          <img src="src\assets\img\delete.png" alt="delete Icon" width="40" />
+          <img src="../../../src\assets\img\delete.png" alt="delete Icon" width="40" />
         </button>
       </div>
     </div>

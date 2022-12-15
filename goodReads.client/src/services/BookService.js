@@ -28,7 +28,19 @@ class BookService {
   }
   async searchByQuery(term) {
     AppState.categories.forEach((c) => (c.checked = false));
-    const res = await googleBookApi.get("/volumes", {
+
+let res
+
+// if (AppState.categoryQuery) {
+//    res = await googleBookApi.get("/volumes", {
+//      params: {
+//        q: term,
+//        maxResults: 24,
+//      },
+//    });
+// }
+
+     res = await googleBookApi.get("/volumes", {
       params: {
         q: term,
         maxResults: 24,

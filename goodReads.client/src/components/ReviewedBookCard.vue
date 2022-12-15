@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-transparent my-3 square position-relative">
     <div class="recommended" v-if="review.recommend">
-      <img src="src\assets\img\bookMark.png" alt="" width="40" />
+      <img src="../../src/assets/img/bookMark.png" alt="" width="40" />
     </div>
     <div
       class="d-flex align-items-center justify-content-between px-5 pt-3 pb-2"
@@ -29,7 +29,7 @@
           class="btn p-0 me-3"
         >
           <img
-            src="src\assets\img\follow.png"
+            src="../../src/assets/img/follow.png"
             alt="follow icon"
             width="40"
             title="Follow This User"
@@ -42,7 +42,7 @@
           class="btn ms-3"
           title="Delete Review"
         >
-          <img src="src\assets\img\delete.png" alt="delete Icon" width="40" />
+          <img src="../../src\assets/img/delete.png" alt="delete Icon" width="40" />
         </button>
       </div>
     </div>
