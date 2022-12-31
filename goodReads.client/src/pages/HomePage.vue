@@ -17,13 +17,14 @@
             <figure class="text-shadow px-5 mb-5">
               <blockquote class="blockquote text-constantLight ">
                 <p>
-                  <i class="mdi mdi-format-quote-open"></i> {{ quote?.content }} <i
+                  <i class="mdi mdi-format-quote-open"></i>Good friends, good books, and a sleepy conscience: this is the ideal life.
+<i
                     class="mdi mdi-format-quote-close"></i>
                 </p>
 
               </blockquote>
               <figcaption class="blockquote-footer text-constantLight text-center mt-3">
-                {{ quote?.author }}
+                Mark Twain
               </figcaption>
             </figure>
           </div>
@@ -147,7 +148,6 @@ import { quotesService } from "../services/QuotesService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 import { Swiper, SwiperSlide } from "swiper/vue";
-
 // Import Swiper styles
 import "swiper/css";
 
@@ -158,8 +158,8 @@ export default {
   setup() {
    
     onMounted(() => {
-      getQuote()
-      // getMySQLBooks();
+      // getQuote()
+      // // getMySQLBooks();
   
 
     });
@@ -177,13 +177,13 @@ export default {
         Pop.error(error, "[getBooks]");
       }
     }
-    async function getQuote() {
-      try {
-        await quotesService.getQuote();
-      } catch (error) {
-        Pop.error(error, "[getBooks]");
-      }
-    }
+    // async function getQuote() {
+    //   try {
+    //     await quotesService.getQuote();
+    //   } catch (error) {
+    //     Pop.error(error, "[getBooks]");
+    //   }
+    // }
     let editable = ref({});
     return {
       editable,
