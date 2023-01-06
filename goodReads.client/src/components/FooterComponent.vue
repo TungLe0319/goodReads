@@ -83,7 +83,7 @@
               </div>
             </div>
             <!-- NOTE tri -->
-            <div class="d-flex">
+            <div class="d-flex my-3">
               <img src="../../src/assets/img/Portraits/trile.jpg" alt="" class="forcedImg elevation-5 hover" />
               <div class="ms-3 d-flex align-items-center">
                 <a href="https://www.linkedin.com/in/tri-le1122
@@ -99,7 +99,7 @@
               </div>
             </div>
             <!-- NOTE dan -->
-            <div class="d-flex">
+            <div class="d-flex mb-2">
               <img src="../../src/assets/img/Portraits/daniel-le.jpg" alt="" class="forcedImg elevation-5 hover" />
               <div class="ms-3 d-flex align-items-center">
                 <a href="https://www.linkedin.com/in/daniel-le97/

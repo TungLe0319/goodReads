@@ -40,15 +40,7 @@
         {{ b }}
       </p>
     </router-link>
-    <!-- <router-link :to="{ name: 'Search' }" class="text-dark" v-else>
-      <p
-        @click="searchByCategory(b)"
-
-        class="link mb-0"
-      >
-        {{ book.categories }}
-      </p>
-    </router-link> -->
+  
   </div>
 </template>
 
@@ -71,7 +63,7 @@ export default {
   },
   setup(props) {
     const editable = ref({});
-
+const loading = ref(false)
     onMounted(() => {});
     watchEffect(() => {});
     const route = useRoute();
@@ -184,6 +176,10 @@ export default {
     height: 275px;
     object-fit: cover;
     object-position: center;
+    //when screen is 768px OR LESS
+    @media only screen and (max-width: 1100px){
+    height: 200px;
+    }
   }
 }
 .card:hover {

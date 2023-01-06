@@ -245,6 +245,10 @@ export default {
   flex-wrap: nowrap;
   overflow-x: auto;
   height: 31em;
+  //when screen is 768px OR LESS
+  @media only screen and (max-width: 1100px){
+  height: 28em;
+  }
 }
 
 .blockquote {

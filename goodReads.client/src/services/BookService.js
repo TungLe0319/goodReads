@@ -41,11 +41,18 @@ let res
 // }
 
      res = await googleBookApi.get("/volumes", {
-      params: {
-        q: term,
-        maxResults: 24,
-      },
-    });
+       params: {
+         q: term,
+         maxResults: 24,
+         printType: "books", // only include books
+         filter: "full",
+         startIndex: AppState.startIndex,
+         rating: "4", // only include books with a rating of 4 or higher
+         inLanguage: "en", // only include books written in English
+         subject: "description", // only include books that have a description
+         type: "written_work", // only include written works (excludes research papers, comics, etc.)
+       },
+     });
     // console.log(res.data.items);
     let books = res.data.items.map((b) => new Book(b));
    
@@ -74,14 +81,19 @@ let res
   }
 
   async searchByCategory(term) {
- // console.log(term +"+subject");
+ console.log(term +"+subject");
+//  AppState.categoryQuery = term
     const res = await googleBookApi.get("/volumes", {
       params: {
-        q: term ,
+        q: term,
         maxResults: 24,
-        printType:'books',
-        filter:'full',
+        printType: "books", // only include books
+        filter: "full",
         startIndex: AppState.startIndex,
+        rating: "4", // only include books with a rating of 4 or higher
+        inLanguage: "en", // only include books written in English
+        subject: "description", // only include books that have a description
+        type: "written_work", // only include written works (excludes research papers, comics, etc.)
       },
     });
   
