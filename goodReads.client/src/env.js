@@ -5,3 +5,6 @@ export const useSocket = true;
 export const domain = "bobocat.us.auth0.com";
 export const audience = "https://bcw-demos.com";
 export const clientId = "Acd91zZtHgbEyChg4MW53440xBdm6cqE";
+export const googleKey = "AIzaSyD9yWL4YCXZQCBWflNJJOOrYQvTIyw6_gg";
+
+

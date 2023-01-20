@@ -1,12 +1,12 @@
 import Axios from 'axios'
-import { baseURL } from '../env'
+import { baseURL, googleKey } from '../env'
 export const api = Axios.create({
   baseURL,
   timeout: 8000
 })
 export const googleBookApi = Axios.create({
   baseURL: "https://www.googleapis.com/books/v1",
-  params: { key: "AIzaSyD9yWL4YCXZQCBWflNJJOOrYQvTIyw6_gg" },
+  params: { key: googleKey},
   timeout: 8000,
 });
 

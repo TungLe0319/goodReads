@@ -36,6 +36,10 @@
     "editor.codeActionsOnSave": {
       "source.fixAll": true
     },
-    "cSpell.words": ["favoritebooks", "shelvedbooks"]
+    "cSpell.words": [
+      "favoritebooks",
+      "shelvedbooks"
+    ],
+    "nuxt.isNuxtApp": false
   }
 }
