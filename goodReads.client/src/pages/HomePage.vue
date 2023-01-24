@@ -11,7 +11,7 @@
             <div class=" text-constantLight ">
               <h1 class="text-shadow abril text-center display-4">Find Your Book, Find Your Why <br>
               Become Better After Books</h1>
-              
+
             </div>
 
             <figure class="text-shadow px-5 mb-5">
@@ -35,7 +35,7 @@
   </div>
   <div class="container p-5" v-if="books">
 
- 
+
     <div class="row">
       <div class="col-md-8">
 
@@ -73,7 +73,7 @@
     :modules="modules"
     class="mySwiper"
   >
-    <swiper-slide v-for="c in cookingBooks" :key="c.id"> 
+    <swiper-slide v-for="c in cookingBooks" :key="c.id">
             <BookCard :book="c" />
          </swiper-slide>
   </swiper> -->
@@ -138,9 +138,9 @@ import { computed, ref } from "@vue/reactivity";
 import { onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import BookCard from "../components/BookCard.vue";
-import EasyStepsCard from "../components/EasyStepsCard.vue";
-import LeaveFeedBackCard from "../components/LeaveFeedBackCard.vue";
-import RecentActivity from "../components/RecentActivity.vue";
+import EasyStepsCard from "../components/HomePage/EasyStepsCard.vue";
+import LeaveFeedBackCard from "../components/HomePage/LeaveFeedBackCard.vue";
+import RecentActivity from "../components/HomePage/RecentActivity.vue";
 import SwiperTest from "../components/SwiperTest.vue";
 import { SQLBook } from "../models/SQLBook.js";
 import { bookService } from "../services/BookService.js";
@@ -156,11 +156,11 @@ import "swiper/css/navigation";
 import { Pagination,Navigation } from "swiper";
 export default {
   setup() {
-   
+
     onMounted(() => {
       // getQuote()
       // // getMySQLBooks();
-  
+
 
     });
     async function getMySQLBooks() {

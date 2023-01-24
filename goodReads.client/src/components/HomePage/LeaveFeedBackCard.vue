@@ -1,13 +1,13 @@
 <template>
-     
+
         <div id="feedBack" class="card p-2  border-0 bg-secondary easySteps elevation-2">
           <b class="ms-3 mt-2">Have feedback? We're more than happy to listen</b>
-        
+
           <div class="card-body">
             <form @submit.prevent="sendFeedBack()">
 
               <div class="mb-3">
-           
+
                 <textarea v-model="editable.body" class="form-control" name="feedBack" id="feedBack" rows="5"></textarea>
               </div>
 
@@ -24,11 +24,11 @@
 
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
-import { AppState } from "../AppState.js";
-import { accountService } from "../services/AccountService.js";
-import { feedBackService } from "../services/FeedBackService.js";
-import { logger } from "../utils/Logger.js"
-import Pop from "../utils/Pop.js";
+import { AppState } from "../../AppState.js";
+import { accountService } from "../../services/AccountService.js";
+import { feedBackService } from "../../services/FeedBackService.js";
+import { logger } from "../../utils/Logger.js"
+import Pop from "../../utils/Pop.js";
 
 export default {
 props:{
@@ -36,7 +36,7 @@ props:{
        },
   setup(props) {
     const editable = ref({});
-    
+
     onMounted(() => {
 
     });

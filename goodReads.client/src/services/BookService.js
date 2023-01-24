@@ -45,7 +45,8 @@ let res
          q: term,
          maxResults: 24,
          printType: "books", // only include books
-         filter: "full",
+         projection:"full",
+         filter: "ebooks",
          startIndex: AppState.startIndex,
          rating: "4", // only include books with a rating of 4 or higher
          inLanguage: "en", // only include books written in English
@@ -55,7 +56,7 @@ let res
      });
     // console.log(res.data.items);
     let books = res.data.items.map((b) => new Book(b));
-   
+
     AppState.sPBooks = books;
     // console.log(AppState.sPBooks);
   }
@@ -77,7 +78,7 @@ let res
 
   async getBookInformation(id) {
     const res = await googleBookApi.get(`/volumes/${id}`);
-  
+
   }
 
   async searchByCategory(term) {
@@ -96,12 +97,12 @@ let res
         type: "written_work", // only include written works (excludes research papers, comics, etc.)
       },
     });
-  
+
     // AppState.totalItems = res.data.totalItems;
 
   //  console.log("totalItems", res.data.totalItems);
     let results = res.data.items.map((b) => new Book(b));
-    
+
      AppState.sPBooks = results
     // AppState.sPBooks = res.data.items.map((b) => new Book(b));
 
