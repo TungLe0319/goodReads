@@ -1,11 +1,11 @@
 <template>
-  <div class="card p-2 bg-transparent border-0 bg-secondary easySteps elevation-2">
+  <div class="card  bg-transparent border-0 bg-secondary easySteps elevation-2">
     <b class="ms-3 mt-2"> Recent Activity</b>
 
-    <div class="card-body  ">
-      <div class=" ">
+    <div class="card-body  p-0 ">
+      <div class="  "  v-for="r in review" >
 
-        <ReviewedBookCard  :review="r" v-for="r in review" />
+        <ReviewedBookCard  :review="r" class=" " />
       </div>
 <!-- <FollowCard v-for="f in following"   :follow="f"/> -->
     </div>
@@ -20,6 +20,7 @@ import { logger } from "../../utils/Logger.js";
 import Pop from "../../utils/Pop.js";
 import ReviewCard from "../BookPage/ReviewCard.vue";
 import FollowCard from "../FollowCard.vue";
+import ReviewedBookCard from "../ReviewedBookCard.vue";
 
 export default {
     props: {},
@@ -35,7 +36,7 @@ export default {
             following: computed(() => AppState.following.filter(a=> a.createdAt != AppState.following[0].createdAt)),
         };
     },
-    components: { ReviewCard, FollowCard }
+    components: { ReviewCard, FollowCard, ReviewedBookCard }
 };
 </script>
 
@@ -43,4 +44,6 @@ export default {
 .review{
   transform: scale(0.75);
 }
+
+
 </style>
