@@ -45,8 +45,11 @@
         <li :class="recommended ? 'opacity-50' : ''"
           class="list-group-item bg-transparent border-0 d-flex align-items-center">
           <p class="bg-create rounded-circle p-2 mb-0 px-3">5</p>
-          <p class="mb-0 ms-2 text-decoration-underline">Recommend a book</p>
+          <p class="mb-0 ms-2 text-decoration-underline">Recommend a book or two</p>
         </li>
+
+
+
         <!-- <div class="p-3">
           <h2>TODO LIST FOR APP</h2>
 
