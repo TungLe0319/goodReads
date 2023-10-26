@@ -3,7 +3,6 @@
     <Navbar class="" />
   </header>
   <main class="  mb-5  pb-5">
-sdkjfaslkdjhflkajhsdlkaksjdfhlkajshdflkjahsldfkhalksdhjflakshdflkajhsdflkjahsdlkfjhalksjdhflkajshdflkajhsdklfjhaslkdfjhalksjhdf
     <router-view />
   </main>
 
