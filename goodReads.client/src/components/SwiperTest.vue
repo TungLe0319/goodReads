@@ -1,42 +1,43 @@
-<template>
+<!-- <template>
   <swiper
     :slides-per-view="1"
     :space-between="50"
     @swiper="onSwiper"
     @slideChange="onSlideChange"
   >
-    <swiper-slide>  
+    <swiper-slide>
       <slot>
-        
+
       </slot>
        </swiper-slide>
- 
+
 
   </swiper>
 </template>
-<script>
+<script setup>
   // Import Swiper Vue.js components
-  import { Swiper, SwiperSlide } from 'swiper/vue';
+  // import { Swiper, SwiperSlide } from 'swiper/vue';
 
+import {Swiper,SwiperSlide} from 'swiper'
   // Import Swiper styles
   import 'swiper/css';
-
-  export default {
-    components: {
-      Swiper,
-      SwiperSlide,
-    },
-    setup() {
-      const onSwiper = (swiper) => {
+ const onSwiper = (swiper) => {
         console.log(swiper);
       };
       const onSlideChange = () => {
         console.log('slide change');
       };
-      return {
-        onSwiper,
-        onSlideChange,
-      };
-    },
-  };
-</script>
+  // export default {
+  //   components: {
+  //     Swiper,
+  //     SwiperSlide,
+  //   },
+  //   setup() {
+
+  //     return {
+  //       onSwiper,
+  //       onSlideChange,
+  //     };
+  //   },
+  // };
+</script> -->

@@ -29,19 +29,18 @@
 
     <div class="row">
       <div class="col-md-12">
-        <h2>Explore Some Lore</h2>
+        <h2>Explore</h2>
       </div>
       <div class="col-md-3">
         <div class="bg-secondary p-2 elevation-2">
           <p class="fw-bold fs-4">Categories</p>
           <TransitionGroup
             name=""
-            enterActiveClass="animate__fadeIn animate__animated"
-            leaveActiveClass="animate__fadeOut animate__animated"
+            leaveActiveClass="animate__slideOutRight animate__animated"
           >
-            <div
-              :class="c.checked ? 'bg-create mb-5 p-5' : ''"
-              class="mb-3 form-check selectable rounded"
+  <div
+              :class="c.checked ? 'bg-create mb-2 p-2 animate__rotateInUpRight' : ''"
+              class="mb-3 form-check selectable rounded animate__fadeIn animate__animated animate__delay-1s"
               v-for="c in categories"
               :key="c.name"
             >
@@ -54,20 +53,27 @@
                 id="exampleCheck1"
               />
               <label
-                :class="c.checked ? 'fw-bolder fs-4 ms-2' : ''"
-                class="form-check-label"
+                :class="c.checked ? 'fw-bolder fs-4 ms-2 ' : ''"
+                class="form-check-label selectable"
                 for="exampleCheck1"
                 >{{ c.name }}</label
               >
             </div>
           </TransitionGroup>
+
         </div>
       </div>
       <div class="col-md-9">
         <div class="row gy-3">
-          <div class="col-md-3" v-for="b in books" :key="b.id">
-            <SearchPageBookCard :book="b" />
-          </div>
+          <TransitionGroup
+            name=""
+            enterActiveClass="animate__fadeIn animate__animated"
+            leaveActiveClass="animate__fadeOut animate__animated"
+          >
+            <div class="col-md-3" v-for="b in books" :key="b.id">
+              <SearchPageBookCard :book="b" />
+            </div>
+          </TransitionGroup>
         </div>
         <div class="row">
           <div class="col-md-12 d-flex justify-content-center">
@@ -121,7 +127,7 @@ export default {
       async searchByQuery() {
         try {
           await bookService.searchByQuery(editable.value.term);
-          AppState.categoryQuery = editable.value.term
+          AppState.categoryQuery = editable.value.term;
         } catch (error) {
           logger.error(error);
         }
@@ -129,7 +135,6 @@ export default {
       async searchByCategory(newCategory) {
         try {
           let found = AppState.categories.find((c) => c == newCategory);
-          //     console.log(found);
 
           for (const category of AppState.categories) {
             if (category.name != newCategory.name) {
@@ -137,10 +142,8 @@ export default {
             }
           }
 
-          // editable.value.term = "";
+          AppState.categoryQuery = newCategory.name;
 
-          // AppState.categoryQuery = newCategory.name;
-// console.log(AppState.categoryQuery, newCategory);
           await bookService.searchByCategory(AppState.categoryQuery);
           AppState.categories.forEach(function (item, i) {
             if (item.name == newCategory.name) {
@@ -148,7 +151,6 @@ export default {
               AppState.categories.unshift(item);
             }
           });
-          // console.log(AppState.categoryQuery);
         } catch (error) {
           Pop.error(error, "[searchByCategory]");
         }
@@ -179,5 +181,18 @@ export default {
 <style lang="scss" scoped>
 input[type="checkbox"] {
   accent-color: #f92f60;
+}
+
+.selectable {
+  cursor: pointer;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
