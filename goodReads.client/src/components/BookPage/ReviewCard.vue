@@ -56,7 +56,7 @@
       </div>
     </div>
 
-    <div v-if="user.isAuthenticated" class="bg-light darken-10">
+    <!-- <div v-if="user.isAuthenticated" class="bg-light darken-10">
       <div class="form-floating m-4">
         <input type="text" class="form-control border-0" name="reviewComment" id="reviewComment" placeholder="" />
         <label for="reviewComment">comment</label>
@@ -66,7 +66,7 @@
       <button class="btn selectable text-dark text-uppercase my-2 my-lg-0" @click="login">
         Login
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 

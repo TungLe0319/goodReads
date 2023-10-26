@@ -18,7 +18,6 @@
           <p class="ms-3 mb-0 fs-5 text-dark">
             {{ review.creator.name.split("@")[0] }}
           </p>
-         
         </div>
       </div>
 
@@ -37,12 +36,16 @@
         </button>
 
         <button
-          v-if="review.creator.id == account.id"
+          v-if="review.creator.id == account.id && routeIsHome"
           @click="deleteReview()"
           class="btn ms-3"
           title="Delete Review"
         >
-          <img src="../../src\assets/img/delete.png" alt="delete Icon" width="40" />
+          <img
+            src="../../src\assets/img/delete.png"
+            alt="delete Icon"
+            width="40"
+          />
         </button>
       </div>
     </div>
@@ -59,15 +62,18 @@
     </div>
 
     <div class="d-flex flex-column justify-content-center align-items-center">
-      <router-link :to="{name: 'Book', params:{id: review.book.id }}"> 
-
-  <img :src="review.book.largeImg" alt="" width="200" height="300" class="elevation-4 rounded">
-</router-link>
-<p>
-
-  {{review.book.authors}}
-</p>
-      <!-- <BookCard :book="review.book" /> -->
+      <router-link :to="{ name: 'Book', params: { id: review.book.id } }">
+        <img
+          :src="review.book.largeImg"
+          alt=""
+          width="150"
+          height="250"
+          class="elevation-4 rounded"
+        />
+      </router-link>
+      <p>
+        {{ review.book.authors }}
+      </p>
     </div>
 
     <div class="text-muted text-center">
@@ -88,6 +94,7 @@ import { followsService } from "../services/FollowsService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 import BookCard from "./BookCard.vue";
+import { useRoute } from "vue-router";
 
 export default {
   props: {
@@ -95,15 +102,17 @@ export default {
   },
   setup(props) {
     const editable = ref({});
+    const route = useRoute();
     onMounted(() => {});
     watchEffect(() => {});
     return {
       editable,
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
+      routeIsHome: computed(() => route.name === "Home"),
       async deleteReview() {
         try {
-       //   console.log(props.review.book);
+          //   console.log(props.review.book);
           if (await Pop.confirm()) {
             let reviewId = props.review.id;
             await reviewsService.deleteReview(reviewId);

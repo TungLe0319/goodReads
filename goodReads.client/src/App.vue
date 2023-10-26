@@ -2,8 +2,8 @@
   <header>
     <Navbar class="" />
   </header>
-  <main class="">
-  
+  <main class="  mb-5  pb-5">
+
     <router-view />
   </main>
 
@@ -64,7 +64,7 @@ export default {
     function getMessage(message){
       Pop.success(`${message}`)
     }
-   
+
     async function getMySQLBooks() {
       try {
         await bookService.getMySQLBooks();
