@@ -28,7 +28,7 @@
     <!-- !SearchBar -->
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12  text-dark">
         <h2>Explore</h2>
       </div>
       <div class="col-md-3">
@@ -80,12 +80,12 @@
             <button
               :class="index <= 0 ? 'disabled' : ''"
               :disabled="index <= 0"
-              class="btn btn-outline-dark me-2"
+              class="btn btn-outline-dark me-2 text-dark"
               @click="paginate('prev')"
             >
               <b>Prev</b>
             </button>
-            <button class="btn btn-outline-dark" @click="paginate('next')">
+            <button class="btn btn-outline-dark text-dark" @click="paginate('next')">
               <b>Next</b>
             </button>
           </div>

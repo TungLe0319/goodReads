@@ -5,7 +5,7 @@
       <div class="d-flex flex-column align-items-center">
         <img alt="logo" class="logo p-1 "
           src="https://cdn0.iconfinder.com/data/icons/fantasy/512/Fantasy_Spell_Book.png" />
-          
+
       </div>
 
     </router-link>
@@ -16,7 +16,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-        <li>
+        <li v-if="account">
           <router-link :to="{ name: 'List' }" class="btn text-dark selectable text-uppercase">
            My Lists
           </router-link>
@@ -26,7 +26,7 @@
             Search
           </router-link>
         </li>
-    
+
         <!-- <li>
           <button
             class="btn selectable text-uppercase"
@@ -58,6 +58,7 @@ export default {
   setup() {
     return {
       theme: computed(() => AppState.theme),
+      account: computed(() => AppState.account),
       toggleTheme() {
         AppState.theme = !AppState.theme;
         document.body.setAttribute(
@@ -75,9 +76,9 @@ export default {
 .kitty{
   transform: scale(.5);
   position: absolute;
-  
+
   right: -120px;
-  
+
 }
 .forcedImg {
   height: 100px;
