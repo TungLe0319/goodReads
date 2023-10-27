@@ -31,7 +31,16 @@ export default {
         return {
             editable,
             user: computed(() => AppState.user),
-            review: computed(() => AppState.accountReviews.filter(a=> a.createdAt != AppState.accountReviews[0].createdAt)),
+           review: computed(() => {
+  // First, filter the reviews to exclude reviews with the same createdAt as the first review
+  const filteredReviews = AppState.accountReviews.filter(a => a.createdAt !== AppState.accountReviews[0].createdAt);
+
+  // Then, sort the filteredReviews array based on createdAt in descending order to have the most recent reviews at the beginning.
+  const sortedReviews = filteredReviews.sort((a, b) => b.createdAt - a.createdAt);
+
+  // Finally, slice the first two elements to get the two most recent reviews.
+  return sortedReviews.slice(0, 2);
+}),
             recommended: computed(() => AppState.accountReviews.find(a => a.recommend == true)),
             following: computed(() => AppState.following.filter(a=> a.createdAt != AppState.following[0].createdAt)),
         };
