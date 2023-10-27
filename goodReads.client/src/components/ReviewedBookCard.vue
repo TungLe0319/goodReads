@@ -70,6 +70,7 @@
           height="250"
           class="elevation-4 rounded"
         />
+        
       </router-link>
       <p>
         {{ review.book.authors }}

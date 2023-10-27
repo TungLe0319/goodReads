@@ -119,7 +119,7 @@
 
  -->
 
-   <div v-for="(categoryBooks, category) in testCategory" :key="category">
+   <div v-for="(categoryBooks, category) in combinedBooksArrays" :key="category">
   <h2 class="categoryTitle text-dark">{{ category }}</h2>
   <div class="row scrollX">
     <div class="col-md-2 gy-3" v-for="book in categoryBooks" :key="book.id">
@@ -238,7 +238,7 @@ export default {
         }
       },
 
-      testCategory: computed(() => {
+      combinedBooksArrays: computed(() => {
         const categories = {
           Cooking: [],
           Science: [],
@@ -267,7 +267,7 @@ export default {
             .sort(() => Math.random() - 0.5);
         }
 
-        console.log(categories);
+        // console.log(categories);
         return categories;
       }),
 
