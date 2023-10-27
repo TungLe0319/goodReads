@@ -1,5 +1,5 @@
 <template>
-  <div class="card  bg-transparent border-0 bg-secondary easySteps elevation-2">
+  <div class="card  bg-transparent border-0 bg-secondary easySteps elevation-2"  v-if="user.isAuthenticated">
     <b class="ms-3 mt-2"> Recent Activity</b>
 
     <div class="card-body  p-0 ">

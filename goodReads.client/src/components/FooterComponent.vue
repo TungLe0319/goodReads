@@ -63,14 +63,14 @@
               <img src="../../src/assets/img/Portraits/tungle.jpg" alt="" class="forcedImg elevation-5 hover" />
               <div class="ms-3 d-flex align-items-center">
                 <a href="https://www.linkedin.com/in/tung-le0319
-" target="_blank" title="LinkedIn" class="text-white me-4">
-                  <i class="mdi mdi-linkedin fs-1"></i>
+" target="_blank" title="LinkedIn" class="text-white me-2">
+                  <i class="mdi mdi-linkedin fs-2"></i>
                 </a>
                 <a href="https://github.com/TungLe0319 " target="_blank" title="Github" class="text-white me-4">
-                  <i class="mdi mdi-github fs-1"></i>
+                  <i class="mdi mdi-github fs-2"></i>
                 </a>
                 <!-- <a href="" class="text-white me-4">
-                  <i class="mdi mdi-email fs-1"></i>
+                  <i class="mdi mdi-email fs-2"></i>
                 </a> -->
               </div>
             </div>
@@ -79,14 +79,14 @@
               <img src="../../src/assets/img/Portraits/trile.jpg" alt="" class="forcedImg elevation-5 hover" />
               <div class="ms-3 d-flex align-items-center">
                 <a href="https://www.linkedin.com/in/tri-le1122
-" target="_blank" title="LinkedIn" class="text-white me-4">
-                  <i class="mdi mdi-linkedin fs-1"></i>
+" target="_blank" title="LinkedIn" class="text-white me-2">
+                  <i class="mdi mdi-linkedin fs-2"></i>
                 </a>
                 <a href="https://github.com/TriLe1122" target="_blank" title="Github" class="text-white me-4">
-                  <i class="mdi mdi-github fs-1"></i>
+                  <i class="mdi mdi-github fs-2"></i>
                 </a>
                 <!-- <a href="" class="text-white me-4">
-                  <i class="mdi mdi-email fs-1"></i>
+                  <i class="mdi mdi-email fs-2"></i>
                 </a> -->
               </div>
             </div>
@@ -95,11 +95,11 @@
               <img src="../../src/assets/img/Portraits/daniel-le.jpg" alt="" class="forcedImg elevation-5 hover" />
               <div class="ms-3 d-flex align-items-center">
                 <a href="https://www.linkedin.com/in/daniel-le97/
-" target="_blank" title="LinkedIn" class="text-white me-4">
-                  <i class="mdi mdi-linkedin fs-1"></i>
+" target="_blank" title="LinkedIn" class="text-white me-2">
+                  <i class="mdi mdi-linkedin fs-2"></i>
                 </a>
                 <a href="https://github.com/daniel-le97" target="_blank" title="Github" class="text-white me-4">
-                  <i class="mdi mdi-github fs-1"></i>
+                  <i class="mdi mdi-github fs-2"></i>
                 </a>
                 <!-- <a href="" class="text-white me-4">
                   <i class="mdi mdi-email fs-1"></i>
@@ -145,8 +145,8 @@ export default {
 
 <style lang="scss" scoped>
 .forcedImg {
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
   object-fit: cover;
   border-radius: 50%;
   object-position: top;

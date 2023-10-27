@@ -30,7 +30,7 @@
         </div>
 
         <div class=" ">
-      
+
           <img
           v-if="book"
           :src="book?.img"
@@ -52,11 +52,11 @@
           <i
             class="mdi mdi-star fs-3 text-create"
             v-for="i in book.averageRating"
-         
+
           ></i>
           <h4 class="text-dark">{{ book.averageRating }}</h4>
         </div> -->
-<!-- 
+<!--
         <div v-else class="d-flex align-items-center">
           <i
             class="mdi mdi-star fs-3 text-grey"
@@ -104,7 +104,7 @@
           <button
              data-bs-toggle="modal"
         data-bs-target="#createReview"
-   
+
             class="btn bg-create text-dark fw-bold d-flex align-items-center justify-content-center"
           >
             <i class="mdi mdi-comment fs-4 text-dark me-2"></i> Write a Review
@@ -143,7 +143,7 @@ export default {
       if (!AppState.activeBook) {
         router.push("/");
       }
-      
+
     });
     async function getBookInformation() {
       try {
