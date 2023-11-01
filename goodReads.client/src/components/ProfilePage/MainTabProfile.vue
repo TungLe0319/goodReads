@@ -75,25 +75,25 @@
       <div v-else class="mt-2">
         <p class="text-dark fs-3 text-dark ">{{ profile?.bio }}</p>
       </div>
-<!--       
+
       <div class="">
-        <div class="d-flex my-3">
+        <div class="d-flex flex-column my-3">
           <h2>Favorite Books</h2>
-          <button class="btn btn-outline-dark" data-bs-target="#favoriteBookForm" data-bs-toggle="modal">
+
+          <!-- <button class="btn btn-outline-dark" data-bs-target="#favoriteBookForm" data-bs-toggle="modal">
             Add Favorite Book
-          </button>
+          </button> -->
         </div>
         <div class="row">
-          <div class="col-md-2 mx-3" v-for="f in favoriteBooks" :key="f.id">
-            <div class="card position-relative">
-              <router-link :to="{ name: 'Book', params: { id: f.bookId } }">
-                <img :src="f.book?.volumeInfo?.imageLinks?.thumbnail" alt="" width="200" height="300"
-                  class="elevation-5 selectable rounded-1" @click="setActive(f.book)" />
-              </router-link>
-            </div>
+          <div class="col-md-2" v-for="f in favoriteBooks" :key="f.id">
+            <BookCard :book="f" />
           </div>
         </div>
-      </div> -->
+      </div>
+
+
+
+
     </div>
 
     <div
@@ -103,13 +103,7 @@
       aria-labelledby="nav-Reviews-tab"
       tabindex="0"
     >
-      <!-- <div class="container-fluid">
-        <div class="row mt-5">
-          <div class="col-md-4" v-for="r in reviews" :key="r.id">
-            <ReviewedBookCard :review="r" />
-          </div>
-        </div>
-      </div> -->
+
     </div>
     <div
       class="tab-pane fade"
@@ -136,21 +130,18 @@
 import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../../AppState.js";
-
-import Pop from "../../utils/Pop.js";
-// import FavoritedBookCard from "../AccountPage/FavoritedBookCard.vue";
-
-// import ReviewedBookCard from "../AccountPage/ReviewedBookCard.vue";
-
-// import NotificationTab from "../AccountPage/Tabs/NotificationTab.vue";
 import FollowCard from "../FollowCard.vue";
 import FollowerTab from "../FollowerTab.vue";
 import FollowingTab from "../FollowingTab.vue";
+import BookCard from "../BookCard.vue";
 
 export default {
   setup() {
     const editable = ref({});
-    onMounted(() => {});
+     onMounted(() => {
+      let found = AppState.accountBookshelves.find((a) => a.type == "favorite");
+      AppState.activeBookShelf = found;
+    });
     watchEffect(() => {});
     return {
       editable,
@@ -161,7 +152,11 @@ export default {
       reviews: computed(() => AppState.activeProfileReviews),
       bookshelves: computed(() => AppState.activeProfileBookshelves),
       // favoriteBooks: computed(() => AppState.favoriteBooks),
-
+     favoriteBooks: computed(() =>
+        AppState.accountShelvedBooks?.filter(
+          (x) => x.bookShelfId == AppState.activeBookShelf?.id
+        )
+      ),
       setActive(book) {
         document.documentElement.scrollTop = 0;
         //IF NOT IN DATABASE PUSH
@@ -172,10 +167,10 @@ export default {
   },
   components: {
     FollowCard,
-
     FollowingTab,
     FollowerTab,
-  },
+    BookCard
+},
 };
 </script>
 

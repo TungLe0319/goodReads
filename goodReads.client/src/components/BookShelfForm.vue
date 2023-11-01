@@ -26,7 +26,12 @@
 
       <div class="mb-3">
         <label for="" class="form-label">Type</label>
-        <select v-model="editable.type" class="form-select form-select-lg" name="" id="">
+        <select
+          v-model="editable.type"
+          class="form-select form-select-lg"
+          name=""
+          id=""
+        >
           <option value="wishList">Wish List</option>
           <option value="favorite">Favorite</option>
           <option value="reading">Reading</option>
@@ -39,17 +44,14 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
 import { onMounted, ref, watchEffect } from "vue";
-import { AppState } from "../AppState.js";
 import { bookShelvesService } from "../services/BookShelvesService.js";
-import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
 export default {
   props: {},
   setup(props) {
-    const editable = ref({type:'wishList'});
+    const editable = ref({ type: "wishList" });
 
     onMounted(() => {});
     watchEffect(() => {});

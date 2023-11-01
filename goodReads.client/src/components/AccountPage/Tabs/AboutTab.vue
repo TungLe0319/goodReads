@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12" v-if="account.bio">
-      <p class="fs-5" > 
+      <p class="fs-5" >
         {{account.bio}}
       </p>
     </div>
@@ -24,7 +24,7 @@ props:{
        },
   setup(props) {
     const editable = ref({});
-    
+
     onMounted(() => {
 
     });
