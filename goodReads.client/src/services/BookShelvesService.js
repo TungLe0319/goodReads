@@ -1,6 +1,7 @@
 import { AppState } from "../AppState.js";
 import { ShelvedBook } from "../models/ShelvedBook.js";
 import { addMany, addOne } from "../utils/Functions.js";
+import { accountService } from "./AccountService";
 import { api } from "./AxiosService.js";
 
 class BookShelvesService {
@@ -9,11 +10,12 @@ class BookShelvesService {
     res.data.book = book
     let newBook = new ShelvedBook(res.data, true)
     AppState.accountShelvedBooks = [...AppState.accountShelvedBooks, newBook]
+    // await accountService.getAccountBookShelves()
   }
   findBook() {
     AppState.accountBookshelves.forEach(s => s.hasActiveBook = false)
     AppState.activeBookShelf = null
-  
+
 
     let bookId = AppState.activeBook.id;
     for (const shelf of AppState.accountBookshelves) {
@@ -27,6 +29,11 @@ class BookShelvesService {
       }
     }
 
+  }
+
+
+  async function removeFromBookshelf(bookShelvedId){
+    
   }
 }
 export const bookShelvesService = new BookShelvesService();

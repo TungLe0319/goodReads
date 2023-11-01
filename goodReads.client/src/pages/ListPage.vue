@@ -20,7 +20,7 @@
       <div class="col-md-12 mb-3">
         <div class="d-flex justify-content-between">
           <h1 class="text-dark abril display-3">My Book Lists</h1>
-        
+
         </div>
       </div>
       <div class="col-md-12">
@@ -191,6 +191,7 @@ export default {
       async removeFromBookShelf(id) {
         try {
           if (await Pop.confirm()) {
+            console.log(id);
             await bookShelvesService.removeFromBookShelf(id);
           }
         } catch (error) {
@@ -207,7 +208,7 @@ export default {
 .scrollX{
   overflow-x: auto;
 
-  
+
 }
 .booklist {
   font-family: "Abril Fatface", cursive;

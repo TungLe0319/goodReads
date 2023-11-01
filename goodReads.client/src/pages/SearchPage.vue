@@ -90,7 +90,8 @@
             </button>
           </div>
           <div class="col-md-12 text-center mt-3">
-            <b> {{ index }} - {{ endDex + 24 }} of {{ totalItems }} results </b>
+            <b> {{ index }} - {{ endDex + 24 }}  </b>
+            <!-- <b> {{ index }} - {{ endDex + 24 }} of {{ totalItems }} results </b> -->
           </div>
         </div>
       </div>

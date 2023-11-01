@@ -58,6 +58,8 @@ let res
     // console.log(res.data.items);
     let books = res.data.items.map((b) => new Book(b));
 
+    // console.log(res.data.totalItems);
+    // AppState.totalItems = res.data.totalItems
     AppState.sPBooks = books;
     // console.log(AppState.sPBooks);
   }
