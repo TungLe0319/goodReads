@@ -35,7 +35,7 @@ public class FollowsRepository : BaseRepository
     string sql = @"SELECT 
                 follow.*
                 FROM follows follow
-                WHERE follow.followingUserId = @followingUserId AND Follow.creatorId = @creatorId
+                WHERE follow.followingUserId = @followingUserId AND follow.creatorId = @creatorId
                 ;";
     return _db.Query<Follow>(sql, new { followingUserId, creatorId }).FirstOrDefault();
   }

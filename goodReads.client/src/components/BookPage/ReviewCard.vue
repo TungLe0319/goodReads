@@ -120,7 +120,7 @@ export default {
           };
           // let hi = this.followId.id
        //   console.log(id);
-
+// console.log(id);
           await followsService.followByUserId(id);
           Pop.success(`Following ${props.review.creator.name}`);
         } catch (error) {

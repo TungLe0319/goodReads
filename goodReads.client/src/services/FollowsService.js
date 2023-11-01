@@ -17,7 +17,7 @@ class FollowsService {
       f.id == id;
     });
 
-    AppState.following.splice(index, 1);
+   AppState.following =  AppState.following.splice(index, 1);
   }
 }
 export const followsService = new FollowsService();
