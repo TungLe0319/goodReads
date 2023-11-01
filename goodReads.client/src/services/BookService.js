@@ -46,6 +46,7 @@ let res
          maxResults: 24,
          printType: "books", // only include books
          projection:"full",
+         orderBy:'relevance',
          filter: "ebooks",
          startIndex: AppState.startIndex,
          rating: "4", // only include books with a rating of 4 or higher
@@ -89,7 +90,9 @@ let res
         q: term,
         maxResults: 24,
         printType: "books", // only include books
-        filter: "full",
+        projection: "full",
+        orderBy: "relevance",
+        filter: "ebooks",
         startIndex: AppState.startIndex,
         rating: "4", // only include books with a rating of 4 or higher
         inLanguage: "en", // only include books written in English

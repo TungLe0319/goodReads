@@ -15,7 +15,7 @@
           <label for="" class="form-label">Add to BookShelf</label>
           <div class="dropdown open">
             <button
-              class="btn btn-outline-dark dropdown-toggle"
+              class="btn btn-outline-dark dropdown-toggle  "
               type="button"
               id="triggerId"
               data-bs-toggle="dropdown"
@@ -35,12 +35,12 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="triggerId">
               <button
-                class="dropdown-item btn selectable"
+                class="dropdown-item  selectable"
                 v-for="b in bookShelves"
               >
                 <span
                   :class="
-                    b.hasActiveBook ? 'text-warning noSelect' : 'text-primary'
+                    b.hasActiveBook ? 'text-danger  noSelect text-decoration-line-through' : 'text-primary'
                   "
                   @click="makeActiveShelf(b)"
                 >

@@ -44,12 +44,13 @@
         /></div>
       </div>
       <div class="col-md-6 animate__animated animate__fadeInUp">
-        <h1 class="bookTitle elevation-5 bg-create p-2 px-3">
+        <h1 class="bookTitle elevation-5 bg-create p-2 px-3 text-center">
           {{ book.title }}
         </h1>
-        <div class="d-flex">
+        <div class="d-flex align-items-center mt-4">
+          <span class=" text-dark selectable rounded  fw-bold ">By:</span>
           <!-- <b class="authors mx-2" v-for="a in book.authors">{{ a }}</b> -->
-          <b class="authors mx-2 text-dark selectable p-1 rounded" v-for="a in book.authors"  @click="searchByCategory(a)" :title="book.authors"> {{a}} </b>
+          <b class="authors mx-2 text-dark selectable  rounded" v-for="a in book.authors"  @click="searchByCategory(a)" :title="book.authors"> {{a}} </b>
         </div>
 
         <div class="border-bottom border-2 my-3 border-muted"></div>
@@ -59,15 +60,23 @@
           </p>
         </div>
         <div class="text-dark">
-          <p>
-            <i class="mdi mdi-calendar fs-4"></i> <b> Release Date -</b>
+          <div class="mb-2">
+           <b> Release Date -</b>
             {{ new Date(book.publishedDate).toLocaleDateString() }}
-          </p>
-          <b class="">Publisher - {{ book.publisher }}</b>
-          <div class="d-flex align-items-center">
+          </div>
+          <div class="mb-2">
+             <b class="  fw-bold " v-if="book.publisher">Publisher -</b>
+             {{ book.publisher }}
+          </div>
+
+
+          <p><b>Language -</b> {{ book.language }}</p>
+          <p><b>Maturity Rating -</b> {{ book.maturityRating }}</p>
+          <p><b> Page Count -</b> {{ book.pageCount }}</p>
+              <div class="d-flex align-items-center">
             <b class="me-2 mb-3 mt-3">Categories -</b>
             <button
-              class="btn btn-outline-dark my-3 text-dark p-1 rounded-pill px-2 mx-2"
+              class="btn btn-dark my-3  btn-sm p-1 rounded-pill px-2 mx-2"
               v-for="c in book.categories"
               @click="searchByCategory(c)"
             >
@@ -75,9 +84,6 @@
             </button>
             <!-- <button class="btn btn-outline-dark p-1 rounded-pill px-2 mx-2">  </button> -->
           </div>
-          <p><b>Language -</b> {{ book.language }}</p>
-          <!-- <p><b>Maturity Rating -</b> {{ book.maturityRating }}</p> -->
-          <p><b> Page Count -</b> {{ book.pageCount }}</p>
         </div>
       </div>
       <div class="col-md-3 animate__animated animate__fadeInRight">
@@ -90,8 +96,9 @@
 
     <section class="" id="reviews">
       <div class="row">
-        <div class="col-md-12 d-flex justify-content-between my-3">
+        <div class="col-md-12 d-flex justify-content-between my-5">
           <h3 class="text-dark">Community Reviews</h3>
+
           <button
              data-bs-toggle="modal"
         data-bs-target="#createReview"
@@ -100,7 +107,11 @@
           >
             <i class="mdi mdi-comment fs-4 text-dark me-2"></i> Write a Review
           </button>
+
         </div>
+         <div class=" text-dark fs-4" v-if="reviews.length >=0">
+No Current Views
+          </div>
         <div class="col-md-12" v-for="r in reviews" :key="r.id">
           <ReviewCard :review="r" />
         </div>
